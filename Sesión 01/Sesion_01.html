@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Plantilla Lis Xaringan</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Laboratorio de Innovación en Salud" />
+    <meta name="date" content="2021-11-27" />
+    <script src="Sesion_01_files/header-attrs/header-attrs.js"></script>
+    <link href="Sesion_01_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="Sesion_01_files/tile-view/tile-view.js"></script>
+    <script src="Sesion_01_files/js-cookie/js.cookie.js"></script>
+    <script src="Sesion_01_files/peerjs/peerjs.min.js"></script>
+    <script src="Sesion_01_files/tiny.toast/toast.min.js"></script>
+    <link href="Sesion_01_files/xaringanExtra-broadcast/broadcast.css" rel="stylesheet" />
+    <script src="Sesion_01_files/xaringanExtra-broadcast/broadcast.js"></script>
+    <script src="Sesion_01_files/fabric/fabric.min.js"></script>
+    <link href="Sesion_01_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="Sesion_01_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="Sesion_01_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="Sesion_01_files/panelset/panelset.js"></script>
+    <script src="Sesion_01_files/clipboard/clipboard.min.js"></script>
+    <link href="Sesion_01_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="Sesion_01_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="Sesion_01_files/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="Sesion_01_files/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="Sesion_01_files/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script src="Sesion_01_files/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link rel="stylesheet" href="xaringan-lis.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Plantilla Lis Xaringan
+### Laboratorio de Innovación en Salud
+### 2021-11-27
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 100px;
+height: 116px;
+z-index: 0;
+background-image: url(img/InnovaLab_logo_blue.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+
+
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+## Acerca del curso
+
+---
+name: colors
+
+## Exploración competencial
+
+---
+
+## ¿Qué es Ciencia de Datos?
+
+.pull-left[.line-space2-5[.font120[
+La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo matematicas, estadistica, informatica, y tecnologia de la información. 
+
+La Ciencia de Datos permite extraer información relevante de los datos.
+]]]
+
+.pull-right[
+&lt;img src="img/ciencia_datos_1.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+## ¿Por qué usar R para Ciencia de Datos?
+
+.line-space2-5[.font120[
+R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para desarrollar proyectos de Ciencia de Datos.
+]]
+
+&lt;img src="img/ciencia_datos_2.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Reconocimiento Rstudio
+
+
+
+---
+
+## ¿Por qué utilizar proyectos?
+
+---
+
+## Creación de proyectos
+
+.pull-left[
+**PASOS:**
+
+1. Seleccionamos “Project (None)” o  “File” y  luego, new project.
+
+&lt;img src="img/creacion_proyectos_1.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;img src="img/creacion_proyectos_2.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+&lt;ol start="2"&gt;
+  &lt;li&gt;“New Directory” se utiliza para indicar dónde voy a almacenar mis archivos y para que R cree una nueva carpeta para mi proyecto, mientras que “Existing Directory” se utiliza si ya tengo una carpeta en la cual  voy a  almacenar mis archivos. Seleccionamos “New Directory”.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;img src="img/creacion_proyectos_3.png" width="85%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+.pull-left[
+&lt;ol start="3"&gt;
+  &lt;li&gt;Aparecerán más opciones y seleccionamos nuevamente “New Project”&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;img src="img/creacion_proyectos_4.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+&lt;ol start="3"&gt;
+  &lt;li&gt;En caso de haber seleccionado “Existing Directory” aparecerá esto y buscamos el nombre de la carpeta que utilizaremos.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;img src="img/creacion_proyectos_5.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;br/&gt;
+&lt;ol start="4"&gt;
+  &lt;li&gt;En “Directory name” ponemos el nombre de la carpeta que contendrá el archivo del proyecto, mientras que en “Create project as subdirectory of” seleccionamos dónde está la carpeta en la que trabajaremos.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;img src="img/creacion_proyectos_6.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+## Creación de proyectos
+
+&lt;img src="img/creacion_proyectos_6.gif" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+class: center, middle
+
+# Thanks!
+
+Slides created via the R packages:
+
+[**xaringan**](https://github.com/yihui/xaringan)&lt;br&gt;
+[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

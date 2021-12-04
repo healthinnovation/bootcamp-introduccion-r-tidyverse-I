@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Plantilla Lis Xaringan</title>
+    <title>Introducción a R y Tidyverse</title>
     <meta charset="utf-8" />
     <meta name="author" content="Laboratorio de Innovación en Salud" />
-    <meta name="date" content="2021-11-27" />
+    <meta name="date" content="2021-12-04" />
     <script src="Sesion_01_files/header-attrs/header-attrs.js"></script>
     <link href="Sesion_01_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="Sesion_01_files/tile-view/tile-view.js"></script>
@@ -27,6 +27,10 @@
     <link href="Sesion_01_files/font-awesome/css/v4-shims.css" rel="stylesheet" />
     <link href="Sesion_01_files/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
     <script src="Sesion_01_files/xaringanExtra-progressBar/progress-bar.js"></script>
+    <link href="Sesion_01_files/countdown/countdown.css" rel="stylesheet" />
+    <script src="Sesion_01_files/countdown/countdown.js"></script>
+    <link href="Sesion_01_files/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="Sesion_01_files/fontawesome/js/fontawesome-all.min.js"></script>
     <link rel="stylesheet" href="xaringan-lis.css" type="text/css" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
   </head>
@@ -34,9 +38,10 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
-# Plantilla Lis Xaringan
+# Introducción a R y Tidyverse
+## Sesión 01
 ### Laboratorio de Innovación en Salud
-### 2021-11-27
+### 2021-12-04
 
 ---
 
@@ -147,11 +152,74 @@ R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para
 
 ## Reconocimiento Rstudio
 
+&lt;img src="img/01_IDE_Rdtudio_v1.png" width="85%" style="display: block; margin: auto;" /&gt;
 
+---
+
+## Reconocimiento Rstudio
+
+&lt;img src="img/01_IDE_Rdtudio_v2.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Mover paneles
+
+&lt;img src="img/03_panel_v1.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Mover paneles
+
+&lt;img src="img/03_panel_v2.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Personalización de Rstudio
+
+&lt;img src="img/04_config_global_v1.png" width="85%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Personalización de Rstudio
+
+.pull-left[.line-space1-7[.font110[
+**Modificaciones sobre la interfaz de Rstudio**
+
+- Aumentar el zoom o utilizar el atajo: Ctrl y +
+- Cambiar tipo de letra puede hacer un tanto más agradable la codificación. La letra Fira Code es bastante recomendable, [pero se requiere instalar](https://github.com/tonsky/FiraCode/wiki/Installing).
+- El tema también puede ayudar en que la codificación sea más agradable. El paquete [`rsthemes`](https://github.com/gadenbuie/rsthemes), contiene muchos temas extras.
+]]]
+
+.pull-right[
+&lt;img src="img/04_config_global_v2.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+#¡Hazlo tú mismo!
+
+.line-space2-5[.font130[
+1. Mueve la consola a la derecha
+1. Cambia el tema de tu rstudio
+1. Cambia el zoom a tu agrado
+1. Cambia el tamaño y tipo de letra a tu agrado
+]]
+
+<div class="countdown" id="timer_61ab91ac" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+ 
 
 ---
 
 ## ¿Por qué utilizar proyectos?
+
+.line-space2-5[.font120[
+- Es más fácil poder compartir los proyectos y estos se encuentran listos para que otras personas puedan colaborar contigo.
+- Cada proyecto se encuentra aislado. Los códigos en un proyecto no afectarán a ningún otro. Puedes tener muchos proyectos abiertos y los códigos del proyecto 1 no afectarán al proyecto 2.
+- Muy útil para facilitar la  importación de  data. 
+- Mejora tanto la reproducibilidad como la colaboración.
+]]
 
 ---
 
@@ -211,16 +279,185 @@ R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para
 &lt;img src="img/creacion_proyectos_6.gif" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
+
+#¡Hazlo tú mismo!
+
+.line-space2-5[.font130[
+1. Crea una carpeta para todo el curso
+1. Dentro crea una carpeta para la primera sesión.
+1. Crea un proyecto dentro de esa carpeta creada, por ej. `Sesión 01.RProj`.
+]]
+
+<div class="countdown" id="timer_61ab949c" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+---
+
+## Vectores atómicos
+
+.pull-left[.line-space1-7[.font110[
+- Los vectores contienen información homogénea o siempre de un solo tipo de datos.
+- Un vector puede contener 1 solo elemento o n-elementos.
+- Existen hasta 6 tipos de datos que puede contener un vector:
+  - Logical: `TRUE`, `FALSE`
+  - Integer: `1`, `5`, `7`
+  - Double: `3.15`, `10`, `12.86`
+  - Character: `"Marcos"`, `"Laptop"`.
+  - Complex: `3 + 2i`
+]]]
+
+.pull-right[
+
+```r
+v_numeric &lt;- 5
+v_numeric
+```
+
+```
+## [1] 5
+```
+
+
+```r
+v_numeric &lt;- c(5, 10, 15)
+v_numeric
+```
+
+```
+## [1]  5 10 15
+```
+
+
+```r
+typeof(v_numeric)
+```
+
+```
+## [1] "double"
+```
+
+
+```r
+v_character &lt;- c("Laptop", "Rstudio", "4.2")
+v_character
+```
+
+```
+## [1] "Laptop"  "Rstudio" "4.2"
+```
+
+
+```r
+typeof(v_character)
+```
+
+```
+## [1] "character"
+```
+]
+
+---
+
+## Vectores atómicos
+
+.line-space2-2[.font110[
+Los vectores solo pueden tener **un solo tipo de información a la vez**, así que si dentro de un vector se ingresa un elemento tipo `numeric`, este inmediatamente será transformado a `character`.
+]]
+
+
+```r
+v_character &lt;- c("Laptop", "Rstudio", 4.2)
+v_character
+```
+
+```
+## [1] "Laptop"  "Rstudio" "4.2"
+```
+
+
+```r
+typeof(v_character)
+```
+
+```
+## [1] "character"
+```
+
+---
+
+## Vectores atómicos
+
+.line-space2-2[.font110[
+Crearemos 2 vectores llamados `nombres` y `edades`.
+]]
+
+
+```r
+nombres &lt;- c("Luis", "Mateo", "Carlos", "Eduardo")
+edades &lt;- c(28, 30, 40, 35)
+```
+
+.line-space2-2[.font110[
+A partir de esto, podemos construir algo con lo que probablemente estemos más familiarizados.
+]]
+
+
+```r
+data.frame(nombres, 
+           edades)
+```
+
+```
+##   nombres edades
+## 1    Luis     28
+## 2   Mateo     30
+## 3  Carlos     40
+## 4 Eduardo     35
+```
+
+---
+
+#¡Hazlo tú mismo!
+
+.line-space2-2[.font110[
+1. Se formarán grupos de 6 personas en salas de **Zoom**.
+1. Cada uno de los participantes crearán n vectores llamados: `nombres` y otros que sean de su interés, como por ej. `profesion`, `edades`, `universidad`, `distrito`, etc.
+1. El contenido de los elementos de los vectores a crear será real y a partir de las preguntas que se puedan hacer entre sí, dentro del mismo grupo de personas. 
+1. Por último, dentro de `data.frame()` pondrán los vectores que hayan creado. Deberían tener como mínimo, 2 columnas, e idealmente 6 filas.
+]]
+
+<div class="countdown" id="timer_61ab9495" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="60">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+---
 class: center, middle
 
-# Thanks!
+# Retroalimentación
 
-Slides created via the R packages:
 
-[**xaringan**](https://github.com/yihui/xaringan)&lt;br&gt;
-[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
+---
+class: center, middle
 
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+&lt;br&gt;
+&lt;center&gt;
+&lt;h2&gt;
+&lt;span style="color:#106075"&gt;¡Gracias!&lt;/span&gt;
+&lt;/h2&gt;
+&lt;br&gt;
+&lt;h3&gt;
+<span>&lt;i class="fas  fa-envelope fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="mailto:correo@gmail.com"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp;correo@gmail.com&lt;/span&gt;&lt;/a&gt;</span>
+&lt;/h3&gt;
+&lt;h3&gt;
+<span>&lt;i class="fab  fa-github fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="https://github.com/healthinnovation/"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp; @healthinnovation&lt;/span&gt;&lt;/a&gt;</span>
+&lt;/h3&gt;
+&lt;h3&gt;
+<span>&lt;i class="fab  fa-twitter fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="https://twitter.com/innovalab_imt"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp; @innovalab_imt&lt;/span&gt;&lt;/a&gt;</span>
+&lt;/h3&gt;
+&lt;/center&gt;
+
+&lt;br&gt;
+
+Estas diapositivas fueron creadas mediante el paquete [xaringan](https://github.com/yihui/xaringan) y [xaringanthemer](https://github.com/gadenbuie/xaringanthemer/).
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

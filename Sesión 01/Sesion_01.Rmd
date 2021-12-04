@@ -1,6 +1,6 @@
 ---
-title: "Plantilla Lis Xaringan"
-subtitle: ""  
+title: "Introducción a R y Tidyverse"
+subtitle: "Sesión 01"  
 author: 
   - "Laboratorio de Innovación en Salud"
 date: '`r Sys.Date()`'
@@ -30,6 +30,7 @@ knitr::opts_chunk$set(
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
 library(xaringanthemer)
+library(countdown)
 
 style_duo_accent(
   primary_color = "#2f4871",
@@ -132,11 +133,89 @@ knitr::include_graphics("img/ciencia_datos_2.png")
 
 ## Reconocimiento Rstudio
 
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("img/01_IDE_Rdtudio_v1.png")
+```
 
+---
+
+## Reconocimiento Rstudio
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("img/01_IDE_Rdtudio_v2.png")
+```
+
+---
+
+## Mover paneles
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("img/03_panel_v1.png")
+```
+
+---
+
+## Mover paneles
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("img/03_panel_v2.png")
+```
+
+---
+
+## Personalización de Rstudio
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("img/04_config_global_v1.png")
+```
+
+---
+
+## Personalización de Rstudio
+
+.pull-left[.line-space1-7[.font110[
+**Modificaciones sobre la interfaz de Rstudio**
+
+- Aumentar el zoom o utilizar el atajo: Ctrl y +
+- Cambiar tipo de letra puede hacer un tanto más agradable la codificación. La letra Fira Code es bastante recomendable, [pero se requiere instalar](https://github.com/tonsky/FiraCode/wiki/Installing).
+- El tema también puede ayudar en que la codificación sea más agradable. El paquete [`rsthemes`](https://github.com/gadenbuie/rsthemes), contiene muchos temas extras.
+]]]
+
+.pull-right[
+```{r echo=FALSE, out.width="95%", fig.align='center'}
+knitr::include_graphics("img/04_config_global_v2.png")
+```
+]
+
+---
+
+#¡Hazlo tú mismo!
+
+.line-space2-5[.font130[
+1. Mueve la consola a la derecha
+1. Cambia el tema de tu rstudio
+1. Cambia el zoom a tu agrado
+1. Cambia el tamaño y tipo de letra a tu agrado
+]]
+
+```{r echo=FALSE}
+countdown(minutes = 8,
+          margin = "1em",
+          font_size = "4em",
+          warn_when = 30)
+```
+ 
 
 ---
 
 ## ¿Por qué utilizar proyectos?
+
+.line-space2-5[.font120[
+- Es más fácil poder compartir los proyectos y estos se encuentran listos para que otras personas puedan colaborar contigo.
+- Cada proyecto se encuentra aislado. Los códigos en un proyecto no afectarán a ningún otro. Puedes tener muchos proyectos abiertos y los códigos del proyecto 1 no afectarán al proyecto 2.
+- Muy útil para facilitar la  importación de  data. 
+- Mejora tanto la reproducibilidad como la colaboración.
+]]
 
 ---
 
@@ -210,13 +289,143 @@ knitr::include_graphics("img/creacion_proyectos_6.gif")
 ```
 
 ---
+
+#¡Hazlo tú mismo!
+
+.line-space2-5[.font130[
+1. Crea una carpeta para todo el curso
+1. Dentro crea una carpeta para la primera sesión.
+1. Crea un proyecto dentro de esa carpeta creada, por ej. `Sesión 01.RProj`.
+]]
+
+```{r echo=FALSE}
+countdown(minutes = 4,
+          margin = "1em",
+          font_size = "4em",
+          warn_when = 30)
+```
+---
+
+## Vectores atómicos
+
+.pull-left[.line-space1-7[.font110[
+- Los vectores contienen información homogénea o siempre de un solo tipo de datos.
+- Un vector puede contener 1 solo elemento o n-elementos.
+- Existen hasta 6 tipos de datos que puede contener un vector:
+  - Logical: `TRUE`, `FALSE`
+  - Integer: `1`, `5`, `7`
+  - Double: `3.15`, `10`, `12.86`
+  - Character: `"Marcos"`, `"Laptop"`.
+  - Complex: `3 + 2i`
+]]]
+
+.pull-right[
+```{r}
+v_numeric <- 5
+v_numeric
+```
+
+```{r}
+v_numeric <- c(5, 10, 15)
+v_numeric
+```
+
+```{r}
+typeof(v_numeric)
+```  
+
+```{r}
+v_character <- c("Laptop", "Rstudio", "4.2")
+v_character
+``` 
+
+```{r}
+typeof(v_character)
+```
+]
+
+---
+
+## Vectores atómicos
+
+.line-space2-2[.font110[
+Los vectores solo pueden tener **un solo tipo de información a la vez**, así que si dentro de un vector se ingresa un elemento tipo `numeric`, este inmediatamente será transformado a `character`.
+]]
+
+```{r}
+v_character <- c("Laptop", "Rstudio", 4.2)
+v_character
+```
+
+```{r}
+typeof(v_character)
+```
+
+---
+
+## Vectores atómicos
+
+.line-space2-2[.font110[
+Crearemos 2 vectores llamados `nombres` y `edades`.
+]]
+
+```{r}
+nombres <- c("Luis", "Mateo", "Carlos", "Eduardo")
+edades <- c(28, 30, 40, 35)
+```
+
+.line-space2-2[.font110[
+A partir de esto, podemos construir algo con lo que probablemente estemos más familiarizados.
+]]
+
+```{r}
+data.frame(nombres, 
+           edades)
+```
+
+---
+
+#¡Hazlo tú mismo!
+
+.line-space2-2[.font110[
+1. Se formarán grupos de 6 personas en salas de **Zoom**.
+1. Cada uno de los participantes crearán n vectores llamados: `nombres` y otros que sean de su interés, como por ej. `profesion`, `edades`, `universidad`, `distrito`, etc.
+1. El contenido de los elementos de los vectores a crear será real y a partir de las preguntas que se puedan hacer entre sí, dentro del mismo grupo de personas. 
+1. Por último, dentro de `data.frame()` pondrán los vectores que hayan creado. Deberían tener como mínimo, 2 columnas, e idealmente 6 filas.
+]]
+
+```{r echo=FALSE}
+countdown(minutes = 10,
+          margin = "1em",
+          font_size = "4em",
+          warn_when = 60)
+```
+---
 class: center, middle
 
-# Thanks!
+# Retroalimentación
 
-Slides created via the R packages:
 
-[**xaringan**](https://github.com/yihui/xaringan)<br>
-[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
+---
+class: center, middle
 
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+<br>
+<center>
+<h2>
+<span style="color:#106075">¡Gracias!</span>
+</h2>
+<br>
+<h3>
+`r anicon::faa('envelope', size = 'xs', animate='float', rtext='<a href="mailto:correo@gmail.com"><span style="color:#562457">&nbsp;&nbsp;correo@gmail.com</span></a>')`
+</h3>
+<h3>
+`r anicon::faa('github', size = 'xs', animate='float', rtext='<a href="https://github.com/healthinnovation/"><span style="color:#562457">&nbsp;&nbsp; @healthinnovation</span></a>')`
+</h3>
+<h3>
+`r anicon::faa('twitter', size = 'xs', animate='float', rtext='<a href="https://twitter.com/innovalab_imt"><span style="color:#562457">&nbsp;&nbsp; @innovalab_imt</span></a>')`
+</h3>
+</center>
+
+<br>
+
+Estas diapositivas fueron creadas mediante el paquete [xaringan](https://github.com/yihui/xaringan) y [xaringanthemer](https://github.com/gadenbuie/xaringanthemer/).

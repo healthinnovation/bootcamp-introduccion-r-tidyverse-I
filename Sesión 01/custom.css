@@ -139,24 +139,27 @@ li {
   line-height: 2.2em;
 }
 
-
 .line-space2-5 {
   line-height: 2.5em;
 }
 
-div.line-space2-0 ul li {
+div.line-space1-7 li {
+  line-height: 1.7em;
+}
+
+div.line-space2-0 li {
   line-height: 2em;
 }
 
-div.line-space2-2 ul li {
+div.line-space2-2 li {
   line-height: 2.2em;
 }
 
 
-div.line-space2-5 ul li {
+div.line-space2-5 li {
   line-height: 2.5em;
 }
 
-div.line-space3-0 ul li {
+div.line-space3-0 li {
   line-height: 3.0em;
 }

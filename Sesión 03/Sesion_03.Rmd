@@ -1,0 +1,194 @@
+---
+title: "Introducción a R y Tidyverse"
+subtitle: "Sesión 03"  
+author: 
+  - "Laboratorio de Innovación en Salud"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: [xaringan-lis.css, custom.css]
+    nature:
+      slideNumberFormat: "%current%/%total%"
+      highlightStyle: idea
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+      beforeInit: ["https://platform.twitter.com/widgets.js"]
+    seal: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+
+library(xaringanthemer)
+library(magrittr)
+library(metathis)
+library(xaringanthemer)
+library(countdown)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+style_duo_accent(
+  primary_color = "#2f4871",
+  secondary_color = "#2e91af",
+  inverse_header_color = "#FFFFFF",
+  header_color = "#106075",
+  background_color = "#e9ebee",
+  header_font_google = google_font("Oswald", "700", "700i"),
+  text_font_google = google_font("Spartan", "400", "400i",
+                                 "700", "700i"),
+  code_font_google = google_font("Fira Code", "400",
+                                 "700"),
+  outfile = "xaringan-lis.css"
+)
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r broadcast, echo=FALSE}
+xaringanExtra::use_broadcast()
+```
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\"></i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "img/InnovaLab_logo_blue.png",
+  width = "100px",
+  height = "116px"
+)
+```
+
+```{r xaringan-extra-styles, echo=FALSE}
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         
+  mute_unhighlighted_code = TRUE  
+)
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#0051BA",
+                                location = "bottom")
+```
+
+```{r metathis, echo=FALSE}
+meta() %>%
+  meta_name("github-repo" = "healthinnovation/curso-introduccion-r-tidyverse") %>% 
+  meta_social(
+    title = "Introducción a R y Tidyverse: Sesión 03",
+    description = "Curso de Introducción a R y Tidyverse: Sesión 03",
+    url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2003/#1",
+    # image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-plantilla.png",
+    # image_alt = "Innovar theme of R package xaringan",
+    og_type = "website",
+    og_author = "Laboratorio de Innovación en Salud",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@innovalab_imt",
+    twitter_site = "@innovalab_imt"
+  )
+```
+
+
+<br>
+<br>
+
+# `r rmarkdown::metadata$title`
+
+## `r rmarkdown::metadata$subtitle`
+
+### `r rmarkdown::metadata$author`  
+
+### `r Sys.Date()`
+
+<br>
+
+[`r fontawesome::fa(name = "github")` @healthinnovation](https://github.com/healthinnovation)  
+[`r fontawesome::fa(name = "twitter")` @innovalab_imt](https://twitter.com/innovalab_imt)  
+[`r fontawesome::fa(name = "link")` innovalab.info](https://www.innovalab.info/)  
+
+
+---
+
+## Contenido
+
+---
+name: colors
+
+## Exploración competencial
+
+
+
+---
+
+## Función Glimpse 
+
+.panelset[
+.panel[.panel-name[¿Para qué sirve?]
+.pull-left[.line-space2-0[.font120[
+- Versión transpuesta de print
+- Ayuda a visualizar la mayor cantidad de datos de muchas columnas.
+- Muestra el nombre de la variable junto con una designación de tipo de variable.
+]]]
+
+.pull-right[
+**Mediante la función:**
+
+```{r eval=FALSE}
+glimpse()
+```
+
+**Recordar importar el paquete `tidyverse`**
+```{r message=TRUE}
+library(tidyverse)
+```
+]]
+
+.panel[.panel-name[Ejemplo]
+
+.pull-left[
+Así habitualmente observamos la data:
+.scroll-output325[
+```{r}
+nycflights13::flights
+```
+]]
+
+.pull-right[
+Con `glimpse`, podrías tener un vistazo rápido de la estructura de los datos:
+
+.scroll-output325[
+```{r}
+glimpse(nycflights13::flights)
+```
+]]]
+]
+
+

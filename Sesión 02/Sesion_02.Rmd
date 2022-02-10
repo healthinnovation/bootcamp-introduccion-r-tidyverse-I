@@ -9,10 +9,12 @@ output:
     css: [xaringan-lis.css, custom.css]
     nature:
       slideNumberFormat: "%current%/%total%"
-      highlightStyle: github
+      highlightStyle: idea
       highlightLines: true
       ratio: 16:9
       countIncrementalSlides: true
+      beforeInit: ["https://platform.twitter.com/widgets.js"]
+    seal: false
 ---
 
 ```{r setup, include=FALSE}
@@ -26,12 +28,15 @@ knitr::opts_chunk$set(
   warning = FALSE,
   hiline = TRUE
 )
+
+library(xaringanthemer)
+library(magrittr)
+library(metathis)
+library(xaringanthemer)
+library(countdown)
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
-library(xaringanthemer)
-library(countdown)
-
 style_duo_accent(
   primary_color = "#2f4871",
   secondary_color = "#2e91af",
@@ -94,6 +99,43 @@ xaringanExtra::use_progress_bar(color = "#0051BA",
                                 location = "bottom")
 ```
 
+```{r metathis, echo=FALSE}
+meta() %>%
+  meta_name("github-repo" = "healthinnovation/curso-introduccion-r-tidyverse") %>% 
+  meta_social(
+    title = "Introducción a R y Tidyverse: Sesión 02",
+    description = "Curso de Introducción a R y Tidyverse: Sesión 02",
+    url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/#1",
+    # image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-plantilla.png",
+    # image_alt = "Innovar theme of R package xaringan",
+    og_type = "website",
+    og_author = "Laboratorio de Innovación en Salud",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@innovalab_imt",
+    twitter_site = "@innovalab_imt"
+  )
+```
+
+
+<br>
+<br>
+
+# `r rmarkdown::metadata$title`
+
+## `r rmarkdown::metadata$subtitle`
+
+### `r rmarkdown::metadata$author`  
+
+### `r Sys.Date()`
+
+<br>
+
+[`r fontawesome::fa(name = "github")` @healthinnovation](https://github.com/healthinnovation)  
+[`r fontawesome::fa(name = "twitter")` @innovalab_imt](https://twitter.com/innovalab_imt)  
+[`r fontawesome::fa(name = "link")` innovalab.info](https://www.innovalab.info/)  
+
+
+---
 
 ## Acerca del curso
 

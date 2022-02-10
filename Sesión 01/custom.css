@@ -155,11 +155,60 @@ div.line-space2-2 li {
   line-height: 2.2em;
 }
 
-
 div.line-space2-5 li {
   line-height: 2.5em;
 }
 
 div.line-space3-0 li {
   line-height: 3.0em;
+}
+
+.scroll-output150 {
+    height: 150px;
+    overflow-y: auto !important;
+}
+
+.scroll-output200 {
+    height: 200px;
+    overflow-y: auto !important;
+}
+
+.scroll-output250 {
+    height: 250px;
+    overflow-y: auto !important;
+}
+
+.scroll-output300 {
+    height: 300px;
+    overflow-y: auto !important;
+}
+
+.scroll-output325 {
+    height: 325px;
+    overflow-y: auto !important;
+}
+
+.scroll-output350 {
+    height: 350px;
+    overflow-y: auto !important;
+}
+
+.scroll-output400 {
+    height: 400px;
+    overflow-y: auto !important;
+}
+
+.scroll-output450 {
+    height: 450px;
+    overflow-y: auto !important;
+}
+
+.scroll-output500 {
+    height: 500px;
+    overflow-y: auto !important;
+}
+
+.scroll-output {
+    height: 500px;
+    overflow-y: auto !important;
 }

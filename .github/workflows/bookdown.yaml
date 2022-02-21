@@ -15,13 +15,13 @@ jobs:
       - name: Install pandoc
         run: |
           brew install pandoc
-      - name: Cache Renv packages
-        uses: actions/cache@v1
-        with:
-          path: $HOME/.local/share/renv
-          key: r-${{ hashFiles('renv.lock') }}
-          restore-keys: r-
 
+      - name: Install packages
+        run: |
+          R -e 'install.packages("bookdown")'
+          R -e 'install.packages("remotes")'
+          R -e 'remotes::install_github("rstudio/bslib")'
+          
       - name: Cache bookdown results
         uses: actions/cache@v1
         with:
@@ -29,11 +29,6 @@ jobs:
           key: bookdown-${{ hashFiles('**/*Rmd') }}
           restore-keys: bookdown-
 
-      - name: Install packages
-        run: |
-          R -e 'install.packages("renv")'
-          R -e 'renv::restore()'
-          R -e 'install.packages("bookdown")'
       - name: Build site
         run: Rscript -e 'bookdown::render_book("index.Rmd", quiet = TRUE)'
 

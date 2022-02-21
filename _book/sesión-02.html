@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 3 Sesión 02 | Introducción a R y Tidyverse</title>
+<meta name="author" content="Healthinnovation">
+<meta name="description" content="3.0.1 ¿Qué es una función? Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (vector, dataframes, etc.), lo...">
+<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta property="og:title" content="Capítulo 3 Sesión 02 | Introducción a R y Tidyverse">
+<meta property="og:type" content="book">
+<meta property="og:description" content="3.0.1 ¿Qué es una función? Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (vector, dataframes, etc.), lo...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 3 Sesión 02 | Introducción a R y Tidyverse">
+<meta name="twitter:description" content="3.0.1 ¿Qué es una función? Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (vector, dataframes, etc.), lo...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introducción a R y Tidyverse</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> ¡Bienvenidos!</a></li>
+<li><a class="" href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></li>
+<li><a class="active" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sesión-02" class="section level1" number="3">
+<h1>
+<span class="header-section-number">Capítulo 3</span> Sesión 02<a class="anchor" aria-label="anchor" href="#sesi%C3%B3n-02"><i class="fas fa-link"></i></a>
+</h1>
+<div id="qué-es-una-función" class="section level3" number="3.0.1">
+<h3>
+<span class="header-section-number">3.0.1</span> ¿Qué es una función?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-una-funci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<p>Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (vector, dataframes, etc.), lo procesan y devuelven un resultado.</p>
+<p>El uso general de una función es el nombre de la función seguida de paréntesis</p>
+<pre><code>function_name(input)</code></pre>
+<p>Los inputs se denominan argumentos e incluyen:</p>
+<ul>
+<li><p>El objeto físico (cualquier estructura de datos) en el que la función lleva a cabo una tarea.</p></li>
+<li><p>Especificaciones que alteran la forma en que opera la función</p></li>
+</ul>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/function_example.png" width="85%" style="display: block; margin: auto;"></div>
+</div>
+<div id="buscando-ayuda-sobre-las-funciones" class="section level3" number="3.0.2">
+<h3>
+<span class="header-section-number">3.0.2</span> Buscando ayuda sobre las funciones<a class="anchor" aria-label="anchor" href="#buscando-ayuda-sobre-las-funciones"><i class="fas fa-link"></i></a>
+</h3>
+<p>La mejor forma de averiguar esta información es utilizar ? seguido del nombre de la función. Al hacer esto, se abrirá el manual de ayuda en el panel inferior derecho de RStudio que proporcionará una descripción de la función, uso, argumentos, detalles y ejemplos:</p>
+<ul>
+<li><code><a href="https://rdrr.io/r/stats/sd.html">?sd</a></code></li>
+<li><code><a href="https://rdrr.io/r/stats/sd.html">help(sd)</a></code></li>
+<li><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/help_function.png" width='140px"'></li>
+</ul>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/help_page.png" width="85%" style="display: block; margin: auto;"></div>
+<p>Alternativamente, si está familiarizado con la función pero solo necesita recordar los nombres de los argumentos, puede usar:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">sd</span><span class="op">)</span></code></pre></div>
+<pre><code>## function (x, na.rm = FALSE) 
+## NULL</code></pre>
+</div>
+<div id="ejemplo-de-una-función" class="section level3" number="3.0.3">
+<h3>
+<span class="header-section-number">3.0.3</span> Ejemplo de una función<a class="anchor" aria-label="anchor" href="#ejemplo-de-una-funci%C3%B3n"><i class="fas fa-link"></i></a>
+</h3>
+<p>Se tiene el número 3.15181930, pero solo necesitamos dos decimales. Para ello, utilizaremos la función round() que redondea los números de acuerdo a la cantidad de decimales que asignemos. En este caso, solo necesitaremos 2.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">3.15181930</span>, digits <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 3.15</span></code></pre></div>
+<p>Como se puede observar, se ha utilizado el argumento digits para regular la cantidad de decimales.</p>
+<p><strong>Nota: Si proporcionamos los argumentos en el mismo orden en el que han sido definidos, no es necesario nombrarlos</strong></p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span><span class="op">(</span><span class="fl">3.15181930</span>, <span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; [1] 3.15</span></code></pre></div>
+</div>
+<div id="data.frame" class="section level3" number="3.0.4">
+<h3>
+<span class="header-section-number">3.0.4</span> ¿Data.frame?<a class="anchor" aria-label="anchor" href="#data.frame"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li><p>Estructura de datos 2D</p></li>
+<li><p>Admite datos con diferente tipo de variable (lo opuesto a matrices)</p></li>
+<li><p>Similar a Microsoft Excel</p></li>
+</ul>
+<p><strong>Se crean con la función:</strong></p>
+<pre><code>data.frame(
+  Var1 = elementos1,
+  Var2 = elementos2
+)</code></pre>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">var1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Peru"</span>, <span class="st">"Argentina"</span>, <span class="st">"Bolivia"</span><span class="op">)</span>
+<span class="va">var2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"aceptado"</span>,<span class="fl">3</span><span class="op">)</span>
+<span class="va">var3</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1000</span>,<span class="fl">1200</span>,<span class="fl">100</span><span class="op">)</span>
+<span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">var1</span>, <span class="va">var2</span>, <span class="va">var3</span><span class="op">)</span>
+<span class="va">df</span>
+<span class="co">#&gt;        var1     var2 var3</span>
+<span class="co">#&gt; 1      Peru aceptado 1000</span>
+<span class="co">#&gt; 2 Argentina aceptado 1100</span>
+<span class="co">#&gt; 3   Bolivia aceptado 1200</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>
+  var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Peru"</span>, <span class="st">"Argentina"</span>, <span class="st">"Bolivia"</span><span class="op">)</span>,
+  var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"aceptado"</span>,<span class="fl">3</span><span class="op">)</span>,
+  var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1000</span>,<span class="fl">1200</span>,<span class="fl">100</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="va">df</span>
+<span class="co">#&gt;        var1     var2 var3</span>
+<span class="co">#&gt; 1      Peru aceptado 1000</span>
+<span class="co">#&gt; 2 Argentina aceptado 1100</span>
+<span class="co">#&gt; 3   Bolivia aceptado 1200</span></code></pre></div>
+</div>
+<div id="tibble" class="section level3" number="3.0.5">
+<h3>
+<span class="header-section-number">3.0.5</span> ¿Tibble?<a class="anchor" aria-label="anchor" href="#tibble"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>Son la versión mejorada del data.frame</li>
+<li>Disponible en el paquete tibble y por lo tanto en el tidyverse.</li>
+</ul>
+<p><strong>Se crean con la función:</strong></p>
+<pre><code># Instalación
+install.packages("tibble")
+# Llavado o activación de paquete
+library(tibble)
+tibble(
+  Var1 = elementos1,
+  Var2 = elementos2
+)</code></pre>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tibble.tidyverse.org/">tibble</a></span><span class="op">)</span>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>
+  var1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Peru"</span>, <span class="st">"Argentina"</span>, <span class="st">"Bolivia"</span><span class="op">)</span>,
+  var2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html">rep</a></span><span class="op">(</span><span class="st">"aceptado"</span>,<span class="fl">3</span><span class="op">)</span>,
+  var3 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">1000</span>,<span class="fl">1200</span>,<span class="fl">100</span><span class="op">)</span>
+<span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 × 3</span>
+<span class="co">#&gt;   var1      var2      var3</span>
+<span class="co">#&gt;   &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;</span>
+<span class="co">#&gt; 1 Peru      aceptado  1000</span>
+<span class="co">#&gt; 2 Argentina aceptado  1100</span>
+<span class="co">#&gt; 3 Bolivia   aceptado  1200</span></code></pre></div>
+</div>
+<div id="data.frame-v.s.-tibble" class="section level3" number="3.0.6">
+<h3>
+<span class="header-section-number">3.0.6</span> data.frame() v.s. tibble()<a class="anchor" aria-label="anchor" href="#data.frame-v.s.-tibble"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ambas funciones tienen sus versiones <code>as.*</code> o <code>as_*</code> que permite transformar algo en lo que se desea. En este caso se estaría usando as.data.frame para convertir algo a data.frame y as_tibble para ese mismo objetivo.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
+<span class="co">#&gt; [1] "data.frame"</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># data.frame</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span> <span class="co"># Muestra las 6 primeras filas del data.frame</span>
+<span class="co">#&gt;   Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
+<span class="co">#&gt; 1          5.1         3.5          1.4         0.2  setosa</span>
+<span class="co">#&gt; 2          4.9         3.0          1.4         0.2  setosa</span>
+<span class="co">#&gt; 3          4.7         3.2          1.3         0.2  setosa</span>
+<span class="co">#&gt; 4          4.6         3.1          1.5         0.2  setosa</span>
+<span class="co">#&gt; 5          5.0         3.6          1.4         0.2  setosa</span>
+<span class="co">#&gt; 6          5.4         3.9          1.7         0.4  setosa</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># tibble</span>
+<span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html">as_tibble</a></span><span class="op">(</span><span class="va">iris</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 150 × 5</span>
+<span class="co">#&gt;    Sepal.Length Sepal.Width Petal.Length Petal.Width Species</span>
+<span class="co">#&gt;           &lt;dbl&gt;       &lt;dbl&gt;        &lt;dbl&gt;       &lt;dbl&gt; &lt;fct&gt;  </span>
+<span class="co">#&gt;  1          5.1         3.5          1.4         0.2 setosa </span>
+<span class="co">#&gt;  2          4.9         3            1.4         0.2 setosa </span>
+<span class="co">#&gt;  3          4.7         3.2          1.3         0.2 setosa </span>
+<span class="co">#&gt;  4          4.6         3.1          1.5         0.2 setosa </span>
+<span class="co">#&gt;  5          5           3.6          1.4         0.2 setosa </span>
+<span class="co">#&gt;  6          5.4         3.9          1.7         0.4 setosa </span>
+<span class="co">#&gt;  7          4.6         3.4          1.4         0.3 setosa </span>
+<span class="co">#&gt;  8          5           3.4          1.5         0.2 setosa </span>
+<span class="co">#&gt;  9          4.4         2.9          1.4         0.2 setosa </span>
+<span class="co">#&gt; 10          4.9         3.1          1.5         0.1 setosa </span>
+<span class="co">#&gt; # … with 140 more rows</span></code></pre></div>
+</div>
+<div id="qué-es-un-paquete" class="section level3" number="3.0.7">
+<h3>
+<span class="header-section-number">3.0.7</span> ¿Qué es un paquete?<a class="anchor" aria-label="anchor" href="#qu%C3%A9-es-un-paquete"><i class="fas fa-link"></i></a>
+</h3>
+<p>Los paquetes son colecciones de funciones, datos y código compilado de R en un formato bien definido, creados para agregar una funcionalidad específica.</p>
+<p>Hay un conjunto de paquetes estándar (o base) que se consideran parte del código fuente de R y están disponibles automáticamente como parte de su instalación de R.</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/paquetes_hexa.png" width="85%" style="display: block; margin: auto;"></div>
+</div>
+<div id="instalación-de-paquetes-desde-cran" class="section level3" number="3.0.8">
+<h3>
+<span class="header-section-number">3.0.8</span> Instalación de paquetes desde CRAN<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-de-paquetes-desde-cran"><i class="fas fa-link"></i></a>
+</h3>
+<p>La forma de instalar un paquete dependerá de dónde se encuentre. Entonces, para los paquetes disponibles públicamente, esto significa a qué repositorio pertenece. La forma más común es usar el repositorio CRAN, luego solo necesita el nombre del paquete y usa el siguiente comando:</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"paquete"</span><span class="op">)</span></code></pre></div>
+<p>Después de ejecutar esto, recibirá algunos mensajes en la pantalla. Dependerán del sistema operativo que esté utilizando, las dependencias y si el paquete se instaló correctamente.</p>
+</div>
+<div id="instalación-de-paquetes-vía-remotes" class="section level3" number="3.0.9">
+<h3>
+<span class="header-section-number">3.0.9</span> Instalación de paquetes vía remotes<a class="anchor" aria-label="anchor" href="#instalaci%C3%B3n-de-paquetes-v%C3%ADa-remotes"><i class="fas fa-link"></i></a>
+</h3>
+<p>Cada repositorio tiene su propia forma de instalar un paquete a partir de ellos, por lo que en el caso de que utilice regularmente paquetes de diferentes fuentes, este comportamiento puede ser un poco frustrante. Una forma más eficiente es probablemente usar el paquete <code>remotes</code> para simplificar este proceso.</p>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"remotes"</span><span class="op">)</span></code></pre></div>
+<p>Después de haber instalado <code>remotes</code> podemos utilizar algunas de sus funciones para la instalación de paquetes:</p>
+<ul>
+<li><p><code><a href="https://remotes.r-lib.org/reference/install_bioc.html">remotes::install_bioc()</a></code> desde Bioconductor</p></li>
+<li><p><code><a href="https://remotes.r-lib.org/reference/install_github.html">remotes::install_github()</a></code> desde GitHub</p></li>
+<li><p><code><a href="https://remotes.r-lib.org/reference/install_version.html">remotes::install_version()</a></code> para instalar una versión específica de CRAN.</p></li>
+</ul>
+</div>
+<div id="importación-de-datos" class="section level3" number="3.0.10">
+<h3>
+<span class="header-section-number">3.0.10</span> Importación de datos<a class="anchor" aria-label="anchor" href="#importaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-table"><table class="table table-sm">
+<thead><tr class="header">
+<th>Función</th>
+<th>Archivos</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td><code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel()</a></code></td>
+<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/excel_logo.png" width="50px"></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code></td>
+<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/csv_logo.png" width="50px"></td>
+</tr>
+<tr class="odd">
+<td><code><a href="https://haven.tidyverse.org/reference/read_dta.html">haven::read_dta()</a></code></td>
+<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/stata_logo.png" width="50px"></td>
+</tr>
+<tr class="even">
+<td><code><a href="https://haven.tidyverse.org/reference/read_spss.html">haven::read_sav()</a></code></td>
+<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/spss_logo.png" width="50px"></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav"><li>
+<a class="nav-link" href="#sesi%C3%B3n-02"><span class="header-section-number">3</span> Sesión 02</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#qu%C3%A9-es-una-funci%C3%B3n"><span class="header-section-number">3.0.1</span> ¿Qué es una función?</a></li>
+<li><a class="nav-link" href="#buscando-ayuda-sobre-las-funciones"><span class="header-section-number">3.0.2</span> Buscando ayuda sobre las funciones</a></li>
+<li><a class="nav-link" href="#ejemplo-de-una-funci%C3%B3n"><span class="header-section-number">3.0.3</span> Ejemplo de una función</a></li>
+<li><a class="nav-link" href="#data.frame"><span class="header-section-number">3.0.4</span> ¿Data.frame?</a></li>
+<li><a class="nav-link" href="#tibble"><span class="header-section-number">3.0.5</span> ¿Tibble?</a></li>
+<li><a class="nav-link" href="#data.frame-v.s.-tibble"><span class="header-section-number">3.0.6</span> data.frame() v.s. tibble()</a></li>
+<li><a class="nav-link" href="#qu%C3%A9-es-un-paquete"><span class="header-section-number">3.0.7</span> ¿Qué es un paquete?</a></li>
+<li><a class="nav-link" href="#instalaci%C3%B3n-de-paquetes-desde-cran"><span class="header-section-number">3.0.8</span> Instalación de paquetes desde CRAN</a></li>
+<li><a class="nav-link" href="#instalaci%C3%B3n-de-paquetes-v%C3%ADa-remotes"><span class="header-section-number">3.0.9</span> Instalación de paquetes vía remotes</a></li>
+<li><a class="nav-link" href="#importaci%C3%B3n-de-datos"><span class="header-section-number">3.0.10</span> Importación de datos</a></li>
+</ul>
+</li></ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/02-sesion.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/02-sesion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-02-21.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

@@ -4,7 +4,7 @@
     <title>Introducción a R y Tidyverse</title>
     <meta charset="utf-8" />
     <meta name="author" content="Laboratorio de Innovación en Salud" />
-    <meta name="date" content="2022-02-09" />
+    <meta name="date" content="2022-03-02" />
     <script src="Sesion_02_files/header-attrs/header-attrs.js"></script>
     <link href="Sesion_02_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="Sesion_02_files/tile-view/tile-view.js"></script>
@@ -140,7 +140,7 @@ top:1em;right:1em;
 
 ### Laboratorio de Innovación en Salud  
 
-### 2022-02-09
+### 2022-03-02
 
 &lt;br&gt;
 
@@ -569,7 +569,7 @@ as_tibble(iris)
 1. Hacer lo mismo con la data `Titanic`.
 ]]
 
-<div class="countdown" id="timer_62045f0d" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_621f2fbc" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -619,16 +619,161 @@ Después de haber instalado `remotes`` podemos utilizar algunas de sus funciones
 
 ---
 
-## Proyecto de investigación
+## Base de datos a utilizar
 
+Usaremos una base de datos proporcionado por [Gan et al. (2018)](https://www.nature.com/articles/s41598-018-27482-2) en su estudio:
+
+&lt;img src="img/levofloxacin_trial.png" title="Article: Efficacy of tw o different dosages of levofloxacin in curing Helicobacter pylori infection: A Prospective, Single-Center, randomized clinical trial" alt="Article: Efficacy of tw o different dosages of levofloxacin in curing Helicobacter pylori infection: A Prospective, Single-Center, randomized clinical trial" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Base de datos a utilizar
+
+.line-space2-0[.font110[
+
+Dicho estudio es un ensayo clínico aleatorizado (ECA) de 400 participantes en el que se compara 2 tipos de tratamientos para erradicar la infección por *Helicobácter Pylori*.
+
+- **Grupo A** de tratamiento: Esomeprazol, amoxicilina, bismuto coloidal con pectina y levofloxacina 500mg una vez al día.
+- **Grupo B** de tratamiento: Levofloxacina 200mg dos veces al día, durante un periodo de 14 días.
+
+
+<div id="htmlwidget-044bee9e505dffda9da1" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-044bee9e505dffda9da1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Randomized group":["group A","group B"],"n":[200,200]},"columns":[{"accessor":"Randomized group","name":"Randomized group","type":"character","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}},{"accessor":"n","name":"n","type":"numeric","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"fb1ea7d6d845eba4fa20ac687ddada50","key":"fb1ea7d6d845eba4fa20ac687ddada50"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+]]
 
 ---
 
 ## Importación de datos
 
-<div id="htmlwidget-14703de2f93e47be1ab9" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-14703de2f93e47be1ab9">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Función":["readxl::read_excel()","readr::read_csv()","haven::read_dta()","haven::read_sav()"],"Tipo de archivo":["excel_logo","csv_logo","stata_logo","spss_logo"]},"columns":[{"accessor":"Función","name":"Función","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readxl::read_excel()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readr::read_csv()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_dta()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_sav()"]}]},{"accessor":"Tipo de archivo","name":"Tipo de archivo","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"excel_logo","src":"img/excel_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"csv_logo","src":"img/csv_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"stata_logo","src":"img/stata_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"spss_logo","src":"img/spss_logo.png","className":"icono-archivo"},"children":[]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"dbe30edd114f1bc1cebc817207ef008c","key":"dbe30edd114f1bc1cebc817207ef008c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-874b8862d0cb50de025b" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-874b8862d0cb50de025b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Función":["readxl::read_excel()","readr::read_csv()","haven::read_dta()","haven::read_sav()"],"Tipo de archivo":["excel_logo","csv_logo","stata_logo","spss_logo"]},"columns":[{"accessor":"Función","name":"Función","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readxl::read_excel()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readr::read_csv()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_dta()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_sav()"]}]},{"accessor":"Tipo de archivo","name":"Tipo de archivo","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"excel_logo","src":"img/excel_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"csv_logo","src":"img/csv_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"stata_logo","src":"img/stata_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"spss_logo","src":"img/spss_logo.png","className":"icono-archivo"},"children":[]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"dbe30edd114f1bc1cebc817207ef008c","key":"dbe30edd114f1bc1cebc817207ef008c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 
+---
+
+## Importación de datos
+
+Vamos a importar el archivo excel que tiene una extensión `.xlsx` y se encuentra dentro de la carpeta `data`. 
+
+**Recuerda**: Al importar el archivo debemos asignarlo a un objeto, para poder guardar la información. En este caso llamaremos a este objeto como `trial_data`.
+
+.scroll-output325[
+
+```r
+trial_data &lt;- readxl::read_excel("data/researchdata.xlsx")
+
+trial_data
+```
+
+```
+## # A tibble: 400 × 10
+##    `Patient number` `Baseline 13C-UBT` `Randomized gro…` `Follow-up13C-…` `adverse drug …`
+##               &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;             &lt;chr&gt;            &lt;chr&gt;           
+##  1                1 Positive           group B           Negative         No              
+##  2                2 Positive           group A           Negative         Yes             
+##  3                3 Positive           group B           Negative         No              
+##  4                4 Positive           group A           Positive         Yes             
+##  5                5 Positive           group A           Negative         Yes             
+##  6                6 Positive           group A           Negative         No              
+##  7                7 Positive           group B           Negative         No              
+##  8                8 Positive           group A           Negative         No              
+##  9                9 Positive           group A           Negative         No              
+## 10               10 Positive           group A           NA               NA              
+## # … with 390 more rows, and 5 more variables: `adverse drug reactions  content` &lt;chr&gt;,
+## #   `Adverse drug reaction classified` &lt;chr&gt;, `Complete the study` &lt;chr&gt;,
+## #   `Uncompleted Reason` &lt;chr&gt;, `per protocol analysis` &lt;chr&gt;
+```
+]
+---
+
+## Importación de datos 2
+
+.font110[
+En algunos casos estaremos frente a base de datos que contengan cierta información en sus primeras filas que no sean relevantes como datos a considerar para el análisis. La mayor cantidad de veces tienen un propósito meramente informativo. Ejemplo:
+
+&lt;img src="img/researchdata2_preview.png" title="Vista preliminar de una data que contenga las primeras filas a modo de información" alt="Vista preliminar de una data que contenga las primeras filas a modo de información" width="95%" style="display: block; margin: auto;" /&gt;
+]
+---
+
+## Importación de datos 2
+
+.panelset[
+.panel[.panel-name[Situación]
+.line-space2-0[.font110[
+En estas situaciones tenemos 2 alternativas:
+
+a) Editar el archivo en cuestión y eliminar las filas que no sean relevantes.
+b) Durante la importación indicar que se omitan las primeras filas o filtrarlas una vez se haya importado.
+
+Siempre será una mejor opción manejar los cambios desde el código, ya que se esa manera mantenemos los archivos originales y además podemos tener un registro de los cambios realizados.
+
+Para hacer esto usaremos el argumento `skip` dentro de la función `readxl::read_excel()`, que indicará la cantidad de filas que deseamos omitir en la importación.
+
+]]
+]
+
+.panel[.panel-name[Problema]
+
+Si intentamos importar la data sin especificar ningún argumento, veremos como se registran informaciones que no requerimos, y solo se encuentran en los datos a manera de información.
+
+.scroll-output325[
+
+```r
+trial_data2 &lt;- readxl::read_excel("data/researchdata2.xlsx")
+
+trial_data2
+```
+
+```
+## # A tibble: 403 × 10
+##    ...1           `Data de ejemplo para …` ...3  ...4  ...5  ...6  ...7  ...8  ...9  ...10
+##    &lt;chr&gt;          &lt;chr&gt;                    &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
+##  1 &lt;NA&gt;           &lt;NA&gt;                     &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+##  2 &lt;NA&gt;           &lt;NA&gt;                     &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; 
+##  3 Patient number Baseline 13C-UBT         Rand… Foll… adve… adve… Adve… Comp… Unco… per …
+##  4 1              Positive                 grou… Nega… No    NA    NA    Yes   NA    Yes  
+##  5 2              Positive                 grou… Nega… Yes   Fati… Mild  Yes   NA    Yes  
+##  6 3              Positive                 grou… Nega… No    NA    NA    Yes   NA    Yes  
+##  7 4              Positive                 grou… Posi… Yes   Abdo… Mild  Yes   NA    Yes  
+##  8 5              Positive                 grou… Nega… Yes   Drow… Mild  Yes   NA    Yes  
+##  9 6              Positive                 grou… Nega… No    NA    NA    Yes   NA    Yes  
+## 10 7              Positive                 grou… Nega… No    NA    NA    Yes   NA    Yes  
+## # … with 393 more rows
+```
+]]
+
+.panel[.panel-name[Solución]
+Ya que en este caso la base de datos llamada `researchdata2.xlsx` empieza a mostrar datos relevantes a partir de la fila 4, requeriremos omitir o saltar (`skip`) 3 filas, se la siguiente manera:
+
+.scroll-output325[
+
+```r
+trial_data2 &lt;- readxl::read_excel("data/researchdata2.xlsx",
+                                  skip = 3)
+
+trial_data2
+```
+
+```
+## # A tibble: 400 × 10
+##    `Patient number` `Baseline 13C-UBT` `Randomized gro…` `Follow-up13C-…` `adverse drug …`
+##               &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;             &lt;chr&gt;            &lt;chr&gt;           
+##  1                1 Positive           group B           Negative         No              
+##  2                2 Positive           group A           Negative         Yes             
+##  3                3 Positive           group B           Negative         No              
+##  4                4 Positive           group A           Positive         Yes             
+##  5                5 Positive           group A           Negative         Yes             
+##  6                6 Positive           group A           Negative         No              
+##  7                7 Positive           group B           Negative         No              
+##  8                8 Positive           group A           Negative         No              
+##  9                9 Positive           group A           Negative         No              
+## 10               10 Positive           group A           NA               NA              
+## # … with 390 more rows, and 5 more variables: `adverse drug reactions  content` &lt;chr&gt;,
+## #   `Adverse drug reaction classified` &lt;chr&gt;, `Complete the study` &lt;chr&gt;,
+## #   `Uncompleted Reason` &lt;chr&gt;, `per protocol analysis` &lt;chr&gt;
+```
+]
+
+]]
 
 ---
 
@@ -642,7 +787,7 @@ Todas las importaciones requeridas serán asignadas en un objeto.
 1. Realizar la importación del archivo spss
 ]]
 
-<div class="countdown" id="timer_62045dc7" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_621f2cf1" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -679,7 +824,6 @@ Estas diapositivas fueron creadas mediante el paquete [xaringan](https://github.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script src="https://platform.twitter.com/widgets.js"></script>
 <script>var slideshow = remark.create({
 "slideNumberFormat": "%current%/%total%",
 "highlightStyle": "idea",

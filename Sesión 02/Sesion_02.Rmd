@@ -13,7 +13,6 @@ output:
       highlightLines: true
       ratio: 16:9
       countIncrementalSlides: true
-      beforeInit: ["https://platform.twitter.com/widgets.js"]
     seal: false
 ---
 
@@ -390,15 +389,47 @@ Después de haber instalado `remotes`` podemos utilizar algunas de sus funciones
 
 ---
 
-## Proyecto de investigación
+## Base de datos a utilizar
 
+Usaremos una base de datos proporcionado por [Gan et al. (2018)](https://www.nature.com/articles/s41598-018-27482-2) en su estudio:
+
+```{r echo=FALSE, out.width="95%", fig.align='center', dpi=200, fig.retina=2, fig.alt="Article: Efficacy of tw o different dosages of levofloxacin in curing Helicobacter pylori infection: A Prospective, Single-Center, randomized clinical trial"}
+knitr::include_graphics("img/levofloxacin_trial.png",
+                        dpi = 300)
+```
+
+---
+
+## Base de datos a utilizar
+
+.line-space2-0[.font110[
+
+Dicho estudio es un ensayo clínico aleatorizado (ECA) de 400 participantes en el que se compara 2 tipos de tratamientos para erradicar la infección por *Helicobácter Pylori*.
+
+- **Grupo A** de tratamiento: Esomeprazol, amoxicilina, bismuto coloidal con pectina y levofloxacina 500mg una vez al día.
+- **Grupo B** de tratamiento: Levofloxacina 200mg dos veces al día, durante un periodo de 14 días.
+
+
+```{r echo=FALSE}
+library(dplyr)
+library(reactable)
+readxl::read_excel("data/researchdata.xlsx") %>% 
+  count(`Randomized group`) %>% 
+  reactable(highlight = TRUE,
+            striped = TRUE,
+            defaultColDef = colDef(
+              align = "center",
+              headerStyle = list(background = "#f7f7f8",
+                                 fontWeight = 700)
+            ))
+```
+]]
 
 ---
 
 ## Importación de datos
 
 ```{r echo=FALSE}
-library(reactable)
 library(htmltools)
 
 import_archivos <- tibble(
@@ -444,6 +475,77 @@ reactable(import_archivos,
             )))
 ```
 
+---
+
+## Importación de datos
+
+Vamos a importar el archivo excel que tiene una extensión `.xlsx` y se encuentra dentro de la carpeta `data`. 
+
+**Recuerda**: Al importar el archivo debemos asignarlo a un objeto, para poder guardar la información. En este caso llamaremos a este objeto como `trial_data`.
+
+.scroll-output325[
+```{r R.options = list(width = 90)}
+trial_data <- readxl::read_excel("data/researchdata.xlsx")
+
+trial_data
+```
+]
+---
+
+## Importación de datos 2
+
+.font110[
+En algunos casos estaremos frente a base de datos que contengan cierta información en sus primeras filas que no sean relevantes como datos a considerar para el análisis. La mayor cantidad de veces tienen un propósito meramente informativo. Ejemplo:
+
+```{r echo=FALSE, out.width="95%", fig.align='center', dpi=300, fig.retina=2, fig.alt="Vista preliminar de una data que contenga las primeras filas a modo de información"}
+knitr::include_graphics("img/researchdata2_preview.png",
+                        dpi = 300)
+```
+]
+---
+
+## Importación de datos 2
+
+.panelset[
+.panel[.panel-name[Situación]
+.line-space2-0[.font110[
+En estas situaciones tenemos 2 alternativas:
+
+a) Editar el archivo en cuestión y eliminar las filas que no sean relevantes.
+b) Durante la importación indicar que se omitan las primeras filas o filtrarlas una vez se haya importado.
+
+Siempre será una mejor opción manejar los cambios desde el código, ya que se esa manera mantenemos los archivos originales y además podemos tener un registro de los cambios realizados.
+
+Para hacer esto usaremos el argumento `skip` dentro de la función `readxl::read_excel()`, que indicará la cantidad de filas que deseamos omitir en la importación.
+
+]]
+]
+
+.panel[.panel-name[Problema]
+
+Si intentamos importar la data sin especificar ningún argumento, veremos como se registran informaciones que no requerimos, y solo se encuentran en los datos a manera de información.
+
+.scroll-output325[
+```{r R.options = list(width = 90)}
+trial_data2 <- readxl::read_excel("data/researchdata2.xlsx")
+
+trial_data2
+```
+]]
+
+.panel[.panel-name[Solución]
+Ya que en este caso la base de datos llamada `researchdata2.xlsx` empieza a mostrar datos relevantes a partir de la fila 4, requeriremos omitir o saltar (`skip`) 3 filas, se la siguiente manera:
+
+.scroll-output325[
+```{r R.options = list(width = 90)}
+trial_data2 <- readxl::read_excel("data/researchdata2.xlsx",
+                                  skip = 3)
+
+trial_data2
+```
+]
+
+]]
 
 ---
 

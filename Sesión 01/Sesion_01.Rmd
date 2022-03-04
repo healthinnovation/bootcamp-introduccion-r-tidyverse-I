@@ -13,7 +13,6 @@ output:
       highlightLines: true
       ratio: 16:9
       countIncrementalSlides: true
-      beforeInit: ["https://platform.twitter.com/widgets.js"]
     seal: false
 ---
 
@@ -156,8 +155,9 @@ La Ciencia de Datos permite extraer información relevante de los datos.
 ]]]
 
 .pull-right[
-```{r echo=FALSE, out.width="90%", fig.align='center'}
-knitr::include_graphics("img/ciencia_datos_1.png")
+```{r echo=FALSE, out.width="90%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/ciencia_datos_1.png",
+                        dpi = 300)
 ```
 ]
 
@@ -169,48 +169,54 @@ knitr::include_graphics("img/ciencia_datos_1.png")
 R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para desarrollar proyectos de Ciencia de Datos.
 ]]
 
-```{r echo=FALSE, out.width="90%", fig.align='center'}
-knitr::include_graphics("img/ciencia_datos_2.png")
+```{r echo=FALSE, out.width="90%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/ciencia_datos_2.png",
+                        dpi = 300)
 ```
 
 ---
 
 ## Reconocimiento Rstudio
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("img/01_IDE_Rdtudio_v1.png")
+```{r echo=FALSE, out.width="85%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/01_IDE_Rdtudio_v1.png",
+                        dpi = 300)
 ```
 
 ---
 
 ## Reconocimiento Rstudio
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("img/01_IDE_Rdtudio_v2.png")
+```{r echo=FALSE, out.width="85%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/01_IDE_Rdtudio_v2.png",
+                        dpi = 300)
 ```
 
 ---
 
 ## Mover paneles
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("img/03_panel_v1.png")
+```{r echo=FALSE, out.width="85%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/03_panel_v1.png",
+                        dpi = 300)
 ```
 
 ---
 
 ## Mover paneles
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("img/03_panel_v2.png")
+```{r echo=FALSE, out.width="85%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/03_panel_v2.png",
+                        dpi = 300)
 ```
 
 ---
 
 ## Personalización de Rstudio
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("img/04_config_global_v1.png")
+```{r echo=FALSE, out.width="85%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/04_config_global_v1.png",
+                        dpi = 300)
 ```
 
 ---
@@ -226,8 +232,9 @@ knitr::include_graphics("img/04_config_global_v1.png")
 ]]]
 
 .pull-right[
-```{r echo=FALSE, out.width="95%", fig.align='center'}
-knitr::include_graphics("img/04_config_global_v2.png")
+```{r echo=FALSE, out.width="95%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/04_config_global_v2.png",
+                        dpi = 300)
 ```
 ]
 
@@ -270,12 +277,14 @@ countdown(minutes = 8,
 
 1. Seleccionamos “Project (None)” o  “File” y  luego, new project.
 
-```{r echo=FALSE, out.width="100%", fig.align='center'}
-knitr::include_graphics("img/creacion_proyectos_1.png")
+```{r echo=FALSE, out.width="100%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/creacion_proyectos_1.png",
+                        dpi = 300)
 ```
 
-```{r echo=FALSE, out.width="100%", fig.align='center'}
-knitr::include_graphics("img/creacion_proyectos_2.png")
+```{r echo=FALSE, out.width="100%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/creacion_proyectos_2.png",
+                        dpi = 300)
 ```
 ]
 
@@ -285,8 +294,9 @@ knitr::include_graphics("img/creacion_proyectos_2.png")
   <li>“New Directory” se utiliza para indicar dónde voy a almacenar mis archivos y para que R cree una nueva carpeta para mi proyecto, mientras que “Existing Directory” se utiliza si ya tengo una carpeta en la cual  voy a  almacenar mis archivos. Seleccionamos “New Directory”.</li>
 </ol>
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("img/creacion_proyectos_3.png") 
+```{r echo=FALSE, out.width="85%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/creacion_proyectos_3.png",
+                        dpi = 300) 
 ```
 ]
 
@@ -297,16 +307,18 @@ knitr::include_graphics("img/creacion_proyectos_3.png")
   <li>Aparecerán más opciones y seleccionamos nuevamente “New Project”</li>
 </ol>
 
-```{r echo=FALSE, out.width="100%", fig.align='center'}
-knitr::include_graphics("img/creacion_proyectos_4.png")
+```{r echo=FALSE, out.width="100%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/creacion_proyectos_4.png",
+                        dpi = 300)
 ```
 
 <ol start="3">
   <li>En caso de haber seleccionado “Existing Directory” aparecerá esto y buscamos el nombre de la carpeta que utilizaremos.</li>
 </ol>
 
-```{r echo=FALSE, out.width="100%", fig.align='center'}
-knitr::include_graphics("img/creacion_proyectos_5.png")
+```{r echo=FALSE, out.width="100%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/creacion_proyectos_5.png",
+                        dpi = 300)
 ```
 ]
 
@@ -319,8 +331,9 @@ knitr::include_graphics("img/creacion_proyectos_5.png")
   <li>En “Directory name” ponemos el nombre de la carpeta que contendrá el archivo del proyecto, mientras que en “Create project as subdirectory of” seleccionamos dónde está la carpeta en la que trabajaremos.</li>
 </ol>
 
-```{r echo=FALSE, out.width="90%", fig.align='center'}
-knitr::include_graphics("img/creacion_proyectos_6.png") 
+```{r echo=FALSE, out.width="90%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/creacion_proyectos_6.png",
+                        dpi = 300) 
 ```
 ]
 
@@ -328,8 +341,9 @@ knitr::include_graphics("img/creacion_proyectos_6.png")
 
 ## Creación de proyectos
 
-```{r echo=FALSE, out.width="80%", fig.align='center'}
-knitr::include_graphics("img/creacion_proyectos_6.gif") 
+```{r echo=FALSE, out.width="80%", fig.align='center', dpi=300, fig.retina=2}
+knitr::include_graphics("img/creacion_proyectos_6.gif",
+                        dpi = 300) 
 ```
 
 ---

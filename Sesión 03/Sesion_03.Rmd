@@ -13,7 +13,6 @@ output:
       highlightLines: true
       ratio: 16:9
       countIncrementalSlides: true
-      beforeInit: ["https://platform.twitter.com/widgets.js"]
     seal: false
 ---
 
@@ -159,36 +158,308 @@ name: colors
 ]]]
 
 .pull-right[
-**Mediante la función:**
+<br>
+<span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px">**Mediante la función:**</span>
 
 ```{r eval=FALSE}
 glimpse()
 ```
 
 **Recordar importar el paquete `tidyverse`**
+.scroll-output200[
 ```{r message=TRUE}
 library(tidyverse)
 ```
-]]
+]]]
 
 .panel[.panel-name[Ejemplo]
 
 .pull-left[
 Así habitualmente observamos la data:
-.scroll-output325[
-```{r}
+.scroll-output350[
+```{r R.options = list(width = 50)}
 nycflights13::flights
 ```
 ]]
 
 .pull-right[
-Con `glimpse`, podrías tener un vistazo rápido de la estructura de los datos:
+Con `glimpse()`, podrías tener un vistazo rápido de la estructura de los datos:
 
 .scroll-output325[
 ```{r}
 glimpse(nycflights13::flights)
 ```
 ]]]
+
+.panel[.panel-name[Glimpse]
+
+Generalmente la vista de `glimpse()` es suficientemente ordenada para poder observar la estructura de la data sin problemas. Pero también se puede usar el argumento `width` para poder especificar ello.
+
+.scroll-output325[
+```{r}
+glimpse(nycflights13::flights, width = 90)
+```
+]]]
+
+---
+
+## Operador Pipe `%>%`
+
+.pull-left[
+**Queremos aplicar más de una función:**
+El uso de funciones de forma anidada puede resultar ilegible o difícil de comprender.
+
+```{r eval=FALSE}
+tabla(formato(coeficiente(data)))
+```
+
+El operador `%>%` nos permite escribir una secuencia de operaciones de izquierda a derecha:
+
+```{r eval=FALSE}
+coeficiente(data) %>% formato() %>% tabla()
+```
+
+**O mejor aún:**
+
+```{r eval=FALSE}
+coeficiente(data) %>% 
+  formato() %>% 
+  tabla()
+```
 ]
 
+.pull-right[.font120[
+<br>
+Útil para concatenar múltiples operaciones en dplyr 
 
+<br>
+<span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px">**Atajo de Teclado**</span>
+
+<br>
+
+```{r echo=FALSE}
+knitr::include_graphics("img/atajo_pipe.svg")
+```
+]]
+
+
+---
+
+## Función `mutate()`
+
+
+.pull-left[.line-space2-0[.font110[ 
+Con `mutate()` podemos realizar modificaciones en las variables.  Por ej. sumar variables, o modificarlas de alguna manera (transformar a porcentaje, multiplicarlas por alguna constante, etc.). Estas modificaciones pueden realizarse:
+
+- Creando una nueva variable a partir de otras ya existentes.
+- Modificar una variable existente en la misma variable.
+
+]]]
+
+.pull-right[.font110[
+<span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px">**Ejemplo:**</span>
+
+```{r eval=FALSE}
+library(tidyverse)
+
+df %>% 
+  mutate(
+    New_var = var*2
+  )
+```
+
+**Explicación:**
+
+En una data llamada `df` se estaría aplicando la función `mutate` creando una variable llamada `New_var` a partir de otra variable llamada `var` que está siendo multiplicada por 2.
+
+]]
+
+---
+## Uso práctico de `mutate()`
+
+
+.panelset[
+.panel[.panel-name[Reconocimiento de BD]
+
+Para esta ejemplificación usaremos la base de datos del ECA  sobre la [erradicación de la infección por *Helicobácter Pylori*](https://www.nature.com/articles/s41598-018-27482-2) explicado en la [sesión 02](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/?panelset1=situaci%25C3%25B3n2#14).
+
+.pull-left[
+.scroll-output350[
+```{r R.options = list(width = 45)}
+trial_data <- readxl::read_excel("data/researchdata.xlsx")
+trial_data
+```
+]]
+
+.pull-right[
+.scroll-output350[
+```{r R.options = list(width = 70)}
+glimpse(trial_data)
+```
+]]
+]
+
+.panel[.panel-name[Janitor]
+
+En algunas ocasiones las base de datos contienen nombres de variables muy largas o que incluso pueden contener espacios o símbolos. Una forma sencilla de solucionar ello es mediante el uso de la función `clean_names()` del paquete `janitor`.
+
+.scroll-output300[
+```{r R.options = list(width = 90)}
+trial_data <- trial_data %>% 
+  janitor::clean_names()
+trial_data
+```
+]]
+
+.panel[.panel-name[Mutate I]
+
+.pull-left[.line-space2-0[
+Una de las primeras cosas que podemos hacer con `mutate` durante el primer contacto con la data que trabajemos es:
+
+- Configurar variables `ID` como **texto** (`character`).
+- Configurar variables como **factores**.
+- Configurar respuestas `NA` en caso tengan alguna otra codificación.
+]]
+
+.pull-right[
+1. Configurar la variable `ID`
+
+.scroll-output325[.code80[
+```{r R.options = list(width = 45)}
+trial_data %>% 
+  mutate(
+    patient_number = as.character(patient_number)
+  )
+```
+]]
+]]
+
+.panel[.panel-name[Mutate II]
+.pull-left[
+<ol start="2">
+  <li>Configurar <strong>factores</strong></li>
+</ol>
+
+.scroll-output325[.code80[
+```{r R.options = list(width = 45)}
+trial_data %>% 
+  mutate(
+    randomized_group = factor(randomized_group),
+    complete_the_study = factor(complete_the_study)
+  )
+```
+]]
+]
+
+.pull-right[
+<ol start="3">
+  <li>Configurar respuestas <code>NA</code></li>
+</ol>
+
+Para reemplazar respuestas dependiendo de una condición en particular se puede utilizar la función `case_when()` dentro de un `mutate()`
+
+.code80[
+```{r eval=FALSE}
+trial_data %>% 
+  mutate(
+    Var = case_when(
+      Var == "Text" ~ "New_Text",
+      TRUE ~ Var
+    )
+  )
+```
+]
+De esta manera en la variable `Var` se reemplazará todos los casos que registren el dato de **Text** por **New_Text**. 
+]
+
+]]
+
+---
+
+## Uso de `count`
+
+.line-space1-5[
+La función `count` es bastante sencilla y poderosa a la vez. Permite obtener una tabla en formato `tibble` que representará las frecuencias (cantidades `n`) de una o múltiples variables en específico.
+]
+
+```{r}
+trial_data %>% 
+  count(adverse_drug_reactions)
+```
+
+.line-space1-5[
+La tabla generada muestra que cantidad de personas han tenido reacciones adversas a los medicamentos ya sea en el Grupo A o B. Sin embargo, también se aprecia que hay 2 respuestas que indican la presencia de datos vacíos: **NA** y **&lt;NA&gt;**. El primero está codificado directamente como texto (`character`) y sel segudo es un `NA` real, es decir que comunica la ausencia de un dato.
+]
+
+---
+## Uso de `mutate()` y `case_when()`
+
+.panelset[
+.panel[.panel-name[Explicación previa del NA]
+.line-space1-5[
+Al importar las bases de datos dentro de R, la gran mayoría de funciones (como `read_excel()`) interpretarán los valors en blanco o celdas vacías como reales `NA`. Sin embargo si en las celdas se ha llenado explícitamente el texto **NA** o se ha usado alguna codificación diferente, el valor de `NA` no se introducirá automáticamente y habrá que indicarlo como tal (`case_when()`).
+]
+
+.pull-left[
+```{r echo=FALSE, out.width="90%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/view_excel_na.png",
+                        dpi = 300)
+```
+]
+
+.pull-right[
+```{r}
+trial_data %>% 
+  count(adverse_drug_reactions)
+```
+]]
+
+.panel[.panel-name[Uso de case_when()]
+
+La función `case_when()` tiene una aplicación directa y perfecta para estos fines, en el que recodificaremos el **NA** introducido como texto a un `NA` real que sea reconocido como tal. El mismo procedimiento se utilizaría si los valores faltantes o perdidos se hubieran codificado de otra forma (ej. `777` o `999`).
+
+.pull-left[
+Recordar que con **pipe** (` %>% `) podemos anidar muchas funciones en un solo bloque:
+
+```{r eval=FALSE}
+trial_data %>%
+  mutate(
+    adverse_drug_reactions = case_when(
+      adverse_drug_reactions == "NA" ~ NA_character_,
+      TRUE ~ adverse_drug_reactions
+    )
+  ) %>% 
+  count()
+```
+]
+
+.pull-right[
+
+El código `TRUE ~ adverse_drug_reactions` significa que **todos los demás casos** mantendrán el valor original que el de la variable.
+
+```{r echo=FALSE}
+trial_data %>%
+  mutate(
+    adverse_drug_reactions = case_when(
+      adverse_drug_reactions == "NA" ~ NA_character_,
+      TRUE ~ adverse_drug_reactions
+    )
+  ) %>% 
+  count(adverse_drug_reactions)
+```
+]]
+
+.panel[.panel-name[Advertencia]
+
+La función `case_when` requiere respetar de forma estricta el tipo de vector utilizado. Es decir que si se le pide recodificar una variable a número, y dentro de esa variable continúan habiendo textos, habrá un problema de **no-coerción**. Es por ese motivo que en el anterior ejemplo se usa `NA_character` en vez de únicamente `NA`, ya que este elemento como tal en realidad es de tipo lógico.
+
+```{r}
+typeof(NA)
+typeof(NA_character_)
+typeof(NA_real_)
+```
+
+]]

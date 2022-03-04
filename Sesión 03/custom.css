@@ -3,48 +3,98 @@ li {
   line-height: 1.4em;
 }
 
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
 .xaringanextra-clipboard-button {
 	font-size: 1em;
 }
 
-.code10 .remark-code {
+.code10 .remark-code, .code10 .remark-inline-code {
   font-size: 10%;
 }
 
-.code20 .remark-code {
+.code20 .remark-code, .code20 .remark-inline-code {
   font-size: 20%;
 }
 
-.code30 .remark-code {
+.code30 .remark-code, .code30 .remark-inline-code {
   font-size: 30%;
 }
 
-.code40 .remark-code {
+.code40 .remark-code, .code40 .remark-inline-code {
   font-size: 40%;
 }
 
-.code50 .remark-code {
+.code50 .remark-code, .code50 .remark-inline-code {
   font-size: 50%;
 }
 
-.code60 .remark-code {
+.code60 .remark-code, .code60 .remark-inline-code {
   font-size: 60%;
 }
 
-.code70 .remark-code {
+.code70 .remark-code, .code70 .remark-inline-code {
   font-size: 70%;
 }
 
-.code80 .remark-code {
+.code80 .remark-code, .code80 .remark-inline-code {
   font-size: 80%;
 }
 
-.code90 .remark-code {
+.code90 .remark-code, .code90 .remark-inline-code {
   font-size: 90%;
 }
 
-.code100 .remark-code {
+.code100 .remark-code, .code100 .remark-inline-code {
   font-size: 100%;
+}
+
+.code110 .remark-code, .code110 .remark-inline-code {
+  font-size: 110%;
+}
+
+.code120 .remark-code, .code120 .remark-inline-code {
+  font-size: 120%;
+}
+
+.code130 .remark-code, .code130 .remark-inline-code {
+  font-size: 130%;
+}
+
+.code140 .remark-code, .code140 .remark-inline-code {
+  font-size: 140%;
+}
+
+.code150 .remark-code, .code150 .remark-inline-code {
+  font-size: 150%;
+}
+
+.code160 .remark-code, .code160 .remark-inline-code {
+  font-size: 160%;
+}
+
+.code170 .remark-code, .code170 .remark-inline-code {
+  font-size: 170%;
+}
+
+.code180 .remark-code, .code180 .remark-inline-code {
+  font-size: 180%;
+}
+
+.code190 .remark-code, .code190 .remark-inline-code {
+  font-size: 190%;
+}
+
+.code200 .remark-code, .code200 .remark-inline-code {
+  font-size: 200%;
 }
 
 .font10 {
@@ -87,7 +137,7 @@ li {
   font-size: 100%;
 }
 
-.font110 {
+.font110{
   font-size: 110%;
 }
 
@@ -110,15 +160,19 @@ li {
 .font160 {
   font-size: 160%;
 }
+
 .font170 {
   font-size: 170%;
 }
+
 .font180 {
   font-size: 180%;
 }
+
 .font190 {
   font-size: 190%;
 }
+
 .font200 {
   font-size: 200%;
 }
@@ -129,6 +183,10 @@ li {
 
 .line-space1-5 {
   line-height: 1.5em;
+}
+
+.line-space1-7 {
+  line-height: 1.7em;
 }
 
 .line-space2-0 {

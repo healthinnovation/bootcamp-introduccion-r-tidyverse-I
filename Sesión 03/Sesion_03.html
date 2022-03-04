@@ -4,7 +4,7 @@
     <title>Introducción a R y Tidyverse</title>
     <meta charset="utf-8" />
     <meta name="author" content="Laboratorio de Innovación en Salud" />
-    <meta name="date" content="2022-02-09" />
+    <meta name="date" content="2022-03-04" />
     <script src="Sesion_03_files/header-attrs/header-attrs.js"></script>
     <link href="Sesion_03_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="Sesion_03_files/tile-view/tile-view.js"></script>
@@ -130,7 +130,7 @@ top:1em;right:1em;
 
 ### Laboratorio de Innovación en Salud  
 
-### 2022-02-09
+### 2022-03-04
 
 &lt;br&gt;
 
@@ -163,7 +163,9 @@ name: colors
 ]]]
 
 .pull-right[
-**Mediante la función:**
+&lt;br&gt;
+&lt;span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px"&gt;**Mediante la función:**&lt;/span&gt;
 
 
 ```r
@@ -171,6 +173,7 @@ glimpse()
 ```
 
 **Recordar importar el paquete `tidyverse`**
+.scroll-output200[
 
 ```r
 library(tidyverse)
@@ -182,7 +185,7 @@ library(tidyverse)
 
 ```
 ## ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-## ✓ tibble  3.1.6     ✓ dplyr   1.0.7
+## ✓ tibble  3.1.6     ✓ dplyr   1.0.8
 ## ✓ tidyr   1.2.0     ✓ stringr 1.4.0
 ## ✓ readr   2.1.2     ✓ forcats 0.5.1
 ```
@@ -194,13 +197,13 @@ library(tidyverse)
 ## x dplyr::lag()       masks stats::lag()
 ## x purrr::set_names() masks magrittr::set_names()
 ```
-]]
+]]]
 
 .panel[.panel-name[Ejemplo]
 
 .pull-left[
 Así habitualmente observamos la data:
-.scroll-output325[
+.scroll-output350[
 
 ```r
 nycflights13::flights
@@ -208,26 +211,30 @@ nycflights13::flights
 
 ```
 ## # A tibble: 336,776 × 19
-##     year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time
-##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;
-##  1  2013     1     1      517            515         2      830            819
-##  2  2013     1     1      533            529         4      850            830
-##  3  2013     1     1      542            540         2      923            850
-##  4  2013     1     1      544            545        -1     1004           1022
-##  5  2013     1     1      554            600        -6      812            837
-##  6  2013     1     1      554            558        -4      740            728
-##  7  2013     1     1      555            600        -5      913            854
-##  8  2013     1     1      557            600        -3      709            723
-##  9  2013     1     1      557            600        -3      838            846
-## 10  2013     1     1      558            600        -2      753            745
-## # … with 336,766 more rows, and 11 more variables: arr_delay &lt;dbl&gt;,
-## #   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;,
-## #   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;
+##     year month   day dep_time sched_dep_time
+##    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;
+##  1  2013     1     1      517            515
+##  2  2013     1     1      533            529
+##  3  2013     1     1      542            540
+##  4  2013     1     1      544            545
+##  5  2013     1     1      554            600
+##  6  2013     1     1      554            558
+##  7  2013     1     1      555            600
+##  8  2013     1     1      557            600
+##  9  2013     1     1      557            600
+## 10  2013     1     1      558            600
+## # … with 336,766 more rows, and 14 more
+## #   variables: dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;,
+## #   sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,
+## #   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,
+## #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,
+## #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;,
+## #   time_hour &lt;dttm&gt;
 ```
 ]]
 
 .pull-right[
-Con `glimpse`, podrías tener un vistazo rápido de la estructura de los datos:
+Con `glimpse()`, podrías tener un vistazo rápido de la estructura de los datos:
 
 .scroll-output325[
 
@@ -259,13 +266,455 @@ glimpse(nycflights13::flights)
 ## $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 0…
 ```
 ]]]
+
+.panel[.panel-name[Glimpse]
+
+Generalmente la vista de `glimpse()` es suficientemente ordenada para poder observar la estructura de la data sin problemas. Pero también se puede usar el argumento `width` para poder especificar ello.
+
+.scroll-output325[
+
+```r
+glimpse(nycflights13::flights, width = 90)
+```
+
+```
+## Rows: 336,776
+## Columns: 19
+## $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013, 2013,…
+## $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…
+## $ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, 557, 557, 558, 558, 558, 558, …
+## $ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, 600, 600, 600, 600, 600, 600, …
+## $ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2, -2, -2, -2, -2, -1, 0, -1, 0…
+## $ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913, 709, 838, 753, 849, 853, 924,…
+## $ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854, 723, 846, 745, 851, 856, 917,…
+## $ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, -8, 8, -2, -3, 7, -14, 31, -4,…
+## $ carrier        &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA", "B6", "EV", "B6", "AA", "B6",…
+## $ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 507, 5708, 79, 301, 49, 71, 194…
+## $ tailnum        &lt;chr&gt; "N14228", "N24211", "N619AA", "N804JB", "N668DN", "N39463", "N516…
+## $ origin         &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", "EWR", "EWR", "LGA", "JFK", "L…
+## $ dest           &lt;chr&gt; "IAH", "IAH", "MIA", "BQN", "ATL", "ORD", "FLL", "IAD", "MCO", "O…
+## $ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, 53, 140, 138, 149, 158, 345, 3…
+## $ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1065, 229, 944, 733, 1028, 1005…
+## $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 6, 6, 6, 6, 6, 6,…
+## $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0, 0, 59, 0, 0, 0, 0,…
+## $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2013-01-01 05:00:00, 2…
+```
+]]]
+
+---
+
+## Operador Pipe `%&gt;%`
+
+.pull-left[
+**Queremos aplicar más de una función:**
+El uso de funciones de forma anidada puede resultar ilegible o difícil de comprender.
+
+
+```r
+tabla(formato(coeficiente(data)))
+```
+
+El operador `%&gt;%` nos permite escribir una secuencia de operaciones de izquierda a derecha:
+
+
+```r
+coeficiente(data) %&gt;% formato() %&gt;% tabla()
+```
+
+**O mejor aún:**
+
+
+```r
+coeficiente(data) %&gt;% 
+  formato() %&gt;% 
+  tabla()
+```
+]
+
+.pull-right[.font120[
+&lt;br&gt;
+Útil para concatenar múltiples operaciones en dplyr 
+
+&lt;br&gt;
+&lt;span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px"&gt;**Atajo de Teclado**&lt;/span&gt;
+
+&lt;br&gt;
+
+&lt;img src="img/atajo_pipe.svg" width="100%" /&gt;
+]]
+
+
+---
+
+## Función `mutate()`
+
+
+.pull-left[.line-space2-0[.font110[ 
+Con `mutate()` podemos realizar modificaciones en las variables.  Por ej. sumar variables, o modificarlas de alguna manera (transformar a porcentaje, multiplicarlas por alguna constante, etc.). Estas modificaciones pueden realizarse:
+
+- Creando una nueva variable a partir de otras ya existentes.
+- Modificar una variable existente en la misma variable.
+
+]]]
+
+.pull-right[.font110[
+&lt;span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px"&gt;**Ejemplo:**&lt;/span&gt;
+
+
+```r
+library(tidyverse)
+
+df %&gt;% 
+  mutate(
+    New_var = var*2
+  )
+```
+
+**Explicación:**
+
+En una data llamada `df` se estaría aplicando la función `mutate` creando una variable llamada `New_var` a partir de otra variable llamada `var` que está siendo multiplicada por 2.
+
+]]
+
+---
+## Uso práctico de `mutate()`
+
+
+.panelset[
+.panel[.panel-name[Reconocimiento de BD]
+
+Para esta ejemplificación usaremos la base de datos del ECA  sobre la [erradicación de la infección por *Helicobácter Pylori*](https://www.nature.com/articles/s41598-018-27482-2) explicado en la [sesión 02](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/?panelset1=situaci%25C3%25B3n2#14).
+
+.pull-left[
+.scroll-output350[
+
+```r
+trial_data &lt;- readxl::read_excel("data/researchdata.xlsx")
+trial_data
+```
+
+```
+## # A tibble: 400 × 10
+##    `Patient number` `Baseline 13C-UBT`
+##               &lt;dbl&gt; &lt;chr&gt;             
+##  1                1 Positive          
+##  2                2 Positive          
+##  3                3 Positive          
+##  4                4 Positive          
+##  5                5 Positive          
+##  6                6 Positive          
+##  7                7 Positive          
+##  8                8 Positive          
+##  9                9 Positive          
+## 10               10 Positive          
+## # … with 390 more rows, and 8 more
+## #   variables: `Randomized group` &lt;chr&gt;,
+## #   `Follow-up13C-UBT (4 weeks after therapy)` &lt;chr&gt;,
+## #   `adverse drug reactions` &lt;chr&gt;,
+## #   `adverse drug reactions  content` &lt;chr&gt;,
+## #   `Adverse drug reaction classified` &lt;chr&gt;,
+## #   `Complete the study` &lt;chr&gt;, …
+```
+]]
+
+.pull-right[
+.scroll-output350[
+
+```r
+glimpse(trial_data)
+```
+
+```
+## Rows: 400
+## Columns: 10
+## $ `Patient number`                           &lt;dbl&gt; 1, 2, 3, 4, 5, 6,…
+## $ `Baseline 13C-UBT`                         &lt;chr&gt; "Positive", "Posi…
+## $ `Randomized group`                         &lt;chr&gt; "group B", "group…
+## $ `Follow-up13C-UBT (4 weeks after therapy)` &lt;chr&gt; "Negative", "Nega…
+## $ `adverse drug reactions`                   &lt;chr&gt; "No", "Yes", "No"…
+## $ `adverse drug reactions  content`          &lt;chr&gt; "NA", "Fatigue", …
+## $ `Adverse drug reaction classified`         &lt;chr&gt; "NA", "Mild", "NA…
+## $ `Complete the study`                       &lt;chr&gt; "Yes", "Yes", "Ye…
+## $ `Uncompleted Reason`                       &lt;chr&gt; "NA", "NA", "NA",…
+## $ `per protocol analysis`                    &lt;chr&gt; "Yes", "Yes", "Ye…
+```
+]]
+]
+
+.panel[.panel-name[Janitor]
+
+En algunas ocasiones las base de datos contienen nombres de variables muy largas o que incluso pueden contener espacios o símbolos. Una forma sencilla de solucionar ello es mediante el uso de la función `clean_names()` del paquete `janitor`.
+
+.scroll-output300[
+
+```r
+trial_data &lt;- trial_data %&gt;% 
+  janitor::clean_names()
+trial_data
+```
+
+```
+## # A tibble: 400 × 10
+##    patient_number baseline_13c_ubt randomized_group follow_up13c_ubt_4_w… adverse_drug_re…
+##             &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;                 &lt;chr&gt;           
+##  1              1 Positive         group B          Negative              No              
+##  2              2 Positive         group A          Negative              Yes             
+##  3              3 Positive         group B          Negative              No              
+##  4              4 Positive         group A          Positive              Yes             
+##  5              5 Positive         group A          Negative              Yes             
+##  6              6 Positive         group A          Negative              No              
+##  7              7 Positive         group B          Negative              No              
+##  8              8 Positive         group A          Negative              No              
+##  9              9 Positive         group A          Negative              No              
+## 10             10 Positive         group A          NA                    NA              
+## # … with 390 more rows, and 5 more variables: adverse_drug_reactions_content &lt;chr&gt;,
+## #   adverse_drug_reaction_classified &lt;chr&gt;, complete_the_study &lt;chr&gt;,
+## #   uncompleted_reason &lt;chr&gt;, per_protocol_analysis &lt;chr&gt;
+```
+]]
+
+.panel[.panel-name[Mutate I]
+
+.pull-left[.line-space2-0[
+Una de las primeras cosas que podemos hacer con `mutate` durante el primer contacto con la data que trabajemos es:
+
+- Configurar variables `ID` como **texto** (`character`).
+- Configurar variables como **factores**.
+- Configurar respuestas `NA` en caso tengan alguna otra codificación.
+]]
+
+.pull-right[
+1. Configurar la variable `ID`
+
+.scroll-output325[.code80[
+
+```r
+trial_data %&gt;% 
+  mutate(
+    patient_number = as.character(patient_number)
+  )
+```
+
+```
+## # A tibble: 400 × 10
+##    patient_number baseline_13c_ubt
+##    &lt;chr&gt;          &lt;chr&gt;           
+##  1 1              Positive        
+##  2 2              Positive        
+##  3 3              Positive        
+##  4 4              Positive        
+##  5 5              Positive        
+##  6 6              Positive        
+##  7 7              Positive        
+##  8 8              Positive        
+##  9 9              Positive        
+## 10 10             Positive        
+## # … with 390 more rows, and 8 more
+## #   variables: randomized_group &lt;chr&gt;,
+## #   follow_up13c_ubt_4_weeks_after_therapy &lt;chr&gt;,
+## #   adverse_drug_reactions &lt;chr&gt;,
+## #   adverse_drug_reactions_content &lt;chr&gt;,
+## #   adverse_drug_reaction_classified &lt;chr&gt;,
+## #   complete_the_study &lt;chr&gt;, …
+```
+]]
+]]
+
+.panel[.panel-name[Mutate II]
+.pull-left[
+&lt;ol start="2"&gt;
+  &lt;li&gt;Configurar &lt;strong&gt;factores&lt;/strong&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+.scroll-output325[.code80[
+
+```r
+trial_data %&gt;% 
+  mutate(
+    randomized_group = factor(randomized_group),
+    complete_the_study = factor(complete_the_study)
+  )
+```
+
+```
+## # A tibble: 400 × 10
+##    patient_number baseline_13c_ubt
+##             &lt;dbl&gt; &lt;chr&gt;           
+##  1              1 Positive        
+##  2              2 Positive        
+##  3              3 Positive        
+##  4              4 Positive        
+##  5              5 Positive        
+##  6              6 Positive        
+##  7              7 Positive        
+##  8              8 Positive        
+##  9              9 Positive        
+## 10             10 Positive        
+## # … with 390 more rows, and 8 more
+## #   variables: randomized_group &lt;fct&gt;,
+## #   follow_up13c_ubt_4_weeks_after_therapy &lt;chr&gt;,
+## #   adverse_drug_reactions &lt;chr&gt;,
+## #   adverse_drug_reactions_content &lt;chr&gt;,
+## #   adverse_drug_reaction_classified &lt;chr&gt;,
+## #   complete_the_study &lt;fct&gt;, …
+```
+]]
+]
+
+.pull-right[
+&lt;ol start="3"&gt;
+  &lt;li&gt;Configurar respuestas &lt;code&gt;NA&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+Para reemplazar respuestas dependiendo de una condición en particular se puede utilizar la función `case_when()` dentro de un `mutate()`
+
+.code80[
+
+```r
+trial_data %&gt;% 
+  mutate(
+    Var = case_when(
+      Var == "Text" ~ "New_Text",
+      TRUE ~ Var
+    )
+  )
+```
+]
+De esta manera en la variable `Var` se reemplazará todos los casos que registren el dato de **Text** por **New_Text**. 
+]
+
+]]
+
+---
+
+## Uso de `count`
+
+.line-space1-5[
+La función `count` es bastante sencilla y poderosa a la vez. Permite obtener una tabla en formato `tibble` que representará las frecuencias (cantidades `n`) de una o múltiples variables en específico.
 ]
 
 
+```r
+trial_data %&gt;% 
+  count(adverse_drug_reactions)
+```
+
+```
+## # A tibble: 4 × 2
+##   adverse_drug_reactions     n
+##   &lt;chr&gt;                  &lt;int&gt;
+## 1 NA                        10
+## 2 No                       295
+## 3 Yes                       94
+## 4 &lt;NA&gt;                       1
+```
+
+.line-space1-5[
+La tabla generada muestra que cantidad de personas han tenido reacciones adversas a los medicamentos ya sea en el Grupo A o B. Sin embargo, también se aprecia que hay 2 respuestas que indican la presencia de datos vacíos: **NA** y **&amp;lt;NA&amp;gt;**. El primero está codificado directamente como texto (`character`) y sel segudo es un `NA` real, es decir que comunica la ausencia de un dato.
+]
+
+---
+## Uso de `mutate()` y `case_when()`
+
+.panelset[
+.panel[.panel-name[Explicación previa del NA]
+.line-space1-5[
+Al importar las bases de datos dentro de R, la gran mayoría de funciones (como `read_excel()`) interpretarán los valors en blanco o celdas vacías como reales `NA`. Sin embargo si en las celdas se ha llenado explícitamente el texto **NA** o se ha usado alguna codificación diferente, el valor de `NA` no se introducirá automáticamente y habrá que indicarlo como tal (`case_when()`).
+]
+
+.pull-left[
+&lt;img src="img/view_excel_na.png" width="90%" style="display: block; margin: auto;" /&gt;
+]
+
+.pull-right[
+
+```r
+trial_data %&gt;% 
+  count(adverse_drug_reactions)
+```
+
+```
+## # A tibble: 4 × 2
+##   adverse_drug_reactions     n
+##   &lt;chr&gt;                  &lt;int&gt;
+## 1 NA                        10
+## 2 No                       295
+## 3 Yes                       94
+## 4 &lt;NA&gt;                       1
+```
+]]
+
+.panel[.panel-name[Uso de case_when()]
+
+La función `case_when()` tiene una aplicación directa y perfecta para estos fines, en el que recodificaremos el **NA** introducido como texto a un `NA` real que sea reconocido como tal. El mismo procedimiento se utilizaría si los valores faltantes o perdidos se hubieran codificado de otra forma (ej. `777` o `999`).
+
+.pull-left[
+Recordar que con **pipe** (` %&gt;% `) podemos anidar muchas funciones en un solo bloque:
+
+
+```r
+trial_data %&gt;%
+  mutate(
+    adverse_drug_reactions = case_when(
+      adverse_drug_reactions == "NA" ~ NA_character_,
+      TRUE ~ adverse_drug_reactions
+    )
+  ) %&gt;% 
+  count()
+```
+]
+
+.pull-right[
+
+El código `TRUE ~ adverse_drug_reactions` significa que **todos los demás casos** mantendrán el valor original que el de la variable.
+
+
+```
+## # A tibble: 3 × 2
+##   adverse_drug_reactions     n
+##   &lt;chr&gt;                  &lt;int&gt;
+## 1 No                       295
+## 2 Yes                       94
+## 3 &lt;NA&gt;                      11
+```
+]]
+
+.panel[.panel-name[Advertencia]
+
+La función `case_when` requiere respetar de forma estricta el tipo de vector utilizado. Es decir que si se le pide recodificar una variable a número, y dentro de esa variable continúan habiendo textos, habrá un problema de **no-coerción**. Es por ese motivo que en el anterior ejemplo se usa `NA_character` en vez de únicamente `NA`, ya que este elemento como tal en realidad es de tipo lógico.
+
+
+```r
+typeof(NA)
+```
+
+```
+## [1] "logical"
+```
+
+```r
+typeof(NA_character_)
+```
+
+```
+## [1] "character"
+```
+
+```r
+typeof(NA_real_)
+```
+
+```
+## [1] "double"
+```
+
+]]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
-<script src="https://platform.twitter.com/widgets.js"></script>
 <script>var slideshow = remark.create({
 "slideNumberFormat": "%current%/%total%",
 "highlightStyle": "idea",

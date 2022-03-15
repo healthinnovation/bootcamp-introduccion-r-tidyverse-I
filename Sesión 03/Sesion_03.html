@@ -4,7 +4,7 @@
     <title>Introducción a R y Tidyverse</title>
     <meta charset="utf-8" />
     <meta name="author" content="Laboratorio de Innovación en Salud" />
-    <meta name="date" content="2022-03-05" />
+    <meta name="date" content="2022-03-14" />
     <script src="Sesion_03_files/header-attrs/header-attrs.js"></script>
     <link href="Sesion_03_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="Sesion_03_files/tile-view/tile-view.js"></script>
@@ -31,12 +31,16 @@
     <meta name="twitter:title" content="Introducción a R y Tidyverse: Sesión 03"/>
     <meta name="twitter:description" content="Curso de Introducción a R y Tidyverse: Sesión 03"/>
     <meta name="twitter:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2003/#1"/>
+    <meta name="twitter:image" content="https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion03.png"/>
+    <meta name="twitter:image:alt" content="Cover de la Sesión 03 del curso de Introducción a R y Tidyverse"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:creator" content="@innovalab_imt"/>
     <meta name="twitter:site" content="@innovalab_imt"/>
     <meta property="og:title" content="Introducción a R y Tidyverse: Sesión 03"/>
     <meta property="og:description" content="Curso de Introducción a R y Tidyverse: Sesión 03"/>
     <meta property="og:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2003/#1"/>
+    <meta property="og:image" content="https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion03.png"/>
+    <meta property="og:image:alt" content="Cover de la Sesión 03 del curso de Introducción a R y Tidyverse"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="article:author" content="Laboratorio de Innovación en Salud"/>
@@ -134,7 +138,7 @@ top:1em;right:1em;
 
 ### Laboratorio de Innovación en Salud  
 
-### 2022-03-05
+### 2022-03-14
 
 &lt;br&gt;
 
@@ -1100,7 +1104,7 @@ trial_data %&gt;%
 2. Complementar la tabla del anterior punto agregando la variable del grupo de tratamiento al que pertenece.
 ]]
 
-<div class="countdown" id="timer_622409fe" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_62300a0f" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -1158,7 +1162,7 @@ covid19
 ```
 
 ```
-## # A tibble: 284 × 777
+## # A tibble: 284 × 786
 ##    `Province/State`  `Country/Region`   Lat   Long `1/22/20` `1/23/20` `1/24/20` `1/25/20`
 ##    &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
 ##  1 &lt;NA&gt;              Afghanistan       33.9  67.7          0         0         0         0
@@ -1171,7 +1175,7 @@ covid19
 ##  8 &lt;NA&gt;              Argentina        -38.4 -63.6          0         0         0         0
 ##  9 &lt;NA&gt;              Armenia           40.1  45.0          0         0         0         0
 ## 10 Australian Capit… Australia        -35.5 149.           0         0         0         0
-## # … with 274 more rows, and 769 more variables: `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;,
+## # … with 274 more rows, and 778 more variables: `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;,
 ## #   `1/28/20` &lt;dbl&gt;, `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;, `2/1/20` &lt;dbl&gt;,
 ## #   `2/2/20` &lt;dbl&gt;, `2/3/20` &lt;dbl&gt;, `2/4/20` &lt;dbl&gt;, `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;,
 ## #   `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;, `2/10/20` &lt;dbl&gt;, `2/11/20` &lt;dbl&gt;,
@@ -1238,7 +1242,7 @@ count: false
 .panel2-pivot_longer_1-user[
 
 ```
-## # A tibble: 284 × 777
+## # A tibble: 284 × 786
 ##    `Province/State`       `Country/Region`   Lat   Long
 ##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;
 ##  1 &lt;NA&gt;                   Afghanistan       33.9  67.7 
@@ -1251,7 +1255,7 @@ count: false
 ##  8 &lt;NA&gt;                   Argentina        -38.4 -63.6 
 ##  9 &lt;NA&gt;                   Armenia           40.1  45.0 
 ## 10 Australian Capital Te… Australia        -35.5 149.  
-## # … with 274 more rows, and 773 more variables:
+## # … with 274 more rows, and 782 more variables:
 ## #   `1/22/20` &lt;dbl&gt;, `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;,
 ## #   `1/25/20` &lt;dbl&gt;, `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;,
 ## #   `1/28/20` &lt;dbl&gt;, `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;,
@@ -1277,7 +1281,7 @@ covid19 %&gt;%
 .panel2-pivot_longer_1-user[
 
 ```
-## # A tibble: 284 × 775
+## # A tibble: 284 × 784
 ##    `Province/State`          `Country/Region` `1/22/20`
 ##    &lt;chr&gt;                     &lt;chr&gt;                &lt;dbl&gt;
 ##  1 &lt;NA&gt;                      Afghanistan              0
@@ -1290,7 +1294,7 @@ covid19 %&gt;%
 ##  8 &lt;NA&gt;                      Argentina                0
 ##  9 &lt;NA&gt;                      Armenia                  0
 ## 10 Australian Capital Terri… Australia                0
-## # … with 274 more rows, and 772 more variables:
+## # … with 274 more rows, and 781 more variables:
 ## #   `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;,
 ## #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,
 ## #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,
@@ -1321,7 +1325,7 @@ covid19 %&gt;%
 .panel2-pivot_longer_1-user[
 
 ```
-## # A tibble: 219,532 × 4
+## # A tibble: 222,088 × 4
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -1334,7 +1338,7 @@ covid19 %&gt;%
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 219,522 more rows
+## # … with 222,078 more rows
 ```
 ]
 
@@ -1395,7 +1399,7 @@ count: false
 .panel2-pivot_wider_1-user[
 
 ```
-## # A tibble: 219,532 × 4
+## # A tibble: 222,088 × 4
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -1408,7 +1412,7 @@ count: false
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 219,522 more rows
+## # … with 222,078 more rows
 ```
 ]
 
@@ -1431,7 +1435,7 @@ covid19_tidy %&gt;%
 .panel2-pivot_wider_1-user[
 
 ```
-## # A tibble: 284 × 775
+## # A tibble: 284 × 784
 ##    `Province/State`          `Country/Region` `1/22/20`
 ##    &lt;chr&gt;                     &lt;chr&gt;                &lt;dbl&gt;
 ##  1 &lt;NA&gt;                      Afghanistan              0
@@ -1444,7 +1448,7 @@ covid19_tidy %&gt;%
 ##  8 &lt;NA&gt;                      Argentina                0
 ##  9 &lt;NA&gt;                      Armenia                  0
 ## 10 Australian Capital Terri… Australia                0
-## # … with 274 more rows, and 772 more variables:
+## # … with 274 more rows, and 781 more variables:
 ## #   `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;,
 ## #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,
 ## #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,
@@ -1502,7 +1506,7 @@ covid19_tidy %&gt;%
 1. Genera un objeto wider (`pivot_wider`)
 ]]
 
-<div class="countdown" id="timer_62240871" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_62300a77" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 

@@ -31,7 +31,6 @@ knitr::opts_chunk$set(
 library(xaringanthemer)
 library(magrittr)
 library(metathis)
-library(xaringanthemer)
 library(countdown)
 library(flair)
 library(flipbookr)
@@ -107,8 +106,8 @@ meta() %>%
     title = "Introducción a R y Tidyverse: Sesión 03",
     description = "Curso de Introducción a R y Tidyverse: Sesión 03",
     url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2003/#1",
-    # image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-plantilla.png",
-    # image_alt = "Innovar theme of R package xaringan",
+    image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion03.png",
+    image_alt = "Cover de la Sesión 03 del curso de Introducción a R y Tidyverse",
     og_type = "website",
     og_author = "Laboratorio de Innovación en Salud",
     twitter_card_type = "summary_large_image",

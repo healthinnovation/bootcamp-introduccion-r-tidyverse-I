@@ -1,0 +1,269 @@
+---
+title: "Introducción a R y Tidyverse"
+subtitle: "Sesión 04"  
+author: 
+  - "Laboratorio de Innovación en Salud"
+date: '`r Sys.Date()`'
+output:
+  xaringan::moon_reader:
+    css: [xaringan-lis.css, custom.css]
+    nature:
+      slideNumberFormat: "%current%/%total%"
+      highlightStyle: idea
+      highlightLines: true
+      ratio: 16:9
+      countIncrementalSlides: true
+    seal: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+knitr::opts_chunk$set(
+  fig.width=9, fig.height=3.5, fig.retina=3,
+  out.width = "100%",
+  cache = FALSE,
+  echo = TRUE,
+  message = FALSE, 
+  warning = FALSE,
+  hiline = TRUE
+)
+
+library(xaringanthemer)
+library(magrittr)
+library(metathis)
+library(countdown)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+style_duo_accent(
+  primary_color = "#2f4871",
+  secondary_color = "#2e91af",
+  inverse_header_color = "#FFFFFF",
+  header_color = "#106075",
+  background_color = "#e9ebee",
+  header_font_google = google_font("Oswald", "700", "700i"),
+  text_font_google = google_font("Spartan", "400", "400i",
+                                 "700", "700i"),
+  code_font_google = google_font("Fira Code", "400",
+                                 "700"),
+  outfile = "xaringan-lis.css"
+)
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+```{r broadcast, echo=FALSE}
+xaringanExtra::use_broadcast()
+```
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble()
+```
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\"></i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r xaringan-logo, echo=FALSE}
+xaringanExtra::use_logo(
+  image_url = "img/InnovaLab_logo_blue.png",
+  width = "100px",
+  height = "116px"
+)
+```
+
+```{r xaringan-extra-styles, echo=FALSE}
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         
+  mute_unhighlighted_code = TRUE  
+)
+```
+
+```{r xaringanExtra, echo = FALSE}
+xaringanExtra::use_progress_bar(color = "#0051BA",
+                                location = "bottom")
+```
+
+```{r metathis, echo=FALSE}
+meta() %>%
+  meta_name("github-repo" = "healthinnovation/xaringan-innovar") %>% 
+  meta_social(
+    title = "Plantilla Innovar Xaringan",
+    description = "Curso de Introducción a R y Tidyverse: Sesión 04",
+    url = "https://healthinnovation.github.io/xaringan-innovar/",
+    image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion04.png",
+    image_alt = "Cover de la Sesión 04 del curso de Introducción a R y Tidyverse",
+    og_type = "website",
+    og_author = "Laboratorio de Innovación en Salud",
+    twitter_card_type = "summary_large_image",
+    twitter_creator = "@innovalab_imt",
+    twitter_site = "@innovalab_imt"
+  )
+```
+
+
+<br>
+<br>
+
+# `r rmarkdown::metadata$title`
+
+## `r rmarkdown::metadata$subtitle`
+
+## `r rmarkdown::metadata$author`  
+
+### `r Sys.Date()`
+
+<br>
+
+[`r fontawesome::fa(name = "github")` @healthinnovation](https://github.com/healthinnovation)  
+[`r fontawesome::fa(name = "twitter")` @innovalab_imt](https://twitter.com/innovalab_imt)  
+[`r fontawesome::fa(name = "link")` innovalab.info](https://www.innovalab.info/)  
+
+
+---
+
+## Contenido
+
+---
+name: colors
+
+## Exploración competencial
+
+
+
+---
+## Uso de `filter()`
+
+.panelset[
+.panel[.panel-name[¿Para qué sirve?]
+.pull-left[.line-space1-7[.font110[
+- Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. 
+- Pueden incluirse varias condiciones dentro de un filtro.
+- Funciones y operadores útiles:
+  - De comparación: `==`, `<`, `>`, `<=`, `>=`, `!=`, `%in%`, `is.na`, `!is.na`
+  - De lógica: `&`, `|`, `xor`, `!`, `any()`, `all()`
+]]]
+
+.pull-right[.scroll-output375[
+```{r R.options = list(width = 42)}
+library(tidyverse)
+nycflights13::flights
+```
+
+]]]
+
+.panel[.panel-name[Ejemplo]
+
+.pull-left[
+Esta data muestra información de la [NOAA](https://www.nhc.noaa.gov/data/#hurdat) acerca de tormentas desde 1975 hasta el 2020.
+
+.scroll-output325[
+```{r}
+storms %>% 
+  count(status, category)
+```
+]]
+
+.pull-right[
+Si quisieramos solo trabajar con los huracanes de categoría 5, tendríamos que hacer lo siguiente con la función `filter()`:
+
+.scroll-output300[
+```{r R.options = list(width = 42)}
+storms %>% 
+  filter(status == "hurricane",
+         category == 5)
+```
+
+]]
+]
+]
+
+---
+## Uso de `select()`
+
+.pull-left[.line-space2-0[.font110[
+- Esta función permite **seleccionar** las variables de interés.
+- Puede ser útil previo a un análisis de datos o solo si se desea tener una data menos larga.
+- Para usarlo se puede nombrar a las variables dentro de la función `select()` y/o usar el comando `:` para indcar **hasta**.
+]]]
+
+.pull-right[
+
+```{r echo=FALSE, out.width="90%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/select_01.png",
+                        dpi = 300)
+```
+
+]
+
+
+---
+
+## Uso de `select()`
+
+```{r echo=FALSE, out.width="55%", fig.align='center', dpi=200, fig.retina=2}
+knitr::include_graphics("img/select_02.png",
+                        dpi = 300)
+```
+
+
+---
+## Uso de `select()`
+
+El uso de las funciones con **pipe** (` %>% `) permite anidarlas una tras otra. Además, si las columnas están una a lado de otra, podemos usar `:` para seleccionar varios al mismo tiempo.
+
+.pull-left[
+.scroll-output400[
+```{r R.options = list(width = 42)}
+storms %>% 
+  filter(status == "hurricane",
+         category == 5) %>% 
+  select(name, year, month, day, hour, wind)
+```
+]]
+
+.pull-right[
+.scroll-output400[
+```{r R.options = list(width = 42)}
+storms %>% 
+  filter(status == "hurricane",
+         category == 5) %>% 
+  select(name:hour, wind)
+```
+]]
+
+
+---
+
+## ¡Hazlo tú mismo!
+
+.line-space2-0[.font120[
+Completar instrucciones para hacer lo mismo con la data del proyecto.
+]]
+
+```{r echo=FALSE}
+countdown(minutes = 8,
+          margin = "1em",
+          font_size = "4em",
+          warn_when = 30)
+```
+---
+
+
+
+
+
+

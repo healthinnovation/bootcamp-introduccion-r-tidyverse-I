@@ -105,7 +105,7 @@ meta() %>%
   meta_social(
     title = "Introducción a R y Tidyverse: Sesión 03",
     description = "Curso de Introducción a R y Tidyverse: Sesión 03",
-    url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2003/#1",
+    url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#1",
     image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion03.png",
     image_alt = "Cover de la Sesión 03 del curso de Introducción a R y Tidyverse",
     og_type = "website",
@@ -136,15 +136,21 @@ meta() %>%
 
 
 ---
+## Contenidos
 
-## Contenido
+.line-space3-0[.font120[
+- Reconocimiento de variables (función glimpse)
+- Anidación de funciones con pipe (%>%)
+- Cálculo de variables (introducción a mutate)
+- Contabilización y ordenamiento en base a variables (uso de count y arrange).
+- Explicación de tidy data 
+- Modificación a la estructura de los datos mediante pivot longer y wider 
+]]
 
 ---
-name: colors
+class: center, middle, inverse
 
-## Exploración competencial
-
-
+# Exploración competencial
 
 ---
 
@@ -285,7 +291,7 @@ En una data llamada `df` se estaría aplicando la función `mutate` creando una 
 .panelset[
 .panel[.panel-name[Reconocimiento de BD]
 
-Para esta ejemplificación usaremos la base de datos del ECA  sobre la [erradicación de la infección por *Helicobácter Pylori*](https://www.nature.com/articles/s41598-018-27482-2) explicado en la [sesión 02](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/?panelset1=situaci%25C3%25B3n2#14).
+Para esta ejemplificación usaremos la base de datos del ECA  sobre la [erradicación de la infección por *Helicobácter Pylori*](https://www.nature.com/articles/s41598-018-27482-2) explicado en la [sesión 02](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#14).
 
 .pull-left[
 .scroll-output350[

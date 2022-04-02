@@ -104,7 +104,7 @@ meta() %>%
   meta_social(
     title = "Plantilla Innovar Xaringan",
     description = "Curso de Introducción a R y Tidyverse: Sesión 04",
-    url = "https://healthinnovation.github.io/xaringan-innovar/",
+    url = "https://healthinnovation.github.io/xaringan-innovar/sesion_04/#1",
     image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion04.png",
     image_alt = "Cover de la Sesión 04 del curso de Introducción a R y Tidyverse",
     og_type = "website",
@@ -133,17 +133,21 @@ meta() %>%
 [`r fontawesome::fa(name = "twitter")` @innovalab_imt](https://twitter.com/innovalab_imt)  
 [`r fontawesome::fa(name = "link")` innovalab.info](https://www.innovalab.info/)  
 
+---
+## Contenidos
+
+.line-space3-0[.font120[
+- Selección de variables de interés
+- Uso de condicionales para filtrar casos
+- Aspectos adicionales sobre la creación de variables
+- Solicitar resumen de datos (summarise)
+- Considerar variables para subdividir análisis (group_by)
+]]
 
 ---
+class: center, middle, inverse
 
-## Contenido
-
----
-name: colors
-
-## Exploración competencial
-
-
+# Exploración competencial
 
 ---
 ## Uso de `filter()`
@@ -280,7 +284,7 @@ knitr::include_graphics("img/mutate_ilustration.png",
 
 .pull-right[.line-space1-5[.font110[
 Esta función del paquete `dplyr` nos permite agregar o modificar las variables actuales en un conjunto de datos (dataframe). 
-Tal y como ya lo vimos en la [sesión 03](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2003/#6), esta función puede hacer cambios sobre una o múltiples variables existentes, así como crear varias a la vez serparándolas con una coma [(Y. Wendy Huynh,2019)](https://bookdown.org/yih_huynh/Guide-to-R-Book/mutate.html).
+Tal y como ya lo vimos en la [sesión 03](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#6), esta función puede hacer cambios sobre una o múltiples variables existentes, así como crear varias a la vez serparándolas con una coma [(Y. Wendy Huynh,2019)](https://bookdown.org/yih_huynh/Guide-to-R-Book/mutate.html).
 
 ```{r eval=FALSE}
 data %>% 
@@ -401,7 +405,7 @@ mtcars %>%
 .panel[.panel-name[Intro]
 
 .left-column[.line-space1-7[.font110[
-Usaremos la misma [BD de COVID-19 que empleamos en la sesión 03](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2003/#19).
+Usaremos la misma [BD de COVID-19 que empleamos en la sesión 03](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#19).
 
 Este dataset está alojada en el siguiente repositorio de GitHub ([click aquí](https://github.com/CSSEGISandData/COVID-19)).
 ]]]

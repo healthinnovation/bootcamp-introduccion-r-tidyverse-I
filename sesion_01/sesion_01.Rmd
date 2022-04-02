@@ -105,7 +105,7 @@ meta() %>%
   meta_social(
     title = "Introducción a R y Tidyverse: Sesión 01",
     description = "Curso de Introducción a R y Tidyverse: Sesión 01",
-    url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/#1",
+    url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/#1",
     # image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-plantilla.png",
     # image_alt = "Innovar theme of R package xaringan",
     og_type = "website",
@@ -139,10 +139,33 @@ meta() %>%
 
 ## Acerca del curso
 
----
-name: colors
+.line-space1-7[.font110[
+Este curso busca introducir al estudiante en el uso de R y el uso del metapaquete `tidyverse` para el manejo inicial de datos durante un proceso de investigación. 
 
-## Exploración competencial
+Al finalizar el curso de manera satisfactoria, el participante podrá:
+
+- Importar conjuntos de datos de los principales formatos que se trabajan en proyectos de investigación.
+- Dar formato inicial al conjunto de datos mediante reconocimiento de variables y modificaciones en las mismas.
+- Ejecutar modificaciones en variables pre-existentes y nuevas variables que se introduzcan.
+- Trabajar con múltiples bases de datos y unificarlas de acuerdo al objetivo de investigación planteado.
+
+]]
+
+---
+
+## Contenidos
+
+.line-space3-0[.font120[
+- Introducción a ciencia de datos
+- Manejo y reconocimiento inicial de Rstudio
+- Creación y manejo de estructura de proyectos en rstudio
+- Creación de vectores
+]]
+
+---
+class: center, middle, inverse
+
+# Exploración competencial
 
 ---
 

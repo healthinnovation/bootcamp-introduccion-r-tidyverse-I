@@ -102,7 +102,7 @@ xaringanExtra::use_progress_bar(color = "#0051BA",
 meta() %>%
   meta_name("github-repo" = "healthinnovation/xaringan-innovar") %>% 
   meta_social(
-    title = "Plantilla Innovar Xaringan",
+    title = "Introducción a R y Tidyverse: Sesión 04",
     description = "Curso de Introducción a R y Tidyverse: Sesión 04",
     url = "https://healthinnovation.github.io/xaringan-innovar/sesion_04/#1",
     image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion04.png",

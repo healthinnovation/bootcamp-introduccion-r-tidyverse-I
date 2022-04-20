@@ -7,17 +7,21 @@
 <title>Capítulo 3 Sesión 02 | Introducción a R y Tidyverse</title>
 <meta name="author" content="Healthinnovation">
 <meta name="description" content="3.0.1 ¿Qué es una función? Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (vector, dataframes, etc.), lo...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.26.1 with bs4_book()">
 <meta property="og:title" content="Capítulo 3 Sesión 02 | Introducción a R y Tidyverse">
 <meta property="og:type" content="book">
 <meta property="og:description" content="3.0.1 ¿Qué es una función? Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (vector, dataframes, etc.), lo...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 3 Sesión 02 | Introducción a R y Tidyverse">
 <meta name="twitter:description" content="3.0.1 ¿Qué es una función? Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (vector, dataframes, etc.), lo...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -42,6 +46,8 @@
 <li><a class="" href="index.html"><span class="header-section-number">1</span> ¡Bienvenidos!</a></li>
 <li><a class="" href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></li>
 <li><a class="active" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
+<li><a class="" href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></li>
+<li><a class="" href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></li>
 </ul>
 
         <div class="book-extra">
@@ -65,7 +71,7 @@
 <li><p>El objeto físico (cualquier estructura de datos) en el que la función lleva a cabo una tarea.</p></li>
 <li><p>Especificaciones que alteran la forma en que opera la función</p></li>
 </ul>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/function_example.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/function_example.png" width="85%" style="display: block; margin: auto;"></div>
 </div>
 <div id="buscando-ayuda-sobre-las-funciones" class="section level3" number="3.0.2">
 <h3>
@@ -75,9 +81,9 @@
 <ul>
 <li><code><a href="https://rdrr.io/r/stats/sd.html">?sd</a></code></li>
 <li><code><a href="https://rdrr.io/r/stats/sd.html">help(sd)</a></code></li>
-<li><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/help_function.png" width='140px"'></li>
+<li><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/help_function.png" width='140px"'></li>
 </ul>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/help_page.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/help_page.png" width="85%" style="display: block; margin: auto;"></div>
 <p>Alternativamente, si está familiarizado con la función pero solo necesita recordar los nombres de los argumentos, puede usar:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/args.html">args</a></span><span class="op">(</span><span class="va">sd</span><span class="op">)</span></code></pre></div>
@@ -207,7 +213,7 @@ tibble(
 </h3>
 <p>Los paquetes son colecciones de funciones, datos y código compilado de R en un formato bien definido, creados para agregar una funcionalidad específica.</p>
 <p>Hay un conjunto de paquetes estándar (o base) que se consideran parte del código fuente de R y están disponibles automáticamente como parte de su instalación de R.</p>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/paquetes_hexa.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/paquetes_hexa.png" width="85%" style="display: block; margin: auto;"></div>
 </div>
 <div id="instalación-de-paquetes-desde-cran" class="section level3" number="3.0.8">
 <h3>
@@ -232,11 +238,53 @@ tibble(
 <li><p><code><a href="https://remotes.r-lib.org/reference/install_version.html">remotes::install_version()</a></code> para instalar una versión específica de CRAN.</p></li>
 </ul>
 </div>
-<div id="importación-de-datos" class="section level3" number="3.0.10">
+<div id="bases-de-datos-a-utilizar" class="section level3" number="3.0.10">
 <h3>
-<span class="header-section-number">3.0.10</span> Importación de datos<a class="anchor" aria-label="anchor" href="#importaci%C3%B3n-de-datos"><i class="fas fa-link"></i></a>
+<span class="header-section-number">3.0.10</span> Bases de datos a utilizar<a class="anchor" aria-label="anchor" href="#bases-de-datos-a-utilizar"><i class="fas fa-link"></i></a>
+</h3>
+<p>Usaremos una base de datos proporcionado por <a href="https://www.nature.com/articles/s41598-018-27482-2">Gan et al. (2018)</a> en su estudio:</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/levofloxacin_trial.png" width="100%"></div>
+<p>Dicho estudio es un ensayo clínico aleatorizado (ECA) de 400 participantes en el que se compara 2 tipos de tratamientos para erradicar la infección por Helicobácter Pylori.</p>
+<ul>
+<li><p><strong>Grupo A de tratamiento</strong>: Esomeprazol, amoxicilina, bismuto coloidal con pectina y levofloxacina 500mg una vez al día.</p></li>
+<li><p><strong>Grupo B de tratamiento</strong>: Levofloxacina 200mg dos veces al día, durante un periodo de 14 días.</p></li>
+</ul>
+<div class="inline-table"><table align="center" class="table table-sm">
+<tr align="center">
+<th>
+<b>Randomized group</b>
+</th>
+<th>
+<b>n</b>
+</th>
+</tr>
+<tr align="center">
+<th>
+group A
+</th>
+<th>
+200
+</th>
+</tr>
+<tr align="center">
+<th>
+group B
+</th>
+<th>
+200
+</th>
+</tr>
+</table></div>
+</div>
+<div id="importación-de-datos-i" class="section level3" number="3.0.11">
+<h3>
+<span class="header-section-number">3.0.11</span> Importación de datos I<a class="anchor" aria-label="anchor" href="#importaci%C3%B3n-de-datos-i"><i class="fas fa-link"></i></a>
 </h3>
 <div class="inline-table"><table class="table table-sm">
+<colgroup>
+<col width="53%">
+<col width="46%">
+</colgroup>
 <thead><tr class="header">
 <th>Función</th>
 <th>Archivos</th>
@@ -244,27 +292,145 @@ tibble(
 <tbody>
 <tr class="odd">
 <td><code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel()</a></code></td>
-<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/excel_logo.png" width="50px"></td>
+<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/excel_logo.png" width="50px"></td>
 </tr>
 <tr class="even">
 <td><code><a href="https://readr.tidyverse.org/reference/read_delim.html">readr::read_csv()</a></code></td>
-<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/csv_logo.png" width="50px"></td>
+<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/csv_logo.png" width="50px"></td>
 </tr>
 <tr class="odd">
 <td><code><a href="https://haven.tidyverse.org/reference/read_dta.html">haven::read_dta()</a></code></td>
-<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/stata_logo.png" width="50px"></td>
+<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/stata_logo.png" width="50px"></td>
 </tr>
 <tr class="even">
 <td><code><a href="https://haven.tidyverse.org/reference/read_spss.html">haven::read_sav()</a></code></td>
-<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2002/img/spss_logo.png" width="50px"></td>
+<td><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/spss_logo.png" width="50px"></td>
 </tr>
 </tbody>
 </table></div>
+<p>Vamos a importar el archivo excel que tiene una extensión <code>.xlsx</code> y se encuentra dentro de la carpeta data.</p>
+<p><strong>Recuerda:</strong> <em>Al importar el archivo debemos asignarlo a un objeto, para poder guardar la información. En este caso llamaremos a este objeto como <code>trial_data</code>.</em></p>
+<pre><code>#&gt; ── Attaching packages ─────────────────── tidyverse 1.3.1 ──
+#&gt; ✓ ggplot2 3.3.5     ✓ dplyr   1.0.8
+#&gt; ✓ tidyr   1.2.0     ✓ stringr 1.4.0
+#&gt; ✓ readr   2.1.2     ✓ forcats 0.5.1
+#&gt; ✓ purrr   0.3.4
+#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──
+#&gt; x dplyr::filter() masks stats::filter()
+#&gt; x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"_data/researchdata.xlsx"</span><span class="op">)</span>
+<span class="va">trial_data</span>
+<span class="co">#&gt; # A tibble: 400 × 10</span>
+<span class="co">#&gt;    `Patient number` `Baseline 13C-UBT` `Randomized group`</span>
+<span class="co">#&gt;               &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;             </span>
+<span class="co">#&gt;  1                1 Positive           group B           </span>
+<span class="co">#&gt;  2                2 Positive           group A           </span>
+<span class="co">#&gt;  3                3 Positive           group B           </span>
+<span class="co">#&gt;  4                4 Positive           group A           </span>
+<span class="co">#&gt;  5                5 Positive           group A           </span>
+<span class="co">#&gt;  6                6 Positive           group A           </span>
+<span class="co">#&gt;  7                7 Positive           group B           </span>
+<span class="co">#&gt;  8                8 Positive           group A           </span>
+<span class="co">#&gt;  9                9 Positive           group A           </span>
+<span class="co">#&gt; 10               10 Positive           group A           </span>
+<span class="co">#&gt; # … with 390 more rows, and 7 more variables:</span>
+<span class="co">#&gt; #   `Follow-up13C-UBT (4 weeks after therapy)` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `adverse drug reactions` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `adverse drug reactions  content` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Adverse drug reaction classified` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Complete the study` &lt;chr&gt;, `Uncompleted Reason` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `per protocol analysis` &lt;chr&gt;</span></code></pre></div>
+</div>
+<div id="importación-de-datos-ii" class="section level3" number="3.0.12">
+<h3>
+<span class="header-section-number">3.0.12</span> Importación de datos II<a class="anchor" aria-label="anchor" href="#importaci%C3%B3n-de-datos-ii"><i class="fas fa-link"></i></a>
+</h3>
+<p>En algunos casos estaremos frente a base de datos que contengan cierta información en sus primeras filas que no sean relevantes como datos a considerar para el análisis. La mayor cantidad de veces tienen un propósito meramente informativo. Ejemplo:</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/img/researchdata2_preview.png" width="100%"></div>
+<div id="situación" class="section level4" number="3.0.12.1">
+<h4>
+<span class="header-section-number">3.0.12.1</span> Situación<a class="anchor" aria-label="anchor" href="#situaci%C3%B3n"><i class="fas fa-link"></i></a>
+</h4>
+<p>En estas situaciones tenemos 2 alternativas:</p>
+<p><strong>a)</strong> Editar el archivo en cuestión y eliminar las filas que no sean relevantes.</p>
+<p><strong>b)</strong> Durante la importación indicar que se omitan las primeras filas o filtrarlas una vez se haya importado.</p>
+<p>Siempre será una mejor opción manejar los cambios desde el código, ya que se esa manera mantenemos los archivos originales y además podemos tener un registro de los cambios realizados.</p>
+<p>Para hacer esto usaremos el argumento skip dentro de la función <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">readxl::read_excel()</a></code>, que indicará la cantidad de filas que deseamos omitir en la importación.</p>
+</div>
+<div id="problema" class="section level4" number="3.0.12.2">
+<h4>
+<span class="header-section-number">3.0.12.2</span> Problema<a class="anchor" aria-label="anchor" href="#problema"><i class="fas fa-link"></i></a>
+</h4>
+<p>Si intentamos importar la data sin especificar ningún argumento, veremos como se registran informaciones que no requerimos, y solo se encuentran en los datos a manera de información.</p>
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data2</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"_data/researchdata2.xlsx"</span><span class="op">)</span>
+<span class="co">#&gt; New names:</span>
+<span class="co">#&gt; • `` -&gt; `...1`</span>
+<span class="co">#&gt; • `` -&gt; `...3`</span>
+<span class="co">#&gt; • `` -&gt; `...4`</span>
+<span class="co">#&gt; • `` -&gt; `...5`</span>
+<span class="co">#&gt; • `` -&gt; `...6`</span>
+<span class="co">#&gt; • `` -&gt; `...7`</span>
+<span class="co">#&gt; • `` -&gt; `...8`</span>
+<span class="co">#&gt; • `` -&gt; `...9`</span>
+<span class="co">#&gt; • `` -&gt; `...10`</span>
+<span class="va">trial_data2</span>
+<span class="co">#&gt; # A tibble: 403 × 10</span>
+<span class="co">#&gt;    ...1       `Data de ejemp…` ...3  ...4  ...5  ...6  ...7 </span>
+<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;</span>
+<span class="co">#&gt;  1 &lt;NA&gt;       &lt;NA&gt;             &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; </span>
+<span class="co">#&gt;  2 &lt;NA&gt;       &lt;NA&gt;             &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt;  &lt;NA&gt; </span>
+<span class="co">#&gt;  3 Patient n… Baseline 13C-UBT Rand… Foll… adve… adve… Adve…</span>
+<span class="co">#&gt;  4 1          Positive         grou… Nega… No    NA    NA   </span>
+<span class="co">#&gt;  5 2          Positive         grou… Nega… Yes   Fati… Mild </span>
+<span class="co">#&gt;  6 3          Positive         grou… Nega… No    NA    NA   </span>
+<span class="co">#&gt;  7 4          Positive         grou… Posi… Yes   Abdo… Mild </span>
+<span class="co">#&gt;  8 5          Positive         grou… Nega… Yes   Drow… Mild </span>
+<span class="co">#&gt;  9 6          Positive         grou… Nega… No    NA    NA   </span>
+<span class="co">#&gt; 10 7          Positive         grou… Nega… No    NA    NA   </span>
+<span class="co">#&gt; # … with 393 more rows, and 3 more variables: ...8 &lt;chr&gt;,</span>
+<span class="co">#&gt; #   ...9 &lt;chr&gt;, ...10 &lt;chr&gt;</span></code></pre></div>
+</div>
+<div id="solución" class="section level4" number="3.0.12.3">
+<h4>
+<span class="header-section-number">3.0.12.3</span> Solución<a class="anchor" aria-label="anchor" href="#soluci%C3%B3n"><i class="fas fa-link"></i></a>
+</h4>
+<p>Ya que en este caso la base de datos llamada researchdata2.xlsx empieza a mostrar datos relevantes a partir de la fila 4, requeriremos omitir o saltar (skip) 3 filas, se la siguiente manera:</p>
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data2</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span>
+  <span class="st">"_data/researchdata2.xlsx"</span>,
+  skip <span class="op">=</span> <span class="fl">3</span>
+  <span class="op">)</span>
+
+<span class="va">trial_data2</span>
+<span class="co">#&gt; # A tibble: 400 × 10</span>
+<span class="co">#&gt;    `Patient number` `Baseline 13C-UBT` `Randomized group`</span>
+<span class="co">#&gt;               &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;             </span>
+<span class="co">#&gt;  1                1 Positive           group B           </span>
+<span class="co">#&gt;  2                2 Positive           group A           </span>
+<span class="co">#&gt;  3                3 Positive           group B           </span>
+<span class="co">#&gt;  4                4 Positive           group A           </span>
+<span class="co">#&gt;  5                5 Positive           group A           </span>
+<span class="co">#&gt;  6                6 Positive           group A           </span>
+<span class="co">#&gt;  7                7 Positive           group B           </span>
+<span class="co">#&gt;  8                8 Positive           group A           </span>
+<span class="co">#&gt;  9                9 Positive           group A           </span>
+<span class="co">#&gt; 10               10 Positive           group A           </span>
+<span class="co">#&gt; # … with 390 more rows, and 7 more variables:</span>
+<span class="co">#&gt; #   `Follow-up13C-UBT (4 weeks after therapy)` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `adverse drug reactions` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `adverse drug reactions  content` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Adverse drug reaction classified` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Complete the study` &lt;chr&gt;, `Uncompleted Reason` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `per protocol analysis` &lt;chr&gt;</span></code></pre></div>
+
+</div>
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></div>
-<div class="empty"></div>
+<div class="next"><a href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav"><li>
@@ -278,14 +444,16 @@ tibble(
 <li><a class="nav-link" href="#qu%C3%A9-es-un-paquete"><span class="header-section-number">3.0.7</span> ¿Qué es un paquete?</a></li>
 <li><a class="nav-link" href="#instalaci%C3%B3n-de-paquetes-desde-cran"><span class="header-section-number">3.0.8</span> Instalación de paquetes desde CRAN</a></li>
 <li><a class="nav-link" href="#instalaci%C3%B3n-de-paquetes-v%C3%ADa-remotes"><span class="header-section-number">3.0.9</span> Instalación de paquetes vía remotes</a></li>
-<li><a class="nav-link" href="#importaci%C3%B3n-de-datos"><span class="header-section-number">3.0.10</span> Importación de datos</a></li>
+<li><a class="nav-link" href="#bases-de-datos-a-utilizar"><span class="header-section-number">3.0.10</span> Bases de datos a utilizar</a></li>
+<li><a class="nav-link" href="#importaci%C3%B3n-de-datos-i"><span class="header-section-number">3.0.11</span> Importación de datos I</a></li>
+<li><a class="nav-link" href="#importaci%C3%B3n-de-datos-ii"><span class="header-section-number">3.0.12</span> Importación de datos II</a></li>
 </ul>
 </li></ul>
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/02-sesion.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/02-sesion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/02_sesion.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/02_sesion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -297,7 +465,7 @@ tibble(
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-02-21.</p>
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-04-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

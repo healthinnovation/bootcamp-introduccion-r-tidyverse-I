@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 5 Sesión 04 | Introducción a R y Tidyverse</title>
+<meta name="author" content="Healthinnovation">
+<meta name="description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
+<meta name="generator" content="bookdown 0.26.1 with bs4_book()">
+<meta property="og:title" content="Capítulo 5 Sesión 04 | Introducción a R y Tidyverse">
+<meta property="og:type" content="book">
+<meta property="og:description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 5 Sesión 04 | Introducción a R y Tidyverse">
+<meta name="twitter:description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introducción a R y Tidyverse</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> ¡Bienvenidos!</a></li>
+<li><a class="" href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></li>
+<li><a class="" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
+<li><a class="" href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></li>
+<li><a class="active" href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sesión-04" class="section level1" number="5">
+<h1>
+<span class="header-section-number">Capítulo 5</span> Sesión 04<a class="anchor" aria-label="anchor" href="#sesi%C3%B3n-04"><i class="fas fa-link"></i></a>
+</h1>
+<div id="exploración-competencial-1" class="section level2" number="5.1">
+<h2>
+<span class="header-section-number">5.1</span> Exploración competencial<a class="anchor" aria-label="anchor" href="#exploraci%C3%B3n-competencial-1"><i class="fas fa-link"></i></a>
+</h2>
+<div id="uso-de-filter" class="section level3" number="5.1.1">
+<h3>
+<span class="header-section-number">5.1.1</span> Uso de filter()<a class="anchor" aria-label="anchor" href="#uso-de-filter"><i class="fas fa-link"></i></a>
+</h3>
+<div id="para-que-sirve-1" class="section level4" number="5.1.1.1">
+<h4>
+<span class="header-section-number">5.1.1.1</span> ¿Para que sirve?<a class="anchor" aria-label="anchor" href="#para-que-sirve-1"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li><p>Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones.
+Pueden incluirse varias condiciones dentro de un filtro.</p></li>
+<li>
+<p>Funciones y operadores útiles:</p>
+<ul>
+<li><p>De comparación: <code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>!=</code>, <code>%in%</code>, <code>is.na</code>, <code>!is.na</code></p></li>
+<li><p>De lógica: <code>&amp;</code>, <code>|</code>, <code>xor</code>, <code>!</code>, <code><a href="https://rdrr.io/r/base/any.html">any()</a></code>, <code><a href="https://rdrr.io/r/base/all.html">all()</a></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────── tidyverse 1.3.1 ──</span>
+<span class="co">#&gt; ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
+<span class="co">#&gt; ✓ tibble  3.1.6     ✓ dplyr   1.0.8</span>
+<span class="co">#&gt; ✓ tidyr   1.2.0     ✓ stringr 1.4.0</span>
+<span class="co">#&gt; ✓ readr   2.1.2     ✓ forcats 0.5.1</span>
+<span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
+<span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span>
+<span class="co">#&gt; # A tibble: 336,776 × 19</span>
+<span class="co">#&gt;     year month   day dep_time sched_dep_time dep_delay</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  2013     1     1      517            515         2</span>
+<span class="co">#&gt;  2  2013     1     1      533            529         4</span>
+<span class="co">#&gt;  3  2013     1     1      542            540         2</span>
+<span class="co">#&gt;  4  2013     1     1      544            545        -1</span>
+<span class="co">#&gt;  5  2013     1     1      554            600        -6</span>
+<span class="co">#&gt;  6  2013     1     1      554            558        -4</span>
+<span class="co">#&gt;  7  2013     1     1      555            600        -5</span>
+<span class="co">#&gt;  8  2013     1     1      557            600        -3</span>
+<span class="co">#&gt;  9  2013     1     1      557            600        -3</span>
+<span class="co">#&gt; 10  2013     1     1      558            600        -2</span>
+<span class="co">#&gt; # … with 336,766 more rows, and 13 more variables:</span>
+<span class="co">#&gt; #   arr_time &lt;int&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</span>
+<span class="co">#&gt; #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   time_hour &lt;dttm&gt;</span></code></pre></div>
+</div>
+<div id="ejemplo-2" class="section level4" number="5.1.1.2">
+<h4>
+<span class="header-section-number">5.1.1.2</span> Ejemplo<a class="anchor" aria-label="anchor" href="#ejemplo-2"><i class="fas fa-link"></i></a>
+</h4>
+<p>Esta data muestra información de la <a href="https://www.nhc.noaa.gov/data/#hurdat">NOAA</a> acerca de tormentas desde 1975 hasta el 2020.</p>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">storms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">status</span>, <span class="va">category</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 8 × 3</span>
+<span class="co">#&gt;   status              category     n</span>
+<span class="co">#&gt;   &lt;chr&gt;               &lt;ord&gt;    &lt;int&gt;</span>
+<span class="co">#&gt; 1 hurricane           1         1933</span>
+<span class="co">#&gt; 2 hurricane           2          749</span>
+<span class="co">#&gt; 3 hurricane           3          434</span>
+<span class="co">#&gt; 4 hurricane           4          411</span>
+<span class="co">#&gt; 5 hurricane           5           86</span>
+<span class="co">#&gt; 6 tropical depression -1        2898</span>
+<span class="co">#&gt; 7 tropical storm      0         5347</span>
+<span class="co">#&gt; 8 tropical storm      1            1</span></code></pre></div>
+<p>Si quisieramos solo trabajar con los huracanes de categoría 5, tendríamos que hacer lo siguiente con la función <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>:</p>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">storms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">status</span> <span class="op">==</span> <span class="st">"hurricane"</span>,
+         <span class="va">category</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 86 × 13</span>
+<span class="co">#&gt;    name   year month   day  hour   lat  long status category</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;ord&gt;   </span>
+<span class="co">#&gt;  1 Anita  1977     9     2     0  24.6 -96.2 hurri… 5       </span>
+<span class="co">#&gt;  2 Anita  1977     9     2     6  24.2 -97.1 hurri… 5       </span>
+<span class="co">#&gt;  3 David  1979     8    30     6  16   -64.2 hurri… 5       </span>
+<span class="co">#&gt;  4 David  1979     8    30    12  16.3 -65.2 hurri… 5       </span>
+<span class="co">#&gt;  5 David  1979     8    30    18  16.6 -66.2 hurri… 5       </span>
+<span class="co">#&gt;  6 David  1979     8    31     0  16.8 -67.3 hurri… 5       </span>
+<span class="co">#&gt;  7 David  1979     8    31     6  17   -68.3 hurri… 5       </span>
+<span class="co">#&gt;  8 David  1979     8    31    12  17.2 -69.1 hurri… 5       </span>
+<span class="co">#&gt;  9 David  1979     8    31    18  17.9 -69.7 hurri… 5       </span>
+<span class="co">#&gt; 10 Gilb…  1988     9    13    18  19.4 -82.5 hurri… 5       </span>
+<span class="co">#&gt; # … with 76 more rows, and 4 more variables: wind &lt;int&gt;,</span>
+<span class="co">#&gt; #   pressure &lt;int&gt;, tropicalstorm_force_diameter &lt;int&gt;,</span>
+<span class="co">#&gt; #   hurricane_force_diameter &lt;int&gt;</span></code></pre></div>
+</div>
+</div>
+</div>
+<div id="uso-de-select" class="section level2" number="5.2">
+<h2>
+<span class="header-section-number">5.2</span> Uso de select()<a class="anchor" aria-label="anchor" href="#uso-de-select"><i class="fas fa-link"></i></a>
+</h2>
+<ul>
+<li><p>Esta función permite seleccionar las variables de interés.</p></li>
+<li><p>Puede ser útil previo a un análisis de datos o solo si se desea tener una data menos larga.</p></li>
+<li><p>Para usarlo se puede nombrar a las variables dentro de la función <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> y/o usar el comando : para indcar hasta</p></li>
+</ul>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/select_01.png" width="100%"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/select_02.png" width="100%"></div>
+<p>El uso de las funciones con <strong>pipe</strong> (<code>%&gt;%</code>) permite anidarlas una tras otra. Además, si las columnas están una a lado de otra, podemos usar : para seleccionar varios al mismo tiempo.</p>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">storms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">status</span> <span class="op">==</span> <span class="st">"hurricane"</span>,
+         <span class="va">category</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span>, <span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span>, <span class="va">hour</span>, <span class="va">wind</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 86 × 6</span>
+<span class="co">#&gt;    name     year month   day  hour  wind</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1 Anita    1977     9     2     0   140</span>
+<span class="co">#&gt;  2 Anita    1977     9     2     6   150</span>
+<span class="co">#&gt;  3 David    1979     8    30     6   140</span>
+<span class="co">#&gt;  4 David    1979     8    30    12   145</span>
+<span class="co">#&gt;  5 David    1979     8    30    18   150</span>
+<span class="co">#&gt;  6 David    1979     8    31     0   145</span>
+<span class="co">#&gt;  7 David    1979     8    31     6   145</span>
+<span class="co">#&gt;  8 David    1979     8    31    12   145</span>
+<span class="co">#&gt;  9 David    1979     8    31    18   150</span>
+<span class="co">#&gt; 10 Gilbert  1988     9    13    18   140</span>
+<span class="co">#&gt; # … with 76 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">storms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">status</span> <span class="op">==</span> <span class="st">"hurricane"</span>,
+         <span class="va">category</span> <span class="op">==</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span><span class="op">:</span><span class="va">hour</span>, <span class="va">wind</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 86 × 6</span>
+<span class="co">#&gt;    name     year month   day  hour  wind</span>
+<span class="co">#&gt;    &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1 Anita    1977     9     2     0   140</span>
+<span class="co">#&gt;  2 Anita    1977     9     2     6   150</span>
+<span class="co">#&gt;  3 David    1979     8    30     6   140</span>
+<span class="co">#&gt;  4 David    1979     8    30    12   145</span>
+<span class="co">#&gt;  5 David    1979     8    30    18   150</span>
+<span class="co">#&gt;  6 David    1979     8    31     0   145</span>
+<span class="co">#&gt;  7 David    1979     8    31     6   145</span>
+<span class="co">#&gt;  8 David    1979     8    31    12   145</span>
+<span class="co">#&gt;  9 David    1979     8    31    18   150</span>
+<span class="co">#&gt; 10 Gilbert  1988     9    13    18   140</span>
+<span class="co">#&gt; # … with 76 more rows</span></code></pre></div>
+</div>
+<div id="mutate-ii-1" class="section level2" number="5.3">
+<h2>
+<span class="header-section-number">5.3</span> Mutate II<a class="anchor" aria-label="anchor" href="#mutate-ii-1"><i class="fas fa-link"></i></a>
+</h2>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/mutate_ilustration.png" width="100%"></div>
+<p>Esta función del paquete <code>dplyr</code> nos permite agregar o modificar las variables actuales en un conjunto de datos (dataframe). Tal y como ya lo vimos en la <a href="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#6">sesión 03</a>, esta función puede hacer cambios sobre una o múltiples variables existentes, así como crear varias a la vez serparándolas con una coma (<a href="https://bookdown.org/yih_huynh/Guide-to-R-Book/mutate.html">Y. Wendy Huynh,2019</a>).</p>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    var1 <span class="op">=</span> <span class="va">old_var</span><span class="op">*</span><span class="fl">2</span>,
+    var2 <span class="op">=</span> <span class="va">old_var</span><span class="op">*</span><span class="fl">3</span>,
+    var3 <span class="op">=</span> <span class="va">var1</span><span class="op">*</span><span class="va">var2</span>
+  <span class="op">)</span></code></pre></div>
+</div>
+<div id="mutate-ii-uso-de-across" class="section level2" number="5.4">
+<h2>
+<span class="header-section-number">5.4</span> Mutate II: Uso de across()<a class="anchor" aria-label="anchor" href="#mutate-ii-uso-de-across"><i class="fas fa-link"></i></a>
+</h2>
+<p>Haremos la prueba con la base storm. Usando la función <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> para aplicar una función a múltiples variables a la vez. En esta ocasión transformaremos en factores a las variables status y category de tormentas.</p>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">storms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span><span class="op">:</span><span class="va">pressure</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    status <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">status</span><span class="op">)</span>,
+    category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">as.factor</a></span><span class="op">(</span><span class="va">category</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 11,859</span>
+<span class="co">#&gt; Columns: 11</span>
+<span class="co">#&gt; $ name     &lt;chr&gt; "Amy", "Amy", "Amy", "Amy", "Amy", "Amy",…</span>
+<span class="co">#&gt; $ year     &lt;dbl&gt; 1975, 1975, 1975, 1975, 1975, 1975, 1975,…</span>
+<span class="co">#&gt; $ month    &lt;dbl&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,…</span>
+<span class="co">#&gt; $ day      &lt;int&gt; 27, 27, 27, 27, 28, 28, 28, 28, 29, 29, 2…</span>
+<span class="co">#&gt; $ hour     &lt;dbl&gt; 0, 6, 12, 18, 0, 6, 12, 18, 0, 6, 12, 18,…</span>
+<span class="co">#&gt; $ lat      &lt;dbl&gt; 27.5, 28.5, 29.5, 30.5, 31.5, 32.4, 33.3,…</span>
+<span class="co">#&gt; $ long     &lt;dbl&gt; -79.0, -79.0, -79.0, -79.0, -78.8, -78.7,…</span>
+<span class="co">#&gt; $ status   &lt;fct&gt; tropical depression, tropical depression,…</span>
+<span class="co">#&gt; $ category &lt;ord&gt; -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 0, …</span>
+<span class="co">#&gt; $ wind     &lt;int&gt; 25, 25, 25, 25, 25, 25, 25, 30, 35, 40, 4…</span>
+<span class="co">#&gt; $ pressure &lt;int&gt; 1013, 1013, 1013, 1013, 1012, 1012, 1011,…</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">storms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span><span class="op">:</span><span class="va">pressure</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/across.html">across</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">status</span>, <span class="va">category</span><span class="op">)</span>, <span class="va">as.factor</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 11,859</span>
+<span class="co">#&gt; Columns: 11</span>
+<span class="co">#&gt; $ name     &lt;chr&gt; "Amy", "Amy", "Amy", "Amy", "Amy", "Amy",…</span>
+<span class="co">#&gt; $ year     &lt;dbl&gt; 1975, 1975, 1975, 1975, 1975, 1975, 1975,…</span>
+<span class="co">#&gt; $ month    &lt;dbl&gt; 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6, 6,…</span>
+<span class="co">#&gt; $ day      &lt;int&gt; 27, 27, 27, 27, 28, 28, 28, 28, 29, 29, 2…</span>
+<span class="co">#&gt; $ hour     &lt;dbl&gt; 0, 6, 12, 18, 0, 6, 12, 18, 0, 6, 12, 18,…</span>
+<span class="co">#&gt; $ lat      &lt;dbl&gt; 27.5, 28.5, 29.5, 30.5, 31.5, 32.4, 33.3,…</span>
+<span class="co">#&gt; $ long     &lt;dbl&gt; -79.0, -79.0, -79.0, -79.0, -78.8, -78.7,…</span>
+<span class="co">#&gt; $ status   &lt;fct&gt; tropical depression, tropical depression,…</span>
+<span class="co">#&gt; $ category &lt;ord&gt; -1, -1, -1, -1, -1, -1, -1, -1, 0, 0, 0, …</span>
+<span class="co">#&gt; $ wind     &lt;int&gt; 25, 25, 25, 25, 25, 25, 25, 30, 35, 40, 4…</span>
+<span class="co">#&gt; $ pressure &lt;int&gt; 1013, 1013, 1013, 1013, 1012, 1012, 1011,…</span></code></pre></div>
+</div>
+<div id="mutate-ii-lubridate" class="section level2" number="5.5">
+<h2>
+<span class="header-section-number">5.5</span> Mutate II: lubridate<a class="anchor" aria-label="anchor" href="#mutate-ii-lubridate"><i class="fas fa-link"></i></a>
+</h2>
+<p>Muchas veces durante el pre-procesamiento de datos tenemos que enfrentarnos a manejo de fechas (crear, transformar, etc.). Para estos fines podemos usar <strong>las funciones del paquete</strong> <code>lubridate</code>.</p>
+<p>Para tener una mejor apreciación de la variable de fecha que crearemos, usaremos <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> para reposicionar a la variable creada.</p>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">storms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="va">name</span><span class="op">:</span><span class="va">pressure</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    date <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/make_datetime.html">make_date</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span>, <span class="va">day</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate</a></span><span class="op">(</span><span class="va">date</span>, .before <span class="op">=</span> <span class="va">year</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 11,859 × 12</span>
+<span class="co">#&gt;    name  date        year month   day  hour   lat  long</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;date&gt;     &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 Amy   1975-06-27  1975     6    27     0  27.5 -79  </span>
+<span class="co">#&gt;  2 Amy   1975-06-27  1975     6    27     6  28.5 -79  </span>
+<span class="co">#&gt;  3 Amy   1975-06-27  1975     6    27    12  29.5 -79  </span>
+<span class="co">#&gt;  4 Amy   1975-06-27  1975     6    27    18  30.5 -79  </span>
+<span class="co">#&gt;  5 Amy   1975-06-28  1975     6    28     0  31.5 -78.8</span>
+<span class="co">#&gt;  6 Amy   1975-06-28  1975     6    28     6  32.4 -78.7</span>
+<span class="co">#&gt;  7 Amy   1975-06-28  1975     6    28    12  33.3 -78  </span>
+<span class="co">#&gt;  8 Amy   1975-06-28  1975     6    28    18  34   -77  </span>
+<span class="co">#&gt;  9 Amy   1975-06-29  1975     6    29     0  34.4 -75.8</span>
+<span class="co">#&gt; 10 Amy   1975-06-29  1975     6    29     6  34   -74.8</span>
+<span class="co">#&gt; # … with 11,849 more rows, and 4 more variables:</span>
+<span class="co">#&gt; #   status &lt;chr&gt;, category &lt;ord&gt;, wind &lt;int&gt;,</span>
+<span class="co">#&gt; #   pressure &lt;int&gt;</span></code></pre></div>
+</div>
+<div id="uso-de-group_by" class="section level2" number="5.6">
+<h2>
+<span class="header-section-number">5.6</span> Uso de group_by()<a class="anchor" aria-label="anchor" href="#uso-de-group_by"><i class="fas fa-link"></i></a>
+</h2>
+<p>Esta función permite poder indicarle a R que las operaciones que hagamos en adelante, sean divididas y aplicadas por las agrupaciones que sea haya formado. Es decir, que se puede hacer la agrupación por una o múltiples variables.</p>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">storms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">year</span> <span class="op">&gt;=</span> <span class="fl">2010</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">name</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3,608 × 13</span>
+<span class="co">#&gt; # Groups:   name [112]</span>
+<span class="co">#&gt;    name   year month   day  hour   lat  long status category</span>
+<span class="co">#&gt;    &lt;chr&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;chr&gt;  &lt;ord&gt;   </span>
+<span class="co">#&gt;  1 Alex   2010     6    25    18  16.4 -83.1 tropi… -1      </span>
+<span class="co">#&gt;  2 Alex   2010     6    26     0  16.6 -83.9 tropi… -1      </span>
+<span class="co">#&gt;  3 Alex   2010     6    26     6  16.7 -84.9 tropi… 0       </span>
+<span class="co">#&gt;  4 Alex   2010     6    26    12  16.9 -86.1 tropi… 0       </span>
+<span class="co">#&gt;  5 Alex   2010     6    26    18  17.2 -87.2 tropi… 0       </span>
+<span class="co">#&gt;  6 Alex   2010     6    27     0  17.5 -88.2 tropi… 0       </span>
+<span class="co">#&gt;  7 Alex   2010     6    27     6  18   -89.1 tropi… 0       </span>
+<span class="co">#&gt;  8 Alex   2010     6    27    12  18.5 -90   tropi… 0       </span>
+<span class="co">#&gt;  9 Alex   2010     6    27    18  18.9 -90.7 tropi… 0       </span>
+<span class="co">#&gt; 10 Alex   2010     6    28     0  19.2 -91.1 tropi… 0       </span>
+<span class="co">#&gt; # … with 3,598 more rows, and 4 more variables: wind &lt;int&gt;,</span>
+<span class="co">#&gt; #   pressure &lt;int&gt;, tropicalstorm_force_diameter &lt;int&gt;,</span>
+<span class="co">#&gt; #   hurricane_force_diameter &lt;int&gt;</span></code></pre></div>
+<p>La función <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> solo configura como será el tratamiento de la data en adelante. No observará ningún cambio percepctible en los datos con excepción de:</p>
+<pre><code># Groups:   name [112]</code></pre>
+</div>
+<div id="uso-de-summarise" class="section level2" number="5.7">
+<h2>
+<span class="header-section-number">5.7</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise"><i class="fas fa-link"></i></a>
+</h2>
+<p>Esta función permite obtener algun resumen de los datos, como la media, desviación estándar, valores máximos, mínimos, calculos de prueba estadística, y la mayoría de funciones de esta naturaleza. El uso conjunto de <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> es una combinación perfecta.</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/group_by_01.png" width="100%"></div>
+<div class="sourceCode" id="cb76"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">mtcars</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">cyl</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    avg <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="co">#&gt; # A tibble: 3 × 2</span>
+<span class="co">#&gt;     cyl   avg</span>
+<span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt; 1     4  26.7</span>
+<span class="co">#&gt; 2     6  19.7</span>
+<span class="co">#&gt; 3     8  15.1</span></code></pre></div>
+</div>
+<div id="uso-de-summarise-1" class="section level2" number="5.8">
+<h2>
+<span class="header-section-number">5.8</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Usaremos la misma <a href="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#19">BD de COVID-19 que empleamos en la sesión 03</a>.</p>
+<p>Este dataset está alojada en el siguiente repositorio de GitHub (<a href="https://github.com/CSSEGISandData/COVID-19">click aquí</a>).</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/github_covid_1.png" width="100%"></div>
+<p>Mediante la función <code>read_csv</code> podremos importar la data directamente desde <strong>Github</strong>.</p>
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">covid19</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 284 Columns: 822</span>
+<span class="co">#&gt; ── Column specification ────────────────────────────────────</span>
+<span class="co">#&gt; Delimiter: ","</span>
+<span class="co">#&gt; chr   (2): Province/State, Country/Region</span>
+<span class="co">#&gt; dbl (820): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span>
+<span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
+<span class="va">covid19</span>
+<span class="co">#&gt; # A tibble: 284 × 822</span>
+<span class="co">#&gt;    `Province/State`  `Country/Region`   Lat   Long `1/22/20`</span>
+<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 &lt;NA&gt;              Afghanistan       33.9  67.7          0</span>
+<span class="co">#&gt;  2 &lt;NA&gt;              Albania           41.2  20.2          0</span>
+<span class="co">#&gt;  3 &lt;NA&gt;              Algeria           28.0   1.66         0</span>
+<span class="co">#&gt;  4 &lt;NA&gt;              Andorra           42.5   1.52         0</span>
+<span class="co">#&gt;  5 &lt;NA&gt;              Angola           -11.2  17.9          0</span>
+<span class="co">#&gt;  6 &lt;NA&gt;              Antarctica       -71.9  23.3          0</span>
+<span class="co">#&gt;  7 &lt;NA&gt;              Antigua and Bar…  17.1 -61.8          0</span>
+<span class="co">#&gt;  8 &lt;NA&gt;              Argentina        -38.4 -63.6          0</span>
+<span class="co">#&gt;  9 &lt;NA&gt;              Armenia           40.1  45.0          0</span>
+<span class="co">#&gt; 10 Australian Capit… Australia        -35.5 149.           0</span>
+<span class="co">#&gt; # … with 274 more rows, and 817 more variables:</span>
+<span class="co">#&gt; #   `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/1/20` &lt;dbl&gt;, `2/2/20` &lt;dbl&gt;, `2/3/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/4/20` &lt;dbl&gt;, `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;, …</span></code></pre></div>
+</div>
+<div id="uso-de-summarise-2" class="section level2" number="5.9">
+<h2>
+<span class="header-section-number">5.9</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise-2"><i class="fas fa-link"></i></a>
+</h2>
+<p>Recordar que primero debemos pivotear la data para poder trabajar con ella. Obtendremos resúmenes de casos por muerte COVID-19 por países.</p>
+<div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">covid19</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Lat</span><span class="op">:</span><span class="va">Long</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
+    cols <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">`Province/State`</span><span class="op">:</span><span class="va">`Country/Region`</span><span class="op">)</span>,
+    names_to <span class="op">=</span> <span class="st">"fecha"</span>,
+    values_to <span class="op">=</span> <span class="st">"fallecidos"</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Country/Region`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    M <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    DE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    Max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    Min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 198 × 5</span>
+<span class="co">#&gt;    `Country/Region`       M      DE    Max   Min</span>
+<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 US               452333. 305740. 988899     0</span>
+<span class="co">#&gt;  2 Brazil           325330. 243458. 662271     0</span>
+<span class="co">#&gt;  3 India            236318. 193372. 521966     0</span>
+<span class="co">#&gt;  4 Mexico           164019. 113885. 323944     0</span>
+<span class="co">#&gt;  5 Peru             122894.  76116. 212654     0</span>
+<span class="co">#&gt;  6 Russia           119528. 117685. 366209     0</span>
+<span class="co">#&gt;  7 Italy             86270.  51331. 161766     0</span>
+<span class="co">#&gt;  8 Colombia          66945.  52586. 139751     0</span>
+<span class="co">#&gt;  9 Iran              66048.  48315. 140854     0</span>
+<span class="co">#&gt; 10 Argentina         59771.  48107. 128344     0</span>
+<span class="co">#&gt; # … with 188 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op">&lt;-</span> <span class="va">covid19</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Lat</span><span class="op">:</span><span class="va">Long</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
+    cols <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">`Province/State`</span><span class="op">:</span><span class="va">`Country/Region`</span><span class="op">)</span>,
+    names_to <span class="op">=</span> <span class="st">"fecha"</span>,
+    values_to <span class="op">=</span> <span class="st">"fallecidos"</span>
+  <span class="op">)</span></code></pre></div>
+<p>Guardaremos la data pivoteada en un objeto llamado <strong>covid19_tidy</strong>, para no extender demasiado el código. Además, veamos lo sencillo que es poder introducir un filter a los resultados obtenidos.</p>
+<div class="sourceCode" id="cb80"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Country/Region`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    M <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    DE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    Max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    Min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 198 × 5</span>
+<span class="co">#&gt;    `Country/Region`       M      DE    Max   Min</span>
+<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 US               452333. 305740. 988899     0</span>
+<span class="co">#&gt;  2 Brazil           325330. 243458. 662271     0</span>
+<span class="co">#&gt;  3 India            236318. 193372. 521966     0</span>
+<span class="co">#&gt;  4 Mexico           164019. 113885. 323944     0</span>
+<span class="co">#&gt;  5 Peru             122894.  76116. 212654     0</span>
+<span class="co">#&gt;  6 Russia           119528. 117685. 366209     0</span>
+<span class="co">#&gt;  7 Italy             86270.  51331. 161766     0</span>
+<span class="co">#&gt;  8 Colombia          66945.  52586. 139751     0</span>
+<span class="co">#&gt;  9 Iran              66048.  48315. 140854     0</span>
+<span class="co">#&gt; 10 Argentina         59771.  48107. 128344     0</span>
+<span class="co">#&gt; # … with 188 more rows</span></code></pre></div>
+<div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    fecha <span class="op">=</span> <span class="fu">lubridate</span><span class="fu">::</span><span class="fu"><a href="https://lubridate.tidyverse.org/reference/ymd.html">mdy</a></span><span class="op">(</span><span class="va">fecha</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">fecha</span> <span class="op">&gt;</span> <span class="st">"2022-01-01"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">`Country/Region`</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>
+    M <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    DE <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    Max <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>,
+    Min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 198 × 5</span>
+<span class="co">#&gt;    `Country/Region`       M     DE    Max    Min</span>
+<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 US               926962. 52488. 988899 825097</span>
+<span class="co">#&gt;  2 Brazil           643144. 15699. 662271 619401</span>
+<span class="co">#&gt;  3 India            507215. 13648. 521966 481893</span>
+<span class="co">#&gt;  4 Russia           339858. 19291. 366209 304284</span>
+<span class="co">#&gt;  5 Mexico           314087.  8773. 323944 299544</span>
+<span class="co">#&gt;  6 Peru             208730.  3545. 212654 202782</span>
+<span class="co">#&gt;  7 Italy            151898.  7470. 161766 137646</span>
+<span class="co">#&gt;  8 Indonesia        148924.  4669. 155903 144097</span>
+<span class="co">#&gt;  9 Colombia         136612.  3492. 139751 130026</span>
+<span class="co">#&gt; 10 Iran             136084.  3491. 140854 131680</span>
+<span class="co">#&gt; # … with 188 more rows</span></code></pre></div>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#sesi%C3%B3n-04"><span class="header-section-number">5</span> Sesión 04</a></li>
+<li>
+<a class="nav-link" href="#exploraci%C3%B3n-competencial-1"><span class="header-section-number">5.1</span> Exploración competencial</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#uso-de-filter"><span class="header-section-number">5.1.1</span> Uso de filter()</a></li></ul>
+</li>
+<li><a class="nav-link" href="#uso-de-select"><span class="header-section-number">5.2</span> Uso de select()</a></li>
+<li><a class="nav-link" href="#mutate-ii-1"><span class="header-section-number">5.3</span> Mutate II</a></li>
+<li><a class="nav-link" href="#mutate-ii-uso-de-across"><span class="header-section-number">5.4</span> Mutate II: Uso de across()</a></li>
+<li><a class="nav-link" href="#mutate-ii-lubridate"><span class="header-section-number">5.5</span> Mutate II: lubridate</a></li>
+<li><a class="nav-link" href="#uso-de-group_by"><span class="header-section-number">5.6</span> Uso de group_by()</a></li>
+<li><a class="nav-link" href="#uso-de-summarise"><span class="header-section-number">5.7</span> Uso de summarise()</a></li>
+<li><a class="nav-link" href="#uso-de-summarise-1"><span class="header-section-number">5.8</span> Uso de summarise()</a></li>
+<li><a class="nav-link" href="#uso-de-summarise-2"><span class="header-section-number">5.9</span> Uso de summarise()</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/04_sesion.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/04_sesion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-04-19.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

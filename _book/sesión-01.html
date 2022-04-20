@@ -7,17 +7,21 @@
 <title>Capítulo 2 Sesión 01 | Introducción a R y Tidyverse</title>
 <meta name="author" content="Healthinnovation">
 <meta name="description" content="2.0.1 ¿Qué es Ciencia de Datos? La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo matematicas, estadistica, informatica, y tecnologia de la información. La Ciencia de Datos...">
-<meta name="generator" content="bookdown 0.24 with bs4_book()">
+<meta name="generator" content="bookdown 0.26.1 with bs4_book()">
 <meta property="og:title" content="Capítulo 2 Sesión 01 | Introducción a R y Tidyverse">
 <meta property="og:type" content="book">
 <meta property="og:description" content="2.0.1 ¿Qué es Ciencia de Datos? La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo matematicas, estadistica, informatica, y tecnologia de la información. La Ciencia de Datos...">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Capítulo 2 Sesión 01 | Introducción a R y Tidyverse">
 <meta name="twitter:description" content="2.0.1 ¿Qué es Ciencia de Datos? La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo matematicas, estadistica, informatica, y tecnologia de la información. La Ciencia de Datos...">
-<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/header-attrs-2.11/header-attrs.js"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
-<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><link rel="stylesheet" href="bs4_style.css">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -42,6 +46,8 @@
 <li><a class="" href="index.html"><span class="header-section-number">1</span> ¡Bienvenidos!</a></li>
 <li><a class="active" href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></li>
 <li><a class="" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
+<li><a class="" href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></li>
+<li><a class="" href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></li>
 </ul>
 
         <div class="book-extra">
@@ -59,42 +65,46 @@
 </h3>
 <p>La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo matematicas, estadistica, informatica, y tecnologia de la información.</p>
 <p>La Ciencia de Datos permite extraer información relevante de los datos.</p>
-<div class="inline-figure"><img src="https://raw.githubusercontent.com/healthinnovation/curso-introduccion-r-tidyverse/main/Sesi%C3%B3n%2001/img/ciencia_datos_1.png" width="60%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://user-images.githubusercontent.com/23284899/164083485-8a0cb088-e04d-4234-88f4-439289234530.png" width="60%" style="display: block; margin: auto;"></div>
 </div>
 <div id="por-qué-usar-r-para-ciencia-de-datos" class="section level3" number="2.0.2">
 <h3>
 <span class="header-section-number">2.0.2</span> ¿Por qué usar R para Ciencia de Datos?<a class="anchor" aria-label="anchor" href="#por-qu%C3%A9-usar-r-para-ciencia-de-datos"><i class="fas fa-link"></i></a>
 </h3>
 <p>R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para desarrollar proyectos de Ciencia de Datos.</p>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/ciencia_datos_2.png" width="90%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://user-images.githubusercontent.com/23284899/164085004-8f34ca37-3780-4790-91cc-c934f594b34b.png" width="90%" style="display: block; margin: auto;"></div>
 </div>
 <div id="reconocimiento-rstudio" class="section level3" number="2.0.3">
 <h3>
 <span class="header-section-number">2.0.3</span> Reconocimiento Rstudio<a class="anchor" aria-label="anchor" href="#reconocimiento-rstudio"><i class="fas fa-link"></i></a>
 </h3>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/01_IDE_Rdtudio_v1.png" width="85%" style="display: block; margin: auto;"></div>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/01_IDE_Rdtudio_v2.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/01_IDE_Rdtudio_v1.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/01_IDE_Rdtudio_v2.png" width="85%" style="display: block; margin: auto;"></div>
 </div>
 <div id="mover-paneles" class="section level3" number="2.0.4">
 <h3>
 <span class="header-section-number">2.0.4</span> Mover paneles<a class="anchor" aria-label="anchor" href="#mover-paneles"><i class="fas fa-link"></i></a>
 </h3>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/03_panel_v1.png" width="85%" style="display: block; margin: auto;"></div>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/03_panel_v2.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/03_panel_v1.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/03_panel_v2.png" width="85%" style="display: block; margin: auto;"></div>
 </div>
 <div id="personalización-de-rstudio" class="section level3" number="2.0.5">
 <h3>
 <span class="header-section-number">2.0.5</span> Personalización de Rstudio<a class="anchor" aria-label="anchor" href="#personalizaci%C3%B3n-de-rstudio"><i class="fas fa-link"></i></a>
 </h3>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/04_config_global_v1.png" width="85%" style="display: block; margin: auto;"></div>
-<p><strong>Modificaciones sobre la interfaz de Rstudio:</strong></p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/04_config_global_v1.png" width="85%" style="display: block; margin: auto;"></div>
+<div id="modificaciones-sobre-la-interfaz-de-rstudio" class="section level4" number="2.0.5.1">
+<h4>
+<span class="header-section-number">2.0.5.1</span> <strong>Modificaciones sobre la interfaz de Rstudio:</strong><a class="anchor" aria-label="anchor" href="#modificaciones-sobre-la-interfaz-de-rstudio"><i class="fas fa-link"></i></a>
+</h4>
 <ul>
 <li><p>Aumentar el zoom o utilizar el atajo: Ctrl y +</p></li>
 <li><p>Cambiar tipo de letra puede hacer un tanto más agradable la codificación. La letra Fira</p></li>
 <li><p>Code es bastante recomendable, pero se requiere instalar.</p></li>
 <li><p>El tema también puede ayudar en que la codificación sea más agradable. El paquete rsthemes, contiene muchos temas extras.</p></li>
 </ul>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/04_config_global_v2.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/04_config_global_v2.png" width="85%" style="display: block; margin: auto;"></div>
+</div>
 </div>
 <div id="por-qué-utilizar-proyectos" class="section level3" number="2.0.6">
 <h3>
@@ -115,27 +125,27 @@
 <ol style="list-style-type: decimal">
 <li>Seleccionamos “Project (None)” o “File” y luego, new project.</li>
 </ol>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_1.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_1.png" width="85%" style="display: block; margin: auto;"></div>
 <ol start="2" style="list-style-type: decimal">
 <li>“New Directory” se utiliza para indicar dónde voy a almacenar mis archivos y para que R cree una nueva carpeta para mi proyecto, mientras que “Existing Directory” se utiliza si ya tengo una carpeta en la cual voy a almacenar mis archivos. Seleccionamos “New Directory”.</li>
 </ol>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_3.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_3.png" width="85%" style="display: block; margin: auto;"></div>
 <ol start="3" style="list-style-type: decimal">
 <li>Aparecerán más opciones y seleccionamos nuevamente “New Project”</li>
 </ol>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_4.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_4.png" width="85%" style="display: block; margin: auto;"></div>
 <ol start="3" style="list-style-type: decimal">
 <li>En caso de haber seleccionado “Existing Directory” aparecerá esto y buscamos el nombre de la carpeta que utilizaremos.</li>
 </ol>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_5.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_5.png" width="85%" style="display: block; margin: auto;"></div>
 <ol start="4" style="list-style-type: decimal">
 <li>En “Directory name” ponemos el nombre de la carpeta que contendrá el archivo del proyecto, mientras que en “Create project as subdirectory of” seleccionamos dónde está la carpeta en la que trabajaremos.</li>
 </ol>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_6.png" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_6.png" width="85%" style="display: block; margin: auto;"></div>
 <ol start="5" style="list-style-type: decimal">
 <li>Resumen</li>
 </ol>
-<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_6.gif" width="85%" style="display: block; margin: auto;"></div>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_6.gif" width="85%" style="display: block; margin: auto;"></div>
 </div>
 <div id="vectores-atómicos" class="section level3" number="2.0.8">
 <h3>
@@ -219,8 +229,8 @@
 
       <div class="book-extra">
         <ul class="list-unstyled">
-<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/01-sesion.Rmd">View source <i class="fab fa-github"></i></a></li>
-          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/01-sesion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/01_sesion.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/01_sesion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
         </ul>
 </div>
     </nav>
@@ -232,7 +242,7 @@
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-02-21.</p>
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-04-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

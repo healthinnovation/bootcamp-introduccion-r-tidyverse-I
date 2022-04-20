@@ -1,7 +1,7 @@
 --- 
 title: "Introducción a R y Tidyverse"
 author: "Healthinnovation"
-date: "2022-02-21"
+date: "2022-04-19"
 site: bookdown::bookdown_site
 documentclass: book
 #bibliography: [book.bib, packages.bib]

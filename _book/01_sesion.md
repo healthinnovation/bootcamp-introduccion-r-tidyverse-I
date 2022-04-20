@@ -6,49 +6,34 @@ La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo mate
 
 La Ciencia de Datos permite extraer información relevante de los datos.
 
-```{r echo=FALSE, out.width="60%", fig.align='center'}
-knitr::include_graphics("https://raw.githubusercontent.com/healthinnovation/curso-introduccion-r-tidyverse/main/Sesi%C3%B3n%2001/img/ciencia_datos_1.png")
-```
+<img src="https://user-images.githubusercontent.com/23284899/164083485-8a0cb088-e04d-4234-88f4-439289234530.png" width="60%" style="display: block; margin: auto;" />
 
 
 ### ¿Por qué usar R para Ciencia de Datos?
 
 R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para desarrollar proyectos de Ciencia de Datos.
 
-
-```{r echo=FALSE, out.width="90%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/ciencia_datos_2.png")
-```
+<img src="https://user-images.githubusercontent.com/23284899/164085004-8f34ca37-3780-4790-91cc-c934f594b34b.png" width="90%" style="display: block; margin: auto;" />
 
 ### Reconocimiento Rstudio
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/01_IDE_Rdtudio_v1.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/01_IDE_Rdtudio_v1.png" width="85%" style="display: block; margin: auto;" />
 
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/01_IDE_Rdtudio_v2.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/01_IDE_Rdtudio_v2.png" width="85%" style="display: block; margin: auto;" />
 
 ### Mover paneles 
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/03_panel_v1.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/03_panel_v1.png" width="85%" style="display: block; margin: auto;" />
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/03_panel_v2.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/03_panel_v2.png" width="85%" style="display: block; margin: auto;" />
 
 
 ### Personalización de Rstudio
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/04_config_global_v1.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/04_config_global_v1.png" width="85%" style="display: block; margin: auto;" />
 
-**Modificaciones sobre la interfaz de Rstudio:**
+#### **Modificaciones sobre la interfaz de Rstudio:**
 
  - Aumentar el zoom o utilizar el atajo: Ctrl y +
  
@@ -58,9 +43,7 @@ knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r
  
  - El tema también puede ayudar en que la codificación sea más agradable. El paquete rsthemes, contiene muchos temas extras.
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/04_config_global_v2.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/04_config_global_v2.png" width="85%" style="display: block; margin: auto;" />
 
 
 ### ¿Por qué utilizar proyectos?
@@ -79,44 +62,30 @@ knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r
 
 1. Seleccionamos “Project (None)” o “File” y luego, new project.
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_1.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_1.png" width="85%" style="display: block; margin: auto;" />
 
 2. “New Directory” se utiliza para indicar dónde voy a almacenar mis archivos y para que R cree una nueva carpeta para mi proyecto, mientras que “Existing Directory” se utiliza si ya tengo una carpeta en la cual voy a almacenar mis archivos. Seleccionamos “New Directory”.
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_3.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_3.png" width="85%" style="display: block; margin: auto;" />
 
 3. Aparecerán más opciones y seleccionamos nuevamente “New Project”
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_4.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_4.png" width="85%" style="display: block; margin: auto;" />
 
 
 3. En caso de haber seleccionado “Existing Directory” aparecerá esto y buscamos el nombre de la carpeta que utilizaremos.
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_5.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_5.png" width="85%" style="display: block; margin: auto;" />
 
 
 4. En “Directory name” ponemos el nombre de la carpeta que contendrá el archivo del proyecto, mientras que en “Create project as subdirectory of” seleccionamos dónde está la carpeta en la que trabajaremos.
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_6.png")
-```
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_6.png" width="85%" style="display: block; margin: auto;" />
 
 
 5. Resumen
 
-```{r echo=FALSE, out.width="85%", fig.align='center'}
-knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/Sesi%C3%B3n%2001/img/creacion_proyectos_6.gif")
-```
-
-
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_6.gif" width="85%" style="display: block; margin: auto;" />
 
 ### Vectores atómicos 
 
@@ -134,47 +103,66 @@ knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r
 
 **Ejemplos:**
 
-```{r}
+
+```r
 v_numeric <- 5
 v_numeric
+#> [1] 5
 ```
 
-```{r}
+
+```r
 v_numeric <- c(5, 10, 15)
 v_numeric
+#> [1]  5 10 15
 ```
 
-```{r}
+
+```r
 typeof(v_numeric)
+#> [1] "double"
 ```
 
-```{r}
+
+```r
 v_character <- c("Laptop", "Rstudio", "4.2")
 v_character
+#> [1] "Laptop"  "Rstudio" "4.2"
 ```
 
 Los vectores solo pueden tener un solo tipo de información a la vez, así que si dentro de un vector se ingresa un elemento tipo numeric, este inmediatamente será transformado a character.
 
-```{r}
+
+```r
 v_character <- c("Laptop", "Rstudio", 4.2)
 v_character
+#> [1] "Laptop"  "Rstudio" "4.2"
 ```
 
-```{r}
+
+```r
 typeof(v_character)
+#> [1] "character"
 ```
 
 Ahora crearemos 2 vectores llamados nombres y edades.
 
 
-```{r}
+
+```r
 nombres <- c("Luis", "Mateo", "Carlos", "Eduardo")
 edades <- c(28, 30, 40, 35)
 ```
 
 A partir de esto, podemos construir algo con lo que probablemente estemos más familiarizados.
 
-```{r}
+
+```r
 data.frame(nombres, 
            edades)
+#>   nombres edades
+#> 1    Luis     28
+#> 2   Mateo     30
+#> 3  Carlos     40
+#> 4 Eduardo     35
 ```

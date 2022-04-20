@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 4 Sesión 03 | Introducción a R y Tidyverse</title>
+<meta name="author" content="Healthinnovation">
+<meta name="description" content="4.0.1 Función Glimpse Mediante la función: glimpse()  4.0.1.1 ¿Para que sirve? Versión transpuesta de print Ayuda a visualizar la mayor cantidad de datos de muchas columnas. Muestra el nombre de...">
+<meta name="generator" content="bookdown 0.26.1 with bs4_book()">
+<meta property="og:title" content="Capítulo 4 Sesión 03 | Introducción a R y Tidyverse">
+<meta property="og:type" content="book">
+<meta property="og:description" content="4.0.1 Función Glimpse Mediante la función: glimpse()  4.0.1.1 ¿Para que sirve? Versión transpuesta de print Ayuda a visualizar la mayor cantidad de datos de muchas columnas. Muestra el nombre de...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 4 Sesión 03 | Introducción a R y Tidyverse">
+<meta name="twitter:description" content="4.0.1 Función Glimpse Mediante la función: glimpse()  4.0.1.1 ¿Para que sirve? Versión transpuesta de print Ayuda a visualizar la mayor cantidad de datos de muchas columnas. Muestra el nombre de...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="bs4_style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introducción a R y Tidyverse</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> ¡Bienvenidos!</a></li>
+<li><a class="" href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></li>
+<li><a class="" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
+<li><a class="active" href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></li>
+<li><a class="" href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sesión-03" class="section level1" number="4">
+<h1>
+<span class="header-section-number">Capítulo 4</span> Sesión 03<a class="anchor" aria-label="anchor" href="#sesi%C3%B3n-03"><i class="fas fa-link"></i></a>
+</h1>
+<div id="función-glimpse" class="section level3" number="4.0.1">
+<h3>
+<span class="header-section-number">4.0.1</span> Función Glimpse<a class="anchor" aria-label="anchor" href="#funci%C3%B3n-glimpse"><i class="fas fa-link"></i></a>
+</h3>
+<p>Mediante la función:</p>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<div id="para-que-sirve" class="section level4" number="4.0.1.1">
+<h4>
+<span class="header-section-number">4.0.1.1</span> ¿Para que sirve?<a class="anchor" aria-label="anchor" href="#para-que-sirve"><i class="fas fa-link"></i></a>
+</h4>
+<ul>
+<li><p>Versión transpuesta de print</p></li>
+<li><p>Ayuda a visualizar la mayor cantidad de datos de muchas columnas.</p></li>
+<li><p>Muestra el nombre de la variable junto con una designación de tipo de variable.</p></li>
+</ul>
+<p><em><strong>Observación:</strong></em></p>
+<ul>
+<li>Recordar importar el paquete tidyverse:</li>
+</ul>
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────── tidyverse 1.3.1 ──</span>
+<span class="co">#&gt; ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
+<span class="co">#&gt; ✓ tibble  3.1.6     ✓ dplyr   1.0.8</span>
+<span class="co">#&gt; ✓ tidyr   1.2.0     ✓ stringr 1.4.0</span>
+<span class="co">#&gt; ✓ readr   2.1.2     ✓ forcats 0.5.1</span>
+<span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
+<ul>
+<li>Para el ejemplo se recomienda installar el siguiente paquete:</li>
+</ul>
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"nycflights13"</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="ejemplo" class="section level4" number="4.0.1.2">
+<h4>
+<span class="header-section-number">4.0.1.2</span> Ejemplo<a class="anchor" aria-label="anchor" href="#ejemplo"><i class="fas fa-link"></i></a>
+</h4>
+<p>Así habitualmente observamos la data:</p>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span>
+<span class="co">#&gt; # A tibble: 336,776 × 19</span>
+<span class="co">#&gt;     year month   day dep_time sched_dep_time dep_delay</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1  2013     1     1      517            515         2</span>
+<span class="co">#&gt;  2  2013     1     1      533            529         4</span>
+<span class="co">#&gt;  3  2013     1     1      542            540         2</span>
+<span class="co">#&gt;  4  2013     1     1      544            545        -1</span>
+<span class="co">#&gt;  5  2013     1     1      554            600        -6</span>
+<span class="co">#&gt;  6  2013     1     1      554            558        -4</span>
+<span class="co">#&gt;  7  2013     1     1      555            600        -5</span>
+<span class="co">#&gt;  8  2013     1     1      557            600        -3</span>
+<span class="co">#&gt;  9  2013     1     1      557            600        -3</span>
+<span class="co">#&gt; 10  2013     1     1      558            600        -2</span>
+<span class="co">#&gt; # … with 336,766 more rows, and 13 more variables:</span>
+<span class="co">#&gt; #   arr_time &lt;int&gt;, sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   carrier &lt;chr&gt;, flight &lt;int&gt;, tailnum &lt;chr&gt;,</span>
+<span class="co">#&gt; #   origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   time_hour &lt;dttm&gt;</span></code></pre></div>
+<p>Con <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>, podrás tener un vistazo rápido de la estructura de los datos:</p>
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://dplyr.tidyverse.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span><span class="op">)</span>
+<span class="co">#&gt; Rows: 336,776</span>
+<span class="co">#&gt; Columns: 19</span>
+<span class="co">#&gt; $ year           &lt;int&gt; 2013, 2013, 2013, 2013, 2013, 2013,…</span>
+<span class="co">#&gt; $ month          &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span>
+<span class="co">#&gt; $ day            &lt;int&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,…</span>
+<span class="co">#&gt; $ dep_time       &lt;int&gt; 517, 533, 542, 544, 554, 554, 555, …</span>
+<span class="co">#&gt; $ sched_dep_time &lt;int&gt; 515, 529, 540, 545, 600, 558, 600, …</span>
+<span class="co">#&gt; $ dep_delay      &lt;dbl&gt; 2, 4, 2, -1, -6, -4, -5, -3, -3, -2…</span>
+<span class="co">#&gt; $ arr_time       &lt;int&gt; 830, 850, 923, 1004, 812, 740, 913,…</span>
+<span class="co">#&gt; $ sched_arr_time &lt;int&gt; 819, 830, 850, 1022, 837, 728, 854,…</span>
+<span class="co">#&gt; $ arr_delay      &lt;dbl&gt; 11, 20, 33, -18, -25, 12, 19, -14, …</span>
+<span class="co">#&gt; $ carrier        &lt;chr&gt; "UA", "UA", "AA", "B6", "DL", "UA",…</span>
+<span class="co">#&gt; $ flight         &lt;int&gt; 1545, 1714, 1141, 725, 461, 1696, 5…</span>
+<span class="co">#&gt; $ tailnum        &lt;chr&gt; "N14228", "N24211", "N619AA", "N804…</span>
+<span class="co">#&gt; $ origin         &lt;chr&gt; "EWR", "LGA", "JFK", "JFK", "LGA", …</span>
+<span class="co">#&gt; $ dest           &lt;chr&gt; "IAH", "IAH", "MIA", "BQN", "ATL", …</span>
+<span class="co">#&gt; $ air_time       &lt;dbl&gt; 227, 227, 160, 183, 116, 150, 158, …</span>
+<span class="co">#&gt; $ distance       &lt;dbl&gt; 1400, 1416, 1089, 1576, 762, 719, 1…</span>
+<span class="co">#&gt; $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6,…</span>
+<span class="co">#&gt; $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, …</span>
+<span class="co">#&gt; $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05…</span></code></pre></div>
+<p>Generalmente la vista de <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code> es suficientemente ordenada para poder observar la estructura de la data sin problemas. Pero también se puede usar el argumento <code>width</code> para poder especificar ello.</p>
+<pre><code>glimpse(nycflights13::flights, width = 90)</code></pre>
+</div>
+</div>
+<div id="operador-pipe" class="section level3" number="4.0.2">
+<h3>
+<span class="header-section-number">4.0.2</span> Operador Pipe %&gt;%<a class="anchor" aria-label="anchor" href="#operador-pipe"><i class="fas fa-link"></i></a>
+</h3>
+<p>Útil para concatenar múltiples operaciones en <code>dplyr</code>.</p>
+<div class="inline-figure">Atajo de Teclado:
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/atajo_pipe.svg" width="100%">
+</div>
+<p>En algunas ocasiones cuando se desea aplicar una función de forma anidada puede resultar ilegible o difícil de comprender, aquí un ejemplo.</p>
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">tabla</span><span class="op">(</span><span class="fu">formato</span><span class="op">(</span><span class="fu">coeficiente</span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>El operador <code>%&gt;%</code> nos permite escribir de una secuencia de operaciones de izquierda a derecha :</p>
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">coeficiente</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">formato</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> <span class="fu">tabla</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>Esta forma de programar hace que los códigos sean más legibles por muchos usarios y más si
+empleamos la siguiente estructura.</p>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">coeficiente</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">formato</span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">tabla</span><span class="op">(</span><span class="op">)</span></code></pre></div>
+</div>
+<div id="función-mutate" class="section level3" number="4.0.3">
+<h3>
+<span class="header-section-number">4.0.3</span> Función mutate()<a class="anchor" aria-label="anchor" href="#funci%C3%B3n-mutate"><i class="fas fa-link"></i></a>
+</h3>
+<p>Con <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> podemos realizar modificaciones en las variables. Por ej. sumar variables, o modificarlas de alguna manera (transformar a porcentaje, multiplicarlas por alguna constante, etc.). Estas modificaciones pueden realizarse:</p>
+<ul>
+<li><p>Creando una nueva variable a partir de otras ya existentes.</p></li>
+<li><p>Modificar una variable existente en la misma variable.</p></li>
+</ul>
+<div id="ejemplo-1" class="section level4" number="4.0.3.1">
+<h4>
+<span class="header-section-number">4.0.3.1</span> Ejemplo:<a class="anchor" aria-label="anchor" href="#ejemplo-1"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="va">df</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    New_var <span class="op">=</span> <span class="va">var</span><span class="op">*</span><span class="fl">2</span>
+  <span class="op">)</span></code></pre></div>
+<p><em><strong>Explicación:</strong></em></p>
+<p><em>En una data llamada df se estaría aplicando la función mutate creando una variable llamada New_var a partir de otra variable llamada var que está siendo multiplicada por 2.</em></p>
+</div>
+</div>
+<div id="uso-práctico-de-mutate" class="section level2" number="4.1">
+<h2>
+<span class="header-section-number">4.1</span> Uso práctico de mutate()<a class="anchor" aria-label="anchor" href="#uso-pr%C3%A1ctico-de-mutate"><i class="fas fa-link"></i></a>
+</h2>
+<div id="reconocimiento-de-base-de-datos" class="section level3" number="4.1.1">
+<h3>
+<span class="header-section-number">4.1.1</span> Reconocimiento de Base de datos<a class="anchor" aria-label="anchor" href="#reconocimiento-de-base-de-datos"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para esta ejemplificación usaremos la base de datos del ECA sobre la <a href="https://www.nature.com/articles/s41598-018-27482-2">erradicación de la infección por Helicobácter Pylori</a> explicado en la <a href="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#14">sesión 02</a>.</p>
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op">&lt;-</span> <span class="fu">readxl</span><span class="fu">::</span><span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"_data/researchdata.xlsx"</span><span class="op">)</span>
+<span class="va">trial_data</span>
+<span class="co">#&gt; # A tibble: 400 × 10</span>
+<span class="co">#&gt;    `Patient number` `Baseline 13C-UBT` `Randomized group`</span>
+<span class="co">#&gt;               &lt;dbl&gt; &lt;chr&gt;              &lt;chr&gt;             </span>
+<span class="co">#&gt;  1                1 Positive           group B           </span>
+<span class="co">#&gt;  2                2 Positive           group A           </span>
+<span class="co">#&gt;  3                3 Positive           group B           </span>
+<span class="co">#&gt;  4                4 Positive           group A           </span>
+<span class="co">#&gt;  5                5 Positive           group A           </span>
+<span class="co">#&gt;  6                6 Positive           group A           </span>
+<span class="co">#&gt;  7                7 Positive           group B           </span>
+<span class="co">#&gt;  8                8 Positive           group A           </span>
+<span class="co">#&gt;  9                9 Positive           group A           </span>
+<span class="co">#&gt; 10               10 Positive           group A           </span>
+<span class="co">#&gt; # … with 390 more rows, and 7 more variables:</span>
+<span class="co">#&gt; #   `Follow-up13C-UBT (4 weeks after therapy)` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `adverse drug reactions` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `adverse drug reactions  content` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Adverse drug reaction classified` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `Complete the study` &lt;chr&gt;, `Uncompleted Reason` &lt;chr&gt;,</span>
+<span class="co">#&gt; #   `per protocol analysis` &lt;chr&gt;</span></code></pre></div>
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">trial_data</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 400</span>
+<span class="co">#&gt; Columns: 10</span>
+<span class="co">#&gt; $ `Patient number`                           &lt;dbl&gt; 1, 2, 3…</span>
+<span class="co">#&gt; $ `Baseline 13C-UBT`                         &lt;chr&gt; "Positi…</span>
+<span class="co">#&gt; $ `Randomized group`                         &lt;chr&gt; "group …</span>
+<span class="co">#&gt; $ `Follow-up13C-UBT (4 weeks after therapy)` &lt;chr&gt; "Negati…</span>
+<span class="co">#&gt; $ `adverse drug reactions`                   &lt;chr&gt; "No", "…</span>
+<span class="co">#&gt; $ `adverse drug reactions  content`          &lt;chr&gt; "NA", "…</span>
+<span class="co">#&gt; $ `Adverse drug reaction classified`         &lt;chr&gt; "NA", "…</span>
+<span class="co">#&gt; $ `Complete the study`                       &lt;chr&gt; "Yes", …</span>
+<span class="co">#&gt; $ `Uncompleted Reason`                       &lt;chr&gt; "NA", "…</span>
+<span class="co">#&gt; $ `per protocol analysis`                    &lt;chr&gt; "Yes", …</span></code></pre></div>
+</div>
+<div id="janitor" class="section level3" number="4.1.2">
+<h3>
+<span class="header-section-number">4.1.2</span> Janitor<a class="anchor" aria-label="anchor" href="#janitor"><i class="fas fa-link"></i></a>
+</h3>
+<p>En algunas ocasiones las base de datos contienen nombres de variables muy largas o que incluso pueden contener espacios o símbolos. Una forma sencilla de solucionar ello es mediante el uso de la función <code>clean_names()</code> del paquete <code>janitor</code>.</p>
+<p><em>Observación:</em>
+- Para instalar el paquete janitor,empleamos la siguiente función:</p>
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"janitor"</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op">&lt;-</span> <span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu">janitor</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">clean_names</a></span><span class="op">(</span><span class="op">)</span> 
+<span class="va">trial_data</span>
+<span class="co">#&gt; # A tibble: 400 × 10</span>
+<span class="co">#&gt;    patient_number baseline_13c_ubt randomized_group</span>
+<span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;           </span>
+<span class="co">#&gt;  1              1 Positive         group B         </span>
+<span class="co">#&gt;  2              2 Positive         group A         </span>
+<span class="co">#&gt;  3              3 Positive         group B         </span>
+<span class="co">#&gt;  4              4 Positive         group A         </span>
+<span class="co">#&gt;  5              5 Positive         group A         </span>
+<span class="co">#&gt;  6              6 Positive         group A         </span>
+<span class="co">#&gt;  7              7 Positive         group B         </span>
+<span class="co">#&gt;  8              8 Positive         group A         </span>
+<span class="co">#&gt;  9              9 Positive         group A         </span>
+<span class="co">#&gt; 10             10 Positive         group A         </span>
+<span class="co">#&gt; # … with 390 more rows, and 7 more variables:</span>
+<span class="co">#&gt; #   follow_up13c_ubt_4_weeks_after_therapy &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reactions &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reactions_content &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reaction_classified &lt;chr&gt;,</span>
+<span class="co">#&gt; #   complete_the_study &lt;chr&gt;, uncompleted_reason &lt;chr&gt;,</span>
+<span class="co">#&gt; #   per_protocol_analysis &lt;chr&gt;</span></code></pre></div>
+</div>
+<div id="rename" class="section level3" number="4.1.3">
+<h3>
+<span class="header-section-number">4.1.3</span> Rename<a class="anchor" aria-label="anchor" href="#rename"><i class="fas fa-link"></i></a>
+</h3>
+<p>A pesar de que <code><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">janitor::clean_names()</a></code> nos proporciona una gran solución para el formateo de nombres de variables que tienen espacios y/o símbolos, a veces podría ser necesario modificar específicamente el nombre de algunas variables. Para ello usaremos la función rename de la siguiente manera:</p>
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op">&lt;-</span> <span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/rename.html">rename</a></span><span class="op">(</span>
+    follow_4_weeks <span class="op">=</span> <span class="va">follow_up13c_ubt_4_weeks_after_therapy</span>
+  <span class="op">)</span>
+<span class="va">trial_data</span>
+<span class="co">#&gt; # A tibble: 400 × 10</span>
+<span class="co">#&gt;    patient_number baseline_13c_ubt randomized_group</span>
+<span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;            &lt;chr&gt;           </span>
+<span class="co">#&gt;  1              1 Positive         group B         </span>
+<span class="co">#&gt;  2              2 Positive         group A         </span>
+<span class="co">#&gt;  3              3 Positive         group B         </span>
+<span class="co">#&gt;  4              4 Positive         group A         </span>
+<span class="co">#&gt;  5              5 Positive         group A         </span>
+<span class="co">#&gt;  6              6 Positive         group A         </span>
+<span class="co">#&gt;  7              7 Positive         group B         </span>
+<span class="co">#&gt;  8              8 Positive         group A         </span>
+<span class="co">#&gt;  9              9 Positive         group A         </span>
+<span class="co">#&gt; 10             10 Positive         group A         </span>
+<span class="co">#&gt; # … with 390 more rows, and 7 more variables:</span>
+<span class="co">#&gt; #   follow_4_weeks &lt;chr&gt;, adverse_drug_reactions &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reactions_content &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reaction_classified &lt;chr&gt;,</span>
+<span class="co">#&gt; #   complete_the_study &lt;chr&gt;, uncompleted_reason &lt;chr&gt;,</span>
+<span class="co">#&gt; #   per_protocol_analysis &lt;chr&gt;</span></code></pre></div>
+</div>
+<div id="mutate-i" class="section level3" number="4.1.4">
+<h3>
+<span class="header-section-number">4.1.4</span> Mutate I<a class="anchor" aria-label="anchor" href="#mutate-i"><i class="fas fa-link"></i></a>
+</h3>
+<p>Una de las primeras cosas que podemos hacer con <code>mutate</code> durante el primer contacto con la data que trabajemos es:</p>
+<ul>
+<li><p>Configurar variables <code>ID</code> como <strong>texto</strong> (<code>character</code>).</p></li>
+<li><p>Configurar variables como <strong>factores</strong>.</p></li>
+<li><p>Configurar respuestas <code>NA</code> en caso tengan alguna otra codificación.</p></li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>Configurar la variable <strong>ID</strong>
+</li>
+</ol>
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    patient_number <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">patient_number</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="co">#&gt; # A tibble: 400 × 10</span>
+<span class="co">#&gt;    patient_number baseline_13c_ubt randomized_group</span>
+<span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;           </span>
+<span class="co">#&gt;  1 1              Positive         group B         </span>
+<span class="co">#&gt;  2 2              Positive         group A         </span>
+<span class="co">#&gt;  3 3              Positive         group B         </span>
+<span class="co">#&gt;  4 4              Positive         group A         </span>
+<span class="co">#&gt;  5 5              Positive         group A         </span>
+<span class="co">#&gt;  6 6              Positive         group A         </span>
+<span class="co">#&gt;  7 7              Positive         group B         </span>
+<span class="co">#&gt;  8 8              Positive         group A         </span>
+<span class="co">#&gt;  9 9              Positive         group A         </span>
+<span class="co">#&gt; 10 10             Positive         group A         </span>
+<span class="co">#&gt; # … with 390 more rows, and 7 more variables:</span>
+<span class="co">#&gt; #   follow_4_weeks &lt;chr&gt;, adverse_drug_reactions &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reactions_content &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reaction_classified &lt;chr&gt;,</span>
+<span class="co">#&gt; #   complete_the_study &lt;chr&gt;, uncompleted_reason &lt;chr&gt;,</span>
+<span class="co">#&gt; #   per_protocol_analysis &lt;chr&gt;</span></code></pre></div>
+</div>
+<div id="mutate-ii" class="section level3" number="4.1.5">
+<h3>
+<span class="header-section-number">4.1.5</span> Mutate II<a class="anchor" aria-label="anchor" href="#mutate-ii"><i class="fas fa-link"></i></a>
+</h3>
+<ol start="2" style="list-style-type: decimal">
+<li>Configurar <strong>factores</strong>
+</li>
+</ol>
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    randomized_group <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">randomized_group</span><span class="op">)</span>,
+    complete_the_study <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span><span class="op">(</span><span class="va">complete_the_study</span><span class="op">)</span>
+  <span class="op">)</span>
+<span class="co">#&gt; # A tibble: 400 × 10</span>
+<span class="co">#&gt;    patient_number baseline_13c_ubt randomized_group</span>
+<span class="co">#&gt;             &lt;dbl&gt; &lt;chr&gt;            &lt;fct&gt;           </span>
+<span class="co">#&gt;  1              1 Positive         group B         </span>
+<span class="co">#&gt;  2              2 Positive         group A         </span>
+<span class="co">#&gt;  3              3 Positive         group B         </span>
+<span class="co">#&gt;  4              4 Positive         group A         </span>
+<span class="co">#&gt;  5              5 Positive         group A         </span>
+<span class="co">#&gt;  6              6 Positive         group A         </span>
+<span class="co">#&gt;  7              7 Positive         group B         </span>
+<span class="co">#&gt;  8              8 Positive         group A         </span>
+<span class="co">#&gt;  9              9 Positive         group A         </span>
+<span class="co">#&gt; 10             10 Positive         group A         </span>
+<span class="co">#&gt; # … with 390 more rows, and 7 more variables:</span>
+<span class="co">#&gt; #   follow_4_weeks &lt;chr&gt;, adverse_drug_reactions &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reactions_content &lt;chr&gt;,</span>
+<span class="co">#&gt; #   adverse_drug_reaction_classified &lt;chr&gt;,</span>
+<span class="co">#&gt; #   complete_the_study &lt;fct&gt;, uncompleted_reason &lt;chr&gt;,</span>
+<span class="co">#&gt; #   per_protocol_analysis &lt;chr&gt;</span></code></pre></div>
+<ol start="3" style="list-style-type: decimal">
+<li>Configurar respuestas <code>NA</code>
+</li>
+</ol>
+<p>Para reemplazar respuestas dependiendo de una condición en particular se puede utilizar la función <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> dentro de un <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>.</p>
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    Var <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+      <span class="va">Var</span> <span class="op">==</span> <span class="st">"Text"</span> <span class="op">~</span> <span class="st">"New_Text"</span>, 
+      <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">Var</span>
+    <span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<p>De esta manera en la variable <code>Var</code> se reemplazará todos los casos que registren el dato de <strong>Text</strong> por <strong>New_Text</strong> .</p>
+</div>
+<div id="uso-de-count" class="section level3" number="4.1.6">
+<h3>
+<span class="header-section-number">4.1.6</span> Uso de count<a class="anchor" aria-label="anchor" href="#uso-de-count"><i class="fas fa-link"></i></a>
+</h3>
+<p>La función count es bastante sencilla y poderosa a la vez. Permite obtener una tabla en formato tibble que representará las frecuencias (cantidades n) de una o múltiples variables en específico.</p>
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">adverse_drug_reactions</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 4 × 2</span>
+<span class="co">#&gt;   adverse_drug_reactions     n</span>
+<span class="co">#&gt;   &lt;chr&gt;                  &lt;int&gt;</span>
+<span class="co">#&gt; 1 NA                        10</span>
+<span class="co">#&gt; 2 No                       295</span>
+<span class="co">#&gt; 3 Yes                       94</span>
+<span class="co">#&gt; 4 &lt;NA&gt;                       1</span></code></pre></div>
+<p>La tabla generada muestra que cantidad de personas han tenido reacciones adversas a los medicamentos ya sea en el Grupo A o B. Sin embargo, también se aprecia que hay <strong>2</strong> respuestas que indican la presencia de datos vacíos: <code>NA</code> y <code>&lt;NA&gt;</code>. El primero está codificado directamente como texto (<code>character</code>) y sel segudo es un <code>NA</code> real, es decir que comunica la ausencia de un dato.</p>
+</div>
+<div id="uso-de-mutate-y-case_when" class="section level3" number="4.1.7">
+<h3>
+<span class="header-section-number">4.1.7</span> Uso de mutate() y case_when()<a class="anchor" aria-label="anchor" href="#uso-de-mutate-y-case_when"><i class="fas fa-link"></i></a>
+</h3>
+<div id="explicación-previa-del-na" class="section level4" number="4.1.7.1">
+<h4>
+<span class="header-section-number">4.1.7.1</span> Explicación previa del NA<a class="anchor" aria-label="anchor" href="#explicaci%C3%B3n-previa-del-na"><i class="fas fa-link"></i></a>
+</h4>
+<p>Al importar las bases de datos dentro de R, la gran mayoría de funciones (como <code>read_excel()</code>) interpretarán los valors en blanco o celdas vacías como reales <code>NA</code>. Sin embargo si en las celdas se ha llenado explícitamente el texto <code>NA</code> o se ha usado alguna codificación diferente, el valor de <code>NA</code> no se introducirá automáticamente y habrá que indicarlo como tal (<code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>).</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/view_excel_na.png" width="100%"></div>
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">adverse_drug_reactions</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 4 × 2</span>
+<span class="co">#&gt;   adverse_drug_reactions     n</span>
+<span class="co">#&gt;   &lt;chr&gt;                  &lt;int&gt;</span>
+<span class="co">#&gt; 1 NA                        10</span>
+<span class="co">#&gt; 2 No                       295</span>
+<span class="co">#&gt; 3 Yes                       94</span>
+<span class="co">#&gt; 4 &lt;NA&gt;                       1</span></code></pre></div>
+</div>
+<div id="uso-de-case_when" class="section level4" number="4.1.7.2">
+<h4>
+<span class="header-section-number">4.1.7.2</span> Uso de case_when()<a class="anchor" aria-label="anchor" href="#uso-de-case_when"><i class="fas fa-link"></i></a>
+</h4>
+<p>La función <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> tiene una aplicación directa y perfecta para estos fines, en el que recodificaremos el <code>NA</code> introducido como texto a un <code>NA</code> real que sea reconocido como tal. El mismo procedimiento se utilizaría si los valores faltantes o perdidos se hubieran codificado de otra forma (ej. <strong>777</strong> o <strong>999</strong>).</p>
+<p>Recordar que con pipe (<code>%&gt;%</code>) podemos anidar muchas funciones en un solo bloque:</p>
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    adverse_drug_reactions <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+      <span class="va">adverse_drug_reactions</span> <span class="op">==</span> <span class="st">"NA"</span> <span class="op">~</span> <span class="cn">NA_character_</span>,
+      <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">adverse_drug_reactions</span>
+    <span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<p>El código <code>TRUE ~ adverse_drug_reactions</code> significa que <strong>todos los demás casos</strong> mantendrán el valor original que el de la variable.</p>
+<pre><code>#&gt; # A tibble: 1 × 1
+#&gt;       n
+#&gt;   &lt;int&gt;
+#&gt; 1   400</code></pre>
+</div>
+<div id="advertencia" class="section level4" number="4.1.7.3">
+<h4>
+<span class="header-section-number">4.1.7.3</span> Advertencia<a class="anchor" aria-label="anchor" href="#advertencia"><i class="fas fa-link"></i></a>
+</h4>
+<p>La función case_when requiere respetar de forma estricta el tipo de vector utilizado. Es decir que si se le pide recodificar una variable a número, y dentro de esa variable continúan habiendo textos, habrá un problema de no-coerción. Es por ese motivo que en el anterior ejemplo se usa NA_character en vez de únicamente NA, ya que este elemento como tal en realidad es de tipo lógico.</p>
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="cn">NA</span><span class="op">)</span>
+<span class="co">#&gt; [1] "logical"</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="cn">NA_character_</span><span class="op">)</span>
+<span class="co">#&gt; [1] "character"</span></code></pre></div>
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/typeof.html">typeof</a></span><span class="op">(</span><span class="cn">NA_real_</span><span class="op">)</span>
+<span class="co">#&gt; [1] "double"</span></code></pre></div>
+</div>
+</div>
+<div id="más-sobre-case_when" class="section level3" number="4.1.8">
+<h3>
+<span class="header-section-number">4.1.8</span> Más sobre case_when()<a class="anchor" aria-label="anchor" href="#m%C3%A1s-sobre-case_when"><i class="fas fa-link"></i></a>
+</h3>
+<p>Anteriormente vimos como usar la función <code>case_when</code> para recategorizar/recodificar variables en base a una condición de igualdad (<code>==</code>). Sin embargo, no es la única manera. También se puede recategorizar en base a múltiples condiciones, como <code>%in%</code> (comparar con múltiples valores a la vez), <code>&gt;</code>, <code>&gt;=</code>, <code>&lt;</code> y <code>&lt;=</code>, en conjunto con <code>&amp;</code> y <code>|</code>.</p>
+<p>Para ejemplificar esto haremos una recategorización de la base nycflights13::flights:</p>
+<div class="sourceCode" id="cb53"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">year</span>, <span class="va">month</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 12 × 3</span>
+<span class="co">#&gt;     year month     n</span>
+<span class="co">#&gt;    &lt;int&gt; &lt;int&gt; &lt;int&gt;</span>
+<span class="co">#&gt;  1  2013     1 27004</span>
+<span class="co">#&gt;  2  2013     2 24951</span>
+<span class="co">#&gt;  3  2013     3 28834</span>
+<span class="co">#&gt;  4  2013     4 28330</span>
+<span class="co">#&gt;  5  2013     5 28796</span>
+<span class="co">#&gt;  6  2013     6 28243</span>
+<span class="co">#&gt;  7  2013     7 29425</span>
+<span class="co">#&gt;  8  2013     8 29327</span>
+<span class="co">#&gt;  9  2013     9 27574</span>
+<span class="co">#&gt; 10  2013    10 28889</span>
+<span class="co">#&gt; 11  2013    11 27268</span>
+<span class="co">#&gt; 12  2013    12 28135</span></code></pre></div>
+<p>Consideraremos del mes 1 hasta el 6 como 2013-I y a partir del mes 7, como 2013-II.</p>
+<div class="sourceCode" id="cb54"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    year <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+      <span class="va">month</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fl">1</span><span class="op">:</span><span class="fl">6</span> <span class="op">~</span> <span class="st">"2013-I"</span>,
+      <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"2013-II"</span>
+    <span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 × 2</span>
+<span class="co">#&gt;   year         n</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span>
+<span class="co">#&gt; 1 2013-I  166158</span>
+<span class="co">#&gt; 2 2013-II 170618</span></code></pre></div>
+<p>Ya que la variable <code>month</code> es de tipo <code>integer</code> (<strong>numérica</strong>) tenemos más formas alternativas de conseguir exactamente el mismo resultado mostrado anteriormente.</p>
+<p>En variables numéricas, podemos directamente usar <code>&lt;=</code> en las condiciones.</p>
+<div class="sourceCode" id="cb55"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    year <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+      <span class="va">month</span> <span class="op">&lt;=</span> <span class="fl">6</span> <span class="op">~</span> <span class="st">"2013-I"</span>,
+      <span class="va">month</span> <span class="op">&gt;</span> <span class="fl">6</span> <span class="op">~</span> <span class="st">"2013-II"</span>
+    <span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 × 2</span>
+<span class="co">#&gt;   year         n</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span>
+<span class="co">#&gt; 1 2013-I  166158</span>
+<span class="co">#&gt; 2 2013-II 170618</span></code></pre></div>
+<p>O directamente usar <code>TRUE</code> ~ “Condicion, para <em>todos los demás casos</em>.</p>
+<div class="sourceCode" id="cb56"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    year <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+      <span class="va">month</span> <span class="op">&lt;=</span> <span class="fl">6</span> <span class="op">~</span> <span class="st">"2013-I"</span>,
+      <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"2013-II"</span>
+    <span class="op">)</span>
+  <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">year</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 × 2</span>
+<span class="co">#&gt;   year         n</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;int&gt;</span>
+<span class="co">#&gt; 1 2013-I  166158</span>
+<span class="co">#&gt; 2 2013-II 170618</span></code></pre></div>
+</div>
+<div id="más-usos-de-count-y-arrange" class="section level3" number="4.1.9">
+<h3>
+<span class="header-section-number">4.1.9</span> Más usos de count() y arrange()<a class="anchor" aria-label="anchor" href="#m%C3%A1s-usos-de-count-y-arrange"><i class="fas fa-link"></i></a>
+</h3>
+<p>Ya hemos visto que <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> es sumamente útil. Además, basta con agregar más variables dentro de sus argumentos, para que estos automáticamente ingresen a generar una tabla de frecuencias. Sin embargo, a veces puede ser necesario ordenar esos resultados, para ello usaremos <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>.</p>
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op">&lt;-</span> <span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
+    follow_4_weeks <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+      <span class="va">follow_4_weeks</span> <span class="op">==</span> <span class="st">"NA"</span> <span class="op">~</span> <span class="cn">NA_character_</span>,
+      <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">follow_4_weeks</span>
+    <span class="op">)</span>,
+    adverse_drug_reactions <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span>
+      <span class="va">adverse_drug_reactions</span> <span class="op">==</span> <span class="st">"NA"</span> <span class="op">~</span> <span class="cn">NA_character_</span>,
+      <span class="cn">TRUE</span> <span class="op">~</span> <span class="va">adverse_drug_reactions</span>
+    <span class="op">)</span>
+  <span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb58"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">randomized_group</span>, 
+        <span class="va">follow_4_weeks</span>,
+        <span class="va">adverse_drug_reactions</span><span class="op">)</span></code></pre></div>
+<p>La función <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code> permitirá ordenar un objeto en base a una o múltiples variables. En caso se ejecute sobre una variable numérica, se ordenará de menor a mayor por defecto, y en caso se ejecute sobre una variable texto (<strong>character</strong>) se ordenará de forma alfabética, tal y como ya lo hace <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> por defecto.</p>
+<p>Si se desea invertir el ordenamiento, se puede utilizar la función <code><a href="https://dplyr.tidyverse.org/reference/desc.html">desc()</a></code> dentro de <code><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange()</a></code>.</p>
+<pre><code>trial_data %&gt;%
+  count(randomized_group,
+        follow_4_weeks,
+        adverse_drug_reactions) %&gt;%
+  arrange(randomized_group,
+          desc(follow_4_weeks))</code></pre>
+<pre><code>#&gt; # A tibble: 13 × 4
+#&gt;    randomized_group follow_4_weeks adverse_drug_react…     n
+#&gt;    &lt;chr&gt;            &lt;chr&gt;          &lt;chr&gt;               &lt;int&gt;
+#&gt;  1 group A          Negative       No                    124
+#&gt;  2 group A          Negative       Yes                    31
+#&gt;  3 group A          Positive       No                     27
+#&gt;  4 group A          Positive       Yes                    14
+#&gt;  5 group A          &lt;NA&gt;           &lt;NA&gt;                    4
+#&gt;  6 group B          Negative       No                    114
+#&gt;  7 group B          Negative       Yes                    41
+#&gt;  8 group B          Negative       &lt;NA&gt;                    4
+#&gt;  9 group B          Positive       No                     25
+#&gt; 10 group B          Positive       Yes                     8
+#&gt; 11 group B          Positive       &lt;NA&gt;                    2
+#&gt; 12 group B          &lt;NA&gt;           No                      5
+#&gt; 13 group B          &lt;NA&gt;           &lt;NA&gt;                    1</code></pre>
+</div>
+<div id="uso-de-slice_max" class="section level3" number="4.1.10">
+<h3>
+<span class="header-section-number">4.1.10</span> Uso de slice_max()<a class="anchor" aria-label="anchor" href="#uso-de-slice_max"><i class="fas fa-link"></i></a>
+</h3>
+<p>Anteriormente conocido como <code><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n()</a></code>, la función <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max()</a></code>, permite seleccionar cuantos casos (filas) se específique en base a una variable numérica.</p>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">trial_data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">randomized_group</span>,
+        <span class="va">follow_4_weeks</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max</a></span><span class="op">(</span>order_by <span class="op">=</span> <span class="va">n</span>,
+            n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 2 × 3</span>
+<span class="co">#&gt;   randomized_group follow_4_weeks     n</span>
+<span class="co">#&gt;   &lt;chr&gt;            &lt;chr&gt;          &lt;int&gt;</span>
+<span class="co">#&gt; 1 group B          Negative         159</span>
+<span class="co">#&gt; 2 group A          Negative         155</span></code></pre></div>
+</div>
+<div id="introducción-a-tidydata" class="section level3" number="4.1.11">
+<h3>
+<span class="header-section-number">4.1.11</span> Introducción a tidydata<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n-a-tidydata"><i class="fas fa-link"></i></a>
+</h3>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/tidydata_7.jpg" width="100%"></div>
+<p>Tener datos ordenados (tidydata) significa tener una BD con estructuras adecuadas, donde cada registro representa una fila, cada variable representa una columna y cada celda contiene una simple medida (<a href="https://www.jstatsoft.org/article/view/v059i10">Hadley Wickham,2014</a>).</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/tidydata_1.jpg" width="100%"></div>
+</div>
+<div id="uso-de-pivot_longer-y-pivot_wider" class="section level3" number="4.1.12">
+<h3>
+<span class="header-section-number">4.1.12</span> Uso de pivot_longer() y pivot_wider()<a class="anchor" aria-label="anchor" href="#uso-de-pivot_longer-y-pivot_wider"><i class="fas fa-link"></i></a>
+</h3>
+<p>Para este ejemplo usaremos una base de datos que contiene casos de personas fallecidas a causa del coranovirus a nivel de país, este dataset está alojada en el siguiente repositorio de GitHub (<a href="https://github.com/CSSEGISandData/COVID-19">click aquí</a>).</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/github_covid_1.png" width="100%"></div>
+<p>La función <code>read_csv</code> del paquete readr (se carga automáticamente cuando se realiza <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>), permite importar archivos <code>csv</code> (data) incluso cuando el archivo está en una web.</p>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">covid19</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 284 Columns: 822</span>
+<span class="co">#&gt; ── Column specification ────────────────────────────────────</span>
+<span class="co">#&gt; Delimiter: ","</span>
+<span class="co">#&gt; chr   (2): Province/State, Country/Region</span>
+<span class="co">#&gt; dbl (820): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span>
+<span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
+<span class="va">covid19</span>
+<span class="co">#&gt; # A tibble: 284 × 822</span>
+<span class="co">#&gt;    `Province/State`  `Country/Region`   Lat   Long `1/22/20`</span>
+<span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 &lt;NA&gt;              Afghanistan       33.9  67.7          0</span>
+<span class="co">#&gt;  2 &lt;NA&gt;              Albania           41.2  20.2          0</span>
+<span class="co">#&gt;  3 &lt;NA&gt;              Algeria           28.0   1.66         0</span>
+<span class="co">#&gt;  4 &lt;NA&gt;              Andorra           42.5   1.52         0</span>
+<span class="co">#&gt;  5 &lt;NA&gt;              Angola           -11.2  17.9          0</span>
+<span class="co">#&gt;  6 &lt;NA&gt;              Antarctica       -71.9  23.3          0</span>
+<span class="co">#&gt;  7 &lt;NA&gt;              Antigua and Bar…  17.1 -61.8          0</span>
+<span class="co">#&gt;  8 &lt;NA&gt;              Argentina        -38.4 -63.6          0</span>
+<span class="co">#&gt;  9 &lt;NA&gt;              Armenia           40.1  45.0          0</span>
+<span class="co">#&gt; 10 Australian Capit… Australia        -35.5 149.           0</span>
+<span class="co">#&gt; # … with 274 more rows, and 817 more variables:</span>
+<span class="co">#&gt; #   `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/1/20` &lt;dbl&gt;, `2/2/20` &lt;dbl&gt;, `2/3/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/4/20` &lt;dbl&gt;, `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;, …</span></code></pre></div>
+<div id="pivot" class="section level4" number="4.1.12.1">
+<h4>
+<span class="header-section-number">4.1.12.1</span> ¿Pivot?<a class="anchor" aria-label="anchor" href="#pivot"><i class="fas fa-link"></i></a>
+</h4>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/pivot_longer_wider.png" width="100%"></div>
+<p>Tenemos un conjunto de datos donde cada una de las fechas de fallecimiento por Covid-19 se encuentran almacenadas como columnas.</p>
+<p>Sin embargo, esta forma de organizar la información podría generar dificultades al momento de pre-procesar la información o realizar algún tipo de análisis. Tener todas las fechas y casos de muerte por COVID-19 en 2 columnas (fecha y fallecidos), podría ayudar a este proceso.</p>
+</div>
+<div id="pivotear" class="section level4" number="4.1.12.2">
+<h4>
+<span class="header-section-number">4.1.12.2</span> Pivotear<a class="anchor" aria-label="anchor" href="#pivotear"><i class="fas fa-link"></i></a>
+</h4>
+<p>Así, dependiendo de el formato inicial de los datos, tendremos que pivotear hacia la derecha (wider) o hacia abajo (longer).</p>
+<div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/tidyr-pivot_wider_longer.gif" width="100%"></div>
+</div>
+</div>
+<div id="uso-de-pivot_longer" class="section level3" number="4.1.13">
+<h3>
+<span class="header-section-number">4.1.13</span> Uso de pivot_longer()<a class="anchor" aria-label="anchor" href="#uso-de-pivot_longer"><i class="fas fa-link"></i></a>
+</h3>
+<p>La función <code>pivot_longer</code> permitirá pasar todas las fechas que están a lo largo de las columnas a 2: fecha y fallecidos.</p>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op">&lt;-</span> <span class="va">covid19</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Lat</span><span class="op">:</span><span class="va">Long</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer</a></span><span class="op">(</span>
+    cols <span class="op">=</span> <span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">`Province/State`</span><span class="op">:</span><span class="va">`Country/Region`</span><span class="op">)</span>,
+    names_to <span class="op">=</span> <span class="st">"fecha"</span>,
+    values_to <span class="op">=</span> <span class="st">"fallecidos"</span>
+  <span class="op">)</span></code></pre></div>
+</div>
+<div id="uso-de-pivot_wider" class="section level3" number="4.1.14">
+<h3>
+<span class="header-section-number">4.1.14</span> Uso de pivot_wider()<a class="anchor" aria-label="anchor" href="#uso-de-pivot_wider"><i class="fas fa-link"></i></a>
+</h3>
+<p>De forma análoga, la función <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider()</a></code> hará exactamente lo contrario, pasar de una data que se encuentre ordenada (<strong>tidy data</strong>), a una data ancha. Para esta función se tendrá que indicar los argumentos: <code>names_from</code> y <code>values_from</code>.</p>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html">pivot_wider</a></span><span class="op">(</span>
+    names_from <span class="op">=</span> <span class="st">"fecha"</span>,
+    values_from <span class="op">=</span> <span class="st">"fallecidos"</span>
+  <span class="op">)</span>
+<span class="co">#&gt; # A tibble: 284 × 820</span>
+<span class="co">#&gt;    `Province/State`     `Country/Region` `1/22/20` `1/23/20`</span>
+<span class="co">#&gt;    &lt;chr&gt;                &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 &lt;NA&gt;                 Afghanistan              0         0</span>
+<span class="co">#&gt;  2 &lt;NA&gt;                 Albania                  0         0</span>
+<span class="co">#&gt;  3 &lt;NA&gt;                 Algeria                  0         0</span>
+<span class="co">#&gt;  4 &lt;NA&gt;                 Andorra                  0         0</span>
+<span class="co">#&gt;  5 &lt;NA&gt;                 Angola                   0         0</span>
+<span class="co">#&gt;  6 &lt;NA&gt;                 Antarctica               0         0</span>
+<span class="co">#&gt;  7 &lt;NA&gt;                 Antigua and Bar…         0         0</span>
+<span class="co">#&gt;  8 &lt;NA&gt;                 Argentina                0         0</span>
+<span class="co">#&gt;  9 &lt;NA&gt;                 Armenia                  0         0</span>
+<span class="co">#&gt; 10 Australian Capital … Australia                0         0</span>
+<span class="co">#&gt; # … with 274 more rows, and 816 more variables:</span>
+<span class="co">#&gt; #   `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;, `1/26/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;, `1/29/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;, `2/1/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/2/20` &lt;dbl&gt;, `2/3/20` &lt;dbl&gt;, `2/4/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;, `2/7/20` &lt;dbl&gt;,</span>
+<span class="co">#&gt; #   `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;, `2/10/20` &lt;dbl&gt;, …</span></code></pre></div>
+
+</div>
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></div>
+<div class="next"><a href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li>
+<a class="nav-link" href="#sesi%C3%B3n-03"><span class="header-section-number">4</span> Sesión 03</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#funci%C3%B3n-glimpse"><span class="header-section-number">4.0.1</span> Función Glimpse</a></li>
+<li><a class="nav-link" href="#operador-pipe"><span class="header-section-number">4.0.2</span> Operador Pipe %&gt;%</a></li>
+<li><a class="nav-link" href="#funci%C3%B3n-mutate"><span class="header-section-number">4.0.3</span> Función mutate()</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#uso-pr%C3%A1ctico-de-mutate"><span class="header-section-number">4.1</span> Uso práctico de mutate()</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#reconocimiento-de-base-de-datos"><span class="header-section-number">4.1.1</span> Reconocimiento de Base de datos</a></li>
+<li><a class="nav-link" href="#janitor"><span class="header-section-number">4.1.2</span> Janitor</a></li>
+<li><a class="nav-link" href="#rename"><span class="header-section-number">4.1.3</span> Rename</a></li>
+<li><a class="nav-link" href="#mutate-i"><span class="header-section-number">4.1.4</span> Mutate I</a></li>
+<li><a class="nav-link" href="#mutate-ii"><span class="header-section-number">4.1.5</span> Mutate II</a></li>
+<li><a class="nav-link" href="#uso-de-count"><span class="header-section-number">4.1.6</span> Uso de count</a></li>
+<li><a class="nav-link" href="#uso-de-mutate-y-case_when"><span class="header-section-number">4.1.7</span> Uso de mutate() y case_when()</a></li>
+<li><a class="nav-link" href="#m%C3%A1s-sobre-case_when"><span class="header-section-number">4.1.8</span> Más sobre case_when()</a></li>
+<li><a class="nav-link" href="#m%C3%A1s-usos-de-count-y-arrange"><span class="header-section-number">4.1.9</span> Más usos de count() y arrange()</a></li>
+<li><a class="nav-link" href="#uso-de-slice_max"><span class="header-section-number">4.1.10</span> Uso de slice_max()</a></li>
+<li><a class="nav-link" href="#introducci%C3%B3n-a-tidydata"><span class="header-section-number">4.1.11</span> Introducción a tidydata</a></li>
+<li><a class="nav-link" href="#uso-de-pivot_longer-y-pivot_wider"><span class="header-section-number">4.1.12</span> Uso de pivot_longer() y pivot_wider()</a></li>
+<li><a class="nav-link" href="#uso-de-pivot_longer"><span class="header-section-number">4.1.13</span> Uso de pivot_longer()</a></li>
+<li><a class="nav-link" href="#uso-de-pivot_wider"><span class="header-section-number">4.1.14</span> Uso de pivot_wider()</a></li>
+</ul>
+</li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/03_sesion.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/03_sesion.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-04-19.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

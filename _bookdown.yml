@@ -4,4 +4,11 @@ before_chapter_script: _common.R
 delete_merged_file: true
 language:
   ui:
+    edit: "Editar"
     chapter_name: "Capítulo "
+rmd_files:
+  - "index.Rmd"
+  - "01_sesion.Rmd"
+  - "02_sesion.Rmd"
+  - "03_sesion.Rmd"
+  - "04_sesion.Rmd"

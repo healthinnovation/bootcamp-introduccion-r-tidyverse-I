@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 6 Taller I | Introducción a R y Tidyverse</title>
+<meta name="author" content="Healthinnovation">
+<meta name="description" content="6.1 Introducción Esta fase del curso tiene por intención desarrollar un proceso de análisis de datos en base a los conceptos mostrados y explicados en las 3 primeras sesiones. Mediante una serie...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Capítulo 6 Taller I | Introducción a R y Tidyverse">
+<meta property="og:type" content="book">
+<meta property="og:description" content="6.1 Introducción Esta fase del curso tiene por intención desarrollar un proceso de análisis de datos en base a los conceptos mostrados y explicados en las 3 primeras sesiones. Mediante una serie...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 6 Taller I | Introducción a R y Tidyverse">
+<meta name="twitter:description" content="6.1 Introducción Esta fase del curso tiene por intención desarrollar un proceso de análisis de datos en base a los conceptos mostrados y explicados en las 3 primeras sesiones. Mediante una serie...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Fira%20Code-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introducción a R y Tidyverse</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> ¡Bienvenidos!</a></li>
+<li><a class="" href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></li>
+<li><a class="" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
+<li><a class="" href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></li>
+<li><a class="" href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></li>
+<li><a class="active" href="taller-i.html"><span class="header-section-number">6</span> Taller I</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="taller-i" class="section level1" number="6">
+<h1>
+<span class="header-section-number">Capítulo 6</span> Taller I<a class="anchor" aria-label="anchor" href="#taller-i"><i class="fas fa-link"></i></a>
+</h1>
+<div id="introducción" class="section level2" number="6.1">
+<h2>
+<span class="header-section-number">6.1</span> Introducción<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n"><i class="fas fa-link"></i></a>
+</h2>
+<p>Esta fase del curso tiene por intención desarrollar un proceso de análisis de datos en base a los conceptos mostrados y explicados en las 3 primeras sesiones. Mediante una serie de instrucciones y la posibilidad de consultar pistas/ayudas referenciadas, se busca que el estudiante pueda aplicar conceptos y desarrolle las habilidades procedimentales para lograr dar solución a los problemas planteados.</p>
+</div>
+<div id="instrucciones" class="section level2" number="6.2">
+<h2>
+<span class="header-section-number">6.2</span> Instrucciones<a class="anchor" aria-label="anchor" href="#instrucciones"><i class="fas fa-link"></i></a>
+</h2>
+<p>En este proyecto usaremos la información dispuesta en la página de <a href="https://web.ins.gob.pe/es/alimentacion-y-nutricion/vigilancia-alimentaria-y-nutricional/vigilancia-del-sistema-de-informacion-del-estado-nutricional-en-%20EESS">Vigilancia Del Sistema De Información Del Estado Nutricional en EESS</a> del Instituto Nacional de Salud (INS). Específicamente trataremos con la base de datos de estado nutricional de niños menores de 5 años en el <strong>Periodo: Enero-Diciembre 2021</strong>.</p>
+<div class="inline-figure"><img src="img/estado_nutricional_view.png" width="90%" style="display: block; margin: auto;"></div>
+<ol style="list-style-type: decimal">
+<li>Descargar la base de datos en mención del siguiente enlace y posicionarlo en un nuevo proyecto Rstudio con sus carpetas respectivas: <a href="https://web.ins.gob.pe/sites/default/files/Archivos/cenan/van/informes/2021/1.Indic%20Ni%C3%B1os%20a%20Diciembre%202021%20-%20PERU.xlsx" class="uri">https://web.ins.gob.pe/sites/default/files/Archivos/cenan/van/informes/2021/1.Indic%20Ni%C3%B1os%20a%20Diciembre%202021%20-%20PERU.xlsx</a>
+</li>
+<li>La base de datos contiene información variada acerca de niveles de anemia y estado nutricional de niños desde los 6 meses de edad hasta los 5 años a nivel departamental, provincial y distrital. Para estos ejercicios vamos a requerir <strong>importar únicamente</strong> la información de los <em>niveles de anemia en niños de 6 a 35 meses</em> que accedieron a los establecimientos de salud, según el departamento.
+<details><summary>
+Ayuda 1
+</summary><p>
+Esta data se encuentra en la pestaña <strong>Anemia 6-35x DEP</strong>
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+Para omitir la lectura de filas iniciales que podrían no contener información relevante, revisa el argumento <code>skip</code> de la función <code>read_excel</code>.
+</p>
+</details>
+</li>
+<li>La columna que contiene la información de los departamentos tiene todos sus registros en mayúsculas. Será necesario tener esos registros en formato <strong>Sentence case</strong>, es decir que las letras con el que empiecen las palabras sean en mayúsculas y el resto en minúsculas. Por ej. “AMAZONAS” a “Amazonas”, “PIURA” a “Piura”, “LIMA” a “Lima”, etc.
+<details><summary>
+Ayuda 1
+</summary><p>
+Las funciones <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> y <code><a href="https://stringr.tidyverse.org/reference/case.html">str_to_sentence()</a></code> serán útiles para completar esta petición.
+</p>
+</details>
+</li>
+<li>
+<strong>Identificar</strong> los departamentos y su pertenencia a la región geográfica correspondiente (costa, sierra y selva). Tener en cuenta:</li>
+</ol>
+<ul>
+<li>Costa: Callao, Ica, La Libertad, Lambayeque, Lima, Piura, Tacna, Tumbes.</li>
+<li>Sierra: Ancash, Apurímac, Arequipa, Ayacucho, Cajamarca, Cusco, Huancavelica, Huánuco, Junín, Moquegua, Pasco, Puno.</li>
+<li>Selva: Amazonas, Loreto, Madre de Dios, San Martín, Ucayali.
+<details><summary>
+Ayuda 1
+</summary><p>
+Para clasificar una variable existente, revisar: <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code>.
+</p>
+</details>
+</li>
+</ul>
+<ol start="5" style="list-style-type: decimal">
+<li>Sobre la clasificación anterior, mostrar lo siguiente:</li>
+</ol>
+<ul>
+<li>Mostrar los 5 departamentos con mayor cantidad de casos por Anemia Total.</li>
+<li>Número de departamentos que reportan casos de anemia por región geográfica.</li>
+<li>Casos totales de anemia por región geográfica.
+<details><summary>
+Ayuda 1
+</summary><p>
+La función <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_max()</a></code> es útil para seleccionar los casos más frecuentes en base a otra (cantidad, por ej.)
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+La función <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> es útil para generar tablas de frecuencias y contabilizar casos.
+</p>
+</details><details><summary>
+Ayuda 3
+</summary><p>
+Revisar: Uso de <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize()</a></code> y <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code>.
+</p>
+</details>
+</li>
+</ul>
+<ol start="6" style="list-style-type: decimal">
+<li>Por último, es necesario transformar la base de datos de tal manera que los tipos de anemia se encuentren en una sola columna y la cantidad de ellos se encuentren en diferentes filas/observaciones.
+<details><summary>
+Ayuda 1
+</summary><p>
+La función <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.html">pivot_longer()</a></code> puede agrupar varias columnas en una sola.
+</p>
+</details>
+</li>
+</ol>
+<p>¡Éxtitos en el taller!</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#taller-i"><span class="header-section-number">6</span> Taller I</a></li>
+<li><a class="nav-link" href="#introducci%C3%B3n"><span class="header-section-number">6.1</span> Introducción</a></li>
+<li><a class="nav-link" href="#instrucciones"><span class="header-section-number">6.2</span> Instrucciones</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/05_taller_1.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/05_taller_1.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-26.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

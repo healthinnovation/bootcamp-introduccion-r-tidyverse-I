@@ -24,14 +24,14 @@ glimpse()
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ─────────────────── tidyverse 1.3.1 ──
-#> ✓ ggplot2 3.3.5     ✓ purrr   0.3.4
-#> ✓ tibble  3.1.6     ✓ dplyr   1.0.8
-#> ✓ tidyr   1.2.0     ✓ stringr 1.4.0
-#> ✓ readr   2.1.2     ✓ forcats 0.5.1
-#> ── Conflicts ────────────────────── tidyverse_conflicts() ──
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
+#> ── Attaching packages ────────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+#> ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
+#> ✔ tibble  3.1.7     ✔ dplyr   1.0.9
+#> ✔ tidyr   1.2.0     ✔ stringr 1.4.0
+#> ✔ readr   2.1.2     ✔ forcats 0.5.1
+#> ── Conflicts ───────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter() masks stats::filter()
+#> ✖ dplyr::lag()    masks stats::lag()
 library(dplyr)
 ```
 
@@ -649,16 +649,16 @@ La función `read_csv` del paquete readr (se carga automáticamente cuando se re
 
 ```r
 covid19 <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
-#> Rows: 284 Columns: 822
-#> ── Column specification ────────────────────────────────────
+#> Rows: 285 Columns: 859
+#> ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────
 #> Delimiter: ","
 #> chr   (2): Province/State, Country/Region
-#> dbl (820): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...
+#> dbl (857): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...
 #> 
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 covid19
-#> # A tibble: 284 × 822
+#> # A tibble: 285 × 859
 #>    `Province/State`  `Country/Region`   Lat   Long `1/22/20`
 #>    <chr>             <chr>            <dbl>  <dbl>     <dbl>
 #>  1 <NA>              Afghanistan       33.9  67.7          0
@@ -671,7 +671,7 @@ covid19
 #>  8 <NA>              Argentina        -38.4 -63.6          0
 #>  9 <NA>              Armenia           40.1  45.0          0
 #> 10 Australian Capit… Australia        -35.5 149.           0
-#> # … with 274 more rows, and 817 more variables:
+#> # … with 275 more rows, and 854 more variables:
 #> #   `1/23/20` <dbl>, `1/24/20` <dbl>, `1/25/20` <dbl>,
 #> #   `1/26/20` <dbl>, `1/27/20` <dbl>, `1/28/20` <dbl>,
 #> #   `1/29/20` <dbl>, `1/30/20` <dbl>, `1/31/20` <dbl>,
@@ -720,7 +720,7 @@ covid19_tidy %>%
     names_from = "fecha",
     values_from = "fallecidos"
   )
-#> # A tibble: 284 × 820
+#> # A tibble: 285 × 857
 #>    `Province/State`     `Country/Region` `1/22/20` `1/23/20`
 #>    <chr>                <chr>                <dbl>     <dbl>
 #>  1 <NA>                 Afghanistan              0         0
@@ -733,7 +733,7 @@ covid19_tidy %>%
 #>  8 <NA>                 Argentina                0         0
 #>  9 <NA>                 Armenia                  0         0
 #> 10 Australian Capital … Australia                0         0
-#> # … with 274 more rows, and 816 more variables:
+#> # … with 275 more rows, and 853 more variables:
 #> #   `1/24/20` <dbl>, `1/25/20` <dbl>, `1/26/20` <dbl>,
 #> #   `1/27/20` <dbl>, `1/28/20` <dbl>, `1/29/20` <dbl>,
 #> #   `1/30/20` <dbl>, `1/31/20` <dbl>, `2/1/20` <dbl>,

@@ -7,7 +7,7 @@
 <title>Capítulo 5 Sesión 04 | Introducción a R y Tidyverse</title>
 <meta name="author" content="Healthinnovation">
 <meta name="description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
-<meta name="generator" content="bookdown 0.26.1 with bs4_book()">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
 <meta property="og:title" content="Capítulo 5 Sesión 04 | Introducción a R y Tidyverse">
 <meta property="og:type" content="book">
 <meta property="og:description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
@@ -16,12 +16,13 @@
 <meta name="twitter:description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
-<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.3.1.9000/transition.js"></script><script src="libs/bs3compat-0.3.1.9000/tabs.js"></script><script src="libs/bs3compat-0.3.1.9000/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Fira%20Code-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
 <script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
     
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
   </style>
-<link rel="stylesheet" href="bs4_style.css">
+<link rel="stylesheet" href="style.css">
 </head>
 <body data-spy="scroll" data-target="#toc">
 
@@ -48,6 +49,7 @@
 <li><a class="" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
 <li><a class="" href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></li>
 <li><a class="active" href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></li>
+<li><a class="" href="taller-i.html"><span class="header-section-number">6</span> Taller I</a></li>
 </ul>
 
         <div class="book-extra">
@@ -59,9 +61,9 @@
 <h1>
 <span class="header-section-number">Capítulo 5</span> Sesión 04<a class="anchor" aria-label="anchor" href="#sesi%C3%B3n-04"><i class="fas fa-link"></i></a>
 </h1>
-<div id="exploración-competencial-1" class="section level2" number="5.1">
+<div id="exploración-competencial" class="section level2" number="5.1">
 <h2>
-<span class="header-section-number">5.1</span> Exploración competencial<a class="anchor" aria-label="anchor" href="#exploraci%C3%B3n-competencial-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">5.1</span> Exploración competencial<a class="anchor" aria-label="anchor" href="#exploraci%C3%B3n-competencial"><i class="fas fa-link"></i></a>
 </h2>
 <div id="uso-de-filter" class="section level3" number="5.1.1">
 <h3>
@@ -84,14 +86,14 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 </ul>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ─────────────────── tidyverse 1.3.1 ──</span>
-<span class="co">#&gt; ✓ ggplot2 3.3.5     ✓ purrr   0.3.4</span>
-<span class="co">#&gt; ✓ tibble  3.1.6     ✓ dplyr   1.0.8</span>
-<span class="co">#&gt; ✓ tidyr   1.2.0     ✓ stringr 1.4.0</span>
-<span class="co">#&gt; ✓ readr   2.1.2     ✓ forcats 0.5.1</span>
-<span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span>
-<span class="co">#&gt; x dplyr::filter() masks stats::filter()</span>
-<span class="co">#&gt; x dplyr::lag()    masks stats::lag()</span>
+<span class="co">#&gt; ── Attaching packages ────────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──</span>
+<span class="co">#&gt; ✔ ggplot2 3.3.6     ✔ purrr   0.3.4</span>
+<span class="co">#&gt; ✔ tibble  3.1.7     ✔ dplyr   1.0.9</span>
+<span class="co">#&gt; ✔ tidyr   1.2.0     ✔ stringr 1.4.0</span>
+<span class="co">#&gt; ✔ readr   2.1.2     ✔ forcats 0.5.1</span>
+<span class="co">#&gt; ── Conflicts ───────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
+<span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span>
 <span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span>
 <span class="co">#&gt; # A tibble: 336,776 × 19</span>
 <span class="co">#&gt;     year month   day dep_time sched_dep_time dep_delay</span>
@@ -356,16 +358,16 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <p>Mediante la función <code>read_csv</code> podremos importar la data directamente desde <strong>Github</strong>.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 284 Columns: 822</span>
-<span class="co">#&gt; ── Column specification ────────────────────────────────────</span>
+<span class="co">#&gt; Rows: 285 Columns: 859</span>
+<span class="co">#&gt; ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt; Delimiter: ","</span>
 <span class="co">#&gt; chr   (2): Province/State, Country/Region</span>
-<span class="co">#&gt; dbl (820): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
+<span class="co">#&gt; dbl (857): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
 <span class="va">covid19</span>
-<span class="co">#&gt; # A tibble: 284 × 822</span>
+<span class="co">#&gt; # A tibble: 285 × 859</span>
 <span class="co">#&gt;    `Province/State`  `Country/Region`   Lat   Long `1/22/20`</span>
 <span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 &lt;NA&gt;              Afghanistan       33.9  67.7          0</span>
@@ -378,7 +380,7 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt;  8 &lt;NA&gt;              Argentina        -38.4 -63.6          0</span>
 <span class="co">#&gt;  9 &lt;NA&gt;              Armenia           40.1  45.0          0</span>
 <span class="co">#&gt; 10 Australian Capit… Australia        -35.5 149.           0</span>
-<span class="co">#&gt; # … with 274 more rows, and 817 more variables:</span>
+<span class="co">#&gt; # … with 275 more rows, and 854 more variables:</span>
 <span class="co">#&gt; #   `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,</span>
@@ -407,20 +409,20 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
     Min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
   <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 198 × 5</span>
-<span class="co">#&gt;    `Country/Region`       M      DE    Max   Min</span>
-<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               452333. 305740. 988899     0</span>
-<span class="co">#&gt;  2 Brazil           325330. 243458. 662271     0</span>
-<span class="co">#&gt;  3 India            236318. 193372. 521966     0</span>
-<span class="co">#&gt;  4 Mexico           164019. 113885. 323944     0</span>
-<span class="co">#&gt;  5 Peru             122894.  76116. 212654     0</span>
-<span class="co">#&gt;  6 Russia           119528. 117685. 366209     0</span>
-<span class="co">#&gt;  7 Italy             86270.  51331. 161766     0</span>
-<span class="co">#&gt;  8 Colombia          66945.  52586. 139751     0</span>
-<span class="co">#&gt;  9 Iran              66048.  48315. 140854     0</span>
-<span class="co">#&gt; 10 Argentina         59771.  48107. 128344     0</span>
-<span class="co">#&gt; # … with 188 more rows</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 199 × 5</span>
+<span class="co">#&gt;    `Country/Region`       M      DE     Max   Min</span>
+<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 US               475952. 318956. 1003783     0</span>
+<span class="co">#&gt;  2 Brazil           339999. 247925.  666261     0</span>
+<span class="co">#&gt;  3 India            248756. 197983.  524525     0</span>
+<span class="co">#&gt;  4 Mexico           170959. 116077.  324768     0</span>
+<span class="co">#&gt;  5 Russia           130325. 125818.  370972     0</span>
+<span class="co">#&gt;  6 Peru             126790.  76672.  213134     0</span>
+<span class="co">#&gt;  7 Italy             89646.  52660.  166264     0</span>
+<span class="co">#&gt;  8 Colombia          70098.  53530.  139833     0</span>
+<span class="co">#&gt;  9 Iran              69298.  49668.  141293     0</span>
+<span class="co">#&gt; 10 Indonesia         63898.  61469.  156553     0</span>
+<span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op">&lt;-</span> <span class="va">covid19</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span><span class="op">(</span><span class="op">-</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="va">Lat</span><span class="op">:</span><span class="va">Long</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -440,20 +442,20 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
     Min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
   <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 198 × 5</span>
-<span class="co">#&gt;    `Country/Region`       M      DE    Max   Min</span>
-<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               452333. 305740. 988899     0</span>
-<span class="co">#&gt;  2 Brazil           325330. 243458. 662271     0</span>
-<span class="co">#&gt;  3 India            236318. 193372. 521966     0</span>
-<span class="co">#&gt;  4 Mexico           164019. 113885. 323944     0</span>
-<span class="co">#&gt;  5 Peru             122894.  76116. 212654     0</span>
-<span class="co">#&gt;  6 Russia           119528. 117685. 366209     0</span>
-<span class="co">#&gt;  7 Italy             86270.  51331. 161766     0</span>
-<span class="co">#&gt;  8 Colombia          66945.  52586. 139751     0</span>
-<span class="co">#&gt;  9 Iran              66048.  48315. 140854     0</span>
-<span class="co">#&gt; 10 Argentina         59771.  48107. 128344     0</span>
-<span class="co">#&gt; # … with 188 more rows</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 199 × 5</span>
+<span class="co">#&gt;    `Country/Region`       M      DE     Max   Min</span>
+<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 US               475952. 318956. 1003783     0</span>
+<span class="co">#&gt;  2 Brazil           339999. 247925.  666261     0</span>
+<span class="co">#&gt;  3 India            248756. 197983.  524525     0</span>
+<span class="co">#&gt;  4 Mexico           170959. 116077.  324768     0</span>
+<span class="co">#&gt;  5 Russia           130325. 125818.  370972     0</span>
+<span class="co">#&gt;  6 Peru             126790.  76672.  213134     0</span>
+<span class="co">#&gt;  7 Italy             89646.  52660.  166264     0</span>
+<span class="co">#&gt;  8 Colombia          70098.  53530.  139833     0</span>
+<span class="co">#&gt;  9 Iran              69298.  49668.  141293     0</span>
+<span class="co">#&gt; 10 Indonesia         63898.  61469.  156553     0</span>
+<span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>
@@ -468,32 +470,32 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
     Min <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">min</a></span><span class="op">(</span><span class="va">fallecidos</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
   <span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span> 
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">M</span><span class="op">)</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 198 × 5</span>
-<span class="co">#&gt;    `Country/Region`       M     DE    Max    Min</span>
-<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               926962. 52488. 988899 825097</span>
-<span class="co">#&gt;  2 Brazil           643144. 15699. 662271 619401</span>
-<span class="co">#&gt;  3 India            507215. 13648. 521966 481893</span>
-<span class="co">#&gt;  4 Russia           339858. 19291. 366209 304284</span>
-<span class="co">#&gt;  5 Mexico           314087.  8773. 323944 299544</span>
-<span class="co">#&gt;  6 Peru             208730.  3545. 212654 202782</span>
-<span class="co">#&gt;  7 Italy            151898.  7470. 161766 137646</span>
-<span class="co">#&gt;  8 Indonesia        148924.  4669. 155903 144097</span>
-<span class="co">#&gt;  9 Colombia         136612.  3492. 139751 130026</span>
-<span class="co">#&gt; 10 Iran             136084.  3491. 140854 131680</span>
-<span class="co">#&gt; # … with 188 more rows</span></code></pre></div>
+<span class="co">#&gt; # A tibble: 199 × 5</span>
+<span class="co">#&gt;    `Country/Region`       M     DE     Max    Min</span>
+<span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
+<span class="co">#&gt;  1 US               945018. 54717. 1003783 825081</span>
+<span class="co">#&gt;  2 Brazil           648584. 16406.  666261 619401</span>
+<span class="co">#&gt;  3 India            511463. 13813.  524525 481893</span>
+<span class="co">#&gt;  4 Russia           347356. 20976.  370972 304284</span>
+<span class="co">#&gt;  5 Mexico           316733.  8801.  324768 299544</span>
+<span class="co">#&gt;  6 Peru             209806.  3563.  213134 202782</span>
+<span class="co">#&gt;  7 Italy            155081.  8444.  166264 137646</span>
+<span class="co">#&gt;  8 Indonesia        150826.  5167.  156553 144097</span>
+<span class="co">#&gt;  9 Colombia         137432.  3316.  139833 130026</span>
+<span class="co">#&gt; 10 Iran             137382.  3734.  141293 131680</span>
+<span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 
 </div>
 </div>
   <div class="chapter-nav">
 <div class="prev"><a href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></div>
-<div class="empty"></div>
+<div class="next"><a href="taller-i.html"><span class="header-section-number">6</span> Taller I</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
 <li><a class="nav-link" href="#sesi%C3%B3n-04"><span class="header-section-number">5</span> Sesión 04</a></li>
 <li>
-<a class="nav-link" href="#exploraci%C3%B3n-competencial-1"><span class="header-section-number">5.1</span> Exploración competencial</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#uso-de-filter"><span class="header-section-number">5.1.1</span> Uso de filter()</a></li></ul>
+<a class="nav-link" href="#exploraci%C3%B3n-competencial"><span class="header-section-number">5.1</span> Exploración competencial</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#uso-de-filter"><span class="header-section-number">5.1.1</span> Uso de filter()</a></li></ul>
 </li>
 <li><a class="nav-link" href="#uso-de-select"><span class="header-section-number">5.2</span> Uso de select()</a></li>
 <li><a class="nav-link" href="#mutate-ii-1"><span class="header-section-number">5.3</span> Mutate II</a></li>
@@ -520,7 +522,7 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-04-19.</p>
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-26.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -1,6 +1,5 @@
 bienvenidos
 acerca-del-curso
-exploración-competencial
 sesión-01
 qué-es-ciencia-de-datos
 por-qué-usar-r-para-ciencia-de-datos
@@ -55,7 +54,7 @@ pivotear
 uso-de-pivot_longer
 uso-de-pivot_wider
 sesión-04
-exploración-competencial-1
+exploración-competencial
 uso-de-filter
 para-que-sirve-1
 ejemplo-2
@@ -67,3 +66,6 @@ uso-de-group_by
 uso-de-summarise
 uso-de-summarise-1
 uso-de-summarise-2
+taller-i
+introducción
+instrucciones

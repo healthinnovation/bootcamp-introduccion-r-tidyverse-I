@@ -18,12 +18,12 @@ Pueden incluirse varias condiciones dentro de un filtro.
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ────────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──
+#> ── Attaching packages ───────────
 #> ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
 #> ✔ tibble  3.1.7     ✔ dplyr   1.0.9
 #> ✔ tidyr   1.2.0     ✔ stringr 1.4.0
 #> ✔ readr   2.1.2     ✔ forcats 0.5.1
-#> ── Conflicts ───────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+#> ── Conflicts ────────────────────
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
 nycflights13::flights
@@ -323,16 +323,16 @@ Mediante la función `read_csv` podremos importar la data directamente desde **G
 
 ```r
 covid19 <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
-#> Rows: 285 Columns: 859
-#> ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────
+#> Rows: 285 Columns: 860
+#> ── Column specification ─────────
 #> Delimiter: ","
 #> chr   (2): Province/State, Country/Region
-#> dbl (857): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...
+#> dbl (858): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...
 #> 
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 covid19
-#> # A tibble: 285 × 859
+#> # A tibble: 285 × 860
 #>    `Province/State`  `Country/Region`   Lat   Long `1/22/20`
 #>    <chr>             <chr>            <dbl>  <dbl>     <dbl>
 #>  1 <NA>              Afghanistan       33.9  67.7          0
@@ -345,7 +345,7 @@ covid19
 #>  8 <NA>              Argentina        -38.4 -63.6          0
 #>  9 <NA>              Armenia           40.1  45.0          0
 #> 10 Australian Capit… Australia        -35.5 149.           0
-#> # … with 275 more rows, and 854 more variables:
+#> # … with 275 more rows, and 855 more variables:
 #> #   `1/23/20` <dbl>, `1/24/20` <dbl>, `1/25/20` <dbl>,
 #> #   `1/26/20` <dbl>, `1/27/20` <dbl>, `1/28/20` <dbl>,
 #> #   `1/29/20` <dbl>, `1/30/20` <dbl>, `1/31/20` <dbl>,
@@ -378,16 +378,16 @@ covid19 %>%
 #> # A tibble: 199 × 5
 #>    `Country/Region`       M      DE     Max   Min
 #>    <chr>              <dbl>   <dbl>   <dbl> <dbl>
-#>  1 US               475952. 318956. 1003783     0
-#>  2 Brazil           339999. 247925.  666261     0
-#>  3 India            248756. 197983.  524525     0
-#>  4 Mexico           170959. 116077.  324768     0
-#>  5 Russia           130325. 125818.  370972     0
-#>  6 Peru             126790.  76672.  213134     0
-#>  7 Italy             89646.  52660.  166264     0
-#>  8 Colombia          70098.  53530.  139833     0
-#>  9 Iran              69298.  49668.  141293     0
-#> 10 Indonesia         63898.  61469.  156553     0
+#>  1 US               476569. 319280. 1004121     0
+#>  2 Brazil           340381. 248031.  666261     0
+#>  3 India            249079. 198092.  524539     0
+#>  4 Mexico           171139. 116128.  324768     0
+#>  5 Russia           130606. 126014.  371061     0
+#>  6 Peru             126891.  76684.  213145     0
+#>  7 Italy             89736.  52695.  166358     0
+#>  8 Colombia          70179.  53552.  139854     0
+#>  9 Iran              69382.  49700.  141296     0
+#> 10 Indonesia         64006.  61515.  156556     0
 #> # … with 189 more rows
 ```
 
@@ -418,16 +418,16 @@ covid19_tidy %>%
 #> # A tibble: 199 × 5
 #>    `Country/Region`       M      DE     Max   Min
 #>    <chr>              <dbl>   <dbl>   <dbl> <dbl>
-#>  1 US               475952. 318956. 1003783     0
-#>  2 Brazil           339999. 247925.  666261     0
-#>  3 India            248756. 197983.  524525     0
-#>  4 Mexico           170959. 116077.  324768     0
-#>  5 Russia           130325. 125818.  370972     0
-#>  6 Peru             126790.  76672.  213134     0
-#>  7 Italy             89646.  52660.  166264     0
-#>  8 Colombia          70098.  53530.  139833     0
-#>  9 Iran              69298.  49668.  141293     0
-#> 10 Indonesia         63898.  61469.  156553     0
+#>  1 US               476569. 319280. 1004121     0
+#>  2 Brazil           340381. 248031.  666261     0
+#>  3 India            249079. 198092.  524539     0
+#>  4 Mexico           171139. 116128.  324768     0
+#>  5 Russia           130606. 126014.  371061     0
+#>  6 Peru             126891.  76684.  213145     0
+#>  7 Italy             89736.  52695.  166358     0
+#>  8 Colombia          70179.  53552.  139854     0
+#>  9 Iran              69382.  49700.  141296     0
+#> 10 Indonesia         64006.  61515.  156556     0
 #> # … with 189 more rows
 ```
 
@@ -449,16 +449,16 @@ covid19_tidy %>%
 #> # A tibble: 199 × 5
 #>    `Country/Region`       M     DE     Max    Min
 #>    <chr>              <dbl>  <dbl>   <dbl>  <dbl>
-#>  1 US               945018. 54717. 1003783 825081
-#>  2 Brazil           648584. 16406.  666261 619401
-#>  3 India            511463. 13813.  524525 481893
-#>  4 Russia           347356. 20976.  370972 304284
-#>  5 Mexico           316733.  8801.  324768 299544
-#>  6 Peru             209806.  3563.  213134 202782
-#>  7 Italy            155081.  8444.  166264 137646
-#>  8 Indonesia        150826.  5167.  156553 144097
-#>  9 Colombia         137432.  3316.  139833 130026
-#> 10 Iran             137382.  3734.  141293 131680
+#>  1 US               945426. 54747. 1004121 825081
+#>  2 Brazil           648705. 16414.  666261 619401
+#>  3 India            511554. 13808.  524539 481893
+#>  4 Russia           347519. 20996.  371061 304284
+#>  5 Mexico           316789.  8795.  324768 299544
+#>  6 Peru             209829.  3561.  213145 202782
+#>  7 Italy            155159.  8466.  166358 137646
+#>  8 Indonesia        150865.  5171.  156556 144097
+#>  9 Colombia         137449.  3311.  139854 130026
+#> 10 Iran             137409.  3735.  141296 131680
 #> # … with 189 more rows
 ```
 

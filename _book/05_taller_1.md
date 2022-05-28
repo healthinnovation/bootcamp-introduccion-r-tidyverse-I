@@ -14,11 +14,19 @@ En este proyecto usaremos la información dispuesta en la página de [Vigilancia
 2. La base de datos contiene información variada acerca de niveles de anemia y estado nutricional de niños desde los 6 meses de edad hasta los 5 años a nivel departamental, provincial y distrital. Para estos ejercicios vamos a requerir **importar únicamente** la información de los *niveles de anemia en niños de 6 a 35 meses* que accedieron a los establecimientos de salud, según el departamento.
 <details>
   <summary>Ayuda 1</summary>
-  <p>Esta data se encuentra en la pestaña **Anemia 6-35x DEP**</p>
+  <p>Esta data se encuentra en la hoja (sheet) **Anemia 6-35m x DEP**</p>
 </details>
 <details>
   <summary>Ayuda 2</summary>
+  <p>Para importar una hoja de excel en específico se puede usar el argumento `sheet` dentro de la función `read_excel` del paquete `readxl`.</p>
+</details>
+<details>
+  <summary>Ayuda 3</summary>
   <p>Para omitir la lectura de filas iniciales que podrían no contener información relevante, revisa el argumento `skip` de la función `read_excel`.</p>
+</details>
+<details>
+  <summary>Ayuda 4</summary>
+  <p>Si se tiene una fila que no forma parte de los valores de los datos que persiste a pesar de usar el argumento `skip`, se puede retirar mediante el uso de la función `slice()`. Recordar que si se usa el signo `-` dentro de esa función se está dando la indicación de **retirar** la fila en lugar de seleccionarla.</p>
 </details>
 3. La columna que contiene la información de los departamentos tiene todos sus registros en mayúsculas. Será necesario tener esos registros en formato **Sentence case**, es decir que las letras con el que empiecen las palabras sean en mayúsculas y el resto en minúsculas. Por ej. “AMAZONAS” a “Amazonas”, “PIURA” a “Piura”, “LIMA” a “Lima”, etc.
 <details>

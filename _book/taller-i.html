@@ -80,12 +80,22 @@
 <details><summary>
 Ayuda 1
 </summary><p>
-Esta data se encuentra en la pestaña <strong>Anemia 6-35x DEP</strong>
+Esta data se encuentra en la hoja (sheet) <strong>Anemia 6-35m x DEP</strong>
 </p>
 </details><details><summary>
 Ayuda 2
 </summary><p>
+Para importar una hoja de excel en específico se puede usar el argumento <code>sheet</code> dentro de la función <code>read_excel</code> del paquete <code>readxl</code>.
+</p>
+</details><details><summary>
+Ayuda 3
+</summary><p>
 Para omitir la lectura de filas iniciales que podrían no contener información relevante, revisa el argumento <code>skip</code> de la función <code>read_excel</code>.
+</p>
+</details><details><summary>
+Ayuda 4
+</summary><p>
+Si se tiene una fila que no forma parte de los valores de los datos que persiste a pesar de usar el argumento <code>skip</code>, se puede retirar mediante el uso de la función <code><a href="https://dplyr.tidyverse.org/reference/slice.html">slice()</a></code>. Recordar que si se usa el signo <code>-</code> dentro de esa función se está dando la indicación de <strong>retirar</strong> la fila en lugar de seleccionarla.
 </p>
 </details>
 </li>
@@ -177,7 +187,7 @@ La función <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.ht
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-26.</p>
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-27.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

@@ -86,12 +86,12 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 </ul>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ────────────────────────────────────────────────────────────────────────── tidyverse 1.3.1 ──</span>
+<span class="co">#&gt; ── Attaching packages ───────────</span>
 <span class="co">#&gt; ✔ ggplot2 3.3.6     ✔ purrr   0.3.4</span>
 <span class="co">#&gt; ✔ tibble  3.1.7     ✔ dplyr   1.0.9</span>
 <span class="co">#&gt; ✔ tidyr   1.2.0     ✔ stringr 1.4.0</span>
 <span class="co">#&gt; ✔ readr   2.1.2     ✔ forcats 0.5.1</span>
-<span class="co">#&gt; ── Conflicts ───────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──</span>
+<span class="co">#&gt; ── Conflicts ────────────────────</span>
 <span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span>
 <span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span>
@@ -358,16 +358,16 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <p>Mediante la función <code>read_csv</code> podremos importar la data directamente desde <strong>Github</strong>.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 285 Columns: 859</span>
-<span class="co">#&gt; ── Column specification ───────────────────────────────────────────────────────────────────────────────────────────</span>
+<span class="co">#&gt; Rows: 285 Columns: 860</span>
+<span class="co">#&gt; ── Column specification ─────────</span>
 <span class="co">#&gt; Delimiter: ","</span>
 <span class="co">#&gt; chr   (2): Province/State, Country/Region</span>
-<span class="co">#&gt; dbl (857): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
+<span class="co">#&gt; dbl (858): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
 <span class="va">covid19</span>
-<span class="co">#&gt; # A tibble: 285 × 859</span>
+<span class="co">#&gt; # A tibble: 285 × 860</span>
 <span class="co">#&gt;    `Province/State`  `Country/Region`   Lat   Long `1/22/20`</span>
 <span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 &lt;NA&gt;              Afghanistan       33.9  67.7          0</span>
@@ -380,7 +380,7 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt;  8 &lt;NA&gt;              Argentina        -38.4 -63.6          0</span>
 <span class="co">#&gt;  9 &lt;NA&gt;              Armenia           40.1  45.0          0</span>
 <span class="co">#&gt; 10 Australian Capit… Australia        -35.5 149.           0</span>
-<span class="co">#&gt; # … with 275 more rows, and 854 more variables:</span>
+<span class="co">#&gt; # … with 275 more rows, and 855 more variables:</span>
 <span class="co">#&gt; #   `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,</span>
@@ -412,16 +412,16 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; # A tibble: 199 × 5</span>
 <span class="co">#&gt;    `Country/Region`       M      DE     Max   Min</span>
 <span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               475952. 318956. 1003783     0</span>
-<span class="co">#&gt;  2 Brazil           339999. 247925.  666261     0</span>
-<span class="co">#&gt;  3 India            248756. 197983.  524525     0</span>
-<span class="co">#&gt;  4 Mexico           170959. 116077.  324768     0</span>
-<span class="co">#&gt;  5 Russia           130325. 125818.  370972     0</span>
-<span class="co">#&gt;  6 Peru             126790.  76672.  213134     0</span>
-<span class="co">#&gt;  7 Italy             89646.  52660.  166264     0</span>
-<span class="co">#&gt;  8 Colombia          70098.  53530.  139833     0</span>
-<span class="co">#&gt;  9 Iran              69298.  49668.  141293     0</span>
-<span class="co">#&gt; 10 Indonesia         63898.  61469.  156553     0</span>
+<span class="co">#&gt;  1 US               476569. 319280. 1004121     0</span>
+<span class="co">#&gt;  2 Brazil           340381. 248031.  666261     0</span>
+<span class="co">#&gt;  3 India            249079. 198092.  524539     0</span>
+<span class="co">#&gt;  4 Mexico           171139. 116128.  324768     0</span>
+<span class="co">#&gt;  5 Russia           130606. 126014.  371061     0</span>
+<span class="co">#&gt;  6 Peru             126891.  76684.  213145     0</span>
+<span class="co">#&gt;  7 Italy             89736.  52695.  166358     0</span>
+<span class="co">#&gt;  8 Colombia          70179.  53552.  139854     0</span>
+<span class="co">#&gt;  9 Iran              69382.  49700.  141296     0</span>
+<span class="co">#&gt; 10 Indonesia         64006.  61515.  156556     0</span>
 <span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op">&lt;-</span> <span class="va">covid19</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -445,16 +445,16 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; # A tibble: 199 × 5</span>
 <span class="co">#&gt;    `Country/Region`       M      DE     Max   Min</span>
 <span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               475952. 318956. 1003783     0</span>
-<span class="co">#&gt;  2 Brazil           339999. 247925.  666261     0</span>
-<span class="co">#&gt;  3 India            248756. 197983.  524525     0</span>
-<span class="co">#&gt;  4 Mexico           170959. 116077.  324768     0</span>
-<span class="co">#&gt;  5 Russia           130325. 125818.  370972     0</span>
-<span class="co">#&gt;  6 Peru             126790.  76672.  213134     0</span>
-<span class="co">#&gt;  7 Italy             89646.  52660.  166264     0</span>
-<span class="co">#&gt;  8 Colombia          70098.  53530.  139833     0</span>
-<span class="co">#&gt;  9 Iran              69298.  49668.  141293     0</span>
-<span class="co">#&gt; 10 Indonesia         63898.  61469.  156553     0</span>
+<span class="co">#&gt;  1 US               476569. 319280. 1004121     0</span>
+<span class="co">#&gt;  2 Brazil           340381. 248031.  666261     0</span>
+<span class="co">#&gt;  3 India            249079. 198092.  524539     0</span>
+<span class="co">#&gt;  4 Mexico           171139. 116128.  324768     0</span>
+<span class="co">#&gt;  5 Russia           130606. 126014.  371061     0</span>
+<span class="co">#&gt;  6 Peru             126891.  76684.  213145     0</span>
+<span class="co">#&gt;  7 Italy             89736.  52695.  166358     0</span>
+<span class="co">#&gt;  8 Colombia          70179.  53552.  139854     0</span>
+<span class="co">#&gt;  9 Iran              69382.  49700.  141296     0</span>
+<span class="co">#&gt; 10 Indonesia         64006.  61515.  156556     0</span>
 <span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -473,16 +473,16 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; # A tibble: 199 × 5</span>
 <span class="co">#&gt;    `Country/Region`       M     DE     Max    Min</span>
 <span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               945018. 54717. 1003783 825081</span>
-<span class="co">#&gt;  2 Brazil           648584. 16406.  666261 619401</span>
-<span class="co">#&gt;  3 India            511463. 13813.  524525 481893</span>
-<span class="co">#&gt;  4 Russia           347356. 20976.  370972 304284</span>
-<span class="co">#&gt;  5 Mexico           316733.  8801.  324768 299544</span>
-<span class="co">#&gt;  6 Peru             209806.  3563.  213134 202782</span>
-<span class="co">#&gt;  7 Italy            155081.  8444.  166264 137646</span>
-<span class="co">#&gt;  8 Indonesia        150826.  5167.  156553 144097</span>
-<span class="co">#&gt;  9 Colombia         137432.  3316.  139833 130026</span>
-<span class="co">#&gt; 10 Iran             137382.  3734.  141293 131680</span>
+<span class="co">#&gt;  1 US               945426. 54747. 1004121 825081</span>
+<span class="co">#&gt;  2 Brazil           648705. 16414.  666261 619401</span>
+<span class="co">#&gt;  3 India            511554. 13808.  524539 481893</span>
+<span class="co">#&gt;  4 Russia           347519. 20996.  371061 304284</span>
+<span class="co">#&gt;  5 Mexico           316789.  8795.  324768 299544</span>
+<span class="co">#&gt;  6 Peru             209829.  3561.  213145 202782</span>
+<span class="co">#&gt;  7 Italy            155159.  8466.  166358 137646</span>
+<span class="co">#&gt;  8 Indonesia        150865.  5171.  156556 144097</span>
+<span class="co">#&gt;  9 Colombia         137449.  3311.  139854 130026</span>
+<span class="co">#&gt; 10 Iran             137409.  3735.  141296 131680</span>
 <span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 
 </div>
@@ -522,7 +522,7 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-26.</p>
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-27.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

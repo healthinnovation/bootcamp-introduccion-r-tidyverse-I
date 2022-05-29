@@ -99,6 +99,19 @@ Si se tiene una fila que no forma parte de los valores de los datos que persiste
 </p>
 </details>
 </li>
+<li>Hacer un reconocimiento de variables y determinar si alguna de estas requiere aplicarse algún formato. Por ejemplo, pasar de una columna <code>character</code> a <code>numeric</code>.
+<details><summary>
+Ayuda 1
+</summary><p>
+Para el reconocimiento de variables se puede usar la función <code><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse()</a></code>
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+El formateo de los datos se puede hacer con la función <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>. Además existen 2 funciones bases que podrían ser útiles (alguna de ellas): <code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code> y <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>.
+</p>
+</details>
+</li>
 <li>La columna que contiene la información de los departamentos tiene todos sus registros en mayúsculas. Será necesario tener esos registros en formato <strong>Sentence case</strong>, es decir que las letras con el que empiecen las palabras sean en mayúsculas y el resto en minúsculas. Por ej. “AMAZONAS” a “Amazonas”, “PIURA” a “Piura”, “LIMA” a “Lima”, etc.
 <details><summary>
 Ayuda 1
@@ -122,7 +135,7 @@ Para clasificar una variable existente, revisar: <code><a href="https://dplyr.ti
 </details>
 </li>
 </ul>
-<ol start="5" style="list-style-type: decimal">
+<ol start="6" style="list-style-type: decimal">
 <li>Sobre la clasificación anterior, mostrar lo siguiente:</li>
 </ol>
 <ul>
@@ -147,7 +160,7 @@ Revisar: Uso de <code><a href="https://dplyr.tidyverse.org/reference/group_by.ht
 </details>
 </li>
 </ul>
-<ol start="6" style="list-style-type: decimal">
+<ol start="7" style="list-style-type: decimal">
 <li>Por último, es necesario transformar la base de datos de tal manera que los tipos de anemia se encuentren en una sola columna y la cantidad de ellos se encuentren en diferentes filas/observaciones.
 <details><summary>
 Ayuda 1
@@ -187,7 +200,7 @@ La función <code><a href="https://tidyr.tidyverse.org/reference/pivot_longer.ht
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-27.</p>
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-28.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

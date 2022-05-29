@@ -53,7 +53,7 @@ En este proyecto usaremos la información dispuesta en la página de [Vigilancia
 6. Sobre la clasificación anterior, mostrar lo siguiente:
   - Mostrar los 5 departamentos con mayor cantidad de casos por Anemia Total.
   - Número de departamentos que reportan casos de anemia por región geográfica.
-  - Casos totales de anemia por región geográfica. 
+  - Ordenar de forma descendente la tabla anterior generada.
 <details>
   <summary>Ayuda 1</summary>
   <p>La función `slice_max()` es útil para seleccionar los casos más frecuentes en base a otra (cantidad, por ej.)</p>
@@ -64,7 +64,7 @@ En este proyecto usaremos la información dispuesta en la página de [Vigilancia
 </details>
 <details>
   <summary>Ayuda 3</summary>
-  <p>Revisar: Uso de `group_by()`, `summarize()` y `sum()`.</p>
+  <p>Revisar: Uso de `arrange()` y `desc()`.</p>
 </details>
 7. Por último, es necesario transformar la base de datos de tal manera que los tipos de anemia se encuentren en una sola columna y la cantidad de ellos se encuentren en diferentes filas/observaciones. 
 <details>

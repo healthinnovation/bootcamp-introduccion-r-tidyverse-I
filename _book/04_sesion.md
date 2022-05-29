@@ -18,12 +18,12 @@ Pueden incluirse varias condiciones dentro de un filtro.
 
 ```r
 library(tidyverse)
-#> ── Attaching packages ──────────────
+#> ── Attaching packages ───────────
 #> ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
 #> ✔ tibble  3.1.7     ✔ dplyr   1.0.9
 #> ✔ tidyr   1.2.0     ✔ stringr 1.4.0
 #> ✔ readr   2.1.2     ✔ forcats 0.5.1
-#> ── Conflicts ───────────────────────
+#> ── Conflicts ────────────────────
 #> ✖ dplyr::filter() masks stats::filter()
 #> ✖ dplyr::lag()    masks stats::lag()
 nycflights13::flights
@@ -323,16 +323,16 @@ Mediante la función `read_csv` podremos importar la data directamente desde **G
 
 ```r
 covid19 <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
-#> Rows: 285 Columns: 861
-#> ── Column specification ────────────
+#> Rows: 285 Columns: 862
+#> ── Column specification ─────────
 #> Delimiter: ","
 #> chr   (2): Province/State, Country/Region
-#> dbl (859): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...
+#> dbl (860): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...
 #> 
 #> ℹ Use `spec()` to retrieve the full column specification for this data.
 #> ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 covid19
-#> # A tibble: 285 × 861
+#> # A tibble: 285 × 862
 #>    `Province/State`  `Country/Region`   Lat   Long `1/22/20`
 #>    <chr>             <chr>            <dbl>  <dbl>     <dbl>
 #>  1 <NA>              Afghanistan       33.9  67.7          0
@@ -345,7 +345,7 @@ covid19
 #>  8 <NA>              Argentina        -38.4 -63.6          0
 #>  9 <NA>              Armenia           40.1  45.0          0
 #> 10 Australian Capit… Australia        -35.5 149.           0
-#> # … with 275 more rows, and 856 more variables:
+#> # … with 275 more rows, and 857 more variables:
 #> #   `1/23/20` <dbl>, `1/24/20` <dbl>, `1/25/20` <dbl>,
 #> #   `1/26/20` <dbl>, `1/27/20` <dbl>, `1/28/20` <dbl>,
 #> #   `1/29/20` <dbl>, `1/30/20` <dbl>, `1/31/20` <dbl>,
@@ -378,16 +378,16 @@ covid19 %>%
 #> # A tibble: 199 × 5
 #>    `Country/Region`       M      DE     Max   Min
 #>    <chr>              <dbl>   <dbl>   <dbl> <dbl>
-#>  1 US               477185. 319603. 1004693     0
-#>  2 Brazil           340761. 248136.  666319     0
-#>  3 India            249400. 198200.  524572     0
-#>  4 Mexico           171318. 116179.  324768     0
-#>  5 Russia           130887. 126208.  371141     0
-#>  6 Peru             126992.  76696.  213155     0
-#>  7 Italy             89825.  52729.  166476     0
-#>  8 Colombia          70261.  53573.  139854     0
-#>  9 Iran              69466.  49732.  141302     0
-#> 10 Indonesia         64114.  61560.  156565     0
+#>  1 US               477800. 319924. 1004726     0
+#>  2 Brazil           341140. 248240.  666391     0
+#>  3 India            249721. 198307.  524586     0
+#>  4 Mexico           171497. 116229.  324768     0
+#>  5 Russia           131167. 126401.  371223     0
+#>  6 Peru             127092.  76707.  213162     0
+#>  7 Italy             89915.  52763.  166542     0
+#>  8 Colombia          70342.  53595.  139854     0
+#>  9 Iran              69549.  49763.  141306     0
+#> 10 Indonesia         64222.  61605.  156573     0
 #> # … with 189 more rows
 ```
 
@@ -418,16 +418,16 @@ covid19_tidy %>%
 #> # A tibble: 199 × 5
 #>    `Country/Region`       M      DE     Max   Min
 #>    <chr>              <dbl>   <dbl>   <dbl> <dbl>
-#>  1 US               477185. 319603. 1004693     0
-#>  2 Brazil           340761. 248136.  666319     0
-#>  3 India            249400. 198200.  524572     0
-#>  4 Mexico           171318. 116179.  324768     0
-#>  5 Russia           130887. 126208.  371141     0
-#>  6 Peru             126992.  76696.  213155     0
-#>  7 Italy             89825.  52729.  166476     0
-#>  8 Colombia          70261.  53573.  139854     0
-#>  9 Iran              69466.  49732.  141302     0
-#> 10 Indonesia         64114.  61560.  156565     0
+#>  1 US               477800. 319924. 1004726     0
+#>  2 Brazil           341140. 248240.  666391     0
+#>  3 India            249721. 198307.  524586     0
+#>  4 Mexico           171497. 116229.  324768     0
+#>  5 Russia           131167. 126401.  371223     0
+#>  6 Peru             127092.  76707.  213162     0
+#>  7 Italy             89915.  52763.  166542     0
+#>  8 Colombia          70342.  53595.  139854     0
+#>  9 Iran              69549.  49763.  141306     0
+#> 10 Indonesia         64222.  61605.  156573     0
 #> # … with 189 more rows
 ```
 
@@ -449,16 +449,16 @@ covid19_tidy %>%
 #> # A tibble: 199 × 5
 #>    `Country/Region`       M     DE     Max    Min
 #>    <chr>              <dbl>  <dbl>   <dbl>  <dbl>
-#>  1 US               945832. 54778. 1004693 825081
-#>  2 Brazil           648826. 16423.  666319 619401
-#>  3 India            511643. 13802.  524572 481893
-#>  4 Russia           347681. 21014.  371141 304284
-#>  5 Mexico           316843.  8790.  324768 299544
-#>  6 Peru             209852.  3560.  213155 202782
-#>  7 Italy            155236.  8489.  166476 137646
-#>  8 Indonesia        150904.  5175.  156565 144097
-#>  9 Colombia         137465.  3306.  139854 130026
-#> 10 Iran             137436.  3736.  141302 131680
+#>  1 US               946233. 54806. 1004726 825081
+#>  2 Brazil           648946. 16430.  666391 619401
+#>  3 India            511731. 13796.  524586 481893
+#>  4 Russia           347841. 21032.  371223 304284
+#>  5 Mexico           316897.  8784.  324768 299544
+#>  6 Peru             209874.  3558.  213162 202782
+#>  7 Italy            155313.  8511.  166542 137646
+#>  8 Indonesia        150943.  5178.  156573 144097
+#>  9 Colombia         137481.  3300.  139854 130026
+#> 10 Iran             137462.  3737.  141306 131680
 #> # … with 189 more rows
 ```
 

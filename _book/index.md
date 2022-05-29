@@ -1,7 +1,7 @@
 --- 
 title: "Introducción a R y Tidyverse"
 author: "Healthinnovation"
-date: "2022-05-28"
+date: "2022-05-29"
 knit: bookdown::render_book
 site: bookdown::bookdown_site
 documentclass: book

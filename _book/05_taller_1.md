@@ -73,3 +73,5 @@ En este proyecto usaremos la información dispuesta en la página de [Vigilancia
 </details>
 
 ¡Éxtitos en el taller!
+
+**Ver solución [aquí](taller1_solved.html)**

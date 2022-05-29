@@ -75,3 +75,5 @@ knitr::include_graphics("img/estado_nutricional_view.png", dpi = 300)
 </details>
 
 ¡Éxtitos en el taller!
+
+**Ver solución [aquí](taller1_solved.html)**

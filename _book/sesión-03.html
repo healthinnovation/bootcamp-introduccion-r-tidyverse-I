@@ -83,12 +83,12 @@
 </ul>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ──────────────</span>
+<span class="co">#&gt; ── Attaching packages ───────────</span>
 <span class="co">#&gt; ✔ ggplot2 3.3.6     ✔ purrr   0.3.4</span>
 <span class="co">#&gt; ✔ tibble  3.1.7     ✔ dplyr   1.0.9</span>
 <span class="co">#&gt; ✔ tidyr   1.2.0     ✔ stringr 1.4.0</span>
 <span class="co">#&gt; ✔ readr   2.1.2     ✔ forcats 0.5.1</span>
-<span class="co">#&gt; ── Conflicts ───────────────────────</span>
+<span class="co">#&gt; ── Conflicts ────────────────────</span>
 <span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></code></pre></div>
@@ -622,16 +622,16 @@ empleamos la siguiente estructura.</p>
 <p>La función <code>read_csv</code> del paquete readr (se carga automáticamente cuando se realiza <code><a href="https://tidyverse.tidyverse.org">library(tidyverse)</a></code>), permite importar archivos <code>csv</code> (data) incluso cuando el archivo está en una web.</p>
 <div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 285 Columns: 861</span>
-<span class="co">#&gt; ── Column specification ────────────</span>
+<span class="co">#&gt; Rows: 285 Columns: 862</span>
+<span class="co">#&gt; ── Column specification ─────────</span>
 <span class="co">#&gt; Delimiter: ","</span>
 <span class="co">#&gt; chr   (2): Province/State, Country/Region</span>
-<span class="co">#&gt; dbl (859): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
+<span class="co">#&gt; dbl (860): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
 <span class="va">covid19</span>
-<span class="co">#&gt; # A tibble: 285 × 861</span>
+<span class="co">#&gt; # A tibble: 285 × 862</span>
 <span class="co">#&gt;    `Province/State`  `Country/Region`   Lat   Long `1/22/20`</span>
 <span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 &lt;NA&gt;              Afghanistan       33.9  67.7          0</span>
@@ -644,7 +644,7 @@ empleamos la siguiente estructura.</p>
 <span class="co">#&gt;  8 &lt;NA&gt;              Argentina        -38.4 -63.6          0</span>
 <span class="co">#&gt;  9 &lt;NA&gt;              Armenia           40.1  45.0          0</span>
 <span class="co">#&gt; 10 Australian Capit… Australia        -35.5 149.           0</span>
-<span class="co">#&gt; # … with 275 more rows, and 856 more variables:</span>
+<span class="co">#&gt; # … with 275 more rows, and 857 more variables:</span>
 <span class="co">#&gt; #   `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,</span>
@@ -692,7 +692,7 @@ empleamos la siguiente estructura.</p>
     names_from <span class="op">=</span> <span class="st">"fecha"</span>,
     values_from <span class="op">=</span> <span class="st">"fallecidos"</span>
   <span class="op">)</span>
-<span class="co">#&gt; # A tibble: 285 × 859</span>
+<span class="co">#&gt; # A tibble: 285 × 860</span>
 <span class="co">#&gt;    `Province/State`     `Country/Region` `1/22/20` `1/23/20`</span>
 <span class="co">#&gt;    &lt;chr&gt;                &lt;chr&gt;                &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 &lt;NA&gt;                 Afghanistan              0         0</span>
@@ -705,7 +705,7 @@ empleamos la siguiente estructura.</p>
 <span class="co">#&gt;  8 &lt;NA&gt;                 Argentina                0         0</span>
 <span class="co">#&gt;  9 &lt;NA&gt;                 Armenia                  0         0</span>
 <span class="co">#&gt; 10 Australian Capital … Australia                0         0</span>
-<span class="co">#&gt; # … with 275 more rows, and 855 more variables:</span>
+<span class="co">#&gt; # … with 275 more rows, and 856 more variables:</span>
 <span class="co">#&gt; #   `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;, `1/26/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;, `1/29/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;, `2/1/20` &lt;dbl&gt;,</span>
@@ -764,7 +764,7 @@ empleamos la siguiente estructura.</p>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-28.</p>
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-29.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

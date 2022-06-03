@@ -497,7 +497,7 @@ class: center, middle
 </h2>
 <br>
 <h3>
-`r anicon::faa('envelope', size = 'xs', animate='float', rtext='<a href="mailto:correo@gmail.com"><span style="color:#562457">&nbsp;&nbsp;correo@gmail.com</span></a>')`
+`r anicon::faa('envelope', size = 'xs', animate='float', rtext='<a href="mailto:imt.innovlab@oficinas-upch.pe"><span style="color:#562457">&nbsp;&nbsp;imt.innovlab@oficinas-upch.pe</span></a>')`
 </h3>
 <h3>
 `r anicon::faa('github', size = 'xs', animate='float', rtext='<a href="https://github.com/healthinnovation/"><span style="color:#562457">&nbsp;&nbsp; @healthinnovation</span></a>')`

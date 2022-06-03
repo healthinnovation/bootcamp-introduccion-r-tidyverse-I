@@ -256,7 +256,7 @@ storms %>%
 ## ¡Hazlo tú mismo!
 
 .line-space1-5[.font110[
-Para este ejercicio usaremos la ENDES 2020. Específicamente el módulo de cuestionario individual para mujeres de 12 a 49 años (`RECH94`). Sobre este módulo se requiere lo siguiente:
+Para este ejercicio usaremos la [ENDES 2020](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/healthinnovation/curso-introduccion-r-tidyverse/tree/main/sesion_04/data). Específicamente el módulo de cuestionario individual para mujeres de 12 a 49 años (`RECH94`). Sobre este módulo se requiere lo siguiente:
 
 1. Importar el archivo `.sav` que se encuentra dentro de la carpeta `data/` en un objeto llamado `rech94`.
 2. Usando el archivo PDF llamado `Diccionario - REC94.pdf` dentro de la carpeta `data/`, selecciona las siguientes variables: Identificador del cuestionario, meses de embarazo en última revisión prenatal, razón por la que no acudió a un hospital para dar a luz, prueba de anemia durante embarazo, diagnótico de anemia, tratamiento con hierro y consumo del mismo.
@@ -564,7 +564,7 @@ class: center, middle
 </h2>
 <br>
 <h3>
-`r anicon::faa('envelope', size = 'xs', animate='float', rtext='<a href="mailto:correo@gmail.com"><span style="color:#562457">&nbsp;&nbsp;correo@gmail.com</span></a>')`
+`r anicon::faa('envelope', size = 'xs', animate='float', rtext='<a href="mailto:imt.innovlab@oficinas-upch.pe"><span style="color:#562457">&nbsp;&nbsp;imt.innovlab@oficinas-upch.pe</span></a>')`
 </h3>
 <h3>
 `r anicon::faa('github', size = 'xs', animate='float', rtext='<a href="https://github.com/healthinnovation/"><span style="color:#562457">&nbsp;&nbsp; @healthinnovation</span></a>')`

@@ -4,7 +4,7 @@
     <title>Introducción a R y Tidyverse</title>
     <meta charset="utf-8" />
     <meta name="author" content="Laboratorio de Innovación en Salud" />
-    <meta name="date" content="2022-04-03" />
+    <meta name="date" content="2022-06-03" />
     <script src="sesion_04_files/header-attrs/header-attrs.js"></script>
     <link href="sesion_04_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="sesion_04_files/tile-view/tile-view.js"></script>
@@ -138,7 +138,7 @@ top:1em;right:1em;
 
 ## Laboratorio de Innovación en Salud  
 
-### 2022-04-03
+### 2022-06-03
 
 &lt;br&gt;
 
@@ -361,7 +361,7 @@ storms %&gt;%
 ## ¡Hazlo tú mismo!
 
 .line-space1-5[.font110[
-Para este ejercicio usaremos la ENDES 2020. Específicamente el módulo de cuestionario individual para mujeres de 12 a 49 años (`RECH94`). Sobre este módulo se requiere lo siguiente:
+Para este ejercicio usaremos la [ENDES 2020](https://minhaskamal.github.io/DownGit/#/home?url=https://github.com/healthinnovation/curso-introduccion-r-tidyverse/tree/main/sesion_04/data). Específicamente el módulo de cuestionario individual para mujeres de 12 a 49 años (`RECH94`). Sobre este módulo se requiere lo siguiente:
 
 1. Importar el archivo `.sav` que se encuentra dentro de la carpeta `data/` en un objeto llamado `rech94`.
 2. Usando el archivo PDF llamado `Diccionario - REC94.pdf` dentro de la carpeta `data/`, selecciona las siguientes variables: Identificador del cuestionario, meses de embarazo en última revisión prenatal, razón por la que no acudió a un hospital para dar a luz, prueba de anemia durante embarazo, diagnótico de anemia, tratamiento con hierro y consumo del mismo.
@@ -369,7 +369,7 @@ Para este ejercicio usaremos la ENDES 2020. Específicamente el módulo de cuest
 4. Usando el documento `Diccionario - REC1.pdf`, filtrar únicamente los casos de mujeres que tengan edades dentre los 12 y 49 años.
 ]]
 
-<div class="countdown" id="timer_624a5fed" style="right:0;bottom:0;margin:0.5em;font-size:4em;" data-warnwhen="60">
+<div class="countdown" id="timer_629a491b" style="right:0;bottom:0;margin:0.5em;font-size:4em;" data-warnwhen="60">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -724,7 +724,7 @@ covid19
 ```
 
 ```
-## # A tibble: 284 × 806
+## # A tibble: 285 × 867
 ##    `Province/State`  `Country/Region`   Lat   Long `1/22/20` `1/23/20` `1/24/20` `1/25/20`
 ##    &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
 ##  1 &lt;NA&gt;              Afghanistan       33.9  67.7          0         0         0         0
@@ -737,7 +737,7 @@ covid19
 ##  8 &lt;NA&gt;              Argentina        -38.4 -63.6          0         0         0         0
 ##  9 &lt;NA&gt;              Armenia           40.1  45.0          0         0         0         0
 ## 10 Australian Capit… Australia        -35.5 149.           0         0         0         0
-## # … with 274 more rows, and 798 more variables: `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;,
+## # … with 275 more rows, and 859 more variables: `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;,
 ## #   `1/28/20` &lt;dbl&gt;, `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;, `2/1/20` &lt;dbl&gt;,
 ## #   `2/2/20` &lt;dbl&gt;, `2/3/20` &lt;dbl&gt;, `2/4/20` &lt;dbl&gt;, `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;,
 ## #   `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;, `2/10/20` &lt;dbl&gt;, `2/11/20` &lt;dbl&gt;,
@@ -766,7 +766,7 @@ count: false
 .panel2-summarise_1-user[
 
 ```
-## # A tibble: 284 × 806
+## # A tibble: 285 × 867
 ##    `Province/State`       `Country/Region`   Lat   Long
 ##    &lt;chr&gt;                  &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;
 ##  1 &lt;NA&gt;                   Afghanistan       33.9  67.7 
@@ -779,7 +779,7 @@ count: false
 ##  8 &lt;NA&gt;                   Argentina        -38.4 -63.6 
 ##  9 &lt;NA&gt;                   Armenia           40.1  45.0 
 ## 10 Australian Capital Te… Australia        -35.5 149.  
-## # … with 274 more rows, and 802 more variables:
+## # … with 275 more rows, and 863 more variables:
 ## #   `1/22/20` &lt;dbl&gt;, `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;,
 ## #   `1/25/20` &lt;dbl&gt;, `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;,
 ## #   `1/28/20` &lt;dbl&gt;, `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;,
@@ -810,7 +810,7 @@ covid19 %&gt;%
 .panel2-summarise_1-user[
 
 ```
-## # A tibble: 227,768 × 4
+## # A tibble: 245,955 × 4
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -823,7 +823,7 @@ covid19 %&gt;%
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 227,758 more rows
+## # … with 245,945 more rows
 ```
 ]
 
@@ -849,8 +849,8 @@ covid19 %&gt;%
 .panel2-summarise_1-user[
 
 ```
-## # A tibble: 227,768 × 4
-## # Groups:   Country/Region [198]
+## # A tibble: 245,955 × 4
+## # Groups:   Country/Region [199]
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -863,7 +863,7 @@ covid19 %&gt;%
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 227,758 more rows
+## # … with 245,945 more rows
 ```
 ]
 
@@ -895,20 +895,20 @@ covid19 %&gt;%
 .panel2-summarise_1-user[
 
 ```
-## # A tibble: 198 × 5
+## # A tibble: 199 × 5
 ##    `Country/Region`          M      DE    Max   Min
 ##    &lt;chr&gt;                 &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-##  1 Afghanistan          3450.   2857.    7671     0
-##  2 Albania              1586.   1264.    3492     0
-##  3 Algeria              3187.   2210.    6874     0
-##  4 Andorra                92.0    45.8    155     0
-##  5 Angola                722.    686.    1900     0
+##  1 Afghanistan          3749.   2961.    7708     0
+##  2 Albania              1721.   1313.    3497     0
+##  3 Algeria              3447.   2331.    6875     0
+##  4 Andorra                96.3    46.8    155     0
+##  5 Angola                805.    727.    1900     0
 ##  6 Antarctica              0       0        0     0
-##  7 Antigua and Barbuda    39.2    46.5    135     0
-##  8 Argentina           58406.  47592.  128059     0
-##  9 Armenia              3427.   2812.    8616     0
-## 10 Australia             151.    404.    2754     0
-## # … with 188 more rows
+##  7 Antigua and Barbuda    46.1    51.3    138     0
+##  8 Argentina           63364.  49279.  128889     0
+##  9 Armenia              3794.   3020.    8625     0
+## 10 Australia             206.    540.    3464     0
+## # … with 189 more rows
 ```
 ]
 
@@ -941,20 +941,20 @@ covid19 %&gt;%
 .panel2-summarise_1-user[
 
 ```
-## # A tibble: 198 × 5
-##    `Country/Region`       M      DE    Max   Min
-##    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-##  1 US               443705. 300503. 982533     0
-##  2 Brazil           318623. 241149. 660371     0
-##  3 India            230625. 191000. 521345     0
-##  4 Mexico           160834. 112737. 323212     0
-##  5 Peru             121107.  75801. 212299     0
-##  6 Russia           114643. 113601. 362008     0
-##  7 Italy             84782.  50737. 159666     0
-##  8 Colombia          65493.  52083. 139650     0
-##  9 Iran              64561.  47620. 140277     0
-## 10 Argentina         58406.  47592. 128059     0
-## # … with 188 more rows
+## # A tibble: 199 × 5
+##    `Country/Region`       M      DE     Max   Min
+##    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1 US               481207  321984. 1008031     0
+##  2 Brazil           343026. 248750.  666930     0
+##  3 India            251314. 198830.  524651     0
+##  4 Mexico           172386. 116476.  324966     0
+##  5 Russia           132559. 127348.  371628     0
+##  6 Peru             127591.  76764.  213227     0
+##  7 Italy             90359.  52932.  166835     0
+##  8 Colombia          70744.  53699.  139867     0
+##  9 Iran              69965.  49917.  141318     0
+## 10 Indonesia         64757.  61826.  156600     0
+## # … with 189 more rows
 ```
 ]
 
@@ -1017,7 +1017,7 @@ count: false
 .panel2-summarise_2-user[
 
 ```
-## # A tibble: 227,768 × 4
+## # A tibble: 245,955 × 4
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -1030,7 +1030,7 @@ count: false
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 227,758 more rows
+## # … with 245,945 more rows
 ```
 ]
 
@@ -1050,8 +1050,8 @@ covid19_tidy %&gt;%
 .panel2-summarise_2-user[
 
 ```
-## # A tibble: 227,768 × 4
-## # Groups:   Country/Region [198]
+## # A tibble: 245,955 × 4
+## # Groups:   Country/Region [199]
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -1064,7 +1064,7 @@ covid19_tidy %&gt;%
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 227,758 more rows
+## # … with 245,945 more rows
 ```
 ]
 
@@ -1090,20 +1090,20 @@ covid19_tidy %&gt;%
 .panel2-summarise_2-user[
 
 ```
-## # A tibble: 198 × 5
+## # A tibble: 199 × 5
 ##    `Country/Region`          M      DE    Max   Min
 ##    &lt;chr&gt;                 &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-##  1 Afghanistan          3450.   2857.    7671     0
-##  2 Albania              1586.   1264.    3492     0
-##  3 Algeria              3187.   2210.    6874     0
-##  4 Andorra                92.0    45.8    155     0
-##  5 Angola                722.    686.    1900     0
+##  1 Afghanistan          3749.   2961.    7708     0
+##  2 Albania              1721.   1313.    3497     0
+##  3 Algeria              3447.   2331.    6875     0
+##  4 Andorra                96.3    46.8    155     0
+##  5 Angola                805.    727.    1900     0
 ##  6 Antarctica              0       0        0     0
-##  7 Antigua and Barbuda    39.2    46.5    135     0
-##  8 Argentina           58406.  47592.  128059     0
-##  9 Armenia              3427.   2812.    8616     0
-## 10 Australia             151.    404.    2754     0
-## # … with 188 more rows
+##  7 Antigua and Barbuda    46.1    51.3    138     0
+##  8 Argentina           63364.  49279.  128889     0
+##  9 Armenia              3794.   3020.    8625     0
+## 10 Australia             206.    540.    3464     0
+## # … with 189 more rows
 ```
 ]
 
@@ -1130,20 +1130,20 @@ covid19_tidy %&gt;%
 .panel2-summarise_2-user[
 
 ```
-## # A tibble: 198 × 5
-##    `Country/Region`       M      DE    Max   Min
-##    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-##  1 US               443705. 300503. 982533     0
-##  2 Brazil           318623. 241149. 660371     0
-##  3 India            230625. 191000. 521345     0
-##  4 Mexico           160834. 112737. 323212     0
-##  5 Peru             121107.  75801. 212299     0
-##  6 Russia           114643. 113601. 362008     0
-##  7 Italy             84782.  50737. 159666     0
-##  8 Colombia          65493.  52083. 139650     0
-##  9 Iran              64561.  47620. 140277     0
-## 10 Argentina         58406.  47592. 128059     0
-## # … with 188 more rows
+## # A tibble: 199 × 5
+##    `Country/Region`       M      DE     Max   Min
+##    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+##  1 US               481207  321984. 1008031     0
+##  2 Brazil           343026. 248750.  666930     0
+##  3 India            251314. 198830.  524651     0
+##  4 Mexico           172386. 116476.  324966     0
+##  5 Russia           132559. 127348.  371628     0
+##  6 Peru             127591.  76764.  213227     0
+##  7 Italy             90359.  52932.  166835     0
+##  8 Colombia          70744.  53699.  139867     0
+##  9 Iran              69965.  49917.  141318     0
+## 10 Indonesia         64757.  61826.  156600     0
+## # … with 189 more rows
 ```
 ]
 
@@ -1203,7 +1203,7 @@ count: false
 .panel2-summarise_3-user[
 
 ```
-## # A tibble: 227,768 × 4
+## # A tibble: 245,955 × 4
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -1216,7 +1216,7 @@ count: false
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 227,758 more rows
+## # … with 245,945 more rows
 ```
 ]
 
@@ -1238,7 +1238,7 @@ covid19_tidy %&gt;%
 .panel2-summarise_3-user[
 
 ```
-## # A tibble: 227,768 × 4
+## # A tibble: 245,955 × 4
 ##    `Province/State` `Country/Region` fecha     
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;date&gt;    
 ##  1 &lt;NA&gt;             Afghanistan      2020-01-22
@@ -1251,7 +1251,7 @@ covid19_tidy %&gt;%
 ##  8 &lt;NA&gt;             Afghanistan      2020-01-29
 ##  9 &lt;NA&gt;             Afghanistan      2020-01-30
 ## 10 &lt;NA&gt;             Afghanistan      2020-01-31
-## # … with 227,758 more rows, and 1 more variable:
+## # … with 245,945 more rows, and 1 more variable:
 ## #   fallecidos &lt;dbl&gt;
 ```
 ]
@@ -1275,7 +1275,7 @@ covid19_tidy %&gt;%
 .panel2-summarise_3-user[
 
 ```
-## # A tibble: 25,844 × 4
+## # A tibble: 43,320 × 4
 ##    `Province/State` `Country/Region` fecha     
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;date&gt;    
 ##  1 &lt;NA&gt;             Afghanistan      2022-01-02
@@ -1288,7 +1288,7 @@ covid19_tidy %&gt;%
 ##  8 &lt;NA&gt;             Afghanistan      2022-01-09
 ##  9 &lt;NA&gt;             Afghanistan      2022-01-10
 ## 10 &lt;NA&gt;             Afghanistan      2022-01-11
-## # … with 25,834 more rows, and 1 more variable:
+## # … with 43,310 more rows, and 1 more variable:
 ## #   fallecidos &lt;dbl&gt;
 ```
 ]
@@ -1313,8 +1313,8 @@ covid19_tidy %&gt;%
 .panel2-summarise_3-user[
 
 ```
-## # A tibble: 25,844 × 4
-## # Groups:   Country/Region [198]
+## # A tibble: 43,320 × 4
+## # Groups:   Country/Region [199]
 ##    `Province/State` `Country/Region` fecha     
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;date&gt;    
 ##  1 &lt;NA&gt;             Afghanistan      2022-01-02
@@ -1327,7 +1327,7 @@ covid19_tidy %&gt;%
 ##  8 &lt;NA&gt;             Afghanistan      2022-01-09
 ##  9 &lt;NA&gt;             Afghanistan      2022-01-10
 ## 10 &lt;NA&gt;             Afghanistan      2022-01-11
-## # … with 25,834 more rows, and 1 more variable:
+## # … with 43,310 more rows, and 1 more variable:
 ## #   fallecidos &lt;dbl&gt;
 ```
 ]
@@ -1358,20 +1358,20 @@ covid19_tidy %&gt;%
 .panel2-summarise_3-user[
 
 ```
-## # A tibble: 198 × 5
+## # A tibble: 199 × 5
 ##    `Country/Region`          M      DE    Max    Min
 ##    &lt;chr&gt;                 &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 Afghanistan           7516.  116.     7671   7361
-##  2 Albania               3394.   94.3    3492   3220
-##  3 Algeria               6679.  200.     6874   6291
-##  4 Andorra                148.    4.40    155    140
-##  5 Angola                1884.   31.6    1900   1772
+##  1 Afghanistan           7584.  122.     7708   7361
+##  2 Albania               3435.   88.3    3497   3220
+##  3 Algeria               6758.  182.     6875   6291
+##  4 Andorra                150.    4.18    155    140
+##  5 Angola                1890.   25.7    1900   1772
 ##  6 Antarctica               0     0         0      0
-##  7 Antigua and Barbuda    130.    6.38    135    119
-##  8 Argentina           123518. 3854.   128059 117204
-##  9 Armenia               8284.  250.     8616   7977
-## 10 Australia              555.  847.     2754      1
-## # … with 188 more rows
+##  7 Antigua and Barbuda    132.    5.91    138    119
+##  8 Argentina           125542. 3877.   128889 117204
+##  9 Armenia               8420.  255.     8625   7977
+## 10 Australia              705. 1017.     3464      1
+## # … with 189 more rows
 ```
 ]
 
@@ -1402,20 +1402,20 @@ covid19_tidy %&gt;%
 .panel2-summarise_3-user[
 
 ```
-## # A tibble: 198 × 5
-##    `Country/Region`       M     DE    Max    Min
-##    &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;
-##  1 US               919389. 49251. 982533 828654
-##  2 Brazil           639912. 14818. 660371 619401
-##  3 India            504673. 13254. 521345 481893
-##  4 Russia           335552. 17683. 362008 304284
-##  5 Mexico           312403.  8453. 323212 299544
-##  6 Peru             208068.  3441. 212299 202782
-##  7 Italy            150326.  6997. 159666 137646
-##  8 Indonesia        147747.  4038. 155164 144097
-##  9 Colombia         136066.  3514. 139650 130026
-## 10 Iran             135288.  3173. 140277 131680
-## # … with 188 more rows
+## # A tibble: 199 × 5
+##    `Country/Region`       M     DE     Max    Min
+##    &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+##  1 US               949814. 55252. 1008031 825845
+##  2 Brazil           649529. 16465.  666930 619401
+##  3 India            512155. 13761.  524651 481893
+##  4 Russia           348618. 21109.  371628 304284
+##  5 Mexico           317161.  8755.  324966 299544
+##  6 Peru             209984.  3549.  213227 202782
+##  7 Italy            155688.  8613.  166835 137646
+##  8 Indonesia        151129.  5191.  156600 144097
+##  9 Iran             137589.  3739.  141318 131680
+## 10 Colombia         137559.  3273.  139867 130026
+## # … with 189 more rows
 ```
 ]
 
@@ -1467,7 +1467,7 @@ covid19_tidy %&gt;%
 1. Usa nuevas reglas de filtrado
 ]]
 
-<div class="countdown" id="timer_624a60f2" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_629a471b" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1487,7 +1487,7 @@ class: center, middle
 &lt;/h2&gt;
 &lt;br&gt;
 &lt;h3&gt;
-<span>&lt;i class="fas  fa-envelope fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="mailto:correo@gmail.com"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp;correo@gmail.com&lt;/span&gt;&lt;/a&gt;</span>
+<span>&lt;i class="fas  fa-envelope fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="mailto:imt.innovlab@oficinas-upch.pe"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp;imt.innovlab@oficinas-upch.pe&lt;/span&gt;&lt;/a&gt;</span>
 &lt;/h3&gt;
 &lt;h3&gt;
 <span>&lt;i class="fab  fa-github fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="https://github.com/healthinnovation/"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp; @healthinnovation&lt;/span&gt;&lt;/a&gt;</span>
@@ -1552,6 +1552,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

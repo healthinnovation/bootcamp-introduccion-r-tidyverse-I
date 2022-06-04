@@ -261,7 +261,7 @@ Para este ejercicio usaremos la [ENDES 2020](https://minhaskamal.github.io/DownG
 1. Importar el archivo `.sav` que se encuentra dentro de la carpeta `data/` en un objeto llamado `rech94`.
 2. Usando el archivo PDF llamado `Diccionario - REC94.pdf` dentro de la carpeta `data/`, selecciona las siguientes variables: Identificador del cuestionario, meses de embarazo en última revisión prenatal, razón por la que no acudió a un hospital para dar a luz, prueba de anemia durante embarazo, diagnótico de anemia, tratamiento con hierro y consumo del mismo.
 3. De forma similar con el archivo `RECH1.sav`, importarlo dentro de R.
-4. Usando el documento `Diccionario - REC1.pdf`, filtrar únicamente los casos de mujeres que tengan edades dentre los 12 y 49 años.
+4. Usando el documento `Diccionario - REC1.pdf`, filtrar únicamente los casos de mujeres que tengan edades entre los 12 y 49 años.
 ]]
 
 ```{r echo=FALSE}

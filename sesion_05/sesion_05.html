@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introducción a R y Tidyverse</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Laboratorio de Innovación en Salud" />
+    <meta name="date" content="2022-06-04" />
+    <script src="sesion_05_files/header-attrs/header-attrs.js"></script>
+    <link href="sesion_05_files/tile-view/tile-view.css" rel="stylesheet" />
+    <script src="sesion_05_files/tile-view/tile-view.js"></script>
+    <script src="sesion_05_files/js-cookie/js.cookie.js"></script>
+    <script src="sesion_05_files/peerjs/peerjs.min.js"></script>
+    <script src="sesion_05_files/tiny.toast/toast.min.js"></script>
+    <link href="sesion_05_files/xaringanExtra-broadcast/broadcast.css" rel="stylesheet" />
+    <script src="sesion_05_files/xaringanExtra-broadcast/broadcast.js"></script>
+    <script src="sesion_05_files/fabric/fabric.min.js"></script>
+    <link href="sesion_05_files/xaringanExtra-scribble/scribble.css" rel="stylesheet" />
+    <script src="sesion_05_files/xaringanExtra-scribble/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <link href="sesion_05_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="sesion_05_files/panelset/panelset.js"></script>
+    <script src="sesion_05_files/clipboard/clipboard.min.js"></script>
+    <link href="sesion_05_files/xaringanExtra-clipboard/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="sesion_05_files/xaringanExtra-clipboard/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="sesion_05_files/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="sesion_05_files/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="sesion_05_files/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <script src="sesion_05_files/xaringanExtra-progressBar/progress-bar.js"></script>
+    <meta name="github-repo" content="healthinnovation/xaringan-innovar"/>
+    <meta name="twitter:title" content="Plantilla Innovar Xaringan"/>
+    <meta name="twitter:description" content="Curso de Introducción a R y Tidyverse: Sesión 04"/>
+    <meta name="twitter:url" content="https://healthinnovation.github.io/xaringan-innovar/sesion_05/#1"/>
+    <meta name="twitter:image" content="https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion04.png"/>
+    <meta name="twitter:image:alt" content="Cover de la Sesión 05 del curso de Introducción a R y Tidyverse"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@innovalab_imt"/>
+    <meta name="twitter:site" content="@innovalab_imt"/>
+    <meta property="og:title" content="Plantilla Innovar Xaringan"/>
+    <meta property="og:description" content="Curso de Introducción a R y Tidyverse: Sesión 04"/>
+    <meta property="og:url" content="https://healthinnovation.github.io/xaringan-innovar/sesion_05/#1"/>
+    <meta property="og:image" content="https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion04.png"/>
+    <meta property="og:image:alt" content="Cover de la Sesión 05 del curso de Introducción a R y Tidyverse"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Laboratorio de Innovación en Salud"/>
+    <link href="sesion_05_files/countdown/countdown.css" rel="stylesheet" />
+    <script src="sesion_05_files/countdown/countdown.js"></script>
+    <link href="sesion_05_files/font-awesome-animation/font-awesome-animation-emi.css" rel="stylesheet" />
+    <script src="sesion_05_files/fontawesome/js/fontawesome-all.min.js"></script>
+    <link rel="stylesheet" href="xaringan-lis.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div>
+<style type="text/css">.xaringan-extra-logo {
+width: 100px;
+height: 116px;
+z-index: 0;
+background-image: url(img/InnovaLab_logo_blue.png);
+background-size: contain;
+background-repeat: no-repeat;
+position: absolute;
+top:1em;right:1em;
+}
+</style>
+<script>(function () {
+  let tries = 0
+  function addLogo () {
+    if (typeof slideshow === 'undefined') {
+      tries += 1
+      if (tries < 10) {
+        setTimeout(addLogo, 100)
+      }
+    } else {
+      document.querySelectorAll('.remark-slide-content:not(.title-slide):not(.inverse):not(.hide_logo)')
+        .forEach(function (slide) {
+          const logo = document.createElement('div')
+          logo.classList = 'xaringan-extra-logo'
+          logo.href = null
+          slide.appendChild(logo)
+        })
+    }
+  }
+  document.addEventListener('DOMContentLoaded', addLogo)
+})()</script>
+</div>
+
+
+
+<style>.xe__progress-bar__container {
+  bottom:0;
+  opacity: 1;
+  position:absolute;
+  right:0;
+  left: 0;
+}
+.xe__progress-bar {
+  height: 0.25em;
+  background-color: #0051BA;
+  width: calc(var(--slide-current) / var(--slide-total) * 100%);
+}
+.remark-visible .xe__progress-bar {
+  animation: xe__progress-bar__wipe 200ms forwards;
+  animation-timing-function: cubic-bezier(.86,0,.07,1);
+}
+@keyframes xe__progress-bar__wipe {
+  0% { width: calc(var(--slide-previous) / var(--slide-total) * 100%); }
+  100% { width: calc(var(--slide-current) / var(--slide-total) * 100%); }
+}</style>
+
+
+
+
+&lt;br&gt;
+&lt;br&gt;
+
+# Introducción a R y Tidyverse
+
+## Sesión 05
+
+## Laboratorio de Innovación en Salud  
+
+### 2022-06-04
+
+&lt;br&gt;
+
+[<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> @healthinnovation](https://github.com/healthinnovation)  
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> @innovalab_imt](https://twitter.com/innovalab_imt)  
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg> innovalab.info](https://www.innovalab.info/)  
+
+---
+## Contenidos
+
+.line-space3-0[.font120[
+- Manejo de múltiples conjuntos de datos mediante funciones join.
+- Cálculo de variables por filas (rowwise)
+]]
+
+---
+class: center, middle, inverse
+
+# Exploración competencial
+
+---
+## Funciones join
+
+.pull-left[
+.line-space1-7[
+Las funciones `joins` permiten unir 2 o más conjuntos de datos (`dataframes` o `tibbles`) dependiendo de una o múltiples variables en común. En algunos lenguajes (ej. `SQL`) estas variables en común reciben el nombre de `keys`.
+]
+- `inner_join()`: Solo casos coincidentes en ambos df's.
+- `left_join()`: Todos los casos de la primera df.
+- `right_join()`: Todos los casos de la segunda df.
+- `full_join()`: Casos de ambas df's.
+- `anti_join()`: Solo casos en el primer df que no coincida.
+]
+
+.pull-right[
+&lt;div class="svgTop1" style="margin: -3em auto;"&gt;
+&lt;img src="https://raw.githubusercontent.com/cienciadedatos/r4ds/traduccion/diagrams/es/join-setup.svg" title="Representación gráfica de 2 conjuntos de datos que van a ser utilizados para alguna operación join" alt="Representación gráfica de 2 conjuntos de datos que van a ser utilizados para alguna operación join" width="75%" style="display: block; margin: auto;" /&gt;
+&lt;/div&gt;
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="https://raw.githubusercontent.com/cienciadedatos/r4ds/traduccion/diagrams/es/join-setup2.svg" alt="Representación gráfica de la como se ven los conjuntos de datos previo al uso de alguna función join
+" width="75%" style="margin: auto auto -2em;" /&gt;
+&lt;p class="caption"&gt;Representación de operaciones joins &lt;a href="https://es.r4ds.hadley.nz/"&gt; R para Ciencia de Datos&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+]
+
+---
+## Función `inner_join()`
+
+.line-space1-7[.font110[
+Esta función busca quedarse únicamente con los casos que aparezcan en ambos df analizados a partir de la variable (`key`) en común. 
+
+&gt; ¡Advertencia!: Si en alguno de los df's hay un caso que tenga más de una entrada, entonces en el resultado también se observarán múltiples informaciones para un mismo caso.
+
+]]
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="https://raw.githubusercontent.com/cienciadedatos/r4ds/traduccion/diagrams/es/join-inner.svg" alt="Representación gráfica de la función inner_join en donde se observa que únicamente los casos con las keys coincidentes, serán seleccionados y conformarán un nuevo conjunto de datos
+" width="70%" style="margin: -3.5em auto -2em" /&gt;
+&lt;p class="caption"&gt;Representación de &lt;code&gt;inner_join()&lt;/code&gt; de &lt;a href="https://es.r4ds.hadley.nz/"&gt; R para Ciencia de Datos&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+---
+## Previos a `inner_join()`
+
+.panelset[
+.panel[.panel-name[Reconocimiento de BD]
+Para estas actividades usaremos las bases de datos de ENDES 2020: `RECH1.sav` y `REC94.sav`. Previamente deberíamos haber cargado a **tidyverse**: `library(tidyverse)`.
+
+
+
+.pull-left[.scroll-output325[
+
+```r
+rec1 &lt;- haven::read_sav("data/RECH1.sav")
+glimpse(rec1)
+```
+
+```
+## Rows: 139,653
+## Columns: 36
+## $ ID1    &lt;dbl&gt; 2020, 2020, 2020, 2020, 2020…
+## $ HHID   &lt;chr&gt; "      000101101", "      00…
+## $ HVIDX  &lt;dbl&gt; 1, 1, 2, 3, 1, 2, 3, 4, 1, 2…
+## $ HV101  &lt;dbl+lbl&gt; 1, 1, 2, 3, 1, 2, 3, 3, …
+## $ HV102  &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ HV103  &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, …
+## $ HV104  &lt;dbl+lbl&gt; 1, 1, 2, 1, 1, 2, 1, 1, …
+## $ HV105  &lt;dbl+lbl&gt; 30, 26, 25,  5, 52, 36, …
+## $ HV106  &lt;dbl+lbl&gt; 2, 3, 3, 0, 3, 3, 1, 0, …
+## $ HV107  &lt;dbl+lbl&gt;  5,  3,  1, NA,  2,  3, …
+## $ HV108  &lt;dbl+lbl&gt; 11, 14, 12,  0, 18, 14, …
+## $ HV109  &lt;dbl+lbl&gt; 4, 5, 5, 0, 5, 5, 1, 0, …
+## $ HV110  &lt;dbl+lbl&gt; 0, 0, 0, 1, 0, 0, 1, 1, …
+## $ HV111  &lt;dbl+lbl&gt; NA, NA, NA,  1, NA, NA, …
+## $ HV112  &lt;dbl+lbl&gt; NA, NA, NA,  2, NA, NA, …
+## $ HV113  &lt;dbl+lbl&gt; NA, NA, NA,  1, NA, NA, …
+## $ HV114  &lt;dbl+lbl&gt; NA, NA, NA,  1, NA, NA, …
+## $ HV115  &lt;dbl+lbl&gt;  2,  2,  2, NA,  1,  1, …
+## $ HV116  &lt;dbl+lbl&gt;  1,  1,  1, NA,  1,  1, …
+## $ HV117  &lt;dbl+lbl&gt; 0, 0, 1, 0, 0, 1, 0, 0, …
+## $ HV118  &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA, …
+## $ HV120  &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, …
+## $ HV121  &lt;dbl+lbl&gt; 0, 0, 0, 1, 0, 0, 1, 1, …
+## $ HV122  &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 1, 0, …
+## $ HV123  &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA, …
+## $ HV124  &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 2, 0, …
+## $ HV125  &lt;dbl+lbl&gt; 0, 0, 0, 1, 0, 0, 1, 1, …
+## $ HV126  &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 1, 0, …
+## $ HV127  &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA, …
+## $ HV128  &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 1, 0, …
+## $ HV129  &lt;dbl+lbl&gt; NA, NA, NA,  0, NA, NA, …
+## $ QH21A  &lt;dbl+lbl&gt; NA, NA, NA,  1, NA, NA, …
+## $ QH25A  &lt;chr&gt; "PERUANA", "PERUANA", "PERUA…
+## $ QH25B  &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA, …
+## $ QH25CM &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, …
+## $ QH25CA &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, …
+```
+]]
+
+.pull-right[.scroll-output325[
+
+```r
+rec94 &lt;- haven::read_sav("data/REC94.sav")
+glimpse(rec94)
+```
+
+```
+## Rows: 17,242
+## Columns: 61
+## $ ID1      &lt;dbl&gt; 2020, 2020, 2020, 2020, 20…
+## $ CASEID   &lt;chr&gt; "      000102401  2", "   …
+## $ IDX94    &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 2,…
+## $ S410B    &lt;dbl+lbl&gt;  9,  9,  8,  9,  9,  9…
+## $ S411B    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411F    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411G    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411H    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411I    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411J    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411K    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411L    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411BA   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411CA   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411DA   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S411EA   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S413     &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S422I    &lt;dbl+lbl&gt;  0,  0, NA,  0,  0,  0…
+## $ S426B    &lt;dbl+lbl&gt; 14, 14, 14, NA, 14, NA…
+## $ S426E    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA,  1…
+## $ S426FA   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S426FB   &lt;dbl+lbl&gt;  NA,  NA,  NA,  NA,  N…
+## $ S426GA   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S426GB   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S426GC   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S426GD   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S426GE   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S430C    &lt;dbl+lbl&gt; 1, 1, 1, 1, 2, 1, 2, 1…
+## $ S430D    &lt;dbl+lbl&gt;  1,  1,  1,  1, NA,  1…
+## $ S431A    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S425A    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S432     &lt;dbl+lbl&gt; 0, 0, 0, 0, 0, 0, 1, 1…
+## $ S432AD   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S432AM   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S432AY   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S427DA   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S427DB   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S427DC   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S427DD   &lt;dbl+lbl&gt;  0,  0,  1,  0,  0,  1…
+## $ S427DE   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S427DF   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S427DG   &lt;dbl+lbl&gt;  0,  0,  0,  0,  0,  0…
+## $ S427F    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S435     &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S436C    &lt;dbl+lbl&gt; 1, 0, 1, 1, 1, 0, 0, 0…
+## $ S440     &lt;dbl+lbl&gt;  9,  9,  9,  9, NA, NA…
+## $ S441     &lt;dbl+lbl&gt; 1, 1, 1, 1, 1, 1, 1, 1…
+## $ S442     &lt;dbl+lbl&gt; 22, 22, 22, 22, 24, 26…
+## $ S446AA   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S446AB   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S446A    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S447     &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S448A    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ S448B    &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ QI411_M  &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ QI411F   &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ QI422A_A &lt;dbl+lbl&gt;  1,  1,  2,  1,  1,  1…
+## $ QI422A_B &lt;dbl+lbl&gt;  2,  2, NA,  2,  2,  2…
+## $ QI422A_C &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ QI422A_D &lt;dbl+lbl&gt; NA, NA, NA, NA, NA, NA…
+## $ QI440B   &lt;dbl+lbl&gt;  1,  1,  1,  1,  1, NA…
+```
+]]
+]
+
+.panel[.panel-name[Inspección Rec1]
+Hay diversas maneras de explorar los labels de una data `.sav` (SPSS) o `.dta` (Stata), como con `labelled::generate_dictionary(rec1)` o `labelled::var_label(rec1, unlist = TRUE) %&gt;% enframe()`. En esta ocasión usaremos al paquete `sjPlot` (no olvides instalarlo).
+
+.scroll-output325[
+
+```r
+sjPlot::view_df(rec1, show.type = TRUE, show.na = TRUE)
+```
+
+```
+## HV118 [21]
+```
+
+&lt;table style="border-collapse:collapse; border:none;"&gt;
+&lt;caption&gt;Data frame: rec1&lt;/caption&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;ID&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Name&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Type&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Label&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;missings&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Values&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Value Labels&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;ID1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Año&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;" colspan="2"&gt;&lt;em&gt;range: 2020-2020&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;2&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HHID&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;character&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Identificación Cuestionario del Hogar&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;&amp;lt;output omitted&amp;gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;3&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HVIDX&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Número de orden&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;" colspan="2"&gt;&lt;em&gt;range: 1-24&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;4&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV101&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Relación de parentesco con el jefe del hogar&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;4&lt;br&gt;5&lt;br&gt;6&lt;br&gt;7&lt;br&gt;8&lt;br&gt;10&lt;br&gt;11&lt;br&gt;12&lt;br&gt;15&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Jefe del Hogar&lt;br&gt;Esposa o esposo&lt;br&gt;Hijo/Hija&lt;br&gt;Yerno/Nuera&lt;br&gt;Nieto&lt;br&gt;Padre&lt;br&gt;Suegro&lt;br&gt;Hermano/Hermana&lt;br&gt;Otro pariente&lt;br&gt;Hijo adoptado&lt;br&gt;Sin parentesco&lt;br&gt;Empleada doméstica&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;5&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV102&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;¿Vive habitualmente aquí?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No&lt;br&gt;Sí&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;6&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV103&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;¿Durmió aquí anoche?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No&lt;br&gt;Sí&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;7&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV104&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Sexo&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;1&lt;br&gt;2&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Hombre&lt;br&gt;Mujer&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;8&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV105&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Edad&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;97&lt;br&gt;98&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Mayores de 96&lt;br&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;9&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV106&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;¿Cuál fue el nivel de estudios más alto que&lt;br&gt;aprobó?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;8&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Sin educación, preescolar&lt;br&gt;Primario&lt;br&gt;Secundario&lt;br&gt;Superior&lt;br&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;10&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV107&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;¿Cuál fue el año o grado más alto que aprobó?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;29701 (21.27%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;98&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;11&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV108&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Número de años de estudio&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;98&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;12&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV109&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Nivel educativo alcanzado&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;4&lt;br&gt;5&lt;br&gt;8&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Sin educación&lt;br&gt;Primaria incompleta&lt;br&gt;Primaria completa&lt;br&gt;Secundaria incompleta&lt;br&gt;Secundaria completa&lt;br&gt;Superior&lt;br&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;13&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV110&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Actualmente ¿Asiste a una escuela o colegio (un&lt;br&gt;instituto superior o universidad)?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No&lt;br&gt;Sí&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;14&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV111&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;¿Está viva la madre natural?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;92360 (66.14%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;br&gt;8&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No&lt;br&gt;Sí&lt;br&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;15&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV112&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Número de orden de la madre&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;92360 (66.14%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Madre no en HH&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;16&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV113&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;¿Está vivo el padre natural?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;92360 (66.14%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;br&gt;8&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No&lt;br&gt;Sí&lt;br&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;17&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV114&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Número de orden del padre&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;92360 (66.14%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Padre no en HH&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;18&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV115&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;¿Cúal es su estado civil o conyugal?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;39121 (28.01%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;4&lt;br&gt;5&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Soltero(a)&lt;br&gt;Casado(a)&lt;br&gt;Conviviente&lt;br&gt;Viudo(a)&lt;br&gt;Divorciado(a)&lt;br&gt;Separado(a)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;19&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV116&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Acutalmente, anteriormente o nunca unida&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;39121 (28.01%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;br&gt;2&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Soltero(a)&lt;br&gt;Actualmente casado(a) o conviviendo&lt;br&gt;Anteriormente/alguna vez casado(a) o conviviendo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;20&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV117&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Elegibilidad para entrevista individual de mujeres&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No elegible&lt;br&gt;Elegible&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;22&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV120&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Menores de 5 años para medición de peso/talla y&lt;br&gt;hemoglobina&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No elegible&lt;br&gt;Elegible&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;23&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV121&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;¿Asistió a una escuela o colegio? en algún momento&lt;br&gt;durante el año actual&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No&lt;br&gt;Actualmente asistiendo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;24&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV122&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;¿A qué nivel asiste o se matriculó?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;8&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Sin educación, preescolar&lt;br&gt;Primario&lt;br&gt;Secundario&lt;br&gt;Superior&lt;br&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;25&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV123&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Año o grado que asiste o se matriculó&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;113069 (80.96%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;98&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No Sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;26&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV124&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Número de años de estudio al que asiste o se&lt;br&gt;matriculó durante el año actual&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;97&lt;br&gt;98&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Inconsistente&lt;br&gt;No Sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;27&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV125&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;El año pasado ¿estuvo o matriculado en una escuela&lt;br&gt;o colegio (un instituto superior o universidad)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No&lt;br&gt;Sí&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;28&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV126&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;¿A que nivel asistió o se matriculó el año pasado?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;8&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Sin educación, preescolar&lt;br&gt;Primario&lt;br&gt;Secundario&lt;br&gt;Superior&lt;br&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;29&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV127&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Año o grado que asistió o se matriculó&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;106068 (75.95%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;98&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;NS&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;30&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;HV128&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Número de años de estudio al que asiste o se&lt;br&gt;matriculó el año pasado&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;97&lt;br&gt;98&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Inconsistente&lt;br&gt;No Sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;31&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;HV129&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Condición de asistencia a una escuela, colegio,&lt;br&gt;instituto superior o universidad&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;90503 (64.81%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;br&gt;2&lt;br&gt;3&lt;br&gt;4&lt;br&gt;5&lt;br&gt;8&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Nunca asistió&lt;br&gt;Ingresado a la escuela&lt;br&gt;Avanzado&lt;br&gt;Repitiendo&lt;br&gt;Abandonar&lt;br&gt;Izquierda escuela hace 2+ años&lt;br&gt;No sabe&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;32&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;QH21A&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;¿Estudia en una escuela o colegio estatal?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;119249 (85.39%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;1&lt;br&gt;2&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No&lt;br&gt;Sí&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;33&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;QH25A&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;character&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;¿Cuál es su nacionalidad?&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0 (0.00%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;&amp;lt;output omitted&amp;gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;34&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;QH25B&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Vive permanentemente en el Perú&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;139630 (99.98%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;1&lt;br&gt;2&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No&lt;br&gt;Sí&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;35&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;QH25CM&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Desde qué mes vive en el Perú&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;138791 (99.38%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee" colspan="2"&gt;&lt;em&gt;range: 1-98&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;36&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;QH25CA&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Desde qué año vive en el Perú&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;138791 (99.38%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;" colspan="2"&gt;&lt;em&gt;range: 1968-9998&lt;/em&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+]]
+
+.panel[.panel-name[Inspección Rec94]
+
+El paquete `labelled` hace algo bastante similar, sin un output *html* que es lo que le da los colores y el estilo.
+
+.scroll-output350[
+
+```r
+labelled::generate_dictionary(rec94)
+```
+
+```
+##  pos variable label                                          col_type values                                        
+##  1   ID1      Año                                            dbl                                                    
+##  2   CASEID   Identificación Cuestionario Individual         chr                                                    
+##  3   IDX94    Orden de historia de nacimiento                dbl                                                    
+##  4   S410B    Cuantos meses de embarazo tenía en la última ~ dbl+lbl  [98] No sabe                                  
+##  5   S411B    En alguno de sus controles: Le midieron la ba~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  6   S411F    En alguno de sus controles: Escucharon los la~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  7   S411G    En alguno de sus controles: Le hicieron la pr~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  8   S411H    En alguno de sus controles: Le hicieron la pr~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  9   S411I    En alguno de sus controles: Le informaron com~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  10  S411J    En alguno de sus controles: Le informaron sob~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  11  S411K    En alguno de sus controles: Le enseñaron como~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  12  S411L    En alguno de sus controles: Le enseñaron como~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  13  S411BA   Cuantos meses de embarazo tenía cuando se rea~ dbl+lbl  [98] No sabe el mes                           
+##  14  S411CA   Cuantos meses de embarazo tenía cuando se rea~ dbl+lbl  [98] No sabe el mes                           
+##  15  S411DA   Cuantos meses de embarazo tenía cuando se rea~ dbl+lbl  [98] No sabe el mes                           
+##  16  S411EA   Cuantos meses de embarazo tenía cuando se rea~ dbl+lbl  [98] No sabe el mes                           
+##  17  S413     Durante el embarazo estaba afiliada al SIS     dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  18  S422I    Cantidad de inyecciones de hierro recibidas d~ dbl+lbl  [98] No sabe                                  
+##  19  S426B    Razón por qué no acudió a un hospital, centro~ dbl+lbl  [11] No existe en la localidad                
+##                                                                       [12] Quedaba muy lejos                        
+##                                                                       [13] No había personal                        
+##                                                                       [14] Estaba afiliada a otro servicio de salud 
+##                                                                       [15] Personal daba malos tratos               
+##                                                                       [16] No había privacidad en atención          
+##                                                                       [17] Esposo/Familiar se opuso                 
+##                                                                       [18] Por tradición                            
+##                                                                       [19] No era higiénico                         
+##                                                                       [20] No confia en la atención                 
+##                                                                       [21] Personal es descuidado                   
+##                                                                       [22] Congestión del servicio                  
+##                                                                       [23] No tenía dinero                          
+##                                                                       [24] No la quisieron atender                  
+##                                                                       [25] Iba camino a establecimiento/Parto se ad~
+##                                                                       [96] Otro                                     
+##  20  S426E    La cesárea fue programada                      dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  21  S426FA   Cuánto tiempo transcurrió hasta llegar al est~ dbl+lbl  [100] Cero horas                              
+##                                                                       [101] Una hora                                
+##                                                                       [200] Cero días                               
+##                                                                       [201] Un día                                  
+##                                                                       [300] Cero semanas                            
+##                                                                       [301] Una semana                              
+##                                                                       [998] No sabe                                 
+##  22  S426FB   Cuanto tiempo transcurrió desde que llegó al ~ dbl+lbl  [100] Cero horas                              
+##                                                                       [101] Una hora                                
+##                                                                       [200] Cero días                               
+##                                                                       [201] Un día                                  
+##                                                                       [300] Cero semanas                            
+##                                                                       [301] Una semana                              
+##                                                                       [998] No sabe                                 
+##  23  S426GA   Complicaciones de parto: Parto prolongado      dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  24  S426GB   Complicaciones de parto: Sangrado excesivo     dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  25  S426GC   Complicaciones de parto: Fiebre con sangrado ~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  26  S426GD   Complicaciones de parto: Convulsiones          dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  27  S426GE   Complicaciones de parto: Otras                 dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  28  S430C    El niño fue inscrito en la municipalidad/Ofic~ dbl+lbl  [0] No                                        
+##                                                                       [1] Sí, muestra partida de nacimiento/DNI     
+##                                                                       [2] Sí, no muestra partida de nacimiento/DNI  
+##                                                                       [8] No sabe                                   
+##  29  S430D    La partida/acta tiene Código Único de Identid~ dbl+lbl  [0] No tiene                                  
+##                                                                       [1] Si tiene Nro. CIU: DNI                    
+##                                                                       [2] Si tiene Nro. CIU: Partida/Acta de nacimi~
+##  30  S431A    En el establecimiento de salud le dieron algo~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  31  S425A    Entrevistada era miembro del seguro de salud ~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  32  S432     El niño está afiliado al Seguro Integral de S~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  33  S432AD   Day affiliation integral health insurance      dbl+lbl  [98] Otras respuestas                         
+##  34  S432AM   Mes afiliación seguro de salud integral        dbl+lbl  [98] Otras respuestas                         
+##  35  S432AY   Año de afiliación seguro de salud integral     dbl+lbl  [9998] Otras respuestas                       
+##  36  S427DA   Complicaciones después del parto: sangrado in~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  37  S427DB   Complicaciones después del parto: pérdida de ~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  38  S427DC   Complicaciones después del parto: fiebre alta~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  39  S427DD   Complicaciones después del parto: infección d~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  40  S427DE   Complicaciones después del parto: dolor al or~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  41  S427DF   Complicaciones después del parto: flujos vagi~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  42  S427DG   Complicaciones después del parto: Pérdida inv~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  43  S427F    Cuando tuvo esas complicaciones recibió atenc~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  44  S435     Por qué no le dio pecho al bebé                dbl+lbl  [1] Madre enferma/débil                       
+##                                                                       [2] Niña(o) enfermo/débil                     
+##                                                                       [3] Niña(o) murió                             
+##                                                                       [4] Niña(o) tiene problemas succión           
+##                                                                       [5] Problema de succión pezón                 
+##                                                                       [6] No tenía leche                            
+##                                                                       [7] Madre trabajando                          
+##                                                                       [8] Niña(o) rehusó                            
+##                                                                       [96] No sabe                                  
+##  45  S436C    Pusieron al niño en contacto piel a piel con ~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  46  S440     Por qué dejo de darle pecho                    dbl+lbl  [1] Madre enferma/débil                       
+##                                                                       [2] Niña(o) enfermo/débil                     
+##                                                                       [3] Niña(o) murió                             
+##                                                                       [4] Niña(o) tiene problemas succión           
+##                                                                       [5] Problema de succión pezón                 
+##                                                                       [6] No tenía leche                            
+##                                                                       [7] Madre trabajaba/estudiaba                 
+##                                                                       [8] Niña(o) rehusó                            
+##                                                                       [9] Edad de destete                           
+##                                                                       [10] Quedó embarazada                         
+##                                                                       [11] Comenzó a usar anticonceptivos           
+##                                                                       [12] Niña(o) solo quería pecho                
+##                                                                       [96] No sabe                                  
+##  47  S441     Recibió alguna capacitación sobre lactancia m~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##  48  S442     En qué lugar recibió capacitación sobre lacta~ dbl+lbl  [21] Hospital MINSA                           
+##                                                                       [22] Hospital ESSALUD                         
+##                                                                       [23] Hospital FFAA y PNP                      
+##                                                                       [24] Centro de salud MINSA                    
+##                                                                       [25] Puesto de salud MINSA                    
+##                                                                       [26] policlínico/Centro/Posta ESSALUD         
+##                                                                       [27] Hospital/Otro de la Municipalidad        
+##                                                                       [31] Clínica particular                       
+##                                                                       [32] Consultorio médico particular            
+##                                                                       [33] Casa de partera                          
+##                                                                       [41] Clinica/Posta ONG                        
+##                                                                       [42] Hospital/Otro de la Iglesia              
+##                                                                       [96] Otro                                     
+##  49  S446AA   Con cuanto tiempo de anticipación preparó el ~ dbl+lbl  [0] Inmediatamente                            
+##                                                                       [100] Cero minutos                            
+##                                                                       [101] Un minuto                               
+##                                                                       [200] Cero horas                              
+##                                                                       [201] Una hora                                
+##                                                                       [998] No sabe                                 
+##  50  S446AB   Donde guardó el biberón                        dbl+lbl  [1] Refrigerador                              
+##                                                                       [2] Congelador                                
+##                                                                       [6] Otro                                      
+##                                                                       [8] No sabe                                   
+##  51  S446A    Se agregó azúcar a cualquiera de los alimento~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  52  S447     Se agrego azúcar a algun alimento o liquido q~ dbl+lbl  [0] No                                        
+##                                                                       [1] Si                                        
+##                                                                       [8] No sabe                                   
+##  53  S448A    Tiempo entre que terminó de preparar los alim~ dbl+lbl  [0] Inmediatamente                            
+##                                                                       [100] Cero minutos                            
+##                                                                       [101] Un minuto                               
+##                                                                       [200] Cero horas                              
+##                                                                       [201] Una hora                                
+##                                                                       [998] No sabe                                 
+##  54  S448B    Dónde se almacenó la comida                    dbl+lbl  [1] Refrigerador                              
+##                                                                       [2] Congelador                                
+##                                                                       [6] Otro                                      
+##                                                                       [8] No sabe                                   
+##  55  QI411_M  En alguno de sus controles: le hicieron la pr~ dbl+lbl  [1] Si                                        
+##                                                                       [2] No                                        
+##                                                                       [8] No sabe                                   
+##  56  QI411F   Cuántos meses de embarazo tenía en primera pr~ dbl+lbl  [98] No sabe                                  
+##  57  QI422A_A Durante el embarazo algún personal de salud l~ dbl+lbl  [1] SI                                        
+##                                                                       [2] No                                        
+##                                                                       [8] No sabe/No responde                       
+##  58  QI422A_B Durante el embarazo le diagnosticaron o le di~ dbl+lbl  [1] SI                                        
+##                                                                       [2] No                                        
+##                                                                       [8] No sabe/No responde                       
+##  59  QI422A_C Durante el embarazo le indicaron tratamiento ~ dbl+lbl  [1] SI                                        
+##                                                                       [2] No                                        
+##                                                                       [8] No sabe/No responde                       
+##  60  QI422A_D Durante el embarazo consumió hierro tal como ~ dbl+lbl  [1] SI                                        
+##                                                                       [2] No                                        
+##                                                                       [8] No sabe/No responde                       
+##  61  QI440B   Durante primeros 6 meses, solo recibió leche ~ dbl+lbl  [1] Si                                        
+##                                                                       [2] No                                        
+##                                                                       [8] No sabe                                   
+##                                                                       [96] Otro
+```
+]]
+
+.panel[.panel-name[Preparativo a joins]
+
+.pull-left[.line-space1-7[
+En las base de datos ENDES hay 2 variables **keys** que se deben tener en consideración: ID de la persona (`CASEID`) y el ID del hogar (`HHID`). Sin embargo, muchas veces esto varía. 
+
+En el caso de `rec1` no existe la variable `CASEID`, debido a que ha sido nombrada como `HVIDX`. Y en el caso de `rec94` existe la variable `CASEID`, solo que esta contiene a su vez tanto el identificador de personas como el de hogares... así que necesitamos separarlos.
+]]
+
+.pull-right[
+.scroll-output375[
+
+```r
+rec94 &lt;- rec94 %&gt;%
+  mutate(
+    HHID = str_sub(CASEID, 1, str_length(CASEID) - 3),
+    CASEID = str_sub(CASEID, -2, -1),
+    CASEID = as.numeric(CASEID),
+    .after = ID1
+  )
+```
+
+```
+## # A tibble: 17,242 × 62
+##      ID1 HHID         CASEID IDX94 S410B   S411B   S411F   S411G   S411H   S411I
+##    &lt;dbl&gt; &lt;chr&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;
+##  1  2020 "      0001…      2     1     9 NA      NA      NA      NA      NA     
+##  2  2020 "      0001…      2     1     9 NA      NA      NA      NA      NA     
+##  3  2020 "      0001…      2     1     8 NA      NA      NA      NA      NA     
+##  4  2020 "      0001…      2     1     9 NA      NA      NA      NA      NA     
+##  5  2020 "      0001…      2     1     9 NA      NA      NA      NA      NA     
+##  6  2020 "      0002…      2     1     9 NA      NA      NA      NA      NA     
+##  7  2020 "      0002…      2     1     8 NA      NA      NA      NA      NA     
+##  8  2020 "      0003…      2     1     7  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+##  9  2020 "      0003…      2     2    NA NA      NA      NA      NA      NA     
+## 10  2020 "      0003…      2     1     9  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## # … with 17,232 more rows, and 52 more variables: S411J &lt;dbl+lbl&gt;,
+## #   S411K &lt;dbl+lbl&gt;, S411L &lt;dbl+lbl&gt;, S411BA &lt;dbl+lbl&gt;, S411CA &lt;dbl+lbl&gt;,
+## #   S411DA &lt;dbl+lbl&gt;, S411EA &lt;dbl+lbl&gt;, S413 &lt;dbl+lbl&gt;, S422I &lt;dbl+lbl&gt;,
+## #   S426B &lt;dbl+lbl&gt;, S426E &lt;dbl+lbl&gt;, S426FA &lt;dbl+lbl&gt;, S426FB &lt;dbl+lbl&gt;,
+## #   S426GA &lt;dbl+lbl&gt;, S426GB &lt;dbl+lbl&gt;, S426GC &lt;dbl+lbl&gt;, S426GD &lt;dbl+lbl&gt;,
+## #   S426GE &lt;dbl+lbl&gt;, S430C &lt;dbl+lbl&gt;, S430D &lt;dbl+lbl&gt;, S431A &lt;dbl+lbl&gt;,
+## #   S425A &lt;dbl+lbl&gt;, S432 &lt;dbl+lbl&gt;, S432AD &lt;dbl+lbl&gt;, S432AM &lt;dbl+lbl&gt;, …
+```
+]
+]]
+]
+
+---
+layout: true
+## Uso de `inner_join()`
+
+---
+### Introducción
+.line-space1-7[.font110[
+Aunque ya tenemos en `rec1` y `rec94` las variables ID's de casa y persona identificadas y separadas, aún tenemos una situación pendiente: el ID de la persona tiene nombres diferentes entre las 2 base de datos.
+
+Para solucionarlo tenemos 2 alternativas:
+1. Renombrar la variable de alguna de las base de datos para que de esta manera quede de forma idéntica. Por ej: `rec1 %&gt;% rename(CASEID = HVIDX)`.
+2. Usar el argumento `by = c("HHID", "HVIDX" = "CASEID")` dentro de la función `_join()` que se vaya a utilizar
+]]
+
+---
+### Solución 1
+En esta primera solución usaremos la función `rename` para seguir con el enfoque *tidyverse*.
+
+
+
+```r
+rec1 %&gt;%
+  rename(CASEID = HVIDX) %&gt;%
+  inner_join(
+    rec94,
+    by = c("HHID", "CASEID")
+  )
+```
+
+```
+## # A tibble: 17,242 × 96
+##    ID1.x HHID       CASEID   HV101  HV102  HV103   HV104 HV105   HV106 HV107 HV108   HV109
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+&gt; &lt;dbl+&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt;
+##  1  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    36 3 [Sup…     3    14 5 [Sup…
+##  2  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    32 3 [Sup…     3    14 5 [Sup…
+##  3  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    27 2 [Sec…     5    11 4 [Sec…
+##  4  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    35 3 [Sup…     5    16 5 [Sup…
+##  5  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    35 2 [Sec…     5    11 4 [Sec…
+##  6  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    30 3 [Sup…     3    14 5 [Sup…
+##  7  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    26 3 [Sup…     2    13 5 [Sup…
+##  8  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    34 3 [Sup…     3    14 5 [Sup…
+##  9  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    34 3 [Sup…     3    14 5 [Sup…
+## 10  2020 "      00…      2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    24 2 [Sec…     5    11 4 [Sec…
+## # … with 17,232 more rows, and 84 more variables: HV110 &lt;dbl+lbl&gt;, HV111 &lt;dbl+lbl&gt;,
+## #   HV112 &lt;dbl+lbl&gt;, HV113 &lt;dbl+lbl&gt;, HV114 &lt;dbl+lbl&gt;, HV115 &lt;dbl+lbl&gt;, HV116 &lt;dbl+lbl&gt;,
+## #   HV117 &lt;dbl+lbl&gt;, HV118 &lt;dbl+lbl&gt;, HV120 &lt;dbl+lbl&gt;, HV121 &lt;dbl+lbl&gt;, HV122 &lt;dbl+lbl&gt;,
+## #   HV123 &lt;dbl+lbl&gt;, HV124 &lt;dbl+lbl&gt;, HV125 &lt;dbl+lbl&gt;, HV126 &lt;dbl+lbl&gt;, HV127 &lt;dbl+lbl&gt;,
+## #   HV128 &lt;dbl+lbl&gt;, HV129 &lt;dbl+lbl&gt;, QH21A &lt;dbl+lbl&gt;, QH25A &lt;chr&gt;, QH25B &lt;dbl+lbl&gt;,
+## #   QH25CM &lt;dbl&gt;, QH25CA &lt;dbl&gt;, ID1.y &lt;dbl&gt;, IDX94 &lt;dbl&gt;, S410B &lt;dbl+lbl&gt;,
+## #   S411B &lt;dbl+lbl&gt;, S411F &lt;dbl+lbl&gt;, S411G &lt;dbl+lbl&gt;, S411H &lt;dbl+lbl&gt;, …
+```
+
+
+---
+### Solución 2
+Esta solución es mucho más directa y requiere menos código.
+
+
+
+```r
+rec1 %&gt;%
+  inner_join(
+    rec94,
+    by = c("HHID", "HVIDX" = "CASEID")
+  )
+```
+
+```
+## # A tibble: 17,242 × 96
+##    ID1.x HHID        HVIDX   HV101  HV102  HV103   HV104 HV105   HV106 HV107 HV108   HV109
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+&gt; &lt;dbl+&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt;
+##  1  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    36 3 [Sup…     3    14 5 [Sup…
+##  2  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    32 3 [Sup…     3    14 5 [Sup…
+##  3  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    27 2 [Sec…     5    11 4 [Sec…
+##  4  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    35 3 [Sup…     5    16 5 [Sup…
+##  5  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    35 2 [Sec…     5    11 4 [Sec…
+##  6  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    30 3 [Sup…     3    14 5 [Sup…
+##  7  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    26 3 [Sup…     2    13 5 [Sup…
+##  8  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    34 3 [Sup…     3    14 5 [Sup…
+##  9  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    34 3 [Sup…     3    14 5 [Sup…
+## 10  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    24 2 [Sec…     5    11 4 [Sec…
+## # … with 17,232 more rows, and 84 more variables: HV110 &lt;dbl+lbl&gt;, HV111 &lt;dbl+lbl&gt;,
+## #   HV112 &lt;dbl+lbl&gt;, HV113 &lt;dbl+lbl&gt;, HV114 &lt;dbl+lbl&gt;, HV115 &lt;dbl+lbl&gt;, HV116 &lt;dbl+lbl&gt;,
+## #   HV117 &lt;dbl+lbl&gt;, HV118 &lt;dbl+lbl&gt;, HV120 &lt;dbl+lbl&gt;, HV121 &lt;dbl+lbl&gt;, HV122 &lt;dbl+lbl&gt;,
+## #   HV123 &lt;dbl+lbl&gt;, HV124 &lt;dbl+lbl&gt;, HV125 &lt;dbl+lbl&gt;, HV126 &lt;dbl+lbl&gt;, HV127 &lt;dbl+lbl&gt;,
+## #   HV128 &lt;dbl+lbl&gt;, HV129 &lt;dbl+lbl&gt;, QH21A &lt;dbl+lbl&gt;, QH25A &lt;chr&gt;, QH25B &lt;dbl+lbl&gt;,
+## #   QH25CM &lt;dbl&gt;, QH25CA &lt;dbl&gt;, ID1.y &lt;dbl&gt;, IDX94 &lt;dbl&gt;, S410B &lt;dbl+lbl&gt;,
+## #   S411B &lt;dbl+lbl&gt;, S411F &lt;dbl+lbl&gt;, S411G &lt;dbl+lbl&gt;, S411H &lt;dbl+lbl&gt;, …
+```
+
+
+---
+layout: false
+## Función `left_join()` y `right_join()`
+
+.pull-left[
+.line-space2-0[.font110[
+Esta función se queda con absolutamente todos los casos que estén en el lado solicitado. Los casos en los que no encuentre información, serán completados con `NA`.
+
+&gt; Si se usa `left_join(df1, df2)` se quedarán todos los casos de `df1`. Mientras que si se usa `right_join(df1, df2)`, se usarán todos los casos de `df2`.
+]]]
+
+.pull-right[
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="https://raw.githubusercontent.com/cienciadedatos/r4ds/traduccion/diagrams/es/join-outer.svg" alt="Representación gráfica de las funciones left y right join en donde se observa que se mantendrán todos los casos de las base de datos de acuerdo al orden en que hayan sido nombradas.
+" width="70%" id="left_right_join_svg" /&gt;
+&lt;p class="caption"&gt;Representación de &lt;code&gt;left_join()&lt;/code&gt; y &lt;code&gt;right_join() &lt;/code&gt; de &lt;a href="https://es.r4ds.hadley.nz/"&gt;
+ R para Ciencia de Datos&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;style type="text/css"&gt;
+#left_right_join_svg {
+  margin: 0em auto -2em;
+	width: 500px;
+	height: 460px;
+	object-fit: cover;
+	object-position: 100% 0;
+}
+&lt;/style&gt;
+
+]
+
+---
+## Uso de `left_join()`
+
+Nombraremos primero a rec1 que tiene 139653 filas, frente a las 17242 filas en `rec94`.
+
+
+```r
+rec1 %&gt;%
+  left_join(
+    rec94,
+    by = c("HHID", "HVIDX" = "CASEID")
+  )
+```
+
+```
+## # A tibble: 141,773 × 96
+##    ID1.x HHID        HVIDX   HV101  HV102  HV103   HV104 HV105   HV106 HV107 HV108   HV109
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+&gt; &lt;dbl+&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt;
+##  1  2020 "      000…     1 1 [Jef… 1 [Sí] 1 [Sí] 1 [Hom…    30 2 [Sec…     5    11 4 [Sec…
+##  2  2020 "      000…     1 1 [Jef… 1 [Sí] 1 [Sí] 1 [Hom…    26 3 [Sup…     3    14 5 [Sup…
+##  3  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    25 3 [Sup…     1    12 5 [Sup…
+##  4  2020 "      000…     3 3 [Hij… 1 [Sí] 1 [Sí] 1 [Hom…     5 0 [Sin…    NA     0 0 [Sin…
+##  5  2020 "      000…     1 1 [Jef… 1 [Sí] 1 [Sí] 1 [Hom…    52 3 [Sup…     2    18 5 [Sup…
+##  6  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    36 3 [Sup…     3    14 5 [Sup…
+##  7  2020 "      000…     3 3 [Hij… 1 [Sí] 1 [Sí] 1 [Hom…     7 1 [Pri…     1     1 1 [Pri…
+##  8  2020 "      000…     4 3 [Hij… 1 [Sí] 1 [Sí] 1 [Hom…     4 0 [Sin…    NA     0 0 [Sin…
+##  9  2020 "      000…     1 1 [Jef… 1 [Sí] 1 [Sí] 1 [Hom…    65 2 [Sec…     5    11 4 [Sec…
+## 10  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    48 3 [Sup…     5    16 5 [Sup…
+## # … with 141,763 more rows, and 84 more variables: HV110 &lt;dbl+lbl&gt;, HV111 &lt;dbl+lbl&gt;,
+## #   HV112 &lt;dbl+lbl&gt;, HV113 &lt;dbl+lbl&gt;, HV114 &lt;dbl+lbl&gt;, HV115 &lt;dbl+lbl&gt;, HV116 &lt;dbl+lbl&gt;,
+## #   HV117 &lt;dbl+lbl&gt;, HV118 &lt;dbl+lbl&gt;, HV120 &lt;dbl+lbl&gt;, HV121 &lt;dbl+lbl&gt;, HV122 &lt;dbl+lbl&gt;,
+## #   HV123 &lt;dbl+lbl&gt;, HV124 &lt;dbl+lbl&gt;, HV125 &lt;dbl+lbl&gt;, HV126 &lt;dbl+lbl&gt;, HV127 &lt;dbl+lbl&gt;,
+## #   HV128 &lt;dbl+lbl&gt;, HV129 &lt;dbl+lbl&gt;, QH21A &lt;dbl+lbl&gt;, QH25A &lt;chr&gt;, QH25B &lt;dbl+lbl&gt;,
+## #   QH25CM &lt;dbl&gt;, QH25CA &lt;dbl&gt;, ID1.y &lt;dbl&gt;, IDX94 &lt;dbl&gt;, S410B &lt;dbl+lbl&gt;,
+## #   S411B &lt;dbl+lbl&gt;, S411F &lt;dbl+lbl&gt;, S411G &lt;dbl+lbl&gt;, S411H &lt;dbl+lbl&gt;, …
+```
+
+---
+## Uso de `right_join()`
+
+Seguiremos el mismo orden de nombramiento, debido a que estamos usando la función `right_join`, el output de esta unión debería tener un total de 17242 filas.
+
+
+```r
+rec1 %&gt;%
+  right_join(
+    rec94,
+    by = c("HHID", "HVIDX" = "CASEID")
+  )
+```
+
+```
+## # A tibble: 17,242 × 96
+##    ID1.x HHID        HVIDX   HV101  HV102  HV103   HV104 HV105   HV106 HV107 HV108   HV109
+##    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+&gt; &lt;dbl+&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt;
+##  1  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    36 3 [Sup…     3    14 5 [Sup…
+##  2  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    32 3 [Sup…     3    14 5 [Sup…
+##  3  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    27 2 [Sec…     5    11 4 [Sec…
+##  4  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    35 3 [Sup…     5    16 5 [Sup…
+##  5  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    35 2 [Sec…     5    11 4 [Sec…
+##  6  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    30 3 [Sup…     3    14 5 [Sup…
+##  7  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    26 3 [Sup…     2    13 5 [Sup…
+##  8  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    34 3 [Sup…     3    14 5 [Sup…
+##  9  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    34 3 [Sup…     3    14 5 [Sup…
+## 10  2020 "      000…     2 2 [Esp… 1 [Sí] 1 [Sí] 2 [Muj…    24 2 [Sec…     5    11 4 [Sec…
+## # … with 17,232 more rows, and 84 more variables: HV110 &lt;dbl+lbl&gt;, HV111 &lt;dbl+lbl&gt;,
+## #   HV112 &lt;dbl+lbl&gt;, HV113 &lt;dbl+lbl&gt;, HV114 &lt;dbl+lbl&gt;, HV115 &lt;dbl+lbl&gt;, HV116 &lt;dbl+lbl&gt;,
+## #   HV117 &lt;dbl+lbl&gt;, HV118 &lt;dbl+lbl&gt;, HV120 &lt;dbl+lbl&gt;, HV121 &lt;dbl+lbl&gt;, HV122 &lt;dbl+lbl&gt;,
+## #   HV123 &lt;dbl+lbl&gt;, HV124 &lt;dbl+lbl&gt;, HV125 &lt;dbl+lbl&gt;, HV126 &lt;dbl+lbl&gt;, HV127 &lt;dbl+lbl&gt;,
+## #   HV128 &lt;dbl+lbl&gt;, HV129 &lt;dbl+lbl&gt;, QH21A &lt;dbl+lbl&gt;, QH25A &lt;chr&gt;, QH25B &lt;dbl+lbl&gt;,
+## #   QH25CM &lt;dbl&gt;, QH25CA &lt;dbl&gt;, ID1.y &lt;dbl&gt;, IDX94 &lt;dbl&gt;, S410B &lt;dbl+lbl&gt;,
+## #   S411B &lt;dbl+lbl&gt;, S411F &lt;dbl+lbl&gt;, S411G &lt;dbl+lbl&gt;, S411H &lt;dbl+lbl&gt;, …
+```
+
+
+---
+## Función `full_join()`
+
+.line-space2-0[.font110[
+Esta función se queda con absolutamente todos los casos de ambas base de datos. Los que no encuentren en la primera base de datos, serán llenados con `NA` y los que no encuentren en la segunda base de datos, de igual manera.
+
+&gt; Aquí no importa el orden en que pongas las bases de datos, salvo el orden en que quieras que aparezcan las columnas.
+
+]]
+
+
+&lt;div class="figure" style="text-align: center"&gt;
+&lt;img src="https://raw.githubusercontent.com/cienciadedatos/r4ds/traduccion/diagrams/es/join-outer.svg" alt="Representación gráfica de la función full_join en donde se observa que se mantendrán todos los casos de ambas bases de datos.
+" width="70%" id="full_join_svg" /&gt;
+&lt;p class="caption"&gt;Representación de &lt;code&gt;full_join()&lt;/code&gt; de &lt;a href="https://es.r4ds.hadley.nz/"&gt; R para Ciencia de Datos&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;style type="text/css"&gt;
+#full_join_svg {
+  margin: 0em auto -2em;
+	width: 580px;
+	height: 245px;
+	object-fit: cover;
+	object-position: 0 100%;
+}
+&lt;/style&gt;
+
+---
+## Uso de `full_join()`
+
+Invertiremos el orden de nombramiento, simplemente para apreciar otro enfoque. Todos los casos se mantienen en ambas base de datos.
+
+
+
+```r
+rec94 %&gt;%
+  full_join(
+    rec1,
+    by = c("HHID", "CASEID" = "HVIDX")
+  )
+```
+
+```
+## # A tibble: 141,773 × 96
+##    ID1.x HHID   CASEID IDX94 S410B   S411B   S411F   S411G   S411H   S411I   S411J   S411K
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;
+##  1  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  2  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  3  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  4  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  5  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  6  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  7  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  8  2020 "    …      2     1     7  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+##  9  2020 "    …      2     2    NA NA      NA      NA      NA      NA      NA      NA     
+## 10  2020 "    …      2     1     9  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## # … with 141,763 more rows, and 84 more variables: S411L &lt;dbl+lbl&gt;, S411BA &lt;dbl+lbl&gt;,
+## #   S411CA &lt;dbl+lbl&gt;, S411DA &lt;dbl+lbl&gt;, S411EA &lt;dbl+lbl&gt;, S413 &lt;dbl+lbl&gt;,
+## #   S422I &lt;dbl+lbl&gt;, S426B &lt;dbl+lbl&gt;, S426E &lt;dbl+lbl&gt;, S426FA &lt;dbl+lbl&gt;,
+## #   S426FB &lt;dbl+lbl&gt;, S426GA &lt;dbl+lbl&gt;, S426GB &lt;dbl+lbl&gt;, S426GC &lt;dbl+lbl&gt;,
+## #   S426GD &lt;dbl+lbl&gt;, S426GE &lt;dbl+lbl&gt;, S430C &lt;dbl+lbl&gt;, S430D &lt;dbl+lbl&gt;,
+## #   S431A &lt;dbl+lbl&gt;, S425A &lt;dbl+lbl&gt;, S432 &lt;dbl+lbl&gt;, S432AD &lt;dbl+lbl&gt;, S432AM &lt;dbl+lbl&gt;,
+## #   S432AY &lt;dbl+lbl&gt;, S427DA &lt;dbl+lbl&gt;, S427DB &lt;dbl+lbl&gt;, S427DC &lt;dbl+lbl&gt;, …
+```
+
+---
+## ¡Hazlo tú mismo!
+
+.line-space2-0[.font120[
+1. Replica los procedimientos observados en las diapositivas
+1. Cambia el orden de las base de datos
+1. Selecciona solo las primeras variables de ambas bases de datos para que puedas apreciar realmente la unión entre ellas.
+]]
+
+<div class="countdown" id="timer_629b3678" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+## Función `rowwise()` y `c_across()`
+
+.pull-left[.line-space1-7[.font110[
+- Permite realizar operaciones por filas.
+- Especialmente útil cuando no existe una función vectorizada para dicha operación: `rowSums()` por ejemplo.
+- Requiere indicar la(s) variable(s) sobre las cuales se ejecutará una operación en filas: `c_across()`
+- La práctica más común es realizar una sumatoria de variables por filas (*raw scores* por ejemplo), pero también puede usarse con cualquier otra operación.
+]]]
+
+.pull-right[.scroll-output450[
+
+```r
+rec94 %&gt;% 
+  select(S427DA:S427DG) %&gt;% 
+  sjPlot::view_df(rec94, show.type = TRUE, show.na = TRUE)
+```
+
+&lt;table style="border-collapse:collapse; border:none;"&gt;
+&lt;caption&gt;Data frame: .&lt;/caption&gt;
+&lt;tr&gt;
+&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;ID&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Name&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Type&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Label&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;missings&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Values&lt;/th&gt;&lt;th style="border-bottom:double; font-style:italic; font-weight:normal; padding:0.2cm; text-align:left; vertical-align:top;"&gt;Value Labels&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;S427DA&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Complicaciones después del parto: sangrado intenso&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;2120 (12.30%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No&lt;br&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;2&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;S427DB&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Complicaciones después del parto: pérdida de&lt;br&gt;conciencia&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;2120 (12.30%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No&lt;br&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;3&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;S427DC&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Complicaciones después del parto: fiebre alta,&lt;br&gt;escalofríos&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;2120 (12.30%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No&lt;br&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;4&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;S427DD&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Complicaciones después del parto: infección de los&lt;br&gt;senos&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;2120 (12.30%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No&lt;br&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;5&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;S427DE&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Complicaciones después del parto: dolor al orinar&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;2120 (12.30%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No&lt;br&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;6&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;S427DF&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;Complicaciones después del parto: flujos vaginales&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;2120 (12.30%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top; background-color:#eeeeee"&gt;No&lt;br&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;7&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;S427DG&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;numeric&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;Complicaciones después del parto: Pérdida&lt;br&gt;involuntaria de orina&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;2120 (12.30%)&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;0&lt;br&gt;1&lt;/td&gt;
+&lt;td style="padding:0.2cm; text-align:left; vertical-align:top;"&gt;No&lt;br&gt;Si&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;/table&gt;
+]]
+
+--- 
+
+
+count: false
+ 
+## Uso de rowwise() 
+.line-space1-5[.font110[Si quisieramos contabilizar directamente cuantas complicaciones en el embarazo suman por cada mujer entrevistada:]]
+.panel1-rowwise_1-user[
+
+```r
+*rec94
+```
+]
+ 
+.panel2-rowwise_1-user[
+
+```
+## # A tibble: 17,242 × 62
+##      ID1 HHID   CASEID IDX94 S410B   S411B   S411F   S411G   S411H   S411I   S411J   S411K
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;
+##  1  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  2  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  3  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  4  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  5  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  6  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  7  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  8  2020 "    …      2     1     7  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+##  9  2020 "    …      2     2    NA NA      NA      NA      NA      NA      NA      NA     
+## 10  2020 "    …      2     1     9  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## # … with 17,232 more rows, and 50 more variables: S411L &lt;dbl+lbl&gt;, S411BA &lt;dbl+lbl&gt;,
+## #   S411CA &lt;dbl+lbl&gt;, S411DA &lt;dbl+lbl&gt;, S411EA &lt;dbl+lbl&gt;, S413 &lt;dbl+lbl&gt;,
+## #   S422I &lt;dbl+lbl&gt;, S426B &lt;dbl+lbl&gt;, S426E &lt;dbl+lbl&gt;, S426FA &lt;dbl+lbl&gt;,
+## #   S426FB &lt;dbl+lbl&gt;, S426GA &lt;dbl+lbl&gt;, S426GB &lt;dbl+lbl&gt;, S426GC &lt;dbl+lbl&gt;,
+## #   S426GD &lt;dbl+lbl&gt;, S426GE &lt;dbl+lbl&gt;, S430C &lt;dbl+lbl&gt;, S430D &lt;dbl+lbl&gt;,
+## #   S431A &lt;dbl+lbl&gt;, S425A &lt;dbl+lbl&gt;, S432 &lt;dbl+lbl&gt;, S432AD &lt;dbl+lbl&gt;, S432AM &lt;dbl+lbl&gt;,
+## #   S432AY &lt;dbl+lbl&gt;, S427DA &lt;dbl+lbl&gt;, S427DB &lt;dbl+lbl&gt;, S427DC &lt;dbl+lbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+## Uso de rowwise() 
+.line-space1-5[.font110[Si quisieramos contabilizar directamente cuantas complicaciones en el embarazo suman por cada mujer entrevistada:]]
+.panel1-rowwise_1-user[
+
+```r
+rec94 %&gt;%
+* drop_na(S427DA:S427DG)
+```
+]
+ 
+.panel2-rowwise_1-user[
+
+```
+## # A tibble: 15,122 × 62
+##      ID1 HHID   CASEID IDX94 S410B   S411B   S411F   S411G   S411H   S411I   S411J   S411K
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;
+##  1  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  2  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  3  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  4  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  5  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  6  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  7  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  8  2020 "    …      2     1     7  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+##  9  2020 "    …      2     1     9  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## 10  2020 "    …      2     1     8  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## # … with 15,112 more rows, and 50 more variables: S411L &lt;dbl+lbl&gt;, S411BA &lt;dbl+lbl&gt;,
+## #   S411CA &lt;dbl+lbl&gt;, S411DA &lt;dbl+lbl&gt;, S411EA &lt;dbl+lbl&gt;, S413 &lt;dbl+lbl&gt;,
+## #   S422I &lt;dbl+lbl&gt;, S426B &lt;dbl+lbl&gt;, S426E &lt;dbl+lbl&gt;, S426FA &lt;dbl+lbl&gt;,
+## #   S426FB &lt;dbl+lbl&gt;, S426GA &lt;dbl+lbl&gt;, S426GB &lt;dbl+lbl&gt;, S426GC &lt;dbl+lbl&gt;,
+## #   S426GD &lt;dbl+lbl&gt;, S426GE &lt;dbl+lbl&gt;, S430C &lt;dbl+lbl&gt;, S430D &lt;dbl+lbl&gt;,
+## #   S431A &lt;dbl+lbl&gt;, S425A &lt;dbl+lbl&gt;, S432 &lt;dbl+lbl&gt;, S432AD &lt;dbl+lbl&gt;, S432AM &lt;dbl+lbl&gt;,
+## #   S432AY &lt;dbl+lbl&gt;, S427DA &lt;dbl+lbl&gt;, S427DB &lt;dbl+lbl&gt;, S427DC &lt;dbl+lbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+## Uso de rowwise() 
+.line-space1-5[.font110[Si quisieramos contabilizar directamente cuantas complicaciones en el embarazo suman por cada mujer entrevistada:]]
+.panel1-rowwise_1-user[
+
+```r
+rec94 %&gt;%
+  drop_na(S427DA:S427DG) %&gt;%
+* slice(1:1000)
+```
+]
+ 
+.panel2-rowwise_1-user[
+
+```
+## # A tibble: 1,000 × 62
+##      ID1 HHID   CASEID IDX94 S410B   S411B   S411F   S411G   S411H   S411I   S411J   S411K
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;
+##  1  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  2  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  3  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  4  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  5  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  6  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  7  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  8  2020 "    …      2     1     7  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+##  9  2020 "    …      2     1     9  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## 10  2020 "    …      2     1     8  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## # … with 990 more rows, and 50 more variables: S411L &lt;dbl+lbl&gt;, S411BA &lt;dbl+lbl&gt;,
+## #   S411CA &lt;dbl+lbl&gt;, S411DA &lt;dbl+lbl&gt;, S411EA &lt;dbl+lbl&gt;, S413 &lt;dbl+lbl&gt;,
+## #   S422I &lt;dbl+lbl&gt;, S426B &lt;dbl+lbl&gt;, S426E &lt;dbl+lbl&gt;, S426FA &lt;dbl+lbl&gt;,
+## #   S426FB &lt;dbl+lbl&gt;, S426GA &lt;dbl+lbl&gt;, S426GB &lt;dbl+lbl&gt;, S426GC &lt;dbl+lbl&gt;,
+## #   S426GD &lt;dbl+lbl&gt;, S426GE &lt;dbl+lbl&gt;, S430C &lt;dbl+lbl&gt;, S430D &lt;dbl+lbl&gt;,
+## #   S431A &lt;dbl+lbl&gt;, S425A &lt;dbl+lbl&gt;, S432 &lt;dbl+lbl&gt;, S432AD &lt;dbl+lbl&gt;, S432AM &lt;dbl+lbl&gt;,
+## #   S432AY &lt;dbl+lbl&gt;, S427DA &lt;dbl+lbl&gt;, S427DB &lt;dbl+lbl&gt;, S427DC &lt;dbl+lbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+## Uso de rowwise() 
+.line-space1-5[.font110[Si quisieramos contabilizar directamente cuantas complicaciones en el embarazo suman por cada mujer entrevistada:]]
+.panel1-rowwise_1-user[
+
+```r
+rec94 %&gt;%
+  drop_na(S427DA:S427DG) %&gt;%
+  slice(1:1000) %&gt;%
+* rowwise()
+```
+]
+ 
+.panel2-rowwise_1-user[
+
+```
+## # A tibble: 1,000 × 62
+## # Rowwise: 
+##      ID1 HHID   CASEID IDX94 S410B   S411B   S411F   S411G   S411H   S411I   S411J   S411K
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;
+##  1  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  2  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  3  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  4  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  5  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  6  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  7  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  8  2020 "    …      2     1     7  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+##  9  2020 "    …      2     1     9  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## 10  2020 "    …      2     1     8  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## # … with 990 more rows, and 50 more variables: S411L &lt;dbl+lbl&gt;, S411BA &lt;dbl+lbl&gt;,
+## #   S411CA &lt;dbl+lbl&gt;, S411DA &lt;dbl+lbl&gt;, S411EA &lt;dbl+lbl&gt;, S413 &lt;dbl+lbl&gt;,
+## #   S422I &lt;dbl+lbl&gt;, S426B &lt;dbl+lbl&gt;, S426E &lt;dbl+lbl&gt;, S426FA &lt;dbl+lbl&gt;,
+## #   S426FB &lt;dbl+lbl&gt;, S426GA &lt;dbl+lbl&gt;, S426GB &lt;dbl+lbl&gt;, S426GC &lt;dbl+lbl&gt;,
+## #   S426GD &lt;dbl+lbl&gt;, S426GE &lt;dbl+lbl&gt;, S430C &lt;dbl+lbl&gt;, S430D &lt;dbl+lbl&gt;,
+## #   S431A &lt;dbl+lbl&gt;, S425A &lt;dbl+lbl&gt;, S432 &lt;dbl+lbl&gt;, S432AD &lt;dbl+lbl&gt;, S432AM &lt;dbl+lbl&gt;,
+## #   S432AY &lt;dbl+lbl&gt;, S427DA &lt;dbl+lbl&gt;, S427DB &lt;dbl+lbl&gt;, S427DC &lt;dbl+lbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+## Uso de rowwise() 
+.line-space1-5[.font110[Si quisieramos contabilizar directamente cuantas complicaciones en el embarazo suman por cada mujer entrevistada:]]
+.panel1-rowwise_1-user[
+
+```r
+rec94 %&gt;%
+  drop_na(S427DA:S427DG) %&gt;%
+  slice(1:1000) %&gt;%
+  rowwise() %&gt;%
+* mutate(
+*   complicaciones_tot = sum(c_across(c(S427DA:S427DG)),
+*                            na.rm = TRUE)
+* )
+```
+]
+ 
+.panel2-rowwise_1-user[
+
+```
+## # A tibble: 1,000 × 63
+## # Rowwise: 
+##      ID1 HHID   CASEID IDX94 S410B   S411B   S411F   S411G   S411H   S411I   S411J   S411K
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;
+##  1  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  2  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  3  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  4  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  5  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  6  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  7  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  8  2020 "    …      2     1     7  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+##  9  2020 "    …      2     1     9  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## 10  2020 "    …      2     1     8  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## # … with 990 more rows, and 51 more variables: S411L &lt;dbl+lbl&gt;, S411BA &lt;dbl+lbl&gt;,
+## #   S411CA &lt;dbl+lbl&gt;, S411DA &lt;dbl+lbl&gt;, S411EA &lt;dbl+lbl&gt;, S413 &lt;dbl+lbl&gt;,
+## #   S422I &lt;dbl+lbl&gt;, S426B &lt;dbl+lbl&gt;, S426E &lt;dbl+lbl&gt;, S426FA &lt;dbl+lbl&gt;,
+## #   S426FB &lt;dbl+lbl&gt;, S426GA &lt;dbl+lbl&gt;, S426GB &lt;dbl+lbl&gt;, S426GC &lt;dbl+lbl&gt;,
+## #   S426GD &lt;dbl+lbl&gt;, S426GE &lt;dbl+lbl&gt;, S430C &lt;dbl+lbl&gt;, S430D &lt;dbl+lbl&gt;,
+## #   S431A &lt;dbl+lbl&gt;, S425A &lt;dbl+lbl&gt;, S432 &lt;dbl+lbl&gt;, S432AD &lt;dbl+lbl&gt;, S432AM &lt;dbl+lbl&gt;,
+## #   S432AY &lt;dbl+lbl&gt;, S427DA &lt;dbl+lbl&gt;, S427DB &lt;dbl+lbl&gt;, S427DC &lt;dbl+lbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+## Uso de rowwise() 
+.line-space1-5[.font110[Si quisieramos contabilizar directamente cuantas complicaciones en el embarazo suman por cada mujer entrevistada:]]
+.panel1-rowwise_1-user[
+
+```r
+rec94 %&gt;%
+  drop_na(S427DA:S427DG) %&gt;%
+  slice(1:1000) %&gt;%
+  rowwise() %&gt;%
+  mutate(
+    complicaciones_tot = sum(c_across(c(S427DA:S427DG)),
+                             na.rm = TRUE)
+  ) %&gt;%
+* ungroup()
+```
+]
+ 
+.panel2-rowwise_1-user[
+
+```
+## # A tibble: 1,000 × 63
+##      ID1 HHID   CASEID IDX94 S410B   S411B   S411F   S411G   S411H   S411I   S411J   S411K
+##    &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt; &lt;dbl+l&gt;
+##  1  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  2  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  3  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  4  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  5  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  6  2020 "    …      2     1     9 NA      NA      NA      NA      NA      NA      NA     
+##  7  2020 "    …      2     1     8 NA      NA      NA      NA      NA      NA      NA     
+##  8  2020 "    …      2     1     7  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+##  9  2020 "    …      2     1     9  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## 10  2020 "    …      2     1     8  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]  1 [Si]
+## # … with 990 more rows, and 51 more variables: S411L &lt;dbl+lbl&gt;, S411BA &lt;dbl+lbl&gt;,
+## #   S411CA &lt;dbl+lbl&gt;, S411DA &lt;dbl+lbl&gt;, S411EA &lt;dbl+lbl&gt;, S413 &lt;dbl+lbl&gt;,
+## #   S422I &lt;dbl+lbl&gt;, S426B &lt;dbl+lbl&gt;, S426E &lt;dbl+lbl&gt;, S426FA &lt;dbl+lbl&gt;,
+## #   S426FB &lt;dbl+lbl&gt;, S426GA &lt;dbl+lbl&gt;, S426GB &lt;dbl+lbl&gt;, S426GC &lt;dbl+lbl&gt;,
+## #   S426GD &lt;dbl+lbl&gt;, S426GE &lt;dbl+lbl&gt;, S430C &lt;dbl+lbl&gt;, S430D &lt;dbl+lbl&gt;,
+## #   S431A &lt;dbl+lbl&gt;, S425A &lt;dbl+lbl&gt;, S432 &lt;dbl+lbl&gt;, S432AD &lt;dbl+lbl&gt;, S432AM &lt;dbl+lbl&gt;,
+## #   S432AY &lt;dbl+lbl&gt;, S427DA &lt;dbl+lbl&gt;, S427DB &lt;dbl+lbl&gt;, S427DC &lt;dbl+lbl&gt;, …
+```
+]
+
+---
+count: false
+ 
+## Uso de rowwise() 
+.line-space1-5[.font110[Si quisieramos contabilizar directamente cuantas complicaciones en el embarazo suman por cada mujer entrevistada:]]
+.panel1-rowwise_1-user[
+
+```r
+rec94 %&gt;%
+  drop_na(S427DA:S427DG) %&gt;%
+  slice(1:1000) %&gt;%
+  rowwise() %&gt;%
+  mutate(
+    complicaciones_tot = sum(c_across(c(S427DA:S427DG)),
+                             na.rm = TRUE)
+  ) %&gt;%
+  ungroup() %&gt;%
+* select(ID1:CASEID, complicaciones_tot)
+```
+]
+ 
+.panel2-rowwise_1-user[
+
+```
+## # A tibble: 1,000 × 4
+##      ID1 HHID              CASEID complicaciones_tot
+##    &lt;dbl&gt; &lt;chr&gt;              &lt;dbl&gt;              &lt;dbl&gt;
+##  1  2020 "      000102401"      2                  0
+##  2  2020 "      000117001"      2                  0
+##  3  2020 "      000119801"      2                  1
+##  4  2020 "      000123601"      2                  0
+##  5  2020 "      000123901"      2                  0
+##  6  2020 "      000206801"      2                  1
+##  7  2020 "      000208401"      2                  0
+##  8  2020 "      000303001"      2                  0
+##  9  2020 "      000312401"      2                  2
+## 10  2020 "      000322101"      2                  0
+## # … with 990 more rows
+```
+]
+
+&lt;style&gt;
+.panel1-rowwise_1-user {
+  color: black;
+  width: 38.6060606060606%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel2-rowwise_1-user {
+  color: black;
+  width: 59.3939393939394%;
+  hight: 32%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+.panel3-rowwise_1-user {
+  color: black;
+  width: NA%;
+  hight: 33%;
+  float: left;
+  padding-left: 1%;
+  font-size: 80%
+}
+&lt;/style&gt;
+
+
+
+
+
+
+&lt;style type="text/css"&gt;
+.panel2-rowwise_1-user {
+    height: 375px;
+    overflow-y: auto !important;
+}
+&lt;/style&gt;
+
+---
+## Paquete lubridate
+
+.pull-left[
+- Lubridate es una libreria que facilita el trabajar  con fechas y horas.
+- Contiene tres tipos de objetos
+  - `&lt;date&gt;`
+  - `&lt;time&gt;`
+  - `&lt;dttm&gt;`
+  
+
+```r
+library(lubridate)
+today()
+```
+
+```
+## [1] "2022-06-04"
+```
+
+```r
+now()
+```
+
+```
+## [1] "2022-06-04 05:38:24 -05"
+```
+]
+
+.pull-right[
+Permite procesar diferentes formatos de fechas
+
+```r
+ymd("20110604")
+```
+
+```
+## [1] "2011-06-04"
+```
+
+```r
+mdy("06-04-2011")
+```
+
+```
+## [1] "2011-06-04"
+```
+
+```r
+dmy("04/06/2011")
+```
+
+```
+## [1] "2011-06-04"
+```
+
+Y permite procesar formatos de fechas y horas
+
+```r
+ymd_hms("2011-06-04 12:00:00", tz = "America/Bogota")
+```
+
+```
+## [1] "2011-06-04 12:00:00 -05"
+```
+]
+
+---
+## ¡Hazlo tú mismo!
+
+.line-space2-0[.font120[
+1. Replica los procedimientos observados en `rowwise()` y `c_across()`
+1. Crea un vector con la fecha de tu cumpleaños
+1. Usando la función `today()`, ¡calcula la cantidad de días que llevas vivo! (solo resta)
+1. Explora la función `time_length(x, unit = "years")` para la resta anterior
+]]
+
+<div class="countdown" id="timer_629b3796" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+class: center, middle
+
+# Retroalimentación
+
+
+---
+class: center, middle
+
+&lt;br&gt;
+&lt;center&gt;
+&lt;h2&gt;
+&lt;span style="color:#106075"&gt;¡Gracias!&lt;/span&gt;
+&lt;/h2&gt;
+&lt;br&gt;
+&lt;h3&gt;
+<span>&lt;i class="fas  fa-envelope fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="mailto:imt.innovlab@oficinas-upch.pe"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp;imt.innovlab@oficinas-upch.pe&lt;/span&gt;&lt;/a&gt;</span>
+&lt;/h3&gt;
+&lt;h3&gt;
+<span>&lt;i class="fab  fa-github fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="https://github.com/healthinnovation/"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp; @healthinnovation&lt;/span&gt;&lt;/a&gt;</span>
+&lt;/h3&gt;
+&lt;h3&gt;
+<span>&lt;i class="fab  fa-twitter fa-xs faa-float animated "&gt;&lt;/i&gt;&lt;a href="https://twitter.com/innovalab_imt"&gt;&lt;span style="color:#562457"&gt;&amp;nbsp;&amp;nbsp; @innovalab_imt&lt;/span&gt;&lt;/a&gt;</span>
+&lt;/h3&gt;
+&lt;/center&gt;
+
+&lt;br&gt;
+
+Estas diapositivas fueron creadas mediante el paquete [xaringan](https://github.com/yihui/xaringan) y [xaringanthemer](https://github.com/gadenbuie/xaringanthemer/).
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current%/%total%",
+"highlightStyle": "idea",
+"highlightLines": true,
+"ratio": "16:9",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

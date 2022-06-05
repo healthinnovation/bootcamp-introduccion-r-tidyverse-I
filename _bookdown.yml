@@ -11,5 +11,7 @@ rmd_files:
   - "01_sesion.Rmd"
   - "02_sesion.Rmd"
   - "03_sesion.Rmd"
+  - "04_taller_1.Rmd"
   - "04_sesion.Rmd"
-  - "05_taller_1.Rmd"
+  - "07_taller_2.Rmd"
+  

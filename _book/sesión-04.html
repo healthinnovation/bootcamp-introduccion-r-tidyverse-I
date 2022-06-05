@@ -4,16 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Capítulo 5 Sesión 04 | Introducción a R y Tidyverse</title>
+<title>Capítulo 6 Sesión 04 | Introducción a R y Tidyverse</title>
 <meta name="author" content="Healthinnovation">
-<meta name="description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
+<meta name="description" content="6.1 Exploración competencial  6.1.1 Uso de filter()  6.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
 <meta name="generator" content="bookdown 0.26 with bs4_book()">
-<meta property="og:title" content="Capítulo 5 Sesión 04 | Introducción a R y Tidyverse">
+<meta property="og:title" content="Capítulo 6 Sesión 04 | Introducción a R y Tidyverse">
 <meta property="og:type" content="book">
-<meta property="og:description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
+<meta property="og:description" content="6.1 Exploración competencial  6.1.1 Uso de filter()  6.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Capítulo 5 Sesión 04 | Introducción a R y Tidyverse">
-<meta name="twitter:description" content="5.1 Exploración competencial  5.1.1 Uso de filter()  5.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
+<meta name="twitter:title" content="Capítulo 6 Sesión 04 | Introducción a R y Tidyverse">
+<meta name="twitter:description" content="6.1 Exploración competencial  6.1.1 Uso de filter()  6.1.1.1 ¿Para que sirve? Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones. Pueden incluirse varias...">
 <!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
 <script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Fira%20Code-0.4.1/font.css" rel="stylesheet">
@@ -48,8 +48,9 @@
 <li><a class="" href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></li>
 <li><a class="" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
 <li><a class="" href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></li>
-<li><a class="active" href="sesi%C3%B3n-04.html"><span class="header-section-number">5</span> Sesión 04</a></li>
-<li><a class="" href="taller-i.html"><span class="header-section-number">6</span> Taller I</a></li>
+<li><a class="" href="taller-i.html"><span class="header-section-number">5</span> Taller I</a></li>
+<li><a class="active" href="sesi%C3%B3n-04.html"><span class="header-section-number">6</span> Sesión 04</a></li>
+<li><a class="" href="taller-ii.html"><span class="header-section-number">7</span> Taller II</a></li>
 </ul>
 
         <div class="book-extra">
@@ -57,21 +58,21 @@
         </div>
       </nav>
 </div>
-  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sesión-04" class="section level1" number="5">
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="sesión-04" class="section level1" number="6">
 <h1>
-<span class="header-section-number">Capítulo 5</span> Sesión 04<a class="anchor" aria-label="anchor" href="#sesi%C3%B3n-04"><i class="fas fa-link"></i></a>
+<span class="header-section-number">Capítulo 6</span> Sesión 04<a class="anchor" aria-label="anchor" href="#sesi%C3%B3n-04"><i class="fas fa-link"></i></a>
 </h1>
-<div id="exploración-competencial" class="section level2" number="5.1">
+<div id="exploración-competencial" class="section level2" number="6.1">
 <h2>
-<span class="header-section-number">5.1</span> Exploración competencial<a class="anchor" aria-label="anchor" href="#exploraci%C3%B3n-competencial"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1</span> Exploración competencial<a class="anchor" aria-label="anchor" href="#exploraci%C3%B3n-competencial"><i class="fas fa-link"></i></a>
 </h2>
-<div id="uso-de-filter" class="section level3" number="5.1.1">
+<div id="uso-de-filter" class="section level3" number="6.1.1">
 <h3>
-<span class="header-section-number">5.1.1</span> Uso de filter()<a class="anchor" aria-label="anchor" href="#uso-de-filter"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.1</span> Uso de filter()<a class="anchor" aria-label="anchor" href="#uso-de-filter"><i class="fas fa-link"></i></a>
 </h3>
-<div id="para-que-sirve-1" class="section level4" number="5.1.1.1">
+<div id="para-que-sirve-1" class="section level4" number="6.1.1.1">
 <h4>
-<span class="header-section-number">5.1.1.1</span> ¿Para que sirve?<a class="anchor" aria-label="anchor" href="#para-que-sirve-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.1.1</span> ¿Para que sirve?<a class="anchor" aria-label="anchor" href="#para-que-sirve-1"><i class="fas fa-link"></i></a>
 </h4>
 <ul>
 <li><p>Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones.
@@ -86,12 +87,12 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 </ul>
 <div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
-<span class="co">#&gt; ── Attaching packages ───────────</span>
+<span class="co">#&gt; ── Attaching packages ─────────────────── tidyverse 1.3.1 ──</span>
 <span class="co">#&gt; ✔ ggplot2 3.3.6     ✔ purrr   0.3.4</span>
 <span class="co">#&gt; ✔ tibble  3.1.7     ✔ dplyr   1.0.9</span>
 <span class="co">#&gt; ✔ tidyr   1.2.0     ✔ stringr 1.4.0</span>
 <span class="co">#&gt; ✔ readr   2.1.2     ✔ forcats 0.5.1</span>
-<span class="co">#&gt; ── Conflicts ────────────────────</span>
+<span class="co">#&gt; ── Conflicts ────────────────────── tidyverse_conflicts() ──</span>
 <span class="co">#&gt; ✖ dplyr::filter() masks stats::filter()</span>
 <span class="co">#&gt; ✖ dplyr::lag()    masks stats::lag()</span>
 <span class="fu">nycflights13</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">flights</a></span>
@@ -115,9 +116,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; #   distance &lt;dbl&gt;, hour &lt;dbl&gt;, minute &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   time_hour &lt;dttm&gt;</span></code></pre></div>
 </div>
-<div id="ejemplo-2" class="section level4" number="5.1.1.2">
+<div id="ejemplo-2" class="section level4" number="6.1.1.2">
 <h4>
-<span class="header-section-number">5.1.1.2</span> Ejemplo<a class="anchor" aria-label="anchor" href="#ejemplo-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.1.1.2</span> Ejemplo<a class="anchor" aria-label="anchor" href="#ejemplo-2"><i class="fas fa-link"></i></a>
 </h4>
 <p>Esta data muestra información de la <a href="https://www.nhc.noaa.gov/data/#hurdat">NOAA</a> acerca de tormentas desde 1975 hasta el 2020.</p>
 <div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
@@ -158,9 +159,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 </div>
 </div>
 </div>
-<div id="uso-de-select" class="section level2" number="5.2">
+<div id="uso-de-select" class="section level2" number="6.2">
 <h2>
-<span class="header-section-number">5.2</span> Uso de select()<a class="anchor" aria-label="anchor" href="#uso-de-select"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.2</span> Uso de select()<a class="anchor" aria-label="anchor" href="#uso-de-select"><i class="fas fa-link"></i></a>
 </h2>
 <ul>
 <li><p>Esta función permite seleccionar las variables de interés.</p></li>
@@ -209,9 +210,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; 10 Gilbert  1988     9    13    18   140</span>
 <span class="co">#&gt; # … with 76 more rows</span></code></pre></div>
 </div>
-<div id="mutate-ii-1" class="section level2" number="5.3">
+<div id="mutate-ii-1" class="section level2" number="6.3">
 <h2>
-<span class="header-section-number">5.3</span> Mutate II<a class="anchor" aria-label="anchor" href="#mutate-ii-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.3</span> Mutate II<a class="anchor" aria-label="anchor" href="#mutate-ii-1"><i class="fas fa-link"></i></a>
 </h2>
 <div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/mutate_ilustration.png" width="100%"></div>
 <p>Esta función del paquete <code>dplyr</code> nos permite agregar o modificar las variables actuales en un conjunto de datos (dataframe). Tal y como ya lo vimos en la <a href="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#6">sesión 03</a>, esta función puede hacer cambios sobre una o múltiples variables existentes, así como crear varias a la vez serparándolas con una coma (<a href="https://bookdown.org/yih_huynh/Guide-to-R-Book/mutate.html">Y. Wendy Huynh,2019</a>).</p>
@@ -223,9 +224,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
     var3 <span class="op">=</span> <span class="va">var1</span><span class="op">*</span><span class="va">var2</span>
   <span class="op">)</span></code></pre></div>
 </div>
-<div id="mutate-ii-uso-de-across" class="section level2" number="5.4">
+<div id="mutate-ii-uso-de-across" class="section level2" number="6.4">
 <h2>
-<span class="header-section-number">5.4</span> Mutate II: Uso de across()<a class="anchor" aria-label="anchor" href="#mutate-ii-uso-de-across"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.4</span> Mutate II: Uso de across()<a class="anchor" aria-label="anchor" href="#mutate-ii-uso-de-across"><i class="fas fa-link"></i></a>
 </h2>
 <p>Haremos la prueba con la base storm. Usando la función <code><a href="https://dplyr.tidyverse.org/reference/across.html">across()</a></code> para aplicar una función a múltiples variables a la vez. En esta ocasión transformaremos en factores a las variables status y category de tormentas.</p>
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
@@ -270,9 +271,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; $ wind     &lt;int&gt; 25, 25, 25, 25, 25, 25, 25, 30, 35, 40, 4…</span>
 <span class="co">#&gt; $ pressure &lt;int&gt; 1013, 1013, 1013, 1013, 1012, 1012, 1011,…</span></code></pre></div>
 </div>
-<div id="mutate-ii-lubridate" class="section level2" number="5.5">
+<div id="mutate-ii-lubridate" class="section level2" number="6.5">
 <h2>
-<span class="header-section-number">5.5</span> Mutate II: lubridate<a class="anchor" aria-label="anchor" href="#mutate-ii-lubridate"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.5</span> Mutate II: lubridate<a class="anchor" aria-label="anchor" href="#mutate-ii-lubridate"><i class="fas fa-link"></i></a>
 </h2>
 <p>Muchas veces durante el pre-procesamiento de datos tenemos que enfrentarnos a manejo de fechas (crear, transformar, etc.). Para estos fines podemos usar <strong>las funciones del paquete</strong> <code>lubridate</code>.</p>
 <p>Para tener una mejor apreciación de la variable de fecha que crearemos, usaremos <code><a href="https://dplyr.tidyverse.org/reference/relocate.html">relocate()</a></code> para reposicionar a la variable creada.</p>
@@ -300,9 +301,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; #   status &lt;chr&gt;, category &lt;ord&gt;, wind &lt;int&gt;,</span>
 <span class="co">#&gt; #   pressure &lt;int&gt;</span></code></pre></div>
 </div>
-<div id="uso-de-group_by" class="section level2" number="5.6">
+<div id="uso-de-group_by" class="section level2" number="6.6">
 <h2>
-<span class="header-section-number">5.6</span> Uso de group_by()<a class="anchor" aria-label="anchor" href="#uso-de-group_by"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.6</span> Uso de group_by()<a class="anchor" aria-label="anchor" href="#uso-de-group_by"><i class="fas fa-link"></i></a>
 </h2>
 <p>Esta función permite poder indicarle a R que las operaciones que hagamos en adelante, sean divididas y aplicadas por las agrupaciones que sea haya formado. Es decir, que se puede hacer la agrupación por una o múltiples variables.</p>
 <div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
@@ -329,9 +330,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <p>La función <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> solo configura como será el tratamiento de la data en adelante. No observará ningún cambio percepctible en los datos con excepción de:</p>
 <pre><code># Groups:   name [112]</code></pre>
 </div>
-<div id="uso-de-summarise" class="section level2" number="5.7">
+<div id="uso-de-summarise" class="section level2" number="6.7">
 <h2>
-<span class="header-section-number">5.7</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.7</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise"><i class="fas fa-link"></i></a>
 </h2>
 <p>Esta función permite obtener algun resumen de los datos, como la media, desviación estándar, valores máximos, mínimos, calculos de prueba estadística, y la mayoría de funciones de esta naturaleza. El uso conjunto de <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code> es una combinación perfecta.</p>
 <div class="inline-figure"><img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/group_by_01.png" width="100%"></div>
@@ -348,9 +349,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; 2     6  19.7</span>
 <span class="co">#&gt; 3     8  15.1</span></code></pre></div>
 </div>
-<div id="uso-de-summarise-1" class="section level2" number="5.8">
+<div id="uso-de-summarise-1" class="section level2" number="6.8">
 <h2>
-<span class="header-section-number">5.8</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise-1"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.8</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise-1"><i class="fas fa-link"></i></a>
 </h2>
 <p>Usaremos la misma <a href="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#19">BD de COVID-19 que empleamos en la sesión 03</a>.</p>
 <p>Este dataset está alojada en el siguiente repositorio de GitHub (<a href="https://github.com/CSSEGISandData/COVID-19">click aquí</a>).</p>
@@ -358,16 +359,16 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <p>Mediante la función <code>read_csv</code> podremos importar la data directamente desde <strong>Github</strong>.</p>
 <div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv"</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 285 Columns: 862</span>
-<span class="co">#&gt; ── Column specification ─────────</span>
+<span class="co">#&gt; Rows: 285 Columns: 868</span>
+<span class="co">#&gt; ── Column specification ────────────────────────────────────</span>
 <span class="co">#&gt; Delimiter: ","</span>
 <span class="co">#&gt; chr   (2): Province/State, Country/Region</span>
-<span class="co">#&gt; dbl (860): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
+<span class="co">#&gt; dbl (866): Lat, Long, 1/22/20, 1/23/20, 1/24/20, 1/25/20...</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ℹ Use `spec()` to retrieve the full column specification for this data.</span>
 <span class="co">#&gt; ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</span>
 <span class="va">covid19</span>
-<span class="co">#&gt; # A tibble: 285 × 862</span>
+<span class="co">#&gt; # A tibble: 285 × 868</span>
 <span class="co">#&gt;    `Province/State`  `Country/Region`   Lat   Long `1/22/20`</span>
 <span class="co">#&gt;    &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">#&gt;  1 &lt;NA&gt;              Afghanistan       33.9  67.7          0</span>
@@ -380,7 +381,7 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt;  8 &lt;NA&gt;              Argentina        -38.4 -63.6          0</span>
 <span class="co">#&gt;  9 &lt;NA&gt;              Armenia           40.1  45.0          0</span>
 <span class="co">#&gt; 10 Australian Capit… Australia        -35.5 149.           0</span>
-<span class="co">#&gt; # … with 275 more rows, and 857 more variables:</span>
+<span class="co">#&gt; # … with 275 more rows, and 863 more variables:</span>
 <span class="co">#&gt; #   `1/23/20` &lt;dbl&gt;, `1/24/20` &lt;dbl&gt;, `1/25/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,</span>
@@ -388,9 +389,9 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; #   `2/4/20` &lt;dbl&gt;, `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;,</span>
 <span class="co">#&gt; #   `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;, …</span></code></pre></div>
 </div>
-<div id="uso-de-summarise-2" class="section level2" number="5.9">
+<div id="uso-de-summarise-2" class="section level2" number="6.9">
 <h2>
-<span class="header-section-number">5.9</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise-2"><i class="fas fa-link"></i></a>
+<span class="header-section-number">6.9</span> Uso de summarise()<a class="anchor" aria-label="anchor" href="#uso-de-summarise-2"><i class="fas fa-link"></i></a>
 </h2>
 <p>Recordar que primero debemos pivotear la data para poder trabajar con ella. Obtendremos resúmenes de casos por muerte COVID-19 por países.</p>
 <div class="sourceCode" id="cb78"><pre class="downlit sourceCode r">
@@ -412,16 +413,16 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; # A tibble: 199 × 5</span>
 <span class="co">#&gt;    `Country/Region`       M      DE     Max   Min</span>
 <span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               477800. 319924. 1004726     0</span>
-<span class="co">#&gt;  2 Brazil           341140. 248240.  666391     0</span>
-<span class="co">#&gt;  3 India            249721. 198307.  524586     0</span>
-<span class="co">#&gt;  4 Mexico           171497. 116229.  324768     0</span>
-<span class="co">#&gt;  5 Russia           131167. 126401.  371223     0</span>
-<span class="co">#&gt;  6 Peru             127092.  76707.  213162     0</span>
-<span class="co">#&gt;  7 Italy             89915.  52763.  166542     0</span>
-<span class="co">#&gt;  8 Colombia          70342.  53595.  139854     0</span>
-<span class="co">#&gt;  9 Iran              69549.  49763.  141306     0</span>
-<span class="co">#&gt; 10 Indonesia         64222.  61605.  156573     0</span>
+<span class="co">#&gt;  1 US               481819. 322299. 1008422     0</span>
+<span class="co">#&gt;  2 Brazil           343401. 248850.  666971     0</span>
+<span class="co">#&gt;  3 India            251630. 198932.  524677     0</span>
+<span class="co">#&gt;  4 Mexico           172562. 116524.  324966     0</span>
+<span class="co">#&gt;  5 Russia           132836. 127534.  371703     0</span>
+<span class="co">#&gt;  6 Peru             127690.  76774.  213228     0</span>
+<span class="co">#&gt;  7 Italy             90448.  52966.  166875     0</span>
+<span class="co">#&gt;  8 Colombia          70824.  53720.  139867     0</span>
+<span class="co">#&gt;  9 Iran              70048.  49947.  141321     0</span>
+<span class="co">#&gt; 10 Indonesia         64863   61869.  156604     0</span>
 <span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 <div class="sourceCode" id="cb79"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op">&lt;-</span> <span class="va">covid19</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -445,16 +446,16 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; # A tibble: 199 × 5</span>
 <span class="co">#&gt;    `Country/Region`       M      DE     Max   Min</span>
 <span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               477800. 319924. 1004726     0</span>
-<span class="co">#&gt;  2 Brazil           341140. 248240.  666391     0</span>
-<span class="co">#&gt;  3 India            249721. 198307.  524586     0</span>
-<span class="co">#&gt;  4 Mexico           171497. 116229.  324768     0</span>
-<span class="co">#&gt;  5 Russia           131167. 126401.  371223     0</span>
-<span class="co">#&gt;  6 Peru             127092.  76707.  213162     0</span>
-<span class="co">#&gt;  7 Italy             89915.  52763.  166542     0</span>
-<span class="co">#&gt;  8 Colombia          70342.  53595.  139854     0</span>
-<span class="co">#&gt;  9 Iran              69549.  49763.  141306     0</span>
-<span class="co">#&gt; 10 Indonesia         64222.  61605.  156573     0</span>
+<span class="co">#&gt;  1 US               481819. 322299. 1008422     0</span>
+<span class="co">#&gt;  2 Brazil           343401. 248850.  666971     0</span>
+<span class="co">#&gt;  3 India            251630. 198932.  524677     0</span>
+<span class="co">#&gt;  4 Mexico           172562. 116524.  324966     0</span>
+<span class="co">#&gt;  5 Russia           132836. 127534.  371703     0</span>
+<span class="co">#&gt;  6 Peru             127690.  76774.  213228     0</span>
+<span class="co">#&gt;  7 Italy             90448.  52966.  166875     0</span>
+<span class="co">#&gt;  8 Colombia          70824.  53720.  139867     0</span>
+<span class="co">#&gt;  9 Iran              70048.  49947.  141321     0</span>
+<span class="co">#&gt; 10 Indonesia         64863   61869.  156604     0</span>
 <span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 <div class="sourceCode" id="cb81"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">covid19_tidy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span>
@@ -473,38 +474,38 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <span class="co">#&gt; # A tibble: 199 × 5</span>
 <span class="co">#&gt;    `Country/Region`       M     DE     Max    Min</span>
 <span class="co">#&gt;    &lt;chr&gt;              &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 US               946233. 54806. 1004726 825081</span>
-<span class="co">#&gt;  2 Brazil           648946. 16430.  666391 619401</span>
-<span class="co">#&gt;  3 India            511731. 13796.  524586 481893</span>
-<span class="co">#&gt;  4 Russia           347841. 21032.  371223 304284</span>
-<span class="co">#&gt;  5 Mexico           316897.  8784.  324768 299544</span>
-<span class="co">#&gt;  6 Peru             209874.  3558.  213162 202782</span>
-<span class="co">#&gt;  7 Italy            155313.  8511.  166542 137646</span>
-<span class="co">#&gt;  8 Indonesia        150943.  5178.  156573 144097</span>
-<span class="co">#&gt;  9 Colombia         137481.  3300.  139854 130026</span>
-<span class="co">#&gt; 10 Iran             137462.  3737.  141306 131680</span>
+<span class="co">#&gt;  1 US               950206. 55279. 1008422 825847</span>
+<span class="co">#&gt;  2 Brazil           649643. 16471.  666971 619401</span>
+<span class="co">#&gt;  3 India            512237. 13753.  524677 481893</span>
+<span class="co">#&gt;  4 Russia           348769. 21122.  371703 304284</span>
+<span class="co">#&gt;  5 Mexico           317212.  8749.  324966 299544</span>
+<span class="co">#&gt;  6 Peru             210005.  3547.  213228 202782</span>
+<span class="co">#&gt;  7 Italy            155761.  8632.  166875 137646</span>
+<span class="co">#&gt;  8 Indonesia        151164.  5193.  156604 144097</span>
+<span class="co">#&gt;  9 Iran             137613.  3739.  141321 131680</span>
+<span class="co">#&gt; 10 Colombia         137575.  3267.  139867 130026</span>
 <span class="co">#&gt; # … with 189 more rows</span></code></pre></div>
 
 </div>
 </div>
   <div class="chapter-nav">
-<div class="prev"><a href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></div>
-<div class="next"><a href="taller-i.html"><span class="header-section-number">6</span> Taller I</a></div>
+<div class="prev"><a href="taller-i.html"><span class="header-section-number">5</span> Taller I</a></div>
+<div class="next"><a href="taller-ii.html"><span class="header-section-number">7</span> Taller II</a></div>
 </div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
     <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
       <ul class="nav navbar-nav">
-<li><a class="nav-link" href="#sesi%C3%B3n-04"><span class="header-section-number">5</span> Sesión 04</a></li>
+<li><a class="nav-link" href="#sesi%C3%B3n-04"><span class="header-section-number">6</span> Sesión 04</a></li>
 <li>
-<a class="nav-link" href="#exploraci%C3%B3n-competencial"><span class="header-section-number">5.1</span> Exploración competencial</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#uso-de-filter"><span class="header-section-number">5.1.1</span> Uso de filter()</a></li></ul>
+<a class="nav-link" href="#exploraci%C3%B3n-competencial"><span class="header-section-number">6.1</span> Exploración competencial</a><ul class="nav navbar-nav"><li><a class="nav-link" href="#uso-de-filter"><span class="header-section-number">6.1.1</span> Uso de filter()</a></li></ul>
 </li>
-<li><a class="nav-link" href="#uso-de-select"><span class="header-section-number">5.2</span> Uso de select()</a></li>
-<li><a class="nav-link" href="#mutate-ii-1"><span class="header-section-number">5.3</span> Mutate II</a></li>
-<li><a class="nav-link" href="#mutate-ii-uso-de-across"><span class="header-section-number">5.4</span> Mutate II: Uso de across()</a></li>
-<li><a class="nav-link" href="#mutate-ii-lubridate"><span class="header-section-number">5.5</span> Mutate II: lubridate</a></li>
-<li><a class="nav-link" href="#uso-de-group_by"><span class="header-section-number">5.6</span> Uso de group_by()</a></li>
-<li><a class="nav-link" href="#uso-de-summarise"><span class="header-section-number">5.7</span> Uso de summarise()</a></li>
-<li><a class="nav-link" href="#uso-de-summarise-1"><span class="header-section-number">5.8</span> Uso de summarise()</a></li>
-<li><a class="nav-link" href="#uso-de-summarise-2"><span class="header-section-number">5.9</span> Uso de summarise()</a></li>
+<li><a class="nav-link" href="#uso-de-select"><span class="header-section-number">6.2</span> Uso de select()</a></li>
+<li><a class="nav-link" href="#mutate-ii-1"><span class="header-section-number">6.3</span> Mutate II</a></li>
+<li><a class="nav-link" href="#mutate-ii-uso-de-across"><span class="header-section-number">6.4</span> Mutate II: Uso de across()</a></li>
+<li><a class="nav-link" href="#mutate-ii-lubridate"><span class="header-section-number">6.5</span> Mutate II: lubridate</a></li>
+<li><a class="nav-link" href="#uso-de-group_by"><span class="header-section-number">6.6</span> Uso de group_by()</a></li>
+<li><a class="nav-link" href="#uso-de-summarise"><span class="header-section-number">6.7</span> Uso de summarise()</a></li>
+<li><a class="nav-link" href="#uso-de-summarise-1"><span class="header-section-number">6.8</span> Uso de summarise()</a></li>
+<li><a class="nav-link" href="#uso-de-summarise-2"><span class="header-section-number">6.9</span> Uso de summarise()</a></li>
 </ul>
 
       <div class="book-extra">
@@ -522,7 +523,7 @@ Pueden incluirse varias condiciones dentro de un filtro.</p></li>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-05-29.</p>
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-06-04.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

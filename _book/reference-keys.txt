@@ -53,6 +53,9 @@ pivot
 pivotear
 uso-de-pivot_longer
 uso-de-pivot_wider
+taller-i
+introducción
+instrucciones
 sesión-04
 exploración-competencial
 uso-de-filter
@@ -66,6 +69,6 @@ uso-de-group_by
 uso-de-summarise
 uso-de-summarise-1
 uso-de-summarise-2
-taller-i
-introducción
-instrucciones
+taller-ii
+introducción-1
+instrucciones-1

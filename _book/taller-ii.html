@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Capítulo 7 Taller II | Introducción a R y Tidyverse</title>
+<meta name="author" content="Healthinnovation">
+<meta name="description" content="7.1 Introducción Esta última parte del curso tiene por intención realizar un proceso de análisis de datos en base a los conceptos mostrados y explicados en las 3 últimas sesiones. Mediante una...">
+<meta name="generator" content="bookdown 0.26 with bs4_book()">
+<meta property="og:title" content="Capítulo 7 Taller II | Introducción a R y Tidyverse">
+<meta property="og:type" content="book">
+<meta property="og:description" content="7.1 Introducción Esta última parte del curso tiene por intención realizar un proceso de análisis de datos en base a los conceptos mostrados y explicados en las 3 últimas sesiones. Mediante una...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Capítulo 7 Taller II | Introducción a R y Tidyverse">
+<meta name="twitter:description" content="7.1 Introducción Esta última parte del curso tiene por intención realizar un proceso de análisis de datos en base a los conceptos mostrados y explicados en las 3 últimas sesiones. Mediante una...">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><link href="libs/_Fira%20Code-0.4.1/font.css" rel="stylesheet">
+<script src="libs/bs3compat-0.3.1/transition.js"></script><script src="libs/bs3compat-0.3.1/tabs.js"></script><script src="libs/bs3compat-0.3.1/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-spy="scroll" data-target="#toc">
+
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
+
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">Introducción a R y Tidyverse</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
+    </div>
+
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html"><span class="header-section-number">1</span> ¡Bienvenidos!</a></li>
+<li><a class="" href="sesi%C3%B3n-01.html"><span class="header-section-number">2</span> Sesión 01</a></li>
+<li><a class="" href="sesi%C3%B3n-02.html"><span class="header-section-number">3</span> Sesión 02</a></li>
+<li><a class="" href="sesi%C3%B3n-03.html"><span class="header-section-number">4</span> Sesión 03</a></li>
+<li><a class="" href="taller-i.html"><span class="header-section-number">5</span> Taller I</a></li>
+<li><a class="" href="sesi%C3%B3n-04.html"><span class="header-section-number">6</span> Sesión 04</a></li>
+<li><a class="active" href="taller-ii.html"><span class="header-section-number">7</span> Taller II</a></li>
+</ul>
+
+        <div class="book-extra">
+          <p><a id="book-repo" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse">View book source <i class="fab fa-github"></i></a></p>
+        </div>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="taller-ii" class="section level1" number="7">
+<h1>
+<span class="header-section-number">Capítulo 7</span> Taller II<a class="anchor" aria-label="anchor" href="#taller-ii"><i class="fas fa-link"></i></a>
+</h1>
+<div id="introducción-1" class="section level2" number="7.1">
+<h2>
+<span class="header-section-number">7.1</span> Introducción<a class="anchor" aria-label="anchor" href="#introducci%C3%B3n-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Esta última parte del curso tiene por intención realizar un proceso de análisis de datos en base a los conceptos mostrados y explicados en las 3 últimas sesiones. Mediante una serie de instrucciones y la posibilidad de consultar pistas/ayudas referenciadas, se busca que el estudiante pueda aplicar conceptos y desarrolle las habilidades procedimentales para lograr dar solución a los problemas planteados.</p>
+</div>
+<div id="instrucciones-1" class="section level2" number="7.2">
+<h2>
+<span class="header-section-number">7.2</span> Instrucciones<a class="anchor" aria-label="anchor" href="#instrucciones-1"><i class="fas fa-link"></i></a>
+</h2>
+<p>Para este proyecto usaremos las base de datos disponibles a partir del estudio <a href="https://www.bjid.org.br/en-tomographic-score-rad-covid-score-assess-articulo-S1413867021000684">Tomographic score (RAD-Covid Score) to assess the clinical severity of the novel coronavirus infection</a> de Guimarães y colaboradores. Las bases de datos en formato excel (<code>.xlsx</code>) se encuentran disponibles en el repositorio <a href="https://figshare.com/articles/dataset/Clinical_data_and_radiological_severity_score_RAD-Covid_Score_of_chest_CT_scans_from_COVID-19_patients_/12675098">figshare</a>.</p>
+<div class="inline-figure"><img src="img/clinical_data_rx_view.png" width="90%" style="display: block; margin: auto;"></div>
+<p>El repositorio contiene 3 conjuntos de datos:</p>
+<ul>
+<li>El primero (<code>CLIN LAB DATA RAD-Covid (1).xlsx</code>) presenta la información socio-demográfica, las comorbilidades, y el resultado de la hospitalización (recuperado/muerto) de los pacientes con COVID-19</li>
+<li>El segundo (<code>consensus RADIOLOGISTS CT AVAL. PATTERNS AND DISTRIBUTION OF LESIONS (1).xlsx</code>) contiene los patrones y distribuciones de las lesiones encontradas en las tomografías</li>
+<li>Y el tercero (<code>RAD-COVID SCORE AGREEMENT (1).xlsx</code>) contiene información sobre la severidad de los resultados de las tomografías.</li>
+</ul>
+<ol style="list-style-type: decimal">
+<li>En un nuevo proyecto de rstudio y en un archivo <strong>Rmarkdown</strong> (<code>.Rmd</code>), realizar la importación de 2 conjuntos de datos. La primera base a importar será la que contiene información socio-demográfica, comorbilidades y resultado de hospitalización; y la segunda base a importar será únicamente la de la segunda pestaña (<code>Radiologist 2</code>) de la base de datos que contiene la información sobre la severidad de la tomografía.</li>
+</ol>
+<blockquote>
+<p>Recuerda que para no batallar con los nombres de las variables, podemos usar <code><a href="https://rdrr.io/pkg/janitor/man/clean_names.html">janitor::clean_names()</a></code></p>
+</blockquote>
+<details><summary>
+Ayuda 1
+</summary><p>
+Recordar que estamos trabajando con archivos <code>.xlsx</code>, la función <code>read_excel()</code> permite leer archivos con esta extensión
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+Considerar el argumento <code>sheet</code> de la función <code>read_excel()</code> para leer una pestaña en particular.
+</p>
+</details><ol start="2" style="list-style-type: decimal">
+<li>Ambas bases de datos contienen información de los mismos pacientes. Es por ello que, en esta ocasión, será necesario que ambas bases de datos se encuentren unificadas para poder interactuar con toda la información.
+<details><summary>
+Ayuda 1
+</summary><p>
+La familia de funciones <code>*_join()</code> sirve para unir registros de dos tablas por una columna en común (key).
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+La función <code><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join()</a></code> une los registros de una tabla sobre otra tabla manteniendo todos los registros de la primera tabla.
+</p>
+</details>
+</li>
+<li>Se desea tener un dataframe que solo contenga la información del id del paciente (<code>patient</code>), de la severidad de los casos (<code>rad_covid_score</code>, <code>ct_date</code>), el resultado de la hospitalización de todos los pacientes (<code>result</code>), evolución (<code>death</code>), así como los datos sociodemográficos (género[<code>gender</code>] y edad[<code>age</code>]).
+<details><summary>
+Ayuda 1
+</summary><p>
+La función <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code> es usada para seleccionar las variables con las que deseamos trabajar.
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+Almacenar la base en nuevo objeto para poder realizar las operaciones posteriores.
+</p>
+</details>
+</li>
+<li>Se necesita tener un conjunto de datos que solo contenga la información de los pacientes de género femenino que sean menores de 50 años de edad y que tengan un caso de COVID-19 leve (&lt;25%).
+<details><summary>
+Ayuda 1
+</summary><p>
+La función <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code> sirve para filtrar registros de acuerdo a ciertos criterios.
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+Se pueden hacer múltiples filtros dentro de la misma función utilizando los operadores lógicos correspondientes (<strong>&amp;</strong>, <strong>|</strong>).
+</p>
+</details>
+</li>
+<li>La información sobre los resultados y muertes por paciente se encuentran completamente en mayúsculas. Si se desea generar tablas tipo reporte o luego elaborar gráficos en base a estas variables, sería mucho más ordenado que sus valores se encuentren en formato oración, es decir que si inicialmente se indica <code>POSITIVE FOR COVID</code>, debería indicarse como <code>Positive for covid</code>.
+<details><summary>
+Ayuda 1
+</summary><p>
+La función <code><a href="https://stringr.tidyverse.org/reference/case.html">str_to_sentence()</a></code> de la librería stringr puede ser útil.
+</p>
+</details>
+</li>
+<li>Generar una tabla de reporte que informe sobre el tiempo promedio en horas o días que existe entre la fecha toma de radiología y la fecha de aparición de síntomas para aquellos que resultaron positivos en COVID-19 de acuerdo a su nivel de serveridad identificado por RX (RAD-Covid Score).
+<details><summary>
+Ayuda 1
+</summary><p>
+Para diferenciar entre fechas, se puede aplicar una resta simple dentro de un <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+Cuando se requiere tener un resumen de datos, lo ideal es usar <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise()</a></code>
+</p>
+</details>
+</li>
+</ol>
+<blockquote>
+<p><strong>¡Reto!</strong></p>
+</blockquote>
+<ol start="7" style="list-style-type: decimal">
+<li>Se desea visualizar la distribución de casos positivos y negativos por COVID (barplot) en cada quincena de los meses de marzo y abril del 2020.
+<details><summary>
+Ayuda 1
+</summary><p>
+Las funciones <code>year()</code>, <code>month()</code> y <code>day()</code> permiten extraer información específica de una variable en formato fecha.
+</p>
+</details><details><summary>
+Ayuda 2
+</summary><p>
+La función <code><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when()</a></code> y <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code> permite categorizar una variable en base a una condición.
+</p>
+</details>
+</li>
+</ol>
+<p>¡Éxtitos en el taller!</p>
+
+</div>
+</div>
+  <div class="chapter-nav">
+<div class="prev"><a href="sesi%C3%B3n-04.html"><span class="header-section-number">6</span> Sesión 04</a></div>
+<div class="empty"></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#taller-ii"><span class="header-section-number">7</span> Taller II</a></li>
+<li><a class="nav-link" href="#introducci%C3%B3n-1"><span class="header-section-number">7.1</span> Introducción</a></li>
+<li><a class="nav-link" href="#instrucciones-1"><span class="header-section-number">7.2</span> Instrucciones</a></li>
+</ul>
+
+      <div class="book-extra">
+        <ul class="list-unstyled">
+<li><a id="book-source" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/blob/master/07_taller_2.Rmd">View source <i class="fab fa-github"></i></a></li>
+          <li><a id="book-edit" href="https://github.com/healthinnovation/curso-introduccion-r-tidyverse/edit/master/07_taller_2.Rmd">Edit this page <i class="fab fa-github"></i></a></li>
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>Introducción a R y Tidyverse</strong>" was written by Healthinnovation. It was last built on 2022-06-04.</p>
+  </div>
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer>
+</body>
+</html>

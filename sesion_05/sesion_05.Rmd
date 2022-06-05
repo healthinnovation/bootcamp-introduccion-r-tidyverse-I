@@ -103,9 +103,9 @@ meta() %>%
   meta_name("github-repo" = "healthinnovation/xaringan-innovar") %>% 
   meta_social(
     title = "Plantilla Innovar Xaringan",
-    description = "Curso de Introducción a R y Tidyverse: Sesión 04",
+    description = "Curso de Introducción a R y Tidyverse: Sesión 05",
     url = "https://healthinnovation.github.io/xaringan-innovar/sesion_05/#1",
-    image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion04.png",
+    image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion05.png",
     image_alt = "Cover de la Sesión 05 del curso de Introducción a R y Tidyverse",
     og_type = "website",
     og_author = "Laboratorio de Innovación en Salud",

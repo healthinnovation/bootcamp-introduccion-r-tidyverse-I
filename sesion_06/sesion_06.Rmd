@@ -103,9 +103,9 @@ meta() %>%
   meta_name("github-repo" = "healthinnovation/xaringan-innovar") %>% 
   meta_social(
     title = "Plantilla Innovar Xaringan",
-    description = "Curso de Introducción a R y Tidyverse: Sesión 04",
+    description = "Curso de Introducción a R y Tidyverse: Sesión 06",
     url = "https://healthinnovation.github.io/xaringan-innovar/sesion_06/#1",
-    image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion04.png",
+    image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-sesion06.png",
     image_alt = "Cover de la Sesión 06 del curso de Introducción a R y Tidyverse",
     og_type = "website",
     og_author = "Laboratorio de Innovación en Salud",
@@ -137,11 +137,11 @@ meta() %>%
 ## Contenidos
 
 .line-space3-0[.font120[
-- Selección de variables de interés
-- Uso de condicionales para filtrar casos
-- Aspectos adicionales sobre la creación de variables
-- Solicitar resumen de datos (summarise)
-- Considerar variables para subdividir análisis (group_by)
+- Introducción a Rmarkdown
+  - Componentes de un `Rmd`: Encabezado `YAML` y cuerpo (texto y chunks)
+  - Modificar texto
+  - Insertar imágenes
+- Introducción a visualización de datos con `ggcharts`.
 ]]
 
 ---
@@ -152,13 +152,302 @@ class: center, middle, inverse
 ---
 ## Introducción a Rmarkdwon
 
+.line-space2-0[.font110[
+[R Markdown](https://es.r4ds.hadley.nz/r-markdown.html) es la implementación de [Markdown](https://es.wikipedia.org/wiki/Markdown) en R, el cual es un lenguaje de marcado ligero. Es decir, permite configurar formatos de texto en forma básica siendo fácil de editar y fácil de leer.
+
+**R Markdown** (.Rmd) puede exportar a [múltiples formatos](https://rmarkdown.rstudio.com/formats.html) y estos se incrementan aún más con el apoyo de otros paquetes: [html](https://bookdown.org/yihui/rmarkdown/html-document.html), [pdf](https://bookdown.org/yihui/rmarkdown/pdf-document.html), [word](https://bookdown.org/yihui/rmarkdown/word-document.html), [notebook](https://bookdown.org/yihui/rmarkdown/notebook.html), [presentaciones](https://bookdown.org/yihui/rmarkdown/presentations.html) ([xaringan](https://bookdown.org/yihui/rmarkdown/xaringan.html), [ioslides](https://bookdown.org/yihui/rmarkdown/ioslides-presentation.html), [revealjs](https://bookdown.org/yihui/rmarkdown/revealjs.html)), [dashboard](https://rmarkdown.rstudio.com/flexdashboard/), [libros](https://bookdown.org/), [páginas web](https://bookdown.org/yihui/blogdown/), [shiny apps](https://rmarkdown.rstudio.com/authoring_shiny.html%2F), [pósteres](https://github.com/brentthorne/posterdown), etc.
+]]
+
+.center[
+```{r, out.width="60%", echo = FALSE}
+knitr::include_graphics("img/rmarkdownflow.png", dpi = 600)
+```
+]
+
+---
+# Primeros pasos
+
+Necesitas tener instalado el paquete `rmarkdown` y posteriormente generar un archivo de esa extensión.
+
+.pull-left[
+
+#### Instalación del paquete
+```{r, eval = FALSE}
+install.packages("rmarkdown")
+```
+
+#### Generar un archivo `Rmarkdown`
+
+1. Ir a File -> New File -> R Markdown
+2. En la sección de `Document` indicar el título y nombre de autor (esto se puede modificar luego).
+3. Guardar el archivo `.Rmd`
+4. Con la opción de `Knit` se puede generar un archivo **hmtl**.
+]
+
+.center[.pull-right[
+```{r, out.width="85%", echo = FALSE, dpi = 200}
+knitr::include_graphics("img/new_rmarkdown_2.png", dpi = 300)
+```
+]]
+
+---
+# Encabezado YAML - Básico
+
+.line-space1-5[.font110[
+El encabezado de un `Rmd` contiene básicamente metadatos del archivo, formato general del output y, en ocasiones, estilos personalizados (css), entre otros aspectos.
+]]
+
+.pull-left[
+
+.line-space1-5[Este es el formato `YAML` básico con el que se inicia al generar un archivo `Rmd`.]
+```yaml
+---
+title: "Reporte de Proyecto de Análisis"
+subtitle: "Introducción a R y Tidyverse"
+date:`r Sys.Date()`
+output: html_document
+---
+```
+
+.line-space1-5[El formato `YAML` puede contener más información y personalización. Esto dependerá de la configuración del output.]
+]
+
+.pull-right[
+.line-space1-5[Algunos metadatos adicionales, que podrían usarse:]
+
+```yaml
+---
+title: "Reporte de Proyecto de Análisis"
+subtitle: "Introducción a R y Tidyverse"
+author: 
+  - name: Brian N. Peña-Calero
+    email: brianmsm@gmail.com
+    affiliation: Laboratorio de Innovación en Salud
+date: `r Sys.Date()`
+output: html_document
+---
+```
+]
+
+---
+# Cuerpo: Formato de texto
+.line-space1-7[El formato de texto en Rmarkdown es bastante simple. Para títulos y subtítulos tenemos el uso de la **almohadilla/numeral/michi/#**:]
+
+.pull-left[.middle[
+.font120[.line-space2-5[
+```
+# Título 1
+## Título 2
+### Título 3
+#### Título 4
+##### Título 5
+###### Título 6
+```
+]]]]
+
+.pull-right[.line-space1-5[
+# Título 1
+## Título 2
+### Título 3
+#### Título 4
+##### Título 5
+###### Título 6
+]]
+
+---
+# Cuerpo: Formato de texto
+.font110[Formato  *cursiva*, **negrita**, ***cursiva-negrita***, `código` e [hipervínculo](https://es.wikipedia.org/wiki/Hiperenlace)]
+
+.pull-left[
+.font120[.line-space1-7[
+```
+**Este texto está en cursiva*
+
+***Ahora, este texto está en negrita**
+
+****Este último contiene ambos: negrita-cursiva***
+
+*`Este texto será mostrado como código`
+
+*Esta data de ` r nrow(mtcars)` casos... 
+
+*[Rmarkdown](https://bookdown.org/yihui/rmarkdown)
+```
+]]]
+
+.pull-right[.line-space2-0[
+*Este texto está en cursiva*
+
+**Ahora, este texto está en negrita**
+
+***Este último contiene ambos: negrita-cursiva***
+
+`Este texto será mostrado como código`
+
+Esta data de `r nrow(mtcars)` casos... 
+
+[Rmarkdown](https://bookdown.org/yihui/rmarkdown)
+]]
+
+---
+# Cuerpo: Insertar listas y viñetas
+
+.font120[También es posible adicionar listas enumeradas y/o viñetas dentro de la redacción.]
+
+
+.pull-left[
+.font120[.line-space1-7[
+```
+* 1. Primera numeración
+
+* 1. Segunda numeración
+
+*     - Primera viñeta
+
+*         + Una subviñeta viñeta
+
+*     - Segunda viñeta
+
+* 1. Tercera numeración
+```
+]]]
+
+.pull-right[.line-space2-0[
+1. Primera numeración
+
+1. Segunda numeración
+
+   - Primera viñeta
+   
+      + Una subviñeta viñeta
+
+   - Segunda viñeta
+
+1. Tercera numeración
+]]
+
+---
+---
+# Cuerpo: Insertar código R
+
+.line-space1-5[.font110[
+Se puede utilizar código R o de otro [lenguaje soportado](https://bookdown.org/yihui/rmarkdown/language-engines.html) en una línea `r knitr::inline_expr('nrow(mtcars)')` así como en un bloque (chunk) cuando se trata de análisis de varias líneas de código. 
+]]
+
+**Código:**
+
+```{r, echo=FALSE, comment=""}
+cat(c('```{r}',
+      'as_tibble(mtcars) %>%
+          print(n = 3)',
+      '```'), 
+    sep='\n')
+```
+
+**Salida: **
+
+```{r echo=FALSE, tibble.print_max = 5}
+tibble::as_tibble(mtcars) %>% 
+  print(n = 3)
+```
+
+---
+# Cuerpo: Insertar código R
+
+.line-space1-5[.font110[
+Los chunks pueden ser insertados mediante la combinación de teclas `Ctrl + alt + I` o mediante el botón de insertar.
+
+Los chunks pueden contener nombres para ser referenciados posteriormente y/o configurar su ejecución/output dependiendo del contenido del código.
+]]
+
+Por ejemplo:
+
+.pull-left[
+```{r, echo=FALSE, comment=""}
+cat(c("```{r ejemplo, eval=FALSE}",
+      "tibble::as_tibble(mtcars) %>% 
+          print(n = 3)",
+      "```"), 
+    sep='\n')
+```
+]
+
+.pull-right[
+```{r, eval=FALSE}
+tibble::as_tibble(mtcars) %>% 
+  print(n = 3)
+```
+]
+
+.line-space1-5[.font110[
+Este chunk tiene un nombre llamado `ejemplo` y una configuración `eval=FALSE` que indica que el código no se evaluará (ejecutará), y solamente se mostrará. Puede ser útil para demostraciones y/o tutoriales.
+]]
+
+---
+# Cuerpo: Insertar código R
+
+.font105[.line-space1-5[
+A continuación se muestran algunas configuraciones consideradas comunes para los chunks. Estas pueden combinarse entre sí (separadas por coma) en tanto tengan sentido. Existen alrededor de [60 configuraciones](https://yihui.org/knitr/options/) y dependen del contenido del código:
+
+- `eval = FALSE`: No ejecuta código pero muestra el código.
+
+- `include = FALSE`: Ejecuta código pero no muestra el resultado ni el código.
+
+- `echo = FALSE`: Ejecuta código y muestra el output. Pero el código se mantiene oculto.
+
+- `message = FALSE`: Evita que se muestren mensajes de ejecución.
+
+- `warning = FALSE`: No muestra mensajes warnings (advertencia)
+
+- `error = TRUE`: La compilación del documento continúa apesar de errores.
+
+]]
+
+---
+# Cuerpo: Insertar imágenes
+.font110[Para insertar **imágenes**, existen 2 formas de hacerlo:]
+
+.panelset[
+.panel[.panel-name[Código R]
+#### 1. Código CSS
+
+```
+![](https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png){width=30%}
+```
+
+#### 2. Código HTML
+
+```
+<img src="https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png" width="300px"/>
+```
+
+#### 3. Código R
+
+```{r, echo=FALSE, comment=""}
+cat(c("```{r, echo=FALSE, , out.width = '30%'}",
+      "knitr::include_graphics('https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png', 
+      dpi = 300) ",
+      "```"), 
+    sep='\n')
+```
+]
+
+.panel[.panel-name[Imagen]
+.center[
+```{r, echo=FALSE, out.width = '30%'}
+knitr::include_graphics('https://rubenfcasal.github.io/bookdown_intro/images/rmarkdown.png', dpi = 300) 
+```
+]
+]
+]
+
 ---
 ## ¡Hazlo tú mismo!
 
 .line-space2-0[.font120[
-1. Replica los procedimientos observados en las diapositivas
-1. Genera nuevas solicitudes en summarise que consideres pertinente.
-1. Usa nuevas reglas de filtrado
+1. Crear en un nuevo proyecto un archivo Rmarkdown
+1. Completar los datos personales en `YAML` header.
+1. Agregar algún texto descriptivo introductorio. Utiliza *cursivas*, **negritas**, ***negritas y cursivas*** y `código` para nombrar alguna función por ejemplo.
 ]]
 
 ```{r echo=FALSE}
@@ -166,6 +455,89 @@ countdown(minutes = 8,
           margin = "1em",
           font_size = "4em",
           warn_when = 30)
+```
+
+---
+## Introducción a visualización de datos: ggcharts
+
+.pull-left[.line-space1-7[.font110[
+En R el paquete por excelencia para poder realizar gráficos es [`ggplot2`](https://ggplot2.tidyverse.org/). Sin embargo, este en particular amerita un curso entero dedicado a su enseñanza total y en detalle. Por otro lado, [`ggcharts`](https://github.com/thomas-neitmann/ggcharts/) es un paquete que utiliza por debajo a `ggplot2` para generar gráficos rápidos y de forma sencilla.
+
+Lo mejor de todo es que es completamente compatible con las funciones de `ggplot2`.
+
+```{r eval=FALSE}
+install.packages("ggcharts")
+```
+]]]
+
+.pull-right[.center[
+```{r, echo=FALSE, out.width = '75%'}
+knitr::include_graphics("https://raw.githubusercontent.com/thomas-neitmann/ggcharts/master/man/figures/ggcharts_hex.png", dpi = 300)
+```
+]]
+
+---
+## Uso de `ggcharts`
+
+.line-space1-7[.font110[Vamos a ejemplificar de forma sencilla cómo realizar un gráfico de barras usando la data `biomedicalrevenue` que muestra los ingresos anuales de las principales empresas biomédicas.]]
+
+.scroll-output350[
+```{r}
+library(dplyr)
+library(ggplot2)
+library(ggcharts)
+data("biomedicalrevenue")
+biomedicalrevenue %>%
+  as_tibble() %>%
+  filter(year %in% c(2012, 2015, 2018))
+```
+]
+
+---
+`r chunk_reveal("bar_chart_1", break_type = "user", title = "## Uso de ggcharts", chunk_options = 'fig.height=5.5, fig.width=5.8, fig.align="center", out.width = "75%"')`
+
+```{r bar_chart_1, include = FALSE}
+biomedicalrevenue %>%
+  as_tibble() %>% #BREAK
+  filter(year == 2018) %>% #BREAK
+  bar_chart(x = company, y = revenue) + #BREAK
+  labs( 
+    title = "Barchart con ggcharts",
+    y = "Ingresos en 2018",
+    x = NULL
+  ) + #BREAK
+  theme_bw() # BREAK
+```
+
+```{css, echo=FALSE}
+.panel2-bar_chart_1-user {
+    height: 500px;
+    overflow-y: auto !important;
+}
+```
+
+---
+`r chunk_reveal("bar_chart_2", break_type = "user", title = "## Uso de ggcharts", chunk_options = 'fig.height=5, fig.width=8, fig.align="center", out.width = "95%"')`
+
+```{r bar_chart_2, include = FALSE}
+biomedicalrevenue %>%
+  as_tibble() %>% #BREAK
+  filter(year %in% c(2012, 2015, 2018)) %>% #BREAK
+  bar_chart(x = company, y = revenue, 
+            facet = year, top_n = 10) + #BREAK
+  labs(
+    title = "Gráfico con ggcharts",
+    y = "Ingresos anuales",
+    x = NULL
+  ) + #BREAK
+  theme_bw() #BREAK
+```
+
+```{css, echo=FALSE}
+.panel2-bar_chart_2-user {
+    height: 500px;
+    overflow-y: auto !important;
+}
 ```
 
 ---
@@ -184,7 +556,7 @@ class: center, middle
 </h2>
 <br>
 <h3>
-`r anicon::faa('envelope', size = 'xs', animate='float', rtext='<a href="mailto:correo@gmail.com"><span style="color:#562457">&nbsp;&nbsp;correo@gmail.com</span></a>')`
+`r anicon::faa('envelope', size = 'xs', animate='float', rtext='<a href="mailto:imt.innovlab@oficinas-upch.pe"><span style="color:#562457">&nbsp;&nbsp;imt.innovlab@oficinas-upch.pe</span></a>')`
 </h3>
 <h3>
 `r anicon::faa('github', size = 'xs', animate='float', rtext='<a href="https://github.com/healthinnovation/"><span style="color:#562457">&nbsp;&nbsp; @healthinnovation</span></a>')`

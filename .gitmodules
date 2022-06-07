@@ -1,0 +1,3 @@
+[submodule "themes/syna-innovar"]
+	path = themes/syna-innovar
+	url = https://github.com/healthinnovation/syna-innovar.git

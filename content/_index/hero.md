@@ -6,29 +6,34 @@ weight = 50
 background = "light" # can influence the text color
 particles = true
 
-title = "Syna Theme"
-subtitle = "Showcase your next project"
+title = "Introducción a R y Tydiverse"
+subtitle = "Introducción a R y Tidyverse"
 
 [header]
   image = "header.jpg"
 
 [asset]
-  image = "logo.svg"
-  width = "500px" # optional - will default to image width
-  #height = "150px" # optional - will default to image height
+  image = "Rlogo.svg"
+  width = "150px" # optional - will default to image width
+  #height = "25px" # optional - will default to image height
 
 [[buttons]]
-  text = "Features"
+  text = "Sobre el curso"
   url = "#features"
-  color = "dark" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
+  color = "primary" # primary, secondary, success, danger, warning, info, light, dark, link - default: primary
 
 [[buttons]]
-  text = "Getting Started"
-  url = "/docs/"
+  text = "Contenido"
+  url = "/fragments/"
   color = "primary"
 
 [[buttons]]
-  text = "Fragments"
-  url = "#fragments"
-  color = "dark"
+  text = "Extras"
+  url = "/about/"
+  color = "primary"
+  
+[[buttons]]
+  text = "Contactanos"
+  url = "#footer"
+  color = "primary"
 +++

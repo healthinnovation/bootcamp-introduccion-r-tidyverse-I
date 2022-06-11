@@ -1,9 +1,9 @@
 +++
-title = "Configurable"
+title = "Modificar variables"
 weight = 20
 
 [asset]
   icon = "fas fa-cubes"
 +++
 
-High flexibility to easily configure navigation, sections or whole pages
+Dar formato inicial al conjunto de datos mediante reconocimiento de variables y modificaciones en las mismas.

@@ -1,6 +1,6 @@
----
-background: light
-fragment: search
-title: Search
-weight: 100
----
++++
+fragment = "search"
+weight = 100
+title = "Search"
+background = "light"
++++

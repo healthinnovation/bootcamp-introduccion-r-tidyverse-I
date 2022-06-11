@@ -58,27 +58,27 @@ menu:
       url: /about
       weight: 10
   footer:
-    - name: Getting Started
-      url: https://syna.okkur.org/demo
+    - name: Acerca de InnovaLab
+      url: https://www.innovalab.info/
       weight: 10
-    - name: About Okkur Labs
-      url: https://about.okkur.org/
+    - name: Página de Notion
+      url: https://www.notion.so/innovalab/InnovaLab-8ff7c0bbb9c2465ca6f9e0f7436f6a8c
       weight: 20
   footer_social:
     - name: github
       pre: fab fa-github fa-stack-2x
-      url: https://git.okkur.org/syna
+      url: https://github.com/healthinnovation
       weight: 30
   main:
-    - name: Home
+    - name: Inicio
       url: /
       weight: 10
-    - name: Fragments
-      url: /fragments
-      weight: 20
-    - name: Docs
+    - name: Syllabus
       url: /docs
+      weight: 20
+    - name: Contenido
+      url: /fragments
       weight: 30
-    - name: About
+    - name: Extras
       url: /about
       weight: 40

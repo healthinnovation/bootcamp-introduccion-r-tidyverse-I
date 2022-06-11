@@ -10,16 +10,16 @@ sticky = true
 [breadcrumb]
   display = true # Default value is false
   #level = 0 # Default is 1
-  background = "light"
+  background = "dark"
 
 # Branding options
 [asset]
-  image = "logo.svg"
-  text = "Syna"
+  image = "innova.png"
+  text = "InnovaLab"
 
 [repo_button]
-  url = "https://github.com/okkur/syna"
-  text = "Star" # default: "Star"
+  url = "https://github.com/healthinnovation/curso-introduccion-r-tidyverse"
+  text = "GitHub" # default: "Star"
   icon = "fab fa-github" # defaults: "fab fa-github"
   # no_text=false
 +++

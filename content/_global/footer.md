@@ -3,15 +3,13 @@ fragment = "footer"
 #disabled = true
 date = "2016-09-07"
 weight = 1200
-background = "secondary"
+background = "dark"
 
-menu_title = "Further Resources"
+menu_title = "Más de nosotros:"
 
 [asset]
-  image = "logo.svg"
-  text = "Logo Subtext"
+  image = "innova.png"
+  text = "Laboratorio de Innovación en salud"
 +++
 
-#### Syna Theme
 
-Highly customizable open source theme for Hugo based static websites

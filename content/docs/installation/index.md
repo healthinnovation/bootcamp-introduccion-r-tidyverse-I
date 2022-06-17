@@ -1,4 +1,4 @@
 ---
-title: Installation
+title: Sesión 1
 weight: 10
 ---

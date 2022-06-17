@@ -1,6 +1,6 @@
 +++
 fragment = "hero"
-#disabled = true
+#disabled = false
 date = "2016-09-07"
 weight = 50
 background = "light" # can influence the text color
@@ -24,7 +24,7 @@ subtitle = "Introducción a R y Tidyverse"
 
 [[buttons]]
   text = "Contenido"
-  url = "/fragments/"
+  url = "/docs/"
   color = "primary"
 
 [[buttons]]
@@ -33,7 +33,7 @@ subtitle = "Introducción a R y Tidyverse"
   color = "primary"
   
 [[buttons]]
-  text = "Contactanos"
+  text = "Contáctanos"
   url = "#footer"
   color = "primary"
 +++

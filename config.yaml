@@ -1,7 +1,7 @@
 baseurl: /
 languageCode: en-us
 defaultContentLanguage: en
-title: Okkur - Syna
+title: Introducción a R y Tidyverse
 theme: syna-innovar
 enableGitInfo: yes
 version: 0.17.4
@@ -40,9 +40,9 @@ params:
     success: '#008f54'
     warning: '#fdf314'
   custom:
-    favicon: favicon.ico
+    favicon: innovalab_azul.png
     favicon_ico_sizes: 16x16 32x32
-    favicon_png: favicon.png
+    favicon_png: innovalab_azul.png
     favicon_svg: favicon.svg
   debug: yes
   description: Open Source Theme for your next project
@@ -74,10 +74,10 @@ menu:
       url: /
       weight: 10
     - name: Syllabus
-      url: /docs
+      url: /fragments
       weight: 20
     - name: Contenido
-      url: /fragments
+      url: /docs
       weight: 30
     - name: Extras
       url: /about

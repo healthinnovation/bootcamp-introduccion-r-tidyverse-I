@@ -1,0 +1,11 @@
+---
+title: "Introducción a R y Tidyverse"
+subtitle: "Sesión 01"  
+author: 
+  - "Laboratorio de Innovación en Salud"
+date: "16-06-2022"
+slug: []
+categories: []
+tags: []
+---
+

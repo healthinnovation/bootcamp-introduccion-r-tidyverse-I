@@ -1,6 +1,7 @@
 +++
 fragment = "list"
 weight = 250
+disabled = true #con esto activo o desactivo la sección de fragments en el inicio
 
 background = "light"
 count = 1000

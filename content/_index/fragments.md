@@ -1,6 +1,7 @@
 +++
 fragment = "header"
 weight = "200"
+disabled = true
 
 background = "light"
 title = "Contenido"

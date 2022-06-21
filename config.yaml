@@ -1,5 +1,5 @@
-baseurl: /
-languageCode: en-us
+baseurl: https://introduccion-r-tidyverse.netlify.app/
+languageCode: es-pe
 defaultContentLanguage: en
 title: Introducción a R y Tidyverse
 theme: syna-innovar

@@ -9,3 +9,175 @@ categories: []
 tags: []
 ---
 
+
+### ¿Qué es Ciencia de Datos?
+
+La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo matematicas, estadistica, informatica, y tecnologia de la información. 
+
+La Ciencia de Datos permite extraer información relevante de los datos.
+
+```{r echo=FALSE, out.width="60%", fig.align='center'}
+knitr::include_graphics("https://user-images.githubusercontent.com/23284899/164083485-8a0cb088-e04d-4234-88f4-439289234530.png")
+```
+
+### ¿Por qué usar R para Ciencia de Datos?
+
+R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para desarrollar proyectos de Ciencia de Datos.
+
+```{r echo=FALSE, out.width="90%", fig.align='center'}
+knitr::include_graphics("https://user-images.githubusercontent.com/23284899/164085004-8f34ca37-3780-4790-91cc-c934f594b34b.png")
+```
+
+### Reconocimiento Rstudio
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/01_IDE_Rdtudio_v1.png")
+```
+
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/01_IDE_Rdtudio_v2.png")
+```
+
+### Mover paneles 
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/03_panel_v1.png")
+```
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/03_panel_v2.png")
+```
+
+### Personalización de Rstudio
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/04_config_global_v1.png")
+```
+
+#### **Modificaciones sobre la interfaz de Rstudio:**
+
+ - Aumentar el zoom o utilizar el atajo: Ctrl y +
+ 
+ - Cambiar tipo de letra puede hacer un tanto más agradable la codificación. La letra Fira
+ 
+ - Code es bastante recomendable, pero se requiere instalar.
+ 
+ - El tema también puede ayudar en que la codificación sea más agradable. El paquete rsthemes, contiene muchos temas extras.
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/04_config_global_v2.png")
+```
+
+
+### ¿Por qué utilizar proyectos?
+
+ - Es más fácil poder compartir los proyectos y estos se encuentran listos para que otras personas puedan colaborar contigo.
+ 
+ - Cada proyecto se encuentra aislado. Los códigos en un proyecto no afectarán a ningún otro. Puedes tener muchos proyectos abiertos y los códigos del proyecto 1 no afectarán al proyecto 2.
+ 
+ - Muy útil para facilitar la importación de data.
+ 
+ - Mejora tanto la reproducibilidad como la colaboración.
+ 
+### Creación de proyectos 
+
+**PASOS:**
+
+1. Seleccionamos “Project (None)” o “File” y luego, new project.
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_1.png")
+```
+
+2. “New Directory” se utiliza para indicar dónde voy a almacenar mis archivos y para que R cree una nueva carpeta para mi proyecto, mientras que “Existing Directory” se utiliza si ya tengo una carpeta en la cual voy a almacenar mis archivos. Seleccionamos “New Directory”.
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_3.png")
+```
+3. Aparecerán más opciones y seleccionamos nuevamente “New Project”
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_4.png")
+```
+
+
+3. En caso de haber seleccionado “Existing Directory” aparecerá esto y buscamos el nombre de la carpeta que utilizaremos.
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_5.png")
+```
+
+
+4. En “Directory name” ponemos el nombre de la carpeta que contendrá el archivo del proyecto, mientras que en “Create project as subdirectory of” seleccionamos dónde está la carpeta en la que trabajaremos.
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_6.png")
+```
+
+
+5. Resumen
+
+```{r echo=FALSE, out.width="85%", fig.align='center'}
+knitr::include_graphics("https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/img/creacion_proyectos_6.gif")
+```
+
+### Vectores atómicos 
+
+- Los vectores contienen información homogénea o siempre de un solo tipo de datos.
+  
+- Un vector puede contener 1 solo elemento o n-elementos.
+
+- Existen hasta 6 tipos de datos que puede contener un vector:
+    - Logical: `TRUE`, `FALSE`
+    - Integer: `1, 5, 7` 
+    - Double: `3.15, 10, 12.86`
+    - Character: `"Marcos", "Laptop"`.
+    - Complex: `3 + 2i`
+
+**Ejemplos:**
+
+```{r}
+v_numeric <- 5
+v_numeric
+```
+
+```{r}
+v_numeric <- c(5, 10, 15)
+v_numeric
+```
+
+```{r}
+typeof(v_numeric)
+```
+
+```{r}
+v_character <- c("Laptop", "Rstudio", "4.2")
+v_character
+```
+
+Los vectores solo pueden tener un solo tipo de información a la vez, así que si dentro de un vector se ingresa un elemento tipo numeric, este inmediatamente será transformado a character.
+
+```{r}
+v_character <- c("Laptop", "Rstudio", 4.2)
+v_character
+```
+
+```{r}
+typeof(v_character)
+```
+
+Ahora crearemos 2 vectores llamados nombres y edades.
+
+
+```{r}
+nombres <- c("Luis", "Mateo", "Carlos", "Eduardo")
+edades <- c(28, 30, 40, 35)
+```
+
+A partir de esto, podemos construir algo con lo que probablemente estemos más familiarizados.
+
+```{r}
+data.frame(nombres, 
+           edades)
+```

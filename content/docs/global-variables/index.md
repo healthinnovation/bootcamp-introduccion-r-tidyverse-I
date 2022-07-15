@@ -1,4 +1,4 @@
----
-title: Global Variables
-weight: 25
----
++++
+title = "Global Variables"
+weight = 25
++++

@@ -1,4 +1,6 @@
----
-title: Development
-weight: 50
----
++++
+title = "Development"
+weight = 50
+hide = true
+disable = true
++++

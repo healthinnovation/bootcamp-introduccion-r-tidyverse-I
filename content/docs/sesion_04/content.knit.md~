@@ -1,0 +1,55 @@
+---
+fragment: content
+sidebar:
+  sticky: true
+weight: 100
+title: "Sesión 04"
+---
+
+## Exploración competencial 
+
+### Uso de filter()
+
+#### ¿Para que sirve?
+
+- Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones.
+Pueden incluirse varias condiciones dentro de un filtro.
+
+- Funciones y operadores útiles:
+  
+  - De comparación: `==`, `<`, `>`, `<=`, `>=`, `!=`, `%in%`, `is.na`, `!is.na`
+  
+  - De lógica: `&`, `|`, `xor`, `!`, `any()`, `all()`
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

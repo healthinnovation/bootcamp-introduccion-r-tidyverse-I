@@ -1,10 +1,15 @@
----
-fragment: content
-sidebar:
-  sticky: true
-title: Development
-weight: 100
----
++++
+fragment = "content"
+weight = 100
+
+title = "Development"
+
+[sidebar]
+  sticky = true
+  
+hide = true
+disable = true
++++
 
 We develop our front-end code in the `assets/` directory which allows us to have a development directory that would be built to be production ready and put inside the `static/` and `resources/` directories (which are the directories Hugo looks into for front-end files) using [Webpack](https://webpack.js.org/) and Hugo's own resource pipelines.
 To start the build process for development run the following commands:

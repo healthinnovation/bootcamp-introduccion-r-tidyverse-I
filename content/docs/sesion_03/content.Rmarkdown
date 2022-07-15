@@ -1,0 +1,448 @@
+---
+fragment: content
+sidebar:
+  sticky: true
+weight: 100
+title: "Sesión 03"
+---
+
+### Función Glimpse
+
+Mediante la función:
+
+```{r eval=FALSE}
+glimpse()
+```
+
+#### ¿Para que sirve?
+
+- Versión transpuesta de print
+
+- Ayuda a visualizar la mayor cantidad de datos de muchas columnas.
+
+- Muestra el nombre de la variable junto con una designación de tipo de variable.
+
+*__Observación:__*
+
+- Recordar importar el paquete tidyverse:
+
+```{r}
+library(tidyverse)
+library(dplyr)
+```
+
+- Para el ejemplo se recomienda installar el siguiente paquete:
+
+```{r eval=FALSE}
+install.packages("nycflights13")
+```
+
+#### Ejemplo 
+
+Así habitualmente observamos la data:
+
+```{r}
+nycflights13::flights
+```
+
+Con `glimpse()`, podrás tener un vistazo rápido de la estructura de los datos:
+
+```{r}
+glimpse(nycflights13::flights)
+```
+
+Generalmente la vista de `glimpse()` es suficientemente ordenada para poder observar la estructura de la data sin problemas. Pero también se puede usar el argumento `width` para poder especificar ello.
+
+```
+glimpse(nycflights13::flights, width = 90)
+```
+
+### Operador Pipe %>% 
+
+Útil para concatenar múltiples operaciones en `dplyr`.
+
+Atajo de Teclado:
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/atajo_pipe.svg" width="100%"/>
+
+En algunas ocasiones cuando se desea aplicar una función de forma anidada puede resultar ilegible o difícil de comprender, aquí un ejemplo.
+
+```{r eval=FALSE}
+tabla(formato(coeficiente(data)))
+```
+El operador `%>%` nos permite escribir de una secuencia de operaciones de izquierda a derecha :
+```{r eval=FALSE}
+coeficiente(data) %>% formato() %>% tabla()
+```
+
+Esta forma de programar hace que los códigos sean más legibles por muchos usarios y más si
+empleamos la siguiente estructura.
+
+```{r eval=FALSE}
+coeficiente(data) %>% 
+  formato() %>% 
+  tabla()
+```
+
+### Función mutate()
+
+Con `mutate()` podemos realizar modificaciones en las variables. Por ej. sumar variables, o modificarlas de alguna manera (transformar a porcentaje, multiplicarlas por alguna constante, etc.). Estas modificaciones pueden realizarse:
+ 
+ - Creando una nueva variable a partir de otras ya existentes.
+ 
+ - Modificar una variable existente en la misma variable.
+
+
+#### Ejemplo: 
+
+```{r eval=FALSE}
+library(tidyverse)
+df %>% 
+  mutate(
+    New_var = var*2
+  )
+```
+
+*__Explicación:__*
+
+*En una data llamada df se estaría aplicando la función mutate creando una variable llamada New_var a partir de otra variable llamada var que está siendo multiplicada por 2.*
+
+
+## Uso práctico de mutate()
+
+### Reconocimiento de Base de datos 
+
+Para esta ejemplificación usaremos la base de datos del ECA sobre la [erradicación de la infección por Helicobácter Pylori](https://www.nature.com/articles/s41598-018-27482-2) explicado en la [sesión 02](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#14).
+
+
+```{r}
+trial_data <- readxl::read_excel("_data/researchdata.xlsx")
+trial_data
+```
+
+```{r}
+glimpse(trial_data)
+```
+
+### Janitor 
+
+En algunas ocasiones las base de datos contienen nombres de variables muy largas o que incluso pueden contener espacios o símbolos. Una forma sencilla de solucionar ello es mediante el uso de la función `clean_names()` del paquete `janitor`.
+
+*Observación:*
+- Para instalar el paquete janitor,empleamos la siguiente función:
+
+```{r eval=FALSE}
+install.packages("janitor")
+```
+
+```{r}
+trial_data <- trial_data %>% 
+  janitor::clean_names() 
+trial_data
+```
+
+### Rename 
+
+A pesar de que `janitor::clean_names()` nos proporciona una gran solución para el formateo de nombres de variables que tienen espacios y/o símbolos, a veces podría ser necesario modificar específicamente el nombre de algunas variables. Para ello usaremos la función rename de la siguiente manera:
+
+```{r}
+trial_data <- trial_data %>% 
+  rename(
+    follow_4_weeks = follow_up13c_ubt_4_weeks_after_therapy
+  )
+trial_data
+```
+
+### Mutate I 
+
+Una de las primeras cosas que podemos hacer con `mutate` durante el primer contacto con la data que trabajemos es:
+
+- Configurar variables `ID` como **texto** (`character`).
+
+- Configurar variables como **factores**.
+
+- Configurar respuestas `NA` en caso tengan alguna otra codificación.
+
+1. Configurar la variable **ID**
+
+```{r}
+trial_data %>% 
+  mutate(
+    patient_number = as.character(patient_number)
+  )
+```
+
+### Mutate II
+
+2. Configurar **factores**
+
+```{r}
+trial_data %>% 
+  mutate(
+    randomized_group = factor(randomized_group),
+    complete_the_study = factor(complete_the_study)
+  )
+```
+
+3. Configurar respuestas `NA`
+
+Para reemplazar respuestas dependiendo de una condición en particular se puede utilizar la función `case_when()` dentro de un `mutate()`.
+
+
+```{r eval=FALSE}
+trial_data %>% 
+  mutate(
+    Var = case_when(
+      Var == "Text" ~ "New_Text", 
+      TRUE ~ Var
+    )
+  )
+```
+
+De esta manera en la variable `Var` se reemplazará todos los casos que registren el dato de **Text** por **New_Text**   .
+
+### Uso de count 
+
+La función count es bastante sencilla y poderosa a la vez. Permite obtener una tabla en formato tibble que representará las frecuencias (cantidades n) de una o múltiples variables en específico.
+
+```{r}
+trial_data %>% 
+  count(adverse_drug_reactions)
+```
+
+La tabla generada muestra que cantidad de personas han tenido reacciones adversas a los medicamentos ya sea en el Grupo A o B. Sin embargo, también se aprecia que hay **2** respuestas que indican la presencia de datos vacíos: `NA` y `<NA>`. El primero está codificado directamente como texto (`character`) y sel segudo es un `NA` real, es decir que comunica la ausencia de un dato.
+
+### Uso de mutate() y case_when()
+
+#### Explicación previa del NA
+
+Al importar las bases de datos dentro de R, la gran mayoría de funciones (como `read_excel()`) interpretarán los valors en blanco o celdas vacías como reales `NA`. Sin embargo si en las celdas se ha llenado explícitamente el texto `NA` o se ha usado alguna codificación diferente, el valor de `NA` no se introducirá automáticamente y habrá que indicarlo como tal (`case_when()`).
+
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/view_excel_na.png" width="100%"/>
+
+```{r}
+trial_data %>% 
+  count(adverse_drug_reactions)
+```
+
+
+#### Uso de case_when()
+
+La función `case_when()` tiene una aplicación directa y perfecta para estos fines, en el que recodificaremos el `NA` introducido como texto a un `NA` real que sea reconocido como tal. El mismo procedimiento se utilizaría si los valores faltantes o perdidos se hubieran codificado de otra forma (ej. **777** o **999**).
+
+
+Recordar que con pipe (`%>%`) podemos anidar muchas funciones en un solo bloque:
+
+```{r eval=FALSE}
+trial_data %>%
+  mutate(
+    adverse_drug_reactions = case_when(
+      adverse_drug_reactions == "NA" ~ NA_character_,
+      TRUE ~ adverse_drug_reactions
+    )
+  ) %>% 
+  count()
+```
+
+El código `TRUE ~ adverse_drug_reactions` significa que **todos los demás casos** mantendrán el valor original que el de la variable.
+
+```{r echo=FALSE}
+trial_data %>%
+  mutate(
+    adverse_drug_reactions = case_when(
+      adverse_drug_reactions == "NA" ~ NA_character_,
+      TRUE ~ adverse_drug_reactions
+    )
+  ) %>% 
+  count()
+```
+
+
+#### Advertencia
+
+La función case_when requiere respetar de forma estricta el tipo de vector utilizado. Es decir que si se le pide recodificar una variable a número, y dentro de esa variable continúan habiendo textos, habrá un problema de no-coerción. Es por ese motivo que en el anterior ejemplo se usa NA_character en vez de únicamente NA, ya que este elemento como tal en realidad es de tipo lógico.
+
+```{r}
+typeof(NA)
+```
+
+```{r}
+typeof(NA_character_)
+```
+
+```{r}
+typeof(NA_real_)
+```
+
+### Más sobre case_when()
+
+Anteriormente vimos como usar la función `case_when` para recategorizar/recodificar variables en base a una condición de igualdad (`==`). Sin embargo, no es la única manera. También se puede recategorizar en base a múltiples condiciones, como `%in%` (comparar con múltiples valores a la vez), `>`, `>=`, `<` y `<=`, en conjunto con `&` y `|`.
+
+
+Para ejemplificar esto haremos una recategorización de la base nycflights13::flights:
+
+```{r}
+nycflights13::flights %>% 
+  count(year, month)
+```
+
+Consideraremos del mes 1 hasta el 6 como 2013-I y a partir del mes 7, como 2013-II.
+
+```{r}
+nycflights13::flights %>% 
+  mutate(
+    year = case_when(
+      month %in% 1:6 ~ "2013-I",
+      TRUE ~ "2013-II"
+    )
+  ) %>% 
+  count(year)
+```
+
+Ya que la variable `month` es de tipo `integer` (**numérica**) tenemos más formas alternativas de conseguir exactamente el mismo resultado mostrado anteriormente.
+
+
+En variables numéricas, podemos directamente usar `<=` en las condiciones.
+
+```{r}
+nycflights13::flights %>% 
+  mutate(
+    year = case_when(
+      month <= 6 ~ "2013-I",
+      month > 6 ~ "2013-II"
+    )
+  ) %>% 
+  count(year)
+```
+
+O directamente usar `TRUE` ~ "Condicion, para *todos los demás casos*.
+
+```{r}
+nycflights13::flights %>% 
+  mutate(
+    year = case_when(
+      month <= 6 ~ "2013-I",
+      TRUE ~ "2013-II"
+    )
+  ) %>% 
+  count(year)
+```
+
+### Más usos de count() y arrange()
+
+Ya hemos visto que `count()` es sumamente útil. Además, basta con agregar más variables dentro de sus argumentos, para que estos automáticamente ingresen a generar una tabla de frecuencias. Sin embargo, a veces puede ser necesario ordenar esos resultados, para ello usaremos `arrange()`.
+
+```{r}
+trial_data <- trial_data %>% 
+  mutate(
+    follow_4_weeks = case_when(
+      follow_4_weeks == "NA" ~ NA_character_,
+      TRUE ~ follow_4_weeks
+    ),
+    adverse_drug_reactions = case_when(
+      adverse_drug_reactions == "NA" ~ NA_character_,
+      TRUE ~ adverse_drug_reactions
+    )
+  )
+```
+
+```{r eval=FALSE}
+trial_data %>% 
+  count(randomized_group, 
+        follow_4_weeks,
+        adverse_drug_reactions)
+```
+
+La función `arrange()` permitirá ordenar un objeto en base a una o múltiples variables. En caso se ejecute sobre una variable numérica, se ordenará de menor a mayor por defecto, y en caso se ejecute sobre una variable texto (**character**) se ordenará de forma alfabética, tal y como ya lo hace `count()` por defecto.
+
+Si se desea invertir el ordenamiento, se puede utilizar la función `desc()` dentro de `arrange()`.
+
+```
+trial_data %>%
+  count(randomized_group,
+        follow_4_weeks,
+        adverse_drug_reactions) %>%
+  arrange(randomized_group,
+          desc(follow_4_weeks))
+```
+
+```{r eval=TRUE, echo=FALSE}
+trial_data %>% 
+  count(randomized_group, 
+        follow_4_weeks,
+        adverse_drug_reactions)
+```
+
+
+### Uso de slice_max()
+
+Anteriormente conocido como `top_n()`, la función `slice_max()`, permite seleccionar cuantos casos (filas) se específique en base a una variable numérica.
+
+```{r}
+trial_data %>%
+  count(randomized_group,
+        follow_4_weeks) %>%
+  slice_max(order_by = n,
+            n = 2)
+```
+
+
+### Introducción a tidydata
+
+<img src="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/tidydata_7.jpg" width='100%'/>
+
+Tener datos ordenados (tidydata) significa tener una BD con estructuras adecuadas, donde cada registro representa una fila, cada variable representa una columna y cada celda contiene una simple medida ([Hadley Wickham,2014](https://www.jstatsoft.org/article/view/v059i10)).
+
+<img src='https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/tidydata_1.jpg' width='100%'/>
+
+### Uso de pivot_longer() y pivot_wider()
+
+Para este ejemplo usaremos una base de datos que contiene casos de personas fallecidas a causa del coranovirus a nivel de país, este dataset está alojada en el siguiente repositorio de GitHub ([click aquí](https://github.com/CSSEGISandData/COVID-19)).
+
+<img src='https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/github_covid_1.png' width='100%' />
+
+La función `read_csv` del paquete readr (se carga automáticamente cuando se realiza `library(tidyverse)`), permite importar archivos `csv` (data) incluso cuando el archivo está en una web.
+
+```{r}
+covid19 <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
+covid19
+```
+
+#### ¿Pivot?
+
+<img src='https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/pivot_longer_wider.png' width='100%'/>
+
+Tenemos un conjunto de datos donde cada una de las fechas de fallecimiento por Covid-19 se encuentran almacenadas como columnas.
+
+Sin embargo, esta forma de organizar la información podría generar dificultades al momento de pre-procesar la información o realizar algún tipo de análisis. Tener todas las fechas y casos de muerte por COVID-19 en 2 columnas (fecha y fallecidos), podría ayudar a este proceso.
+
+#### Pivotear
+
+Así, dependiendo de el formato inicial de los datos, tendremos que pivotear hacia la derecha (wider) o hacia abajo (longer).
+
+<img src='https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/img/tidyr-pivot_wider_longer.gif' width='100%'/>
+
+### Uso de pivot_longer()
+
+La función `pivot_longer` permitirá pasar todas las fechas que están a lo largo de las columnas a 2: fecha y fallecidos.
+
+```{r}
+covid19_tidy <- covid19 %>%
+  select(-c(Lat:Long)) %>%
+  pivot_longer(
+    cols = -c(`Province/State`:`Country/Region`),
+    names_to = "fecha",
+    values_to = "fallecidos"
+  )
+```
+
+### Uso de pivot_wider()
+
+De forma análoga, la función `pivot_wider()` hará exactamente lo contrario, pasar de una data que se encuentre ordenada (**tidy data**), a una data ancha. Para esta función se tendrá que indicar los argumentos: `names_from` y `values_from`.
+
+```{r}
+covid19_tidy %>%
+  pivot_wider(
+    names_from = "fecha",
+    values_from = "fallecidos"
+  )
+```

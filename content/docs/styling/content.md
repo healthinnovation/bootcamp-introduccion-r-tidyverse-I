@@ -1,10 +1,14 @@
----
-fragment: content
-sidebar:
-  sticky: true
-title: Supported Colors
-weight: 100
----
++++
+fragment = "content"
+weight = 100
+
+title = "Supported Colors"
+
+[sidebar]
+  sticky = true
+
+hide = true
++++
 
 ### Supported Colors
 

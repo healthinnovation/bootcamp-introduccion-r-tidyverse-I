@@ -1,0 +1,237 @@
+---
+fragment: content
+sidebar:
+  sticky: true
+weight: 100
+title: "Sesión 04"
+---
+
+## Exploración competencial 
+
+### Uso de filter()
+
+#### ¿Para que sirve?
+
+- Ayuda a crear un subconjunto de datos con todas las filas que cumplan tus condiciones.
+Pueden incluirse varias condiciones dentro de un filtro.
+
+- Funciones y operadores útiles:
+  
+  - De comparación: `==`, `<`, `>`, `<=`, `>=`, `!=`, `%in%`, `is.na`, `!is.na`
+  
+  - De lógica: `&`, `|`, `xor`, `!`, `any()`, `all()`
+  
+```{r}
+library(tidyverse)
+nycflights13::flights
+```
+
+#### Ejemplo
+
+Esta data muestra información de la [NOAA](https://www.nhc.noaa.gov/data/#hurdat) acerca de tormentas desde 1975 hasta el 2020.
+
+```{r}
+storms %>% 
+  count(status, category)
+```
+
+Si quisieramos solo trabajar con los huracanes de categoría 5, tendríamos que hacer lo siguiente con la función `filter()`:
+
+```{r}
+storms %>% 
+  filter(status == "hurricane",
+         category == 5)
+```
+
+## Uso de select()
+
+- Esta función permite seleccionar las variables de interés.
+
+- Puede ser útil previo a un análisis de datos o solo si se desea tener una data menos larga.
+
+- Para usarlo se puede nombrar a las variables dentro de la función `select()` y/o usar el comando : para indcar hasta
+
+<img src='https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/select_01.png' width='100%'/>
+
+<img src='https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/select_02.png' width='100%'/>
+
+El uso de las funciones con **pipe** (`%>%`) permite anidarlas una tras otra. Además, si las columnas están una a lado de otra, podemos usar : para seleccionar varios al mismo tiempo.
+
+
+```{r}
+storms %>% 
+  filter(status == "hurricane",
+         category == 5) %>% 
+  select(name, year, month, day, hour, wind)
+```
+
+```{r}
+storms %>% 
+  filter(status == "hurricane",
+         category == 5) %>% 
+  select(name:hour, wind)
+```
+
+## Mutate II
+
+<img src='https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/mutate_ilustration.png' width='100%'/>
+
+Esta función del paquete `dplyr` nos permite agregar o modificar las variables actuales en un conjunto de datos (dataframe). Tal y como ya lo vimos en la [sesión 03](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#6), esta función puede hacer cambios sobre una o múltiples variables existentes, así como crear varias a la vez serparándolas con una coma ([Y. Wendy Huynh,2019](https://bookdown.org/yih_huynh/Guide-to-R-Book/mutate.html)).
+
+```{r eval=FALSE}
+data %>% 
+  mutate(
+    var1 = old_var*2,
+    var2 = old_var*3,
+    var3 = var1*var2
+  )
+```
+
+## Mutate II: Uso de across()
+
+Haremos la prueba con la base storm. Usando la función `across()` para aplicar una función a múltiples variables a la vez. En esta ocasión transformaremos en factores a las variables status y category de tormentas.
+
+```{r}
+storms %>% 
+  select(name:pressure) %>% 
+  mutate(
+    status = as.factor(status),
+    category = as.factor(category)
+  ) %>% 
+  glimpse()
+```
+
+```{r}
+storms %>% 
+  select(name:pressure) %>% 
+  mutate(
+    across(c(status, category), as.factor)
+  ) %>% 
+  glimpse()
+```
+
+
+## Mutate II: lubridate
+
+Muchas veces durante el pre-procesamiento de datos tenemos que enfrentarnos a manejo de fechas (crear, transformar, etc.). Para estos fines podemos usar **las funciones del paquete** `lubridate`.
+
+Para tener una mejor apreciación de la variable de fecha que crearemos, usaremos `relocate()` para reposicionar a la variable creada.
+
+```{r}
+storms %>%
+  select(name:pressure) %>%
+  mutate(
+    date = lubridate::make_date(year, month, day)
+  ) %>%
+  relocate(date, .before = year)
+```
+
+## Uso de group_by()
+
+Esta función permite poder indicarle a R que las operaciones que hagamos en adelante, sean divididas y aplicadas por las agrupaciones que sea haya formado. Es decir, que se puede hacer la agrupación por una o múltiples variables.
+
+```{r}
+storms %>% 
+  filter(year >= 2010) %>% 
+  group_by(name)
+```
+
+La función `group_by()` solo configura como será el tratamiento de la data en adelante. No observará ningún cambio percepctible en los datos con excepción de:
+
+```
+# Groups:   name [112]
+```
+
+## Uso de summarise()
+
+Esta función permite obtener algun resumen de los datos, como la media, desviación estándar, valores máximos, mínimos, calculos de prueba estadística, y la mayoría de funciones de esta naturaleza. El uso conjunto de `group_by()` y `summarise()` es una combinación perfecta.
+
+<img src ="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/group_by_01.png" width='100%'/>
+
+
+```{r}
+mtcars %>%
+  group_by(cyl) %>%
+  summarise(
+    avg = mean(mpg)
+  )
+```
+
+
+## Uso de summarise()
+
+Usaremos la misma [BD de COVID-19 que empleamos en la sesión 03](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_03/#19).
+
+Este dataset está alojada en el siguiente repositorio de GitHub ([click aquí](https://github.com/CSSEGISandData/COVID-19)).
+
+<img src='https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_04/img/github_covid_1.png' width='100%'/>
+
+Mediante la función `read_csv` podremos importar la data directamente desde **Github**.
+
+```{r}
+covid19 <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
+covid19
+```
+
+## Uso de summarise()
+
+Recordar que primero debemos pivotear la data para poder trabajar con ella. Obtendremos resúmenes de casos por muerte COVID-19 por países.
+
+```{r}
+covid19 %>%
+  select(-c(Lat:Long)) %>%
+  pivot_longer(
+    cols = -c(`Province/State`:`Country/Region`),
+    names_to = "fecha",
+    values_to = "fallecidos"
+  ) %>%
+  group_by(`Country/Region`) %>%
+  summarise(
+    M = mean(fallecidos, na.rm = TRUE),
+    DE = sd(fallecidos, na.rm = TRUE),
+    Max = max(fallecidos, na.rm = TRUE),
+    Min = min(fallecidos, na.rm = TRUE)
+  ) %>%
+  arrange(desc(M))
+```
+
+```{r}
+covid19_tidy <- covid19 %>%
+  select(-c(Lat:Long)) %>%
+  pivot_longer(
+    cols = -c(`Province/State`:`Country/Region`),
+    names_to = "fecha",
+    values_to = "fallecidos"
+  )
+```
+
+Guardaremos la data pivoteada en un objeto llamado **covid19_tidy**, para no extender demasiado el código. Además, veamos lo sencillo que es poder introducir un filter a los resultados obtenidos.
+
+```{r}
+covid19_tidy %>%
+  group_by(`Country/Region`) %>%
+  summarise(
+    M = mean(fallecidos, na.rm = TRUE),
+    DE = sd(fallecidos, na.rm = TRUE),
+    Max = max(fallecidos, na.rm = TRUE),
+    Min = min(fallecidos, na.rm = TRUE)
+  ) %>%
+  arrange(desc(M))
+```
+
+```{r}
+covid19_tidy %>%
+  mutate(
+    fecha = lubridate::mdy(fecha)
+  ) %>%
+  filter(fecha > "2022-01-01") %>%
+  group_by(`Country/Region`) %>%
+  summarise(
+    M = mean(fallecidos, na.rm = TRUE),
+    DE = sd(fallecidos, na.rm = TRUE),
+    Max = max(fallecidos, na.rm = TRUE),
+    Min = min(fallecidos, na.rm = TRUE)
+  ) %>% 
+  arrange(desc(M))
+```
+

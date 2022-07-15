@@ -1,10 +1,14 @@
----
-fragment: content
-sidebar:
-  sticky: true
-title: Fragments Implementation
-weight: 100
----
++++
+fragment = "content"
+weight = 100
+
+title = "Fragments Implementation"
+
+[sidebar]
+  sticky = true
+  
+disable = true
++++
 
 Fragments themselves are [Hugo partials](https://gohugo.io/templates/partials/) that are located in `layouts/partials/fragments/`.
 Partials built into Syna are stored within the theme's layout directory.

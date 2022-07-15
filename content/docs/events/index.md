@@ -1,4 +1,6 @@
----
-title: Events
-weight: 22
----
++++
+title = "events"
+weight = 22
+disable = true
+hide = true
++++

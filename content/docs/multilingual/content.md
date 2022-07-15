@@ -1,10 +1,12 @@
----
-fragment: content
-sidebar:
-  sticky: true
-title: MultiLingual Mode
-weight: 100
----
++++
+fragment = "content"
+weight = 100
+
+title = "MultiLingual Mode"
+
+[sidebar]
+  sticky = true
++++
 
 <div class="alert alert-primary" role="alert">
 {{% md %}}

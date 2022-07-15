@@ -1,4 +1,6 @@
----
-title: Styling
-weight: 40
----
++++
+title = "Styling"
+weight = 40
+
+hide = true
++++

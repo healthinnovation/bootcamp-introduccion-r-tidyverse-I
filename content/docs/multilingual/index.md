@@ -1,4 +1,4 @@
----
-title: Multilingual Mode
-weight: 70
----
++++
+title = "Multilingual Mode"
+weight = 70
++++

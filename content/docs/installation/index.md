@@ -1,4 +1,6 @@
----
-title: Sesión 1
-weight: 10
----
++++
+title = "Datos generales"
+weight = 10
++++
+
+

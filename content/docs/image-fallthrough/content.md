@@ -1,10 +1,12 @@
----
-fragment: content
-sidebar:
-  sticky: true
-title: Image Resource Fallthrough
-weight: 100
----
++++
+fragment = "content"
+weight = 100
+
+title = "Image Resource Fallthrough"
+
+[sidebar]
+  sticky = true
++++
 
 Some fragments may display images, if configured in their content files.
 The configuration accepts a filename and will search for the actual image using a fallthrough mechanism.

@@ -1,5 +1,5 @@
 ---
-title: "Introducción a R y Tidyverse"
+title: "Introducción a R y Tidyverse I"
 subtitle: "Sesión 01"  
 author: 
   - "Laboratorio de Innovación en Salud"
@@ -103,8 +103,8 @@ xaringanExtra::use_progress_bar(color = "#0051BA",
 meta() %>%
   meta_name("github-repo" = "healthinnovation/curso-introduccion-r-tidyverse") %>% 
   meta_social(
-    title = "Introducción a R y Tidyverse: Sesión 01",
-    description = "Curso de Introducción a R y Tidyverse: Sesión 01",
+    title = "Introducción a R y Tidyverse I: Sesión 01",
+    description = "Curso de Introducción a R y Tidyverse I: Sesión 01",
     url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/#1",
     # image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-plantilla.png",
     # image_alt = "Innovar theme of R package xaringan",
@@ -160,6 +160,9 @@ Al finalizar el curso de manera satisfactoria, el participante podrá:
 - Manejo y reconocimiento inicial de Rstudio
 - Creación y manejo de estructura de proyectos en rstudio
 - Creación de vectores
+- Uso de funciones y argumentos
+- Instalación y manejo de paquetes
+- Introducción a tidyverse
 ]]
 
 ---
@@ -169,7 +172,7 @@ class: center, middle, inverse
 
 ---
 
-## ¿Qué es Ciencia de Datos?
+## Introducción a ciencia de datos
 
 .pull-left[.line-space2-5[.font120[
 La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo matematicas, estadistica, informatica, y tecnologia de la información. 
@@ -481,6 +484,265 @@ countdown(minutes = 10,
           font_size = "4em",
           warn_when = 60)
 ```
+---
+## ¿Qué es una función?
+
+Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (`vector`, `dataframes`, etc.), lo procesan y devuelven un resultado. 
+
+El uso general de una función es el nombre de la función seguida de paréntesis
+
+```{r eval=FALSE}
+function_name(input)
+```
+
+Los inputs se denominan argumentos e incluyen:
+
+- El objeto físico (cualquier estructura de datos) en el que la función lleva a cabo una tarea
+- Especificaciones que alteran la forma en que opera la función
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("img/function_example.png")
+```
+ 
+---
+
+## Buscando ayuda sobre las funciones
+
+La mejor forma de averiguar esta información es utilizar `?` seguido del nombre de la función. Al hacer esto, se abrirá el manual de ayuda en el panel inferior derecho de RStudio que proporcionará una descripción de la función, uso, argumentos, detalles y ejemplos:
+
+.pull-left[
+```{r eval=FALSE}
+?sd()
+```
+
+```{r eval=FALSE}
+help(sd)
+```
+
+```{r echo=FALSE, out.width="55%", fig.align='left'}
+knitr::include_graphics("img/help_function.png")
+```
+
+Alternativamente, si está familiarizado con la función pero solo necesita recordar los nombres de los argumentos, puede usar:
+
+```{r}
+args(sd)
+```
+
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="80%", fig.align='center'}
+knitr::include_graphics("img/help_page.png")
+```
+]
+
+---
+
+## Ejemplo de una función
+
+.line-space2-0[
+Se tiene el número `3.15181930`, pero solo necesitamos dos decimales. Para ello, utilizaremos la función `round()` que redondea los números de acuerdo a la cantidad de decimales que asignemos. En este caso, solo necesitaremos 2.
+]
+
+```{r}
+round(3.15181930, digits = 2)
+```
+
+.line-space2-0[
+Como se puede observar, se ha utilizado el argumento `digits` para regular la cantidad de decimales. 
+
+**Nota:** Si proporcionamos los argumentos en el mismo orden en el que han sido definidos, no es necesario nombrarlos
+]
+
+```{r}
+round(3.15181930, 2)
+```
+
+---
+
+## ¿Data.frame?
+
+.pull-left[.line-space2-0[.font120[
+- Estructura de datos 2D
+- Admite datos con diferente tipo de variable (lo opuesto a matrices)
+- Similar a Microsoft Excel
+
+**Se crean con la función:**
+
+```{r eval=FALSE}
+data.frame(
+  Var1 = elementos1,
+  Var2 = elementos2
+)
+```
+
+]]]
+
+.pull-right[.scroll-output[
+```{r}
+var1 <- c("Peru", "Argentina", "Bolivia")
+var2 <- rep("aceptado",3)
+var3 <- seq(1000,1200,100)
+
+df <- data.frame(var1, var2, var3)
+df
+```
+
+```{r}
+df <- data.frame(
+  var1 = c("Peru", "Argentina", "Bolivia"),
+  var2 = rep("aceptado",3),
+  var3 = seq(1000,1200,100)
+)
+df
+```
+]]
+
+---
+
+## ¿Tibble?
+
+.pull-left[.line-space1-5[.font120[
+- Son la versión mejorada del data.frame
+- Disponible en el **paquete** `tibble` y por lo tanto en el `tidyverse`.
+
+**Se crean con la función:**
+
+```{r eval=FALSE}
+library(tibble)
+tibble(
+  Var1 = elementos1,
+  Var2 = elementos2
+)
+```
+]]]
+
+
+.pull-right[.scroll-output[
+```{r eval=FALSE}
+install.packages("tibble")
+```
+
+```{r}
+library(tibble)
+tibble(
+  var1 = c("Peru", "Argentina", "Bolivia"),
+  var2 = rep("aceptado",3),
+  var3 = seq(1000,1200,100)
+)
+```
+
+]]
+
+
+---
+
+## data.frame() v.s. tibble()
+
+Ambas funciones tienen sus versiones `as.*` o `as_*` que permite transformar algo en lo que se desea. En este caso se estaría usando `as.data.frame` para convertir algo a **data.frame** y `as_tibble` para ese mismo objetivo.
+
+.pull-left[.scroll-output400[
+```{r}
+class(iris)
+iris
+```
+]]
+
+.pull-right[.scroll-output400[
+```{r R.options = list(width = 40)}
+as_tibble(iris)
+```
+]]
+
+---
+
+#¡Hazlo tú mismo!
+
+.line-space2-0[.font120[
+1. Crea un tibble a partir de los ganadores de las últimas copas mundiales. La estructura de la data debe contener las siguiente variables:
+  - Año
+  - Lugar
+  - Ganador
+1. Existe una base de datos integrada dentro de R que se llama `airquality`. Conviértela en un tibble, y guárdalo en otro objeto con distinto nombre.
+1. Hacer lo mismo con la data `Titanic`.
+]]
+
+```{r echo=FALSE}
+countdown(minutes = 8,
+          margin = "1em",
+          font_size = "4em",
+          warn_when = 30)
+```
+
+---
+## ¿Qué es un paquete?
+.font120[
+Los paquetes son colecciones de funciones, datos y código compilado de R en un formato bien definido, creados para agregar una funcionalidad específica.
+
+Hay un conjunto de paquetes estándar (o base) que se consideran parte del código fuente de R y están disponibles automáticamente como parte de su instalación de R.
+]
+ 
+```{r echo=FALSE, out.width="55%", fig.align='center'}
+knitr::include_graphics("img/paquetes_hexa.png")
+```
+
+---
+
+## Instalación de paquetes desde CRAN
+
+.line-space2-0[.font120[
+La forma de instalar un paquete dependerá de dónde se encuentre. Entonces, para los paquetes disponibles públicamente, esto significa a qué repositorio pertenece. La forma más común es usar el repositorio CRAN, luego solo necesita el nombre del paquete y usa el siguiente comando:
+
+```{r eval=FALSE}
+install.packages("paquete")
+```
+
+Después de ejecutar esto, recibirá algunos mensajes en la pantalla. Dependerán del sistema operativo que esté utilizando, las dependencias y si el paquete se instaló correctamente.
+]]
+
+---
+
+## Instalación de paquetes vía remotes
+
+.line-space2-0[.font110[
+Cada repositorio tiene su propia forma de instalar un paquete a partir de ellos, por lo que en el caso de que utilice regularmente paquetes de diferentes fuentes, este comportamiento puede ser un poco frustrante. Una forma más eficiente es probablemente usar el paquete `remotes`` para simplificar este proceso.
+
+```{r eval=FALSE}
+install.packages("remotes")
+```
+
+Después de haber instalado `remotes`` podemos utilizar algunas de sus funciones para la instalación de paquetes: 
+- `remotes::install_bioc()` desde Bioconductor
+- `remotes::install_github()` desde GitHub
+- `remotes::install_version()` para instalar una versión específica de CRAN.
+]]
+---
+## Introducción a Tidyverse
+
+.font120[
+El megapaquete `tidyverse` permitirá hacer la gran mayoría de procedimientos necesarios para el análisis de datos, desde la importación, ordenamiento, limpieza, transformaciones, hasta la generación de gráficos (`ggplot2`). 
+
+La forma de instalarlo, es sencillo y se requiere ejecutar solo una vez por instalación de computadora/laptop:
+]
+
+.pull-left[
+</br>
+</br>
+```{r eval=FALSE}
+install.packages("tidyverse")
+```
+]
+
+.pull-right[
+```{r echo=FALSE, out.width="90%", fig.align='center'}
+knitr::include_graphics("img/paquetes_hexa.png")
+```
+] 
+
+
+
+
 ---
 class: center, middle
 

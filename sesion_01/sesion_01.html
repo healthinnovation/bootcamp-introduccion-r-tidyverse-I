@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Introducción a R y Tidyverse</title>
+    <title>Introducción a R y Tidyverse I</title>
     <meta charset="utf-8" />
     <meta name="author" content="Laboratorio de Innovación en Salud" />
-    <meta name="date" content="2022-06-03" />
+    <meta name="date" content="2022-08-18" />
     <script src="sesion_01_files/header-attrs/header-attrs.js"></script>
     <link href="sesion_01_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="sesion_01_files/tile-view/tile-view.js"></script>
@@ -28,14 +28,14 @@
     <link href="sesion_01_files/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
     <script src="sesion_01_files/xaringanExtra-progressBar/progress-bar.js"></script>
     <meta name="github-repo" content="healthinnovation/curso-introduccion-r-tidyverse"/>
-    <meta name="twitter:title" content="Introducción a R y Tidyverse: Sesión 01"/>
-    <meta name="twitter:description" content="Curso de Introducción a R y Tidyverse: Sesión 01"/>
+    <meta name="twitter:title" content="Introducción a R y Tidyverse I: Sesión 01"/>
+    <meta name="twitter:description" content="Curso de Introducción a R y Tidyverse I: Sesión 01"/>
     <meta name="twitter:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/#1"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:creator" content="@innovalab_imt"/>
     <meta name="twitter:site" content="@innovalab_imt"/>
-    <meta property="og:title" content="Introducción a R y Tidyverse: Sesión 01"/>
-    <meta property="og:description" content="Curso de Introducción a R y Tidyverse: Sesión 01"/>
+    <meta property="og:title" content="Introducción a R y Tidyverse I: Sesión 01"/>
+    <meta property="og:description" content="Curso de Introducción a R y Tidyverse I: Sesión 01"/>
     <meta property="og:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_01/#1"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
@@ -129,19 +129,19 @@ top:1em;right:1em;
 &lt;br&gt;
 &lt;br&gt;
 
-# Introducción a R y Tidyverse
+# Introducción a R y Tidyverse I
 
 ## Sesión 01
 
 ### Laboratorio de Innovación en Salud  
 
-### 2022-06-03
+### 2022-08-18
 
 &lt;br&gt;
 
-[<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> @healthinnovation](https://github.com/healthinnovation)  
-[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg> @innovalab_imt](https://twitter.com/innovalab_imt)  
-[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"/></svg> innovalab.info](https://www.innovalab.info/)  
+[<svg aria-hidden="true" role="img" viewBox="0 0 496 512" style="height:1em;width:0.97em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg> @healthinnovation](https://github.com/healthinnovation)  
+[<svg aria-hidden="true" role="img" viewBox="0 0 512 512" style="height:1em;width:1em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M459.4 151.7c.325 4.548 .325 9.097 .325 13.65 0 138.7-105.6 298.6-298.6 298.6-59.45 0-114.7-17.22-161.1-47.11 8.447 .974 16.57 1.299 25.34 1.299 49.06 0 94.21-16.57 130.3-44.83-46.13-.975-84.79-31.19-98.11-72.77 6.498 .974 12.99 1.624 19.82 1.624 9.421 0 18.84-1.3 27.61-3.573-48.08-9.747-84.14-51.98-84.14-102.1v-1.299c13.97 7.797 30.21 12.67 47.43 13.32-28.26-18.84-46.78-51.01-46.78-87.39 0-19.49 5.197-37.36 14.29-52.95 51.65 63.67 129.3 105.3 216.4 109.8-1.624-7.797-2.599-15.92-2.599-24.04 0-57.83 46.78-104.9 104.9-104.9 30.21 0 57.5 12.67 76.67 33.14 23.72-4.548 46.46-13.32 66.6-25.34-7.798 24.37-24.37 44.83-46.13 57.83 21.12-2.273 41.58-8.122 60.43-16.24-14.29 20.79-32.16 39.31-52.63 54.25z"/></svg> @innovalab_imt](https://twitter.com/innovalab_imt)  
+[<svg aria-hidden="true" role="img" viewBox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:currentColor;overflow:visible;position:relative;"><path d="M172.5 131.1C228.1 75.51 320.5 75.51 376.1 131.1C426.1 181.1 433.5 260.8 392.4 318.3L391.3 319.9C381 334.2 361 337.6 346.7 327.3C332.3 317 328.9 297 339.2 282.7L340.3 281.1C363.2 249 359.6 205.1 331.7 177.2C300.3 145.8 249.2 145.8 217.7 177.2L105.5 289.5C73.99 320.1 73.99 372 105.5 403.5C133.3 431.4 177.3 435 209.3 412.1L210.9 410.1C225.3 400.7 245.3 404 255.5 418.4C265.8 432.8 262.5 452.8 248.1 463.1L246.5 464.2C188.1 505.3 110.2 498.7 60.21 448.8C3.741 392.3 3.741 300.7 60.21 244.3L172.5 131.1zM467.5 380C411 436.5 319.5 436.5 263 380C213 330 206.5 251.2 247.6 193.7L248.7 192.1C258.1 177.8 278.1 174.4 293.3 184.7C307.7 194.1 311.1 214.1 300.8 229.3L299.7 230.9C276.8 262.1 280.4 306.9 308.3 334.8C339.7 366.2 390.8 366.2 422.3 334.8L534.5 222.5C566 191 566 139.1 534.5 108.5C506.7 80.63 462.7 76.99 430.7 99.9L429.1 101C414.7 111.3 394.7 107.1 384.5 93.58C374.2 79.2 377.5 59.21 391.9 48.94L393.5 47.82C451 6.731 529.8 13.25 579.8 63.24C636.3 119.7 636.3 211.3 579.8 267.7L467.5 380z"/></svg> innovalab.info](https://www.innovalab.info/)  
 
 
 ---
@@ -169,6 +169,9 @@ Al finalizar el curso de manera satisfactoria, el participante podrá:
 - Manejo y reconocimiento inicial de Rstudio
 - Creación y manejo de estructura de proyectos en rstudio
 - Creación de vectores
+- Uso de funciones y argumentos
+- Instalación y manejo de paquetes
+- Introducción a tidyverse
 ]]
 
 ---
@@ -178,7 +181,7 @@ class: center, middle, inverse
 
 ---
 
-## ¿Qué es Ciencia de Datos?
+## Introducción a ciencia de datos
 
 .pull-left[.line-space2-5[.font120[
 La Ciencia de Datos es una fusión entre múltiples disciplinas, incluyendo matematicas, estadistica, informatica, y tecnologia de la información. 
@@ -257,7 +260,7 @@ R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para
 1. Cambia el tamaño y tipo de letra a tu agrado
 ]]
 
-<div class="countdown" id="timer_629a489b" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_62fdf9df" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
  
@@ -340,7 +343,7 @@ R cuenta con las herramientas necesarias (entorno, librerías, y funciones) para
 1. Crea un proyecto dentro de esa carpeta creada, por ej. `Sesión 01.RProj`.
 ]]
 
-<div class="countdown" id="timer_629a489d" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_62fdfa36" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">04</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -478,9 +481,491 @@ data.frame(nombres,
 1. Por último, dentro de `data.frame()` pondrán los vectores que hayan creado. Deberían tener como mínimo, 2 columnas, e idealmente 6 filas.
 ]]
 
-<div class="countdown" id="timer_629a47a3" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="60">
+<div class="countdown" id="timer_62fdf8d6" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="60">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
+---
+## ¿Qué es una función?
+
+Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (`vector`, `dataframes`, etc.), lo procesan y devuelven un resultado. 
+
+El uso general de una función es el nombre de la función seguida de paréntesis
+
+
+```r
+function_name(input)
+```
+
+Los inputs se denominan argumentos e incluyen:
+
+- El objeto físico (cualquier estructura de datos) en el que la función lleva a cabo una tarea
+- Especificaciones que alteran la forma en que opera la función
+
+&lt;img src="img/function_example.png" width="75%" style="display: block; margin: auto;" /&gt;
+ 
+---
+
+## Buscando ayuda sobre las funciones
+
+La mejor forma de averiguar esta información es utilizar `?` seguido del nombre de la función. Al hacer esto, se abrirá el manual de ayuda en el panel inferior derecho de RStudio que proporcionará una descripción de la función, uso, argumentos, detalles y ejemplos:
+
+.pull-left[
+
+```r
+?sd()
+```
+
+
+```r
+help(sd)
+```
+
+&lt;img src="img/help_function.png" width="55%" style="display: block; margin: auto auto auto 0;" /&gt;
+
+Alternativamente, si está familiarizado con la función pero solo necesita recordar los nombres de los argumentos, puede usar:
+
+
+```r
+args(sd)
+```
+
+```
+## function (x, na.rm = FALSE) 
+## NULL
+```
+
+]
+
+.pull-right[
+&lt;img src="img/help_page.png" width="80%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+## Ejemplo de una función
+
+.line-space2-0[
+Se tiene el número `3.15181930`, pero solo necesitamos dos decimales. Para ello, utilizaremos la función `round()` que redondea los números de acuerdo a la cantidad de decimales que asignemos. En este caso, solo necesitaremos 2.
+]
+
+
+```r
+round(3.15181930, digits = 2)
+```
+
+```
+## [1] 3.15
+```
+
+.line-space2-0[
+Como se puede observar, se ha utilizado el argumento `digits` para regular la cantidad de decimales. 
+
+**Nota:** Si proporcionamos los argumentos en el mismo orden en el que han sido definidos, no es necesario nombrarlos
+]
+
+
+```r
+round(3.15181930, 2)
+```
+
+```
+## [1] 3.15
+```
+
+---
+
+## ¿Data.frame?
+
+.pull-left[.line-space2-0[.font120[
+- Estructura de datos 2D
+- Admite datos con diferente tipo de variable (lo opuesto a matrices)
+- Similar a Microsoft Excel
+
+**Se crean con la función:**
+
+
+```r
+data.frame(
+  Var1 = elementos1,
+  Var2 = elementos2
+)
+```
+
+]]]
+
+.pull-right[.scroll-output[
+
+```r
+var1 &lt;- c("Peru", "Argentina", "Bolivia")
+var2 &lt;- rep("aceptado",3)
+var3 &lt;- seq(1000,1200,100)
+
+df &lt;- data.frame(var1, var2, var3)
+df
+```
+
+```
+##        var1     var2 var3
+## 1      Peru aceptado 1000
+## 2 Argentina aceptado 1100
+## 3   Bolivia aceptado 1200
+```
+
+
+```r
+df &lt;- data.frame(
+  var1 = c("Peru", "Argentina", "Bolivia"),
+  var2 = rep("aceptado",3),
+  var3 = seq(1000,1200,100)
+)
+df
+```
+
+```
+##        var1     var2 var3
+## 1      Peru aceptado 1000
+## 2 Argentina aceptado 1100
+## 3   Bolivia aceptado 1200
+```
+]]
+
+---
+
+## ¿Tibble?
+
+.pull-left[.line-space1-5[.font120[
+- Son la versión mejorada del data.frame
+- Disponible en el **paquete** `tibble` y por lo tanto en el `tidyverse`.
+
+**Se crean con la función:**
+
+
+```r
+library(tibble)
+tibble(
+  Var1 = elementos1,
+  Var2 = elementos2
+)
+```
+]]]
+
+
+.pull-right[.scroll-output[
+
+```r
+install.packages("tibble")
+```
+
+
+```r
+library(tibble)
+tibble(
+  var1 = c("Peru", "Argentina", "Bolivia"),
+  var2 = rep("aceptado",3),
+  var3 = seq(1000,1200,100)
+)
+```
+
+```
+## # A tibble: 3 × 3
+##   var1      var2      var3
+##   &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;
+## 1 Peru      aceptado  1000
+## 2 Argentina aceptado  1100
+## 3 Bolivia   aceptado  1200
+```
+
+]]
+
+
+---
+
+## data.frame() v.s. tibble()
+
+Ambas funciones tienen sus versiones `as.*` o `as_*` que permite transformar algo en lo que se desea. En este caso se estaría usando `as.data.frame` para convertir algo a **data.frame** y `as_tibble` para ese mismo objetivo.
+
+.pull-left[.scroll-output400[
+
+```r
+class(iris)
+```
+
+```
+## [1] "data.frame"
+```
+
+```r
+iris
+```
+
+```
+##     Sepal.Length Sepal.Width Petal.Length Petal.Width    Species
+## 1            5.1         3.5          1.4         0.2     setosa
+## 2            4.9         3.0          1.4         0.2     setosa
+## 3            4.7         3.2          1.3         0.2     setosa
+## 4            4.6         3.1          1.5         0.2     setosa
+## 5            5.0         3.6          1.4         0.2     setosa
+## 6            5.4         3.9          1.7         0.4     setosa
+## 7            4.6         3.4          1.4         0.3     setosa
+## 8            5.0         3.4          1.5         0.2     setosa
+## 9            4.4         2.9          1.4         0.2     setosa
+## 10           4.9         3.1          1.5         0.1     setosa
+## 11           5.4         3.7          1.5         0.2     setosa
+## 12           4.8         3.4          1.6         0.2     setosa
+## 13           4.8         3.0          1.4         0.1     setosa
+## 14           4.3         3.0          1.1         0.1     setosa
+## 15           5.8         4.0          1.2         0.2     setosa
+## 16           5.7         4.4          1.5         0.4     setosa
+## 17           5.4         3.9          1.3         0.4     setosa
+## 18           5.1         3.5          1.4         0.3     setosa
+## 19           5.7         3.8          1.7         0.3     setosa
+## 20           5.1         3.8          1.5         0.3     setosa
+## 21           5.4         3.4          1.7         0.2     setosa
+## 22           5.1         3.7          1.5         0.4     setosa
+## 23           4.6         3.6          1.0         0.2     setosa
+## 24           5.1         3.3          1.7         0.5     setosa
+## 25           4.8         3.4          1.9         0.2     setosa
+## 26           5.0         3.0          1.6         0.2     setosa
+## 27           5.0         3.4          1.6         0.4     setosa
+## 28           5.2         3.5          1.5         0.2     setosa
+## 29           5.2         3.4          1.4         0.2     setosa
+## 30           4.7         3.2          1.6         0.2     setosa
+## 31           4.8         3.1          1.6         0.2     setosa
+## 32           5.4         3.4          1.5         0.4     setosa
+## 33           5.2         4.1          1.5         0.1     setosa
+## 34           5.5         4.2          1.4         0.2     setosa
+## 35           4.9         3.1          1.5         0.2     setosa
+## 36           5.0         3.2          1.2         0.2     setosa
+## 37           5.5         3.5          1.3         0.2     setosa
+## 38           4.9         3.6          1.4         0.1     setosa
+## 39           4.4         3.0          1.3         0.2     setosa
+## 40           5.1         3.4          1.5         0.2     setosa
+## 41           5.0         3.5          1.3         0.3     setosa
+## 42           4.5         2.3          1.3         0.3     setosa
+## 43           4.4         3.2          1.3         0.2     setosa
+## 44           5.0         3.5          1.6         0.6     setosa
+## 45           5.1         3.8          1.9         0.4     setosa
+## 46           4.8         3.0          1.4         0.3     setosa
+## 47           5.1         3.8          1.6         0.2     setosa
+## 48           4.6         3.2          1.4         0.2     setosa
+## 49           5.3         3.7          1.5         0.2     setosa
+## 50           5.0         3.3          1.4         0.2     setosa
+## 51           7.0         3.2          4.7         1.4 versicolor
+## 52           6.4         3.2          4.5         1.5 versicolor
+## 53           6.9         3.1          4.9         1.5 versicolor
+## 54           5.5         2.3          4.0         1.3 versicolor
+## 55           6.5         2.8          4.6         1.5 versicolor
+## 56           5.7         2.8          4.5         1.3 versicolor
+## 57           6.3         3.3          4.7         1.6 versicolor
+## 58           4.9         2.4          3.3         1.0 versicolor
+## 59           6.6         2.9          4.6         1.3 versicolor
+## 60           5.2         2.7          3.9         1.4 versicolor
+## 61           5.0         2.0          3.5         1.0 versicolor
+## 62           5.9         3.0          4.2         1.5 versicolor
+## 63           6.0         2.2          4.0         1.0 versicolor
+## 64           6.1         2.9          4.7         1.4 versicolor
+## 65           5.6         2.9          3.6         1.3 versicolor
+## 66           6.7         3.1          4.4         1.4 versicolor
+## 67           5.6         3.0          4.5         1.5 versicolor
+## 68           5.8         2.7          4.1         1.0 versicolor
+## 69           6.2         2.2          4.5         1.5 versicolor
+## 70           5.6         2.5          3.9         1.1 versicolor
+## 71           5.9         3.2          4.8         1.8 versicolor
+## 72           6.1         2.8          4.0         1.3 versicolor
+## 73           6.3         2.5          4.9         1.5 versicolor
+## 74           6.1         2.8          4.7         1.2 versicolor
+## 75           6.4         2.9          4.3         1.3 versicolor
+## 76           6.6         3.0          4.4         1.4 versicolor
+## 77           6.8         2.8          4.8         1.4 versicolor
+## 78           6.7         3.0          5.0         1.7 versicolor
+## 79           6.0         2.9          4.5         1.5 versicolor
+## 80           5.7         2.6          3.5         1.0 versicolor
+## 81           5.5         2.4          3.8         1.1 versicolor
+## 82           5.5         2.4          3.7         1.0 versicolor
+## 83           5.8         2.7          3.9         1.2 versicolor
+## 84           6.0         2.7          5.1         1.6 versicolor
+## 85           5.4         3.0          4.5         1.5 versicolor
+## 86           6.0         3.4          4.5         1.6 versicolor
+## 87           6.7         3.1          4.7         1.5 versicolor
+## 88           6.3         2.3          4.4         1.3 versicolor
+## 89           5.6         3.0          4.1         1.3 versicolor
+## 90           5.5         2.5          4.0         1.3 versicolor
+## 91           5.5         2.6          4.4         1.2 versicolor
+## 92           6.1         3.0          4.6         1.4 versicolor
+## 93           5.8         2.6          4.0         1.2 versicolor
+## 94           5.0         2.3          3.3         1.0 versicolor
+## 95           5.6         2.7          4.2         1.3 versicolor
+## 96           5.7         3.0          4.2         1.2 versicolor
+## 97           5.7         2.9          4.2         1.3 versicolor
+## 98           6.2         2.9          4.3         1.3 versicolor
+## 99           5.1         2.5          3.0         1.1 versicolor
+## 100          5.7         2.8          4.1         1.3 versicolor
+## 101          6.3         3.3          6.0         2.5  virginica
+## 102          5.8         2.7          5.1         1.9  virginica
+## 103          7.1         3.0          5.9         2.1  virginica
+## 104          6.3         2.9          5.6         1.8  virginica
+## 105          6.5         3.0          5.8         2.2  virginica
+## 106          7.6         3.0          6.6         2.1  virginica
+## 107          4.9         2.5          4.5         1.7  virginica
+## 108          7.3         2.9          6.3         1.8  virginica
+## 109          6.7         2.5          5.8         1.8  virginica
+## 110          7.2         3.6          6.1         2.5  virginica
+## 111          6.5         3.2          5.1         2.0  virginica
+## 112          6.4         2.7          5.3         1.9  virginica
+## 113          6.8         3.0          5.5         2.1  virginica
+## 114          5.7         2.5          5.0         2.0  virginica
+## 115          5.8         2.8          5.1         2.4  virginica
+## 116          6.4         3.2          5.3         2.3  virginica
+## 117          6.5         3.0          5.5         1.8  virginica
+## 118          7.7         3.8          6.7         2.2  virginica
+## 119          7.7         2.6          6.9         2.3  virginica
+## 120          6.0         2.2          5.0         1.5  virginica
+## 121          6.9         3.2          5.7         2.3  virginica
+## 122          5.6         2.8          4.9         2.0  virginica
+## 123          7.7         2.8          6.7         2.0  virginica
+## 124          6.3         2.7          4.9         1.8  virginica
+## 125          6.7         3.3          5.7         2.1  virginica
+## 126          7.2         3.2          6.0         1.8  virginica
+## 127          6.2         2.8          4.8         1.8  virginica
+## 128          6.1         3.0          4.9         1.8  virginica
+## 129          6.4         2.8          5.6         2.1  virginica
+## 130          7.2         3.0          5.8         1.6  virginica
+## 131          7.4         2.8          6.1         1.9  virginica
+## 132          7.9         3.8          6.4         2.0  virginica
+## 133          6.4         2.8          5.6         2.2  virginica
+## 134          6.3         2.8          5.1         1.5  virginica
+## 135          6.1         2.6          5.6         1.4  virginica
+## 136          7.7         3.0          6.1         2.3  virginica
+## 137          6.3         3.4          5.6         2.4  virginica
+## 138          6.4         3.1          5.5         1.8  virginica
+## 139          6.0         3.0          4.8         1.8  virginica
+## 140          6.9         3.1          5.4         2.1  virginica
+## 141          6.7         3.1          5.6         2.4  virginica
+## 142          6.9         3.1          5.1         2.3  virginica
+## 143          5.8         2.7          5.1         1.9  virginica
+## 144          6.8         3.2          5.9         2.3  virginica
+## 145          6.7         3.3          5.7         2.5  virginica
+## 146          6.7         3.0          5.2         2.3  virginica
+## 147          6.3         2.5          5.0         1.9  virginica
+## 148          6.5         3.0          5.2         2.0  virginica
+## 149          6.2         3.4          5.4         2.3  virginica
+## 150          5.9         3.0          5.1         1.8  virginica
+```
+]]
+
+.pull-right[.scroll-output400[
+
+```r
+as_tibble(iris)
+```
+
+```
+## # A tibble: 150 × 5
+##    Sepal.Length Sepal.…¹ Petal…² Petal…³
+##           &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+##  1          5.1      3.5     1.4     0.2
+##  2          4.9      3       1.4     0.2
+##  3          4.7      3.2     1.3     0.2
+##  4          4.6      3.1     1.5     0.2
+##  5          5        3.6     1.4     0.2
+##  6          5.4      3.9     1.7     0.4
+##  7          4.6      3.4     1.4     0.3
+##  8          5        3.4     1.5     0.2
+##  9          4.4      2.9     1.4     0.2
+## 10          4.9      3.1     1.5     0.1
+## # … with 140 more rows, 1 more
+## #   variable: Species &lt;fct&gt;, and
+## #   abbreviated variable names
+## #   ¹​Sepal.Width, ²​Petal.Length,
+## #   ³​Petal.Width
+## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
+```
+]]
+
+---
+
+#¡Hazlo tú mismo!
+
+.line-space2-0[.font120[
+1. Crea un tibble a partir de los ganadores de las últimas copas mundiales. La estructura de la data debe contener las siguiente variables:
+  - Año
+  - Lugar
+  - Ganador
+1. Existe una base de datos integrada dentro de R que se llama `airquality`. Conviértela en un tibble, y guárdalo en otro objeto con distinto nombre.
+1. Hacer lo mismo con la data `Titanic`.
+]]
+
+<div class="countdown" id="timer_62fdfa16" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+## ¿Qué es un paquete?
+.font120[
+Los paquetes son colecciones de funciones, datos y código compilado de R en un formato bien definido, creados para agregar una funcionalidad específica.
+
+Hay un conjunto de paquetes estándar (o base) que se consideran parte del código fuente de R y están disponibles automáticamente como parte de su instalación de R.
+]
+ 
+&lt;img src="img/paquetes_hexa.png" width="55%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Instalación de paquetes desde CRAN
+
+.line-space2-0[.font120[
+La forma de instalar un paquete dependerá de dónde se encuentre. Entonces, para los paquetes disponibles públicamente, esto significa a qué repositorio pertenece. La forma más común es usar el repositorio CRAN, luego solo necesita el nombre del paquete y usa el siguiente comando:
+
+
+```r
+install.packages("paquete")
+```
+
+Después de ejecutar esto, recibirá algunos mensajes en la pantalla. Dependerán del sistema operativo que esté utilizando, las dependencias y si el paquete se instaló correctamente.
+]]
+
+---
+
+## Instalación de paquetes vía remotes
+
+.line-space2-0[.font110[
+Cada repositorio tiene su propia forma de instalar un paquete a partir de ellos, por lo que en el caso de que utilice regularmente paquetes de diferentes fuentes, este comportamiento puede ser un poco frustrante. Una forma más eficiente es probablemente usar el paquete `remotes`` para simplificar este proceso.
+
+
+```r
+install.packages("remotes")
+```
+
+Después de haber instalado `remotes`` podemos utilizar algunas de sus funciones para la instalación de paquetes: 
+- `remotes::install_bioc()` desde Bioconductor
+- `remotes::install_github()` desde GitHub
+- `remotes::install_version()` para instalar una versión específica de CRAN.
+]]
+---
+## Introducción a Tidyverse
+
+.font120[
+El megapaquete `tidyverse` permitirá hacer la gran mayoría de procedimientos necesarios para el análisis de datos, desde la importación, ordenamiento, limpieza, transformaciones, hasta la generación de gráficos (`ggplot2`). 
+
+La forma de instalarlo, es sencillo y se requiere ejecutar solo una vez por instalación de computadora/laptop:
+]
+
+.pull-left[
+&lt;/br&gt;
+&lt;/br&gt;
+
+```r
+install.packages("tidyverse")
+```
+]
+
+.pull-right[
+&lt;img src="img/paquetes_hexa.png" width="90%" style="display: block; margin: auto;" /&gt;
+] 
+
+
+
+
 ---
 class: center, middle
 

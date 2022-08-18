@@ -470,7 +470,7 @@ En una data llamada `df` se estaría aplicando la función `mutate` creando una 
 .panelset[
 .panel[.panel-name[Reconocimiento de BD]
 
-Para esta ejemplificación usaremos la base de datos del ECA  sobre la [erradicación de la infección por *Helicobácter Pylori*](https://www.nature.com/articles/s41598-018-27482-2) explicado en la [sesión 02](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#14).
+Para esta ejemplificación continuaremos usando la base de datos del ECA  sobre la [erradicación de la infección por *Helicobácter Pylori*](https://www.nature.com/articles/s41598-018-27482-2).
 
 .pull-left[
 .scroll-output350[

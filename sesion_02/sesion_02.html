@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>Introducción a R y Tidyverse</title>
+    <title>Introducción a R y Tidyverse I</title>
     <meta charset="utf-8" />
     <meta name="author" content="Laboratorio de Innovación en Salud" />
     <meta name="date" content="2022-08-18" />
@@ -28,14 +28,14 @@
     <link href="sesion_02_files/xaringanExtra-extra-styles/xaringanExtra-extra-styles.css" rel="stylesheet" />
     <script src="sesion_02_files/xaringanExtra-progressBar/progress-bar.js"></script>
     <meta name="github-repo" content="healthinnovation/curso-introduccion-r-tidyverse"/>
-    <meta name="twitter:title" content="Introducción a R y Tidyverse: Sesión 02"/>
-    <meta name="twitter:description" content="Curso de Introducción a R y Tidyverse: Sesión 02"/>
+    <meta name="twitter:title" content="Introducción a R y Tidyverse I: Sesión 02"/>
+    <meta name="twitter:description" content="Curso de Introducción a R y Tidyverse I: Sesión 02"/>
     <meta name="twitter:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#1"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:creator" content="@innovalab_imt"/>
     <meta name="twitter:site" content="@innovalab_imt"/>
-    <meta property="og:title" content="Introducción a R y Tidyverse: Sesión 02"/>
-    <meta property="og:description" content="Curso de Introducción a R y Tidyverse: Sesión 02"/>
+    <meta property="og:title" content="Introducción a R y Tidyverse I: Sesión 02"/>
+    <meta property="og:description" content="Curso de Introducción a R y Tidyverse I: Sesión 02"/>
     <meta property="og:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#1"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
@@ -134,7 +134,7 @@ top:1em;right:1em;
 &lt;br&gt;
 &lt;br&gt;
 
-# Introducción a R y Tidyverse
+# Introducción a R y Tidyverse I
 
 ## Sesión 02
 
@@ -187,16 +187,16 @@ Dicho estudio es un ensayo clínico aleatorizado (ECA) de 400 participantes en e
 - **Grupo B** de tratamiento: Levofloxacina 200mg dos veces al día, durante un periodo de 14 días.
 
 
-<div id="htmlwidget-d9b9b53ae960024648cd" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d9b9b53ae960024648cd">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Randomized group":["group A","group B"],"n":[200,200]},"columns":[{"accessor":"Randomized group","name":"Randomized group","type":"character","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}},{"accessor":"n","name":"n","type":"numeric","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"fb1ea7d6d845eba4fa20ac687ddada50"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e8dddf8b5a87853a0852" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e8dddf8b5a87853a0852">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Randomized group":["group A","group B"],"n":[200,200]},"columns":[{"accessor":"Randomized group","name":"Randomized group","type":"character","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}},{"accessor":"n","name":"n","type":"numeric","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"fb1ea7d6d845eba4fa20ac687ddada50"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ---
 
 ## Importación de datos
 
-<div id="htmlwidget-efd5b3172c903e8eca9e" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-efd5b3172c903e8eca9e">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Función":["readxl::read_excel()","readr::read_csv()","haven::read_dta()","haven::read_sav()"],"Tipo de archivo":["excel_logo","csv_logo","stata_logo","spss_logo"]},"columns":[{"accessor":"Función","name":"Función","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readxl::read_excel()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readr::read_csv()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_dta()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_sav()"]}]},{"accessor":"Tipo de archivo","name":"Tipo de archivo","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"excel_logo","src":"img/excel_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"csv_logo","src":"img/csv_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"stata_logo","src":"img/stata_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"spss_logo","src":"img/spss_logo.png","className":"icono-archivo"},"children":[]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"dbe30edd114f1bc1cebc817207ef008c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-a31c348c3e68bcfc163b" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-a31c348c3e68bcfc163b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Función":["readxl::read_excel()","readr::read_csv()","haven::read_dta()","haven::read_sav()"],"Tipo de archivo":["excel_logo","csv_logo","stata_logo","spss_logo"]},"columns":[{"accessor":"Función","name":"Función","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readxl::read_excel()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readr::read_csv()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_dta()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_sav()"]}]},{"accessor":"Tipo de archivo","name":"Tipo de archivo","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"excel_logo","src":"img/excel_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"csv_logo","src":"img/csv_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"stata_logo","src":"img/stata_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"spss_logo","src":"img/spss_logo.png","className":"icono-archivo"},"children":[]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"dbe30edd114f1bc1cebc817207ef008c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -344,7 +344,7 @@ Todas las importaciones requeridas serán asignadas en un objeto.
 1. Realizar la importación del archivo spss
 ]]
 
-<div class="countdown" id="timer_62fe0375" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_62fe0215" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1150,7 +1150,7 @@ trial_data %&gt;%
 2. Complementar la tabla del anterior punto agregando la variable del grupo de tratamiento al que pertenece.
 ]]
 
-<div class="countdown" id="timer_62fe02d6" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_62fe0243" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -1558,7 +1558,7 @@ covid19_tidy %&gt;%
 1. Genera un objeto wider (`pivot_wider`)
 ]]
 
-<div class="countdown" id="timer_62fe02cf" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_62fe0437" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 

@@ -33,6 +33,8 @@ library(magrittr)
 library(metathis)
 library(xaringanthemer)
 library(countdown)
+library(flair)
+library(flipbookr)
 ```
 
 ```{r xaringan-themer, include=FALSE, warning=FALSE}
@@ -139,10 +141,13 @@ meta() %>%
 ## Contenidos
 
 .line-space3-0[.font120[
-- Uso de funciones y argumentos
-- Instalación y manejo de paquetes
-- Introducción a tidyverse
 - Importación de datos de principales formatos
+- Reconocimiento de variables (función glimpse)
+- Anidación de funciones con pipe (%>%)
+- Cálculo de variables (introducción a mutate)
+- Contabilización y ordenamiento en base a variables (uso de count y arrange).
+- Explicación de tidy data 
+- Modificación a la estructura de los datos mediante pivot longer y wider 
 ]]
 
 ---
@@ -151,251 +156,6 @@ class: center, middle, inverse
 # Exploración competencial
 
 ---
-
-## ¿Qué es una función?
-
-Las funciones son módulos de código autónomo que realizan una tarea específica y generalmente, toman algún tipo de estructura de datos (`vector`, `dataframes`, etc.), lo procesan y devuelven un resultado. 
-
-El uso general de una función es el nombre de la función seguida de paréntesis
-
-```{r eval=FALSE}
-function_name(input)
-```
-
-Los inputs se denominan argumentos e incluyen:
-
-- El objeto físico (cualquier estructura de datos) en el que la función lleva a cabo una tarea
-- Especificaciones que alteran la forma en que opera la función
-
-```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("img/function_example.png")
-```
- 
----
-
-## Buscando ayuda sobre las funciones
-
-La mejor forma de averiguar esta información es utilizar `?` seguido del nombre de la función. Al hacer esto, se abrirá el manual de ayuda en el panel inferior derecho de RStudio que proporcionará una descripción de la función, uso, argumentos, detalles y ejemplos:
-
-```{r eval=FALSE, include=FALSE}
-helpfile <- utils:::.getHelpFile(help(sd))
-outfile <- fs::file_temp(ext = ".html")
-tools:::Rd2HTML(helpfile, out =outfile)
-rawHTML <- paste(readLines(outfile), collapse="\n")
-knitr::asis_output(htmltools::htmlPreserve(rawHTML))
-```    
-
-.pull-left[
-```{r eval=FALSE}
-?sd()
-```
-
-```{r eval=FALSE}
-help(sd)
-```
-
-```{r echo=FALSE, out.width="55%", fig.align='left'}
-knitr::include_graphics("img/help_function.png")
-```
-
-Alternativamente, si está familiarizado con la función pero solo necesita recordar los nombres de los argumentos, puede usar:
-
-```{r}
-args(sd)
-```
-
-]
-
-.pull-right[
-```{r echo=FALSE, out.width="80%", fig.align='center'}
-knitr::include_graphics("img/help_page.png")
-```
-]
-
----
-
-## Ejemplo de una función
-
-.line-space2-0[
-Se tiene el número `3.15181930`, pero solo necesitamos dos decimales. Para ello, utilizaremos la función `round()` que redondea los números de acuerdo a la cantidad de decimales que asignemos. En este caso, solo necesitaremos 2.
-]
-
-```{r}
-round(3.15181930, digits = 2)
-```
-
-.line-space2-0[
-Como se puede observar, se ha utilizado el argumento `digits` para regular la cantidad de decimales. 
-
-**Nota:** Si proporcionamos los argumentos en el mismo orden en el que han sido definidos, no es necesario nombrarlos
-]
-
-```{r}
-round(3.15181930, 2)
-```
-
----
-
-## ¿Data.frame?
-
-.pull-left[.line-space2-0[.font120[
-- Estructura de datos 2D
-- Admite datos con diferente tipo de variable (lo opuesto a matrices)
-- Similar a Microsoft Excel
-
-**Se crean con la función:**
-
-```{r eval=FALSE}
-data.frame(
-  Var1 = elementos1,
-  Var2 = elementos2
-)
-```
-
-]]]
-
-.pull-right[.scroll-output[
-```{r}
-var1 <- c("Peru", "Argentina", "Bolivia")
-var2 <- rep("aceptado",3)
-var3 <- seq(1000,1200,100)
-
-df <- data.frame(var1, var2, var3)
-df
-```
-
-```{r}
-df <- data.frame(
-  var1 = c("Peru", "Argentina", "Bolivia"),
-  var2 = rep("aceptado",3),
-  var3 = seq(1000,1200,100)
-)
-df
-```
-]]
-
----
-
-## ¿Tibble?
-
-.pull-left[.line-space1-5[.font120[
-- Son la versión mejorada del data.frame
-- Disponible en el **paquete** `tibble` y por lo tanto en el `tidyverse`.
-
-**Se crean con la función:**
-
-```{r eval=FALSE}
-library(tibble)
-tibble(
-  Var1 = elementos1,
-  Var2 = elementos2
-)
-```
-]]]
-
-
-.pull-right[.scroll-output[
-```{r eval=FALSE}
-install.packages("tibble")
-```
-
-```{r}
-library(tibble)
-tibble(
-  var1 = c("Peru", "Argentina", "Bolivia"),
-  var2 = rep("aceptado",3),
-  var3 = seq(1000,1200,100)
-)
-```
-
-]]
-
-
----
-
-## data.frame() v.s. tibble()
-
-Ambas funciones tienen sus versiones `as.*` o `as_*` que permite transformar algo en lo que se desea. En este caso se estaría usando `as.data.frame` para convertir algo a **data.frame** y `as_tibble` para ese mismo objetivo.
-
-.pull-left[.scroll-output400[
-```{r}
-class(iris)
-iris
-```
-]]
-
-.pull-right[.scroll-output400[
-```{r R.options = list(width = 40)}
-as_tibble(iris)
-```
-]]
-
----
-
-#¡Hazlo tú mismo!
-
-.line-space2-0[.font120[
-1. Crea un tibble a partir de los ganadores de las últimas copas mundiales. La estructura de la data debe contener las siguiente variables:
-  - Año
-  - Lugar
-  - Ganador
-1. Existe una base de datos integrada dentro de R que se llama `airquality`. Conviértela en un tibble, y guárdalo en otro objeto con distinto nombre.
-1. Hacer lo mismo con la data `Titanic`.
-]]
-
-```{r echo=FALSE}
-countdown(minutes = 8,
-          margin = "1em",
-          font_size = "4em",
-          warn_when = 30)
-```
-
----
-
-## ¿Qué es un paquete?
-.font120[
-Los paquetes son colecciones de funciones, datos y código compilado de R en un formato bien definido, creados para agregar una funcionalidad específica.
-
-Hay un conjunto de paquetes estándar (o base) que se consideran parte del código fuente de R y están disponibles automáticamente como parte de su instalación de R.
-]
- 
-```{r echo=FALSE, out.width="55%", fig.align='center'}
-knitr::include_graphics("img/paquetes_hexa.png")
-```
-
----
-
-## Instalación de paquetes desde CRAN
-
-.line-space2-0[.font120[
-La forma de instalar un paquete dependerá de dónde se encuentre. Entonces, para los paquetes disponibles públicamente, esto significa a qué repositorio pertenece. La forma más común es usar el repositorio CRAN, luego solo necesita el nombre del paquete y usa el siguiente comando:
-
-```{r eval=FALSE}
-install.packages("paquete")
-```
-
-Después de ejecutar esto, recibirá algunos mensajes en la pantalla. Dependerán del sistema operativo que esté utilizando, las dependencias y si el paquete se instaló correctamente.
-]]
-
----
-
-## Instalación de paquetes vía remotes
-
-.line-space2-0[.font110[
-Cada repositorio tiene su propia forma de instalar un paquete a partir de ellos, por lo que en el caso de que utilice regularmente paquetes de diferentes fuentes, este comportamiento puede ser un poco frustrante. Una forma más eficiente es probablemente usar el paquete `remotes`` para simplificar este proceso.
-
-```{r eval=FALSE}
-install.packages("remotes")
-```
-
-Después de haber instalado `remotes`` podemos utilizar algunas de sus funciones para la instalación de paquetes: 
-- `remotes::install_bioc()` desde Bioconductor
-- `remotes::install_github()` desde GitHub
-- `remotes::install_version()` para instalar una versión específica de CRAN.
-]]
-
----
-
 ## Base de datos a utilizar
 
 Usaremos una base de datos proporcionado por [Gan et al. (2018)](https://www.nature.com/articles/s41598-018-27482-2) en su estudio:
@@ -564,6 +324,485 @@ Todas las importaciones requeridas serán asignadas en un objeto.
 1. Realizar la importación del archivo excel
 1. Realizar la importación del archivo csv
 1. Realizar la importación del archivo spss
+]]
+
+```{r echo=FALSE}
+countdown(minutes = 8,
+          margin = "1em",
+          font_size = "4em",
+          warn_when = 30)
+```
+
+---
+## Función Glimpse 
+
+.panelset[
+.panel[.panel-name[¿Para qué sirve?]
+.pull-left[.line-space2-0[.font120[
+- Versión transpuesta de print
+- Ayuda a visualizar la mayor cantidad de datos de muchas columnas.
+- Muestra el nombre de la variable junto con una designación de tipo de variable.
+]]]
+
+.pull-right[
+<br>
+<span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px">**Mediante la función:**</span>
+
+```{r eval=FALSE}
+glimpse()
+```
+
+**Recordar importar el paquete `tidyverse`**
+.scroll-output200[
+```{r message=TRUE}
+library(tidyverse)
+```
+]]]
+
+.panel[.panel-name[Ejemplo]
+
+.pull-left[
+Así habitualmente observamos la data:
+.scroll-output350[
+```{r R.options = list(width = 50)}
+nycflights13::flights
+```
+]]
+
+.pull-right[
+Con `glimpse()`, podrías tener un vistazo rápido de la estructura de los datos:
+
+.scroll-output325[
+```{r}
+glimpse(nycflights13::flights)
+```
+]]]
+
+.panel[.panel-name[Glimpse]
+
+Generalmente la vista de `glimpse()` es suficientemente ordenada para poder observar la estructura de la data sin problemas. Pero también se puede usar el argumento `width` para poder especificar ello.
+
+.scroll-output325[
+```{r}
+glimpse(nycflights13::flights, width = 90)
+```
+]]]
+
+---
+
+## Operador Pipe `%>%`
+
+.pull-left[
+**Queremos aplicar más de una función:**
+El uso de funciones de forma anidada puede resultar ilegible o difícil de comprender.
+
+```{r eval=FALSE}
+tabla(formato(coeficiente(data)))
+```
+
+El operador `%>%` nos permite escribir una secuencia de operaciones de izquierda a derecha:
+
+```{r eval=FALSE}
+coeficiente(data) %>% formato() %>% tabla()
+```
+
+**O mejor aún:**
+
+```{r eval=FALSE}
+coeficiente(data) %>% 
+  formato() %>% 
+  tabla()
+```
+]
+
+.pull-right[.font120[
+<br>
+Útil para concatenar múltiples operaciones en dplyr 
+
+<br>
+<span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px">**Atajo de Teclado**</span>
+
+<br>
+
+```{r echo=FALSE}
+knitr::include_graphics("img/atajo_pipe.svg")
+```
+]]
+
+---
+
+## Función `mutate()`
+
+
+.pull-left[.line-space2-0[.font110[ 
+Con `mutate()` podemos realizar modificaciones en las variables.  Por ej. sumar variables, o modificarlas de alguna manera (transformar a porcentaje, multiplicarlas por alguna constante, etc.). Estas modificaciones pueden realizarse:
+
+- Creando una nueva variable a partir de otras ya existentes.
+- Modificar una variable existente en la misma variable.
+
+]]]
+
+.pull-right[.font110[
+<span style="background-color: #eeff41;
+             padding: 20px 250px 15px 10px">**Ejemplo:**</span>
+
+```{r eval=FALSE}
+library(tidyverse)
+
+df %>% 
+  mutate(
+    New_var = var*2
+  )
+```
+
+**Explicación:**
+
+En una data llamada `df` se estaría aplicando la función `mutate` creando una variable llamada `New_var` a partir de otra variable llamada `var` que está siendo multiplicada por 2.
+
+]]
+
+---
+## Uso práctico de `mutate()`
+
+
+.panelset[
+.panel[.panel-name[Reconocimiento de BD]
+
+Para esta ejemplificación usaremos la base de datos del ECA  sobre la [erradicación de la infección por *Helicobácter Pylori*](https://www.nature.com/articles/s41598-018-27482-2) explicado en la [sesión 02](https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#14).
+
+.pull-left[
+.scroll-output350[
+```{r R.options = list(width = 45)}
+trial_data <- readxl::read_excel("data/researchdata.xlsx")
+trial_data
+```
+]]
+
+.pull-right[
+.scroll-output350[
+```{r R.options = list(width = 70)}
+glimpse(trial_data)
+```
+]]
+]
+
+.panel[.panel-name[Janitor]
+
+En algunas ocasiones las base de datos contienen nombres de variables muy largas o que incluso pueden contener espacios o símbolos. Una forma sencilla de solucionar ello es mediante el uso de la función `clean_names()` del paquete `janitor`.
+
+.scroll-output300[
+```{r R.options = list(width = 90)}
+trial_data <- trial_data %>% 
+  janitor::clean_names() 
+trial_data
+```
+]]
+
+.panel[.panel-name[Rename]
+
+A pesar de que `janitor::clean_names()` nos proporciona una gran solución para el formateo de nombres de variables que tienen espacios y/o símbolos, a veces podría ser necesario modificar específicamente el nombre de algunas variables. Para ello usaremos la función `rename` de la siguiente manera:
+
+.scroll-output300[
+```{r R.options = list(width = 90), highlight.output=2}
+trial_data <- trial_data %>% 
+  rename(
+    follow_4_weeks = follow_up13c_ubt_4_weeks_after_therapy #<<
+  )
+trial_data
+```
+]]
+
+.panel[.panel-name[Mutate I]
+
+.pull-left[.line-space2-0[
+Una de las primeras cosas que podemos hacer con `mutate` durante el primer contacto con la data que trabajemos es:
+
+- Configurar variables `ID` como **texto** (`character`).
+- Configurar variables como **factores**.
+- Configurar respuestas `NA` en caso tengan alguna otra codificación.
+]]
+
+.pull-right[
+1. Configurar la variable `ID`
+
+.scroll-output325[.code80[
+```{r R.options = list(width = 45)}
+trial_data %>% 
+  mutate(
+    patient_number = as.character(patient_number)
+  )
+```
+]]
+]]
+
+.panel[.panel-name[Mutate II]
+.pull-left[
+<ol start="2">
+  <li>Configurar <strong>factores</strong></li>
+</ol>
+
+Configurar una variable como factor es la forma en que R sabrá que una variable debe ser considerada como categórica. Así el contenido sea un número, esta será tratada como categoría. 
+
+Tiene especial relevancia cuando se trabaja con gráficos.
+
+]
+
+.pull-right[
+.scroll-output350[.code80[
+```{r R.options = list(width = 45), highlight.output=c(15,20)}
+trial_data %>% 
+  mutate(
+    randomized_group = factor(randomized_group), #<<
+    complete_the_study = factor(complete_the_study) #<<
+  )
+```
+]]]
+]
+]
+
+---
+## Uso de `count()`
+
+.line-space1-5[
+La función `count` es bastante sencilla y poderosa a la vez. Permite obtener una tabla en formato `tibble` que representará las frecuencias (cantidades `n`) de una o múltiples variables en específico.
+]
+
+```{r}
+trial_data %>% 
+  count(adverse_drug_reactions)
+```
+
+.line-space1-5[
+La tabla generada muestra que cantidad de personas han tenido reacciones adversas a los medicamentos ya sea en el Grupo A o B. Sin embargo, también se aprecia que hay 2 respuestas que indican la presencia de datos vacíos: **NA** y **&lt;NA&gt;**. El primero está codificado directamente como texto (`character`) y sel segudo es un `NA` real, es decir que comunica la ausencia de un dato.
+]
+
+---
+```{r, echo=FALSE}
+description_arrange_1 <- ".line-space1-7[.font100[Ya hemos visto que `count()` es sumamente útil. Además, basta con agregar más variables dentro de sus argumentos, para que estos automáticamente ingresen a generar una tabla de frecuencias. \n\n Sin embargo, a veces puede ser necesario ordenar esos resultados, para ello usaremos `arrange()`. La función `arrange()` permitirá ordenar un objeto en base a una o múltiples variables.]]"
+```
+
+`r chunk_reveal("arrange_1", break_type = "user", title = paste0("## Uso de arrange() \n", description_arrange_1), chunk_options = "R.options = list(width = 60)")`
+
+```{r arrange_1, include = FALSE}
+trial_data %>% #BREAK
+  count(
+    randomized_group,
+    follow_4_weeks,
+    adverse_drug_reactions
+  ) %>% #BREAK
+  arrange(
+    randomized_group,
+    desc(follow_4_weeks)
+  ) #BREAK
+```
+
+```{css, echo=FALSE}
+.panel2-arrange_1-user {
+    height: 300px;
+    overflow-y: auto !important;
+}
+```
+
+---
+
+```{r, echo=FALSE}
+description_slice_max <- ".line-space1-7[.font110[Anteriormente conocido como `top_n()`, la función `slice_max()`, permite seleccionar cuantos casos (filas) se específique en base a una variable numérica.]]"
+```
+
+`r chunk_reveal("slice_max_1", break_type = "user", title = paste0("## Uso de slice_max() \n", description_slice_max), chunk_options = "R.options = list(width = 60)")`
+
+```{r slice_max_1, include = FALSE}
+trial_data %>% #BREAK
+  count(randomized_group,
+        follow_4_weeks) %>% #BREAK
+  slice_max(order_by = n,
+            n = 2) #BREAK
+```
+
+```{css, echo=FALSE}
+.panel2-slice_max_1-user {
+    height: 380px;
+    overflow-y: auto !important;
+}
+```
+
+---
+## ¡Hazlo tú mismo!
+
+.line-space2-0[.font120[
+1. Generar una tabla de frecuencias para conocer cuantos de los que completaron el estudio, presentaron reacciones adversas al tratamiento
+2. Complementar la tabla del anterior punto agregando la variable del grupo de tratamiento al que pertenece.
+]]
+
+```{r echo=FALSE}
+countdown(minutes = 8,
+          margin = "1em",
+          font_size = "4em",
+          warn_when = 30)
+```
+---
+## Introducción a tidydata 
+
+.font80[
+```{r echo=FALSE, out.width="75%", fig.align='center', dpi=200, fig.retina=2, fig.alt="Tidy data for Efficiency, Reproducibility, and Collaboration", fig.cap="Julie Lowndes y Allison Horst, 2020, Tidy data for Efficiency, Reproducibility, and Collaboration"}
+knitr::include_graphics("img/tidydata_7.jpg",
+                        dpi = 300)
+```
+]
+
+---
+## Introducción a tidydata 
+
+.left-column[.line-space1-5[
+Tener datos ordenados (**tidydata**) significa tener una BD con estructuras adecuadas, donde cada registro representa una fila, cada variable representa una columna y cada celda contiene una simple medida ([**Hadley Wickham,2014**](https://www.jstatsoft.org/article/view/v059i10)).
+]]
+
+.right-column[
+.font80[
+```{r echo=FALSE, out.width="95%", fig.align='center', dpi=200, fig.retina=2, fig.alt="En tidydata, cada variable es una columna; cada observación, una fila; y cada celda es una medición única.", fig.cap="Julie Lowndes y Allison Horst, 2020, Tidy data for Efficiency, Reproducibility, and Collaboration"}
+knitr::include_graphics("img/tidydata_1.jpg",
+                        dpi = 300)
+```
+]]
+
+---
+## Uso de pivot_longer() y pivot_wider()
+
+.panelset[
+.panel[.panel-name[Intro]
+
+.left-column[.line-space1-5[
+Para este ejemplo usaremos una base de datos que contiene casos de personas fallecidas a causa del coranovirus a nivel de país, este dataset está alojada en el siguiente repositorio de GitHub ([click aquí](https://github.com/CSSEGISandData/COVID-19)).
+]]
+
+.right-column[.font80[
+```{r echo=FALSE, out.width="95%", fig.align='center', dpi=200, fig.retina=2, fig.alt="Repositorio github de personas fallecidas por Coronavirus a nivel global", fig.cap="Personas fallecidas por Coronavirus a nivel global"}
+knitr::include_graphics("img/github_covid_1.png",
+                        dpi = 300)
+```
+]]
+]
+
+.panel[.panel-name[Importación]
+
+La función `read_csv` del paquete `readr` (se carga automáticamente cuando se realiza `library(tidyverse)`), permite importar archivos `csv` (data) incluso cuando el archivo está en una web.
+
+.scroll-output300[
+```{r echo=TRUE, message=FALSE, warning=FALSE, R.options = list(width = 90)}
+covid19 <- read_csv("https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv")
+covid19
+```
+]]
+
+.panel[.panel-name[¿Pivot?]
+
+.pull-left[.font80[
+```{r echo=FALSE, out.width="75%", fig.align='center', dpi=200, fig.retina=2, fig.alt="Infografía de pivot realizado por Dr. Peter D.R. Higgins", fig.cap="Infografía de pivot realizado por Dr. Peter D.R. Higgins"}
+knitr::include_graphics("img/pivot_longer_wider.png",
+                        dpi = 300)
+```
+
+]]
+
+.pull-right[.line-space1-5[.font110[
+Tenemos un conjunto de datos donde cada una de las fechas de fallecimiento por **Covid-19** se encuentran almacenadas como columnas. 
+
+Sin embargo, esta forma de organizar la información podría generar dificultades al momento de pre-procesar la información o realizar algún tipo de análisis. Tener todas las fechas y casos de muerte por COVID-19 en 2 columnas (`fecha` y `fallecidos`), podría ayudar a este proceso. 
+]]]
+]
+
+.panel[.panel-name[Pivotear]
+
+.left-column[.line-space2-2[.font110[
+Así, dependiendo de el formato inicial de los datos, tendremos que **pivotear** hacia la derecha (`wider`) o hacia abajo (`longer`).
+]]]
+
+.right-column[
+
+.pull-left[.font80[
+```{r echo=FALSE, out.width="85%", fig.align='center', dpi=200, fig.retina=2, fig.alt="Animación del uso de pivot_longer y pivot_wider", fig.cap="Transformación de datos, 2021, Data Analytics Coding Fundamentals"}
+knitr::include_graphics("img/tidyr-pivot_wider_longer.gif",
+                        dpi = 300)
+```
+]]
+
+.pull-right[
+<br>
+<br>
+```{r echo=FALSE, out.width="100%", fig.align='center', dpi=300, fig.retina=2, fig.alt="Gif sobre Ross en la serie Friends diciendo Pivot Pivot Pivot, para intentar subir su sillón nuevo a su nuevo departamento"}
+knitr::include_graphics("img/ross-pivot-friends.gif",
+                        dpi = 300)
+```
+]]]
+]
+
+---
+
+```{r, echo=FALSE}
+description_pivot_longer <- ".line-space1-7[.font110[La función `pivot_longer` permitirá pasar todas las fechas que están a lo largo de las columnas a 2: `fecha` y `fallecidos`.]]"
+```
+
+`r chunk_reveal("pivot_longer_1", break_type = "user", title = paste0("## Uso de pivot_longer() \n", description_pivot_longer), chunk_options = "R.options = list(width = 55)")`
+
+```{r pivot_longer_1, include = FALSE}
+covid19 %>% #BREAK
+  select(-c(Lat:Long)) %>% #BREAK
+  pivot_longer(
+    cols = -c(`Province/State`:`Country/Region`),
+    names_to = "fecha",
+    values_to = "fallecidos"
+  ) #BREAK
+```
+
+```{css, echo=FALSE}
+.panel2-pivot_longer_1-user {
+    height: 380px;
+    overflow-y: auto !important;
+}
+```
+
+---
+```{r include=FALSE}
+covid19_tidy <- covid19 %>% 
+  select(-c(Lat:Long)) %>% 
+  pivot_longer(
+    cols = -c(`Province/State`:`Country/Region`),
+    names_to = "fecha",
+    values_to = "fallecidos"
+  ) 
+```
+
+```{r, echo=FALSE}
+description_pivot_wider <- ".line-space1-7[.font110[De forma análoga, la función `pivot_wider()` hará exactamente lo contrario, pasar de una data que se encuentre ordenada (**tidy data**), a una data ancha. Para esta función se tendrá que indicar los argumentos: `names_from` y `values_from`.]]"
+```
+
+`r chunk_reveal("pivot_wider_1", break_type = "user", title = paste0("## Uso de pivot_wider() \n", description_pivot_wider), chunk_options = "R.options = list(width = 55)")`
+
+
+```{r pivot_wider_1, include = FALSE}
+covid19_tidy %>% #BREAK
+  pivot_wider(
+    names_from = "fecha",
+    values_from = "fallecidos"
+  ) #BREAK
+```
+
+```{css, echo=FALSE}
+.panel2-pivot_wider_1-user {
+    height: 340px;
+    overflow-y: auto !important;
+}
+```
+
+---
+## ¡Hazlo tú mismo!
+
+.line-space2-0[.font120[
+1. Replica los procedimientos observados en las diapositivas
+1. Genera un objeto tidy (`pivot_longer`)
+1. Genera un objeto wider (`pivot_wider`)
 ]]
 
 ```{r echo=FALSE}

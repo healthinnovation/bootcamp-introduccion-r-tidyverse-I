@@ -4,7 +4,7 @@
     <title>Introducción a R y Tidyverse I</title>
     <meta charset="utf-8" />
     <meta name="author" content="Laboratorio de Innovación en Salud" />
-    <meta name="date" content="2022-08-18" />
+    <meta name="date" content="2022-09-29" />
     <script src="sesion_02_files/header-attrs/header-attrs.js"></script>
     <link href="sesion_02_files/tile-view/tile-view.css" rel="stylesheet" />
     <script src="sesion_02_files/tile-view/tile-view.js"></script>
@@ -30,13 +30,17 @@
     <meta name="github-repo" content="healthinnovation/curso-introduccion-r-tidyverse"/>
     <meta name="twitter:title" content="Introducción a R y Tidyverse I: Sesión 02"/>
     <meta name="twitter:description" content="Curso de Introducción a R y Tidyverse I: Sesión 02"/>
-    <meta name="twitter:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#1"/>
+    <meta name="twitter:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse-I/sesion_02/#1"/>
+    <meta name="twitter:image" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse-I/sesion_02/img/cover-sesion02.png"/>
+    <meta name="twitter:image:alt" content="Cover de la Sesión 02 del curso de Introducción a R y Tidyverse I"/>
     <meta name="twitter:card" content="summary_large_image"/>
     <meta name="twitter:creator" content="@innovalab_imt"/>
     <meta name="twitter:site" content="@innovalab_imt"/>
     <meta property="og:title" content="Introducción a R y Tidyverse I: Sesión 02"/>
     <meta property="og:description" content="Curso de Introducción a R y Tidyverse I: Sesión 02"/>
-    <meta property="og:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#1"/>
+    <meta property="og:url" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse-I/sesion_02/#1"/>
+    <meta property="og:image" content="https://healthinnovation.github.io/curso-introduccion-r-tidyverse-I/sesion_02/img/cover-sesion02.png"/>
+    <meta property="og:image:alt" content="Cover de la Sesión 02 del curso de Introducción a R y Tidyverse I"/>
     <meta property="og:type" content="website"/>
     <meta property="og:locale" content="en_US"/>
     <meta property="article:author" content="Laboratorio de Innovación en Salud"/>
@@ -140,7 +144,7 @@ top:1em;right:1em;
 
 ### Laboratorio de Innovación en Salud  
 
-### 2022-08-18
+### 2022-09-29
 
 &lt;br&gt;
 
@@ -173,7 +177,7 @@ class: center, middle, inverse
 
 Usaremos una base de datos proporcionado por [Gan et al. (2018)](https://www.nature.com/articles/s41598-018-27482-2) en su estudio:
 
-&lt;img src="img/levofloxacin_trial.png" title="Article: Efficacy of tw o different dosages of levofloxacin in curing Helicobacter pylori infection: A Prospective, Single-Center, randomized clinical trial" alt="Article: Efficacy of tw o different dosages of levofloxacin in curing Helicobacter pylori infection: A Prospective, Single-Center, randomized clinical trial" width="95%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/levofloxacin_trial.png" alt="Article: Efficacy of tw o different dosages of levofloxacin in curing Helicobacter pylori infection: A Prospective, Single-Center, randomized clinical trial" width="95%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -187,16 +191,16 @@ Dicho estudio es un ensayo clínico aleatorizado (ECA) de 400 participantes en e
 - **Grupo B** de tratamiento: Levofloxacina 200mg dos veces al día, durante un periodo de 14 días.
 
 
-<div id="htmlwidget-ed93b9727f0e72e49924" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-ed93b9727f0e72e49924">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Randomized group":["group A","group B"],"n":[200,200]},"columns":[{"accessor":"Randomized group","name":"Randomized group","type":"character","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}},{"accessor":"n","name":"n","type":"numeric","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"fb1ea7d6d845eba4fa20ac687ddada50"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-4a7c598d18b68098c6cf" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-4a7c598d18b68098c6cf">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Randomized group":["group A","group B"],"n":[200,200]},"columns":[{"accessor":"Randomized group","name":"Randomized group","type":"character","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}},{"accessor":"n","name":"n","type":"numeric","align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700}}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"fb1ea7d6d845eba4fa20ac687ddada50"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 ]]
 
 ---
 
 ## Importación de datos
 
-<div id="htmlwidget-113e2be4d88d8cf2d209" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-113e2be4d88d8cf2d209">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Función":["readxl::read_excel()","readr::read_csv()","haven::read_dta()","haven::read_sav()"],"Tipo de archivo":["excel_logo","csv_logo","stata_logo","spss_logo"]},"columns":[{"accessor":"Función","name":"Función","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readxl::read_excel()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readr::read_csv()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_dta()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_sav()"]}]},{"accessor":"Tipo de archivo","name":"Tipo de archivo","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"excel_logo","src":"img/excel_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"csv_logo","src":"img/csv_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"stata_logo","src":"img/stata_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"spss_logo","src":"img/spss_logo.png","className":"icono-archivo"},"children":[]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"dbe30edd114f1bc1cebc817207ef008c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-782d7a556dd660eee5fb" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-782d7a556dd660eee5fb">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"Función":["readxl::read_excel()","readr::read_csv()","haven::read_dta()","haven::read_sav()"],"Tipo de archivo":["excel_logo","csv_logo","stata_logo","spss_logo"]},"columns":[{"accessor":"Función","name":"Función","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readxl::read_excel()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["readr::read_csv()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_dta()"]},{"name":"code","attribs":{"style":{"position":"relative","top":"30%"},"className":"remark-inline-code"},"children":["haven::read_sav()"]}]},{"accessor":"Tipo de archivo","name":"Tipo de archivo","type":"character","minWidth":70,"align":"center","headerStyle":{"background":"#f7f7f8","fontWeight":700},"cell":[{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"excel_logo","src":"img/excel_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"csv_logo","src":"img/csv_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"stata_logo","src":"img/stata_logo.png","className":"icono-archivo"},"children":[]}]},{"name":"div","attribs":{"style":{"width":"75px","margin-left":"45%"}},"children":[{"name":"img","attribs":{"alt":"spss_logo","src":"img/spss_logo.png","className":"icono-archivo"},"children":[]}]}]}],"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"highlight":true,"striped":true,"dataKey":"dbe30edd114f1bc1cebc817207ef008c"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 
 ---
 
@@ -233,7 +237,6 @@ trial_data
 ## #   ⁴​`Follow-up13C-UBT (4 weeks after therapy)`, ⁵​`adverse drug reactions`,
 ## #   ⁶​`adverse drug reactions  content`, ⁷​`Adverse drug reaction classified`,
 ## #   ⁸​`Complete the study`, ⁹​`Uncompleted Reason`, ˟​`per protocol analysis`
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 ---
@@ -243,7 +246,7 @@ trial_data
 .font110[
 En algunos casos estaremos frente a base de datos que contengan cierta información en sus primeras filas que no sean relevantes como datos a considerar para el análisis. La mayor cantidad de veces tienen un propósito meramente informativo. Ejemplo:
 
-&lt;img src="img/researchdata2_preview.png" title="Vista preliminar de una data que contenga las primeras filas a modo de información" alt="Vista preliminar de una data que contenga las primeras filas a modo de información" width="95%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/researchdata2_preview.png" alt="Vista preliminar de una data que contenga las primeras filas a modo de información" width="95%" style="display: block; margin: auto;" /&gt;
 ]
 ---
 
@@ -291,7 +294,6 @@ trial_data2
 ##  9 6              Positive                 grou… Nega… No    NA    NA    Yes   NA    Yes  
 ## 10 7              Positive                 grou… Nega… No    NA    NA    Yes   NA    Yes  
 ## # … with 393 more rows, and abbreviated variable name ¹​`Data de ejemplo para el curso`
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]]
 
@@ -326,7 +328,6 @@ trial_data2
 ## #   ⁴​`Follow-up13C-UBT (4 weeks after therapy)`, ⁵​`adverse drug reactions`,
 ## #   ⁶​`adverse drug reactions  content`, ⁷​`Adverse drug reaction classified`,
 ## #   ⁸​`Complete the study`, ⁹​`Uncompleted Reason`, ˟​`per protocol analysis`
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]
 
@@ -344,7 +345,8 @@ Todas las importaciones requeridas serán asignadas en un objeto.
 1. Realizar la importación del archivo spss
 ]]
 
-<div class="countdown" id="timer_62fe6257" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_a16a1c1c" data-warn-when="30" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1em;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -377,17 +379,11 @@ library(tidyverse)
 ```
 
 ```
-## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.1 ──
-```
-
-```
+## ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
 ## ✔ ggplot2 3.3.6     ✔ purrr   0.3.4
-## ✔ tibble  3.1.8     ✔ stringr 1.4.0
-## ✔ tidyr   1.2.0     ✔ forcats 0.5.1
-## ✔ readr   2.1.2
-```
-
-```
+## ✔ tibble  3.1.8     ✔ stringr 1.4.1
+## ✔ tidyr   1.2.1     ✔ forcats 0.5.2
+## ✔ readr   2.1.2     
 ## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ## ✖ tidyr::extract()   masks magrittr::extract()
 ## ✖ dplyr::filter()    masks stats::filter()
@@ -427,7 +423,6 @@ nycflights13::flights
 ## #   air_time &lt;dbl&gt;, distance &lt;dbl&gt;, hour &lt;dbl&gt;,
 ## #   minute &lt;dbl&gt;, time_hour &lt;dttm&gt;, and
 ## #   abbreviated variable names ¹​sched_dep_time, …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]]
 
@@ -614,7 +609,6 @@ trial_data
 ## #   `Uncompleted Reason` &lt;chr&gt;,
 ## #   `per protocol analysis` &lt;chr&gt;, and
 ## #   abbreviated variable names …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]]
 
@@ -672,7 +666,6 @@ trial_data
 ## #   ²​randomized_group, ³​follow_up13c_ubt_4_weeks_after_therapy, ⁴​adverse_drug_reactions,
 ## #   ⁵​adverse_drug_reactions_content, ⁶​adverse_drug_reaction_classified,
 ## #   ⁷​complete_the_study, ⁸​uncompleted_reason, ⁹​per_protocol_analysis
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]]
 
@@ -708,7 +701,6 @@ trial_data
 ## #   ²​randomized_group, ³​follow_4_weeks, ⁴​adverse_drug_reactions,
 ## #   ⁵​adverse_drug_reactions_content, ⁶​adverse_drug_reaction_classified,
 ## #   ⁷​complete_the_study, ⁸​uncompleted_reason, ⁹​per_protocol_analysis
-## # ℹ Use `print(n = ...)` to see more rows
 ```
 ]]
 
@@ -755,7 +747,6 @@ trial_data %&gt;%
 ## #   uncompleted_reason &lt;chr&gt;,
 ## #   per_protocol_analysis &lt;chr&gt;, and
 ## #   abbreviated variable names …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]]
 ]]
@@ -804,7 +795,6 @@ trial_data %&gt;%
 ## #   uncompleted_reason &lt;chr&gt;,
 ## #   per_protocol_analysis &lt;chr&gt;, and
 *## #   abbreviated variable names …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]]]
 ]
@@ -876,7 +866,6 @@ count: false
 ## #   ³​randomized_group, ⁴​follow_4_weeks,
 ## #   ⁵​adverse_drug_reactions,
 ## #   ⁶​adverse_drug_reactions_content, …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 
@@ -1044,7 +1033,6 @@ count: false
 ## #   ³​randomized_group, ⁴​follow_4_weeks,
 ## #   ⁵​adverse_drug_reactions,
 ## #   ⁶​adverse_drug_reactions_content, …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 
@@ -1150,7 +1138,8 @@ trial_data %&gt;%
 2. Complementar la tabla del anterior punto agregando la variable del grupo de tratamiento al que pertenece.
 ]]
 
-<div class="countdown" id="timer_62fe60f9" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_11f6e91e" data-warn-when="30" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1em;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 ---
@@ -1208,7 +1197,7 @@ covid19
 ```
 
 ```
-## # A tibble: 285 × 943
+## # A tibble: 289 × 985
 ##    Province…¹ Count…²   Lat   Long 1/22/…³ 1/23/…⁴ 1/24/…⁵ 1/25/…⁶ 1/26/…⁷ 1/27/…⁸ 1/28/…⁹
 ##    &lt;chr&gt;      &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ##  1 &lt;NA&gt;       Afghan…  33.9  67.7        0       0       0       0       0       0       0
@@ -1221,14 +1210,13 @@ covid19
 ##  8 &lt;NA&gt;       Argent… -38.4 -63.6        0       0       0       0       0       0       0
 ##  9 &lt;NA&gt;       Armenia  40.1  45.0        0       0       0       0       0       0       0
 ## 10 Australia… Austra… -35.5 149.         0       0       0       0       0       0       0
-## # … with 275 more rows, 932 more variables: `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;,
+## # … with 279 more rows, 974 more variables: `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;,
 ## #   `1/31/20` &lt;dbl&gt;, `2/1/20` &lt;dbl&gt;, `2/2/20` &lt;dbl&gt;, `2/3/20` &lt;dbl&gt;, `2/4/20` &lt;dbl&gt;,
 ## #   `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;, `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;,
 ## #   `2/10/20` &lt;dbl&gt;, `2/11/20` &lt;dbl&gt;, `2/12/20` &lt;dbl&gt;, `2/13/20` &lt;dbl&gt;, `2/14/20` &lt;dbl&gt;,
 ## #   `2/15/20` &lt;dbl&gt;, `2/16/20` &lt;dbl&gt;, `2/17/20` &lt;dbl&gt;, `2/18/20` &lt;dbl&gt;, `2/19/20` &lt;dbl&gt;,
 ## #   `2/20/20` &lt;dbl&gt;, `2/21/20` &lt;dbl&gt;, `2/22/20` &lt;dbl&gt;, `2/23/20` &lt;dbl&gt;, `2/24/20` &lt;dbl&gt;,
 ## #   `2/25/20` &lt;dbl&gt;, `2/26/20` &lt;dbl&gt;, `2/27/20` &lt;dbl&gt;, `2/28/20` &lt;dbl&gt;, …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]]
 
@@ -1267,7 +1255,7 @@ Así, dependiendo de el formato inicial de los datos, tendremos que **pivotear**
 .pull-right[
 &lt;br&gt;
 &lt;br&gt;
-&lt;img src="img/ross-pivot-friends.gif" title="Gif sobre Ross en la serie Friends diciendo Pivot Pivot Pivot, para intentar subir su sillón nuevo a su nuevo departamento" alt="Gif sobre Ross en la serie Friends diciendo Pivot Pivot Pivot, para intentar subir su sillón nuevo a su nuevo departamento" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="img/ross-pivot-friends.gif" alt="Gif sobre Ross en la serie Friends diciendo Pivot Pivot Pivot, para intentar subir su sillón nuevo a su nuevo departamento" width="100%" style="display: block; margin: auto;" /&gt;
 ]]]
 ]
 
@@ -1289,7 +1277,7 @@ count: false
 .panel2-pivot_longer_1-user[
 
 ```
-## # A tibble: 285 × 943
+## # A tibble: 289 × 985
 ##    Provi…¹ Count…²   Lat   Long 1/22/…³ 1/23/…⁴ 1/24/…⁵
 ##    &lt;chr&gt;   &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ##  1 &lt;NA&gt;    Afghan…  33.9  67.7        0       0       0
@@ -1302,14 +1290,13 @@ count: false
 ##  8 &lt;NA&gt;    Argent… -38.4 -63.6        0       0       0
 ##  9 &lt;NA&gt;    Armenia  40.1  45.0        0       0       0
 ## 10 Austra… Austra… -35.5 149.         0       0       0
-## # … with 275 more rows, 936 more variables:
+## # … with 279 more rows, 978 more variables:
 ## #   `1/25/20` &lt;dbl&gt;, `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;,
 ## #   `1/28/20` &lt;dbl&gt;, `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;,
 ## #   `1/31/20` &lt;dbl&gt;, `2/1/20` &lt;dbl&gt;, `2/2/20` &lt;dbl&gt;,
 ## #   `2/3/20` &lt;dbl&gt;, `2/4/20` &lt;dbl&gt;, `2/5/20` &lt;dbl&gt;,
 ## #   `2/6/20` &lt;dbl&gt;, `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;,
 ## #   `2/9/20` &lt;dbl&gt;, `2/10/20` &lt;dbl&gt;, …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 
@@ -1329,7 +1316,7 @@ covid19 %&gt;%
 .panel2-pivot_longer_1-user[
 
 ```
-## # A tibble: 285 × 941
+## # A tibble: 289 × 983
 ##    Province/S…¹ Count…² 1/22/…³ 1/23/…⁴ 1/24/…⁵ 1/25/…⁶
 ##    &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ##  1 &lt;NA&gt;         Afghan…       0       0       0       0
@@ -1342,14 +1329,13 @@ covid19 %&gt;%
 ##  8 &lt;NA&gt;         Argent…       0       0       0       0
 ##  9 &lt;NA&gt;         Armenia       0       0       0       0
 ## 10 Australian … Austra…       0       0       0       0
-## # … with 275 more rows, 935 more variables:
+## # … with 279 more rows, 977 more variables:
 ## #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,
 ## #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,
 ## #   `2/1/20` &lt;dbl&gt;, `2/2/20` &lt;dbl&gt;, `2/3/20` &lt;dbl&gt;,
 ## #   `2/4/20` &lt;dbl&gt;, `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;,
 ## #   `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;,
 ## #   `2/10/20` &lt;dbl&gt;, `2/11/20` &lt;dbl&gt;, …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 
@@ -1374,7 +1360,7 @@ covid19 %&gt;%
 .panel2-pivot_longer_1-user[
 
 ```
-## # A tibble: 267,615 × 4
+## # A tibble: 283,509 × 4
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -1387,8 +1373,7 @@ covid19 %&gt;%
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 267,605 more rows
-## # ℹ Use `print(n = ...)` to see more rows
+## # … with 283,499 more rows
 ```
 ]
 
@@ -1449,7 +1434,7 @@ count: false
 .panel2-pivot_wider_1-user[
 
 ```
-## # A tibble: 267,615 × 4
+## # A tibble: 283,509 × 4
 ##    `Province/State` `Country/Region` fecha   fallecidos
 ##    &lt;chr&gt;            &lt;chr&gt;            &lt;chr&gt;        &lt;dbl&gt;
 ##  1 &lt;NA&gt;             Afghanistan      1/22/20          0
@@ -1462,8 +1447,7 @@ count: false
 ##  8 &lt;NA&gt;             Afghanistan      1/29/20          0
 ##  9 &lt;NA&gt;             Afghanistan      1/30/20          0
 ## 10 &lt;NA&gt;             Afghanistan      1/31/20          0
-## # … with 267,605 more rows
-## # ℹ Use `print(n = ...)` to see more rows
+## # … with 283,499 more rows
 ```
 ]
 
@@ -1486,7 +1470,7 @@ covid19_tidy %&gt;%
 .panel2-pivot_wider_1-user[
 
 ```
-## # A tibble: 285 × 941
+## # A tibble: 289 × 983
 ##    Province/S…¹ Count…² 1/22/…³ 1/23/…⁴ 1/24/…⁵ 1/25/…⁶
 ##    &lt;chr&gt;        &lt;chr&gt;     &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
 ##  1 &lt;NA&gt;         Afghan…       0       0       0       0
@@ -1499,14 +1483,13 @@ covid19_tidy %&gt;%
 ##  8 &lt;NA&gt;         Argent…       0       0       0       0
 ##  9 &lt;NA&gt;         Armenia       0       0       0       0
 ## 10 Australian … Austra…       0       0       0       0
-## # … with 275 more rows, 935 more variables:
+## # … with 279 more rows, 977 more variables:
 ## #   `1/26/20` &lt;dbl&gt;, `1/27/20` &lt;dbl&gt;, `1/28/20` &lt;dbl&gt;,
 ## #   `1/29/20` &lt;dbl&gt;, `1/30/20` &lt;dbl&gt;, `1/31/20` &lt;dbl&gt;,
 ## #   `2/1/20` &lt;dbl&gt;, `2/2/20` &lt;dbl&gt;, `2/3/20` &lt;dbl&gt;,
 ## #   `2/4/20` &lt;dbl&gt;, `2/5/20` &lt;dbl&gt;, `2/6/20` &lt;dbl&gt;,
 ## #   `2/7/20` &lt;dbl&gt;, `2/8/20` &lt;dbl&gt;, `2/9/20` &lt;dbl&gt;,
 ## #   `2/10/20` &lt;dbl&gt;, `2/11/20` &lt;dbl&gt;, …
-## # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 ]
 
@@ -1558,7 +1541,8 @@ covid19_tidy %&gt;%
 1. Genera un objeto wider (`pivot_wider`)
 ]]
 
-<div class="countdown" id="timer_62fe5fcb" style="right:0;bottom:0;margin:1em;font-size:4em;" data-warnwhen="30">
+<div class="countdown" id="timer_7b7d6c9b" data-warn-when="30" data-update-every="1" tabindex="0" style="right:0;bottom:0;margin:1em;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">08</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 

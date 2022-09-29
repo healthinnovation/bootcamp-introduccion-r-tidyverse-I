@@ -106,9 +106,9 @@ meta() %>%
   meta_social(
     title = "Introducción a R y Tidyverse I: Sesión 02",
     description = "Curso de Introducción a R y Tidyverse I: Sesión 02",
-    url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse/sesion_02/#1",
-    # image = "https://healthinnovation.github.io/xaringan-innovar/img/cover-plantilla.png",
-    # image_alt = "Innovar theme of R package xaringan",
+    url = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse-I/sesion_02/#1",
+    image = "https://healthinnovation.github.io/curso-introduccion-r-tidyverse-I/sesion_02/img/cover-sesion02.png",
+    image_alt = "Cover de la Sesión 02 del curso de Introducción a R y Tidyverse I",
     og_type = "website",
     og_author = "Laboratorio de Innovación en Salud",
     twitter_card_type = "summary_large_image",

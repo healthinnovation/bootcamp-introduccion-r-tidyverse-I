@@ -194,34 +194,143 @@ trial_data
 ## Uso de `unite()`
 
 .panelset[
-.panel[.panel-name[Intro]
+.panel[.panel-name[Intro ]
 
 
-
+.line-space1-7[.font110[
 Esta función es una forma conveniente de unir 2 o más columnas en una sola (juntar texto), mediante un separador por defecto (`-`) o indicando uno en específico (arg. `sep = " | "`). 
+]]
 
 .scroll-output300[
 ```{r R.options = list(width = 90)}
 trial_data %>%
   unite(
-    group_follow_4_weeks,
+    col = group_follow_4_weeks,
     randomized_group,
     follow_4_weeks
   )
 ```
 ]
+]
 
+.panel[.panel-name[Otras Separaciones]
 
-
+.line-space1-7[.font110[
+Para indicar un separador adicional, solo se tiene que adicionar el argumento `sep = "separado"` dentro de la función. Por ej.
 ]]
 
+.scroll-output300[
+```{r R.options = list(width = 90)}
+trial_unite <- trial_data %>%
+  unite(
+    col = group_follow_4_weeks,
+    randomized_group,
+    follow_4_weeks,
+    sep = ": "
+  ) %>%
+  select(patient_number:group_follow_4_weeks)
+trial_unite
+```
+]
+]
+]
 
 ---
 ## Uso de `separate()`
 
+.line-space1-7[.font110[
+Tiene una lógica igual al de `unite()` pero para hacer exactamente lo contrario a lo primero: separar columnas en base a un **separador**. USaremos el objeto `trial_unite` que ya tiene las variables juntas.
+]]
+
+.scroll-output325[
+```{r R.options = list(width = 90)}
+trial_unite %>%
+  separate(
+    col = group_follow_4_weeks,
+    into = c("group", "follow_4_weeks"),
+    sep = ": "
+  )
+```
+
+]
+
 ---
 ## Manejo de valores perdidos
 
+.panelset[
+.panel[.panel-name[Preparación I]
+
+.line-space1-7[.font110[
+Antes de trabajar con valores perdidos, es importante observar que el software reconozca a estos valores como `NA`'s y no de otra manera, ya se que estén indicando como códigos o letras (por ej. `777` o `sin valor`).
+]]
+
+.pull-left[.line-space1-7[.font110[
+En el caso de `trial_data` se observa que solo en los primeros valores, ya hay presencia de valores perdidos, pero que han sido llenados como texto `NA`, por lo que esto no permitirá que se les pueda manipular correctamente.
+]]]
+
+.pull-right[
+.scroll-output275[
+```{r echo=FALSE}
+trial_data %>%
+  select(adverse_drug_reactions:complete_the_study) %>%
+  slice_head(n = 5)
+```
+]]
+]
+
+.panel[.panel-name[Preparación II]
+.line-space1-7[.font110[
+Para solucionar esto, hay que trasnformar a todos los `NA` que se encuentran como textos a `NA`'s reales. Con el uso de la función `across()` y `ifelse()`, podremos solucionar esto.
+]]
+
+.pull-left[
+```{r echo = TRUE, results = 'hide'}
+trial_data <- trial_data %>%
+  mutate(
+    across(
+      everything(),
+      ~ ifelse(
+          . == "NA", NA, .
+      )
+    )
+  )
+```
+]
+
+.pull-left[
+.scroll-output275[
+```{r echo=FALSE}
+trial_data
+```
+]
+]
+]
+
+.panel[.panel-name[drop_na ]
+.line-space1-7[.font110[
+Ya con esto en mente, podremos hacer manipulaciones en los datos. Por ejemplo, quitar los NA's.
+]]
+
+.scroll-output300[
+```{r, R.options = list(width = 90)}
+trial_data %>%
+  drop_na(follow_4_weeks)
+```
+]]
+
+.panel[.panel-name[replace_na ]
+
+]
+
+.panel[.panel-name[complete ]
+
+]
+
+.panel[.panel-name[fill ]
+
+]
+
+]
 
 
 
